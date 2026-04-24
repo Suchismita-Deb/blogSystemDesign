@@ -1,0 +1,21 @@
+site_name: MkLorum
+nav:
+  - Home: index.md
+  - Nav:
+      - Dropdown: yo.md
+  - System Design:
+      - SystemDesign/Fundamentals.md
+      - Patterns.md
+      - Key Technologies:
+          - Redis.md
+          - DynamoDb.md
+          - Cassandra.md
+
+theme:
+  name: mkdocs
+#  palette:
+#    scheme: default
+#    primary: green
+#    accent: light green
+extra_css:
+  - css/custom.css

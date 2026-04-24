@@ -1,0 +1,26 @@
+/* ===== NAVBAR BACKGROUND ===== */
+.bg-primary,
+.navbar.bg-primary {
+    background: #2e7d32 !important;
+    background-image: none !important;
+}
+
+/* ===== NAVBAR TEXT COLOR ===== */
+.navbar-dark .navbar-nav .nav-link,
+.navbar-dark .navbar-brand {
+    color: #ffffff !important;
+}
+
+/* Hover */
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #c8e6c9 !important;
+}
+
+/* Active link */
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #a5d6a7 !important;
+}
+
+.bs-sidebar .nav.flex-column a {
+    color: green !important;
+}
