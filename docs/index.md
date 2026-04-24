@@ -23,3 +23,21 @@ Scan in 10 seconds
 Revise in 2 minutes
 
 Remember key points
+
+
+To deploy - push the code in github and mkdocs gh-deploy.
+
+Adding image.
+
+Inside docs - images - SystemDesign - Image.png
+
+The file are in say docs - SystemDesign - file.md
+
+The image url.
+
+
+`![NetworkLayer](../images/SystemDesign/NetworkLayer.png)`
+
+The tag in the base doc branch.
+
+Making the image small - `<img src="/images/SystemDesign/NetworkLayer.png" style="width:60%;">`

@@ -1,11 +1,12 @@
-site_name: MkLorum
+site_name: System Design Toolkit
 nav:
   - Home: index.md
   - Nav:
       - Dropdown: yo.md
   - System Design:
       - SystemDesign/Fundamentals.md
-      - Patterns.md
+      - Sample.md
+      - Pattern.md
       - Key Technologies:
           - Redis.md
           - DynamoDb.md
