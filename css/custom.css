@@ -24,3 +24,13 @@
 .bs-sidebar .nav.flex-column a {
     color: green !important;
 }
+
+
+footer {
+    display: none !important;
+}
+img {
+    max-width: 70%;
+    display: block;
+    margin: auto;
+}
