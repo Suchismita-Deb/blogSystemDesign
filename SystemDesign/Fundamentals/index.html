@@ -1,143 +1,1379 @@
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../yo/">
+      
+      
+      
         
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Fundamentals - System Design Toolkit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
         
-        
-        <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Fundamental of System Design. - System Design Toolkit</title>
-        <link href="../../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../css/fontawesome.min.css" rel="stylesheet">
-        <link href="../../css/brands.min.css" rel="stylesheet">
-        <link href="../../css/solid.min.css" rel="stylesheet">
-        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
-        <link href="../../css/base.css" rel="stylesheet">
-        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
-        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
-        <link href="../../css/custom.css" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script>hljs.highlightAll();</script> 
-    </head>
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
 
-    <body>
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-            <div class="container">
-                <a class="navbar-brand" href="../..">System Design Toolkit</a>
-                <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- Expanded navigation -->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li class="nav-item">
-                                <a href="../.." class="nav-link">Home</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Nav</a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../../yo/" class="dropdown-item">Dropdown</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">System Design</a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="./" class="dropdown-item active" aria-current="page">Fundamental of System Design.</a>
-</li>
-                                    
-<li>
-    <a href="../../Sample.md" class="dropdown-item">None</a>
-</li>
-                                    
-<li>
-    <a href="../../Pattern.md" class="dropdown-item">None</a>
-</li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#" class="dropdown-item">Key Technologies</a>
-    <ul class="dropdown-menu">
-            
-<li>
-    <a href="../../Redis.md" class="dropdown-item">None</a>
-</li>
-            
-<li>
-    <a href="../../DynamoDb.md" class="dropdown-item">None</a>
-</li>
-            
-<li>
-    <a href="../../Cassandra.md" class="dropdown-item">None</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                    <ul class="nav navbar-nav ms-md-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="../../yo/" class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
-            <span class="fa fa-angle-down"></span>
-        </button>
-    </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
-        <ul class="nav flex-column">
-            
-            <li class="nav-item" data-bs-level="1"><a href="#fundamental-of-system-design" class="nav-link">Fundamental of System Design.</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#thumb-rule" class="nav-link">Thumb rule.</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#mental-model" class="nav-link">🧠 Mental Model</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#delivery-framework" class="nav-link">Delivery Framework.</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-        </ul>
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fundamental-of-system-design" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
-</div></div>
-                    <div class="col-md-9" role="main">
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="System Design Toolkit" class="md-header__button md-logo" aria-label="System Design Toolkit" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            System Design Toolkit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Fundamentals
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../yo/" class="md-tabs__link">
+          
+  
+  
+  Nav
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  System Design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ProducerConsumer.md" class="md-tabs__link">
+          
+  
+  
+  KafkaFundamentals
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="System Design Toolkit" class="md-nav__button md-logo" aria-label="System Design Toolkit" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    System Design Toolkit
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nav
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Nav
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../yo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dropdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    System Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#thumb-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thumb rule.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Mental Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 Mental Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem Navigation.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution design.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technical-excellence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Excellence.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#communication-and-collboration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Communication and Collboration.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delivery-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delivery Framework.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delivery-framework_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delivery Framework.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Delivery Framework.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements-5-mins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirements - 5 mins.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-system-interface-approx-5-mins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API System Interface - Approx 5 mins.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-flow-5-mins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Flow - 5 mins.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deep-dives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deep Dives.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Concepts.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Design.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Modeling.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Indexing.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caching.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#component-and-metric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Component and metric.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sample.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Pattern.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pattern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key Technologies
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Key Technologies
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Redis.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Redis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DynamoDb.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DynamoDb
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cassandra.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cassandra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KafkaFundamentals
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    KafkaFundamentals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ProducerConsumer.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ProducerConsumer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#thumb-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thumb rule.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Mental Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 Mental Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem Navigation.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution design.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technical-excellence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Excellence.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#communication-and-collboration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Communication and Collboration.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delivery-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delivery Framework.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delivery-framework_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delivery Framework.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Delivery Framework.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements-5-mins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirements - 5 mins.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-system-interface-approx-5-mins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API System Interface - Approx 5 mins.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-flow-5-mins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Flow - 5 mins.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deep-dives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deep Dives.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Concepts.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Design.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Modeling.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Indexing.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caching.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#component-and-metric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Component and metric.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    System Design
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
 
 <h1 id="fundamental-of-system-design">Fundamental of System Design.</h1>
 <h2 id="thumb-rule">Thumb rule.</h2>
@@ -145,71 +1381,112 @@
 <p>Learn the most important thing and connect with the real system and problem rather than accumulating academin knowledge.</p>
 <p>Avoid - ❌ Too shallow and ❌ Too deep (over-engineering)</p>
 <p>Get the ambiguously defined high level problem and break it down to small piece of infrastructure and solve it.</p>
+<p>System Design Type - <strong>Product design</strong>(Uber)  and <strong>Infrastructure Design</strong> (Rate Limiter).<br />
+The interviewer is looking to assess some skills and knowledge throughout the interview go through the thought process and give them points to evaluate.</p>
 </blockquote>
-<p>System Design Type - Product design(Uber)  and Infrastructure Design (Rate Limiter).<br />
-The interviewer is looking to asses some skills and knowledge throughout the interview go through the thought process and give them points to evaluate.</p>
-<p>First target - complete the full design with the requirements.</p>
-<p>Next work through all the basics and then discuss the depth of the knowledge in deep dives.</p>
-<h2 id="mental-model">🧠 Mental Model</h2>
-<p>Main points - <strong>Problem Navigation, Solution Design, Technical Excellence, and Communication and Collaboration.</strong></p>
+<p><strong>First target</strong> - complete the full design with the requirements.<br />
+Next work through all the basics and then discuss the depth of the knowledge in deep dives.</p>
+<h2 id="mental-model">🧠 <strong>Mental Model</strong></h2>
+<p><strong>Problem Navigation, Solution Design, Technical Excellence, and Communication and Collaboration.</strong></p>
 <h3 id="problem-navigation">Problem Navigation.</h3>
-<p>Get to the main point of the problem. Example - Should not waste too much time in the user table.</p>
-<p>Explore the problem and gather requirements.</p>
-<p>Get the uninteriesting vs the imp points. Dont get stuck in particular piece of problem and not able be able to move forward.</p>
-<p>Dont fail to deliver a working system.</p>
+<blockquote>
+<p>Explore the problem and gather requirements. Avoid unnecessary depth. Example - Dont waste too much time in the user table.</p>
+</blockquote>
+<ul>
+<li>Identify the <strong>core problem early</strong></li>
+<li>Gather <strong>requirements before design</strong></li>
+<li>Focus on <strong>important parts</strong>, ignore noise. Get the uninteresting vs the imp points.</li>
+<li>Don’t get <strong>stuck on one component</strong> and not able to move forward.</li>
+<li>Always deliver a <strong>working system</strong></li>
+</ul>
 <p>Maintain the <strong>delivery framework</strong> to be in track.</p>
-<h3 id="solution-design"><strong>Solution design</strong></h3>
-<p>Make small part of teh problem and interview wants to see how you solve each pieces. Imp to implement core concept.</p>
-<p>The multi layered cache is an elegant solution to the massive read volume.</p>
-<p>Most common pitfalls - Not enough understanding of core concepts. Ignore scaling and performance.</p>
-<p>Spaghetti design - solution not well structured and difficult to understand.</p>
-<p>Interviewer does not want memorised answer they will ask probing your reasoning, doubting your answer and tradeoffs.</p>
-<p>Solid fundamentals and depth of knowledge will help.</p>
-<h3 id="technical-excellence-to-design-great-system-you-need-to-know-best-practices-well-recognized-patterns-current-technologies-and-how-to-apply-them"><strong>Technical Excellence</strong> - To design great system you need to know best practices, well-recognized patterns, current technologies and how to apply them.</h3>
-<p>Understanding of key technologies.</p>
-<p>They had strong command of Redis, Elastic Search and Inverted Indexes.</p>
-<p>Most common pitfalls - Not knowing available technologies.</p>
-<p>Antiquated approaches or being constrained by outdated hardware constraints.</p>
-<p>No idea on how to apply in the problem.</p>
-<p>Not recognizing the pattern an best practices.</p>
+<h3 id="solution-design">Solution design.</h3>
+<blockquote>
+<p>Make small part of the problem and interview wants to see how you solve each pieces. Imp to implement core concept.</p>
+</blockquote>
+<p>Example - The multi layered cache is an elegant solution to the massive read volume.</p>
+<p>Most common pitfalls.</p>
+<ul>
+<li>Not enough understanding of core concepts and ignore scaling and performance.</li>
+<li>Spaghetti design - solution not well structured and difficult to understand.</li>
+</ul>
+<p>Dont memorised answer they will ask probing your reasoning, doubting your answer and tradeoffs.</p>
+<p><strong>Solid fundamentals and depth of knowledge will help.</strong></p>
+<h3 id="technical-excellence">Technical Excellence.</h3>
+<blockquote>
+<p>To design great system you need to know <strong>best practices, well-recognized patterns, current technologies and how to apply them</strong>.</p>
+<p>Understanding of key technologies. Get a strong command of Redis, Elastic Search and Inverted Indexes.</p>
+</blockquote>
+<p>Most common pitfalls.</p>
+<ul>
+<li>Not knowing available technologies.</li>
+<li>Antiquated approaches or being constrained by outdated hardware constraints.</li>
+<li>No idea on how to apply in the problem.</li>
+<li>Not recognizing the pattern and best practices.</li>
+</ul>
 <h3 id="communication-and-collboration">Communication and Collboration.</h3>
+<blockquote>
 <p>Dont be defensive on alternate approach.</p>
-<p>Done be argumentative with feedback and dont get lost in the weeds and not be able to find the working solution with the interviewer.</p>
-<p>One week timeline.</p>
-<p>Get the fundamental core concept, key technology and common pattern and then handon and it will give 10x return.</p>
-<h2 id="delivery-framework">Delivery Framework.</h2>
+<p>Dont be argumentative with feedback and dont get lost in the weeds and not be able to find the working solution with the interviewer.</p>
+</blockquote>
+<h3 id="delivery-framework">Delivery Framework.</h3>
+<blockquote>
 <p>Structure your thoughts and focus on most imp parts.</p>
 <p>Dont fail to design a working system and it will give a common like “time management” no need to fast its mainly focus on right thing.</p>
+</blockquote>
 <p><img alt="SystemDesignDeliveryFramework.png" src="../../images/SystemDesign/SystemDesignDeliveryFramework.png" /></p>
-<h3 id="requierements">Requierements</h3>
-<p>5 mins.</p>
-<p>Functional Requirements - User or client should be able to do feature.</p>
-<p>Ask targetted question - does the system need to do X? What would happen if Y?</p>
-<p>Get a prioritised list of core features. <br />
-The requirement should be strategic - the target is to make the system to complete the requirement. Top 3 design. Dont make a list of requirement it will create problem.</p>
-<p>The who? (Producer) - Who's sending data?</p>
-<p>The what? (Request) - What kind of data are they sending? What does it include?</p>
-<p>The where? (Outcome) - What is the desired output or event?
-Non-Functional Requirements - System qualities. The questions like - The system should be able to.</p>
-<p>Read or write-heavy, Need partition, Consistency( system data should be correct), Availability (system should be available), Durability or Latency.</p>
-<p>Dont make it generic - The system should be low latency - every system feature. Make it specific and target to the system like the system should have low latency searc &lt;500 ms. It identifies the part of the system that needs low latency and provides target.</p>
+<h2 id="delivery-framework_1"><strong>Delivery Framework.</strong></h2>
+<h3 id="requirements-5-mins">Requirements - 5 mins.</h3>
+<p>🎯 <strong>Functional</strong><br />
+- User/client should be able to <strong>do feature</strong><br />
+- Ask targeted -<br />
+    - Does system need <strong>X</strong>?<br />
+    - What if <strong>Y</strong>?<br />
+- Get <strong>prioritized core features (Top 3 points)</strong>. Keep it <strong>strategic</strong>, not long list it will create problem.<br />
+- The target is to make the system to complete the requirements.</p>
+<p><strong>3W Framework</strong><br />
+- <strong>Who (Producer)</strong> → Who sends data?<br />
+- <strong>What (Request)</strong> → What data? contents?<br />
+- <strong>Where (Outcome)</strong> → Desired output/event?  </p>
+<p>⚙️ <strong>Non-Functional Requirements.</strong><br />
+- System qualities. The questions like - The <strong>“System should be able to”</strong>.<br />
+- Key -<br />
+  -- Read/Write heavy.<br />
+  -- Partitioning.<br />
+  -- Consistency.<br />
+  -- Availability.<br />
+  -- Durability.<br />
+  -- Latency.  </p>
+<p>Dont make it generic - The system should be low latency - every system feature. Make it specific and target to the system like the system should have low latency search &lt;500 ms. It identifies the part of the system that needs low latency and provides target.</p>
 <p>Identify the top 3-5 NFR that can be considered.</p>
-<p><strong>CAP -</strong> System prioritize C or A. P is always there in distributed system.</p>
-<p><strong>Environment Cnstraint -</strong> Any consraints like the system should run in low battery, or limited storage or limited bandwidth.</p>
-<p><strong>Scalability -</strong> Get inn case there is any specific scaling in the system - does the system have bursty traffic at any specific day ?Does the system need to scale in read or write.</p>
-<p><strong>Latency -</strong> The time system will take to response to the user request. Low latency search in designing Yelp.</p>
-<p><strong>Durability</strong> - How imp is i that the data in the system is not lost? Social media can loss some data.</p>
-<p><strong>Security -</strong> How secure the system to be - data protection, access control compliance with regulations.</p>
+<p><strong>The most common NFR.</strong>  </p>
 <p><strong>Fault Tolerance -</strong> Redundancy, Failover and Recovery Mechanism.</p>
 <p><strong>Compliance -</strong> Legal or regulatory things the system to meet - industry standard and data protection.</p>
-<p>FCC SLEDS</p>
-<p>Furry Cat Climbs Steep Ledges Every Day Securely.</p>
-<p>Capacity Estimation - Perform the calculation in case it directly influence the design. In general cases its a distributed system. Tell the interviewer upfront that you would like to skip the estimation upfront and will do the math while designing.</p>
-<p>Example - Design top K systems for trending topics in post. In that case the calculation impact in case of single topic to see the post then the min-heap and in case you need to get multiple instance then shard.</p>
+<p><strong>CAP -</strong> System prioritize <strong>C or A</strong> (P always exists).</p>
+<p><strong>Scalability -</strong> Get inn case there is any specific scaling in the system - does the system have bursty traffic at any specific day ?Does the system need to scale in read or write.</p>
+<p><strong>Latency -</strong> The time system will take to response to the user request. Low latency search in designing Yelp.</p>
+<p><strong>Environment Cnstraint -</strong> Any consraints like the system should run in low battery, or limited storage or limited bandwidth.</p>
+<p><strong>Durability</strong> - How imp is i that the data in the system is not lost? Social media can loss some data.</p>
+<p><strong>Security -</strong> How secure the system to be - data protection, access control compliance with regulations.</p>
+<blockquote>
+<p><strong>FCC SLEDS</strong> - Furry Cat Climbs Steep Ledges Every Day Securely.</p>
+</blockquote>
+<p><strong>Capacity Estimation.</strong></p>
+<ul>
+<li>Do only if it <strong>influence design</strong>.  </li>
+<li>Usually distributed → can <strong>skip upfront</strong>.  </li>
+<li>Tell the interviewer that you will do math <strong>during design</strong></li>
+</ul>
+<p>Example - Design top K systems for trending topics in post. In that case the calculation impact the structure. In case of single topic to see the post then the min-heap and in case you need to get multiple instance then shard.</p>
 <p>Get estimation understanding its better to design the tradeoffs. The estimation is called Fermi estimation. Estimation helps you in the quantitative part of the design.</p>
-<p>How much storage the design need.</p>
-<p>Communicate the thougt process, reasonable argument, ask relevant things.</p>
-<p>The estimation is not mandatory but the estimation strenthens the quantitative backing.</p>
+<p>Key Question - </p>
+<ul>
+<li>How much storage the design need.</li>
+<li>Data transfer time.</li>
+<li>Memory required.</li>
+</ul>
+<p>Communicate the thought process, reasonable argument, ask relevant things.</p>
+<p>The estimation is not mandatory but the estimation strengthens the quantitative backing.</p>
 <p>Things like how long the data transfer take? How much memory will this feature require? In the cases make an educative guess. It highligh quick decision and good instincts a sign of exp.</p>
 <p>Steps.</p>
 <p>Determine what to estimate (quantity that is taking more load) - Break it down - Use what you know (apply fact you are confident) - Keep it simple (Precision is not the goal the ballpark is the goal) - Verify.</p>
@@ -219,13 +1496,13 @@ Non-Functional Requirements - System qualities. The questions like - The system 
 <p>Break it down - Example twitter search and the search index storage size. Use dimensional analysis to create a mental graph of the quantities to develop. (Get more about it).</p>
 <p>Get the start point - Tweets are 150 characters (storage/tweets) and Daily Active User O(250M) (users/day). In case we know tweets/users then we get the size.</p>
 <p>(storage/tweets) * (tweets/users) * (user/day) we can get the storage/day.</p>
-<p>Facts to know -</p>
-<p>1 byte - 8 bits.</p>
-<p>1 Thousand ≈ 1 KB ≈ 1000 bytes (1000^1 or 1024).</p>
-<p>1 Million ≈ 1 MegaByte ≈ 1000000 bytes (1000^2 or 2^20 or 10^6)</p>
-<p>1 Billion ≈ 1 GigaByte ≈ 1000^3 (10^9).</p>
-<p>1 Trillion ≈ 1 TeraByte ≈ 1000^4 (10^12).</p>
-<p>1 Quadrillion ≈ 1 Peta ≈ 1000^5 (10^15).</p>
+<p><strong>Facts to know.</strong></p>
+<p>1 byte - 8 bits.<br />
+1 Thousand ≈ 1 KB ≈ 1000 bytes (1000^1 or 1024).<br />
+1 Million ≈ 1 MegaByte ≈ 1000000 bytes (1000^2 or 2^20 or 10^6)<br />
+1 Billion ≈ 1 GigaByte ≈ 1000^3 (10^9). <br />
+1 Trillion ≈ 1 TeraByte ≈ 1000^4 (10^12).<br />
+1 Quadrillion ≈ 1 Peta ≈ 1000^5 (10^15).</p>
 <p>Stick with the factor of 1000 and get comfortable with the how much space would 5 million 1 kb records take - 5<em>10^6</em>10^3 = 5*10^9 = 5GB.</p>
 <p>Latencies - Intuitions about latency.</p>
 <p>Reading 1mb sequentially from memory - 0.25ms.</p>
@@ -376,7 +1653,7 @@ Non-Functional Requirements - System qualities. The questions like - The system 
 <p>Memory optimized instance X1e32xlarge provide 4tb RAM and U24tb1.meal reaches 24 TB of RAM.  There are many system which initially needed distributed system not can run in single machine.</p>
 <p>Storage system AWS i3en.24xlarge provide 60TB of local SSD storage, the D3en.12xlarge - 336TB of HDD storage for data heavy workload. Object storage like S3 is effectively unlimited handling petabyte of data as standard price.</p>
 <p>Network capabilities - In a datacenter - 25Gbps is common for standard instances - max 50 to 100Gbps.</p>
-<p>Cross Availability zone band width within a region is limited by the instance network capacity. The NIC (Network Interface Card) the virtualized hardwar that connects the instance to the AWS.</p>
+<p>Cross Availability zone band width within a region is limited by the instance network capacity. The NIC (Network Interface Card) the virtualized hardware that connects the instance to the AWS.</p>
 <p>Latency - 1 ms within an AZ, 1-2 ms across Availability Zone in the same region, 50-150 ms cross region.</p>
 <p>There is no need to split the db at 100GB or avoiding large object in memory.</p>
 <p>Cache - Modern cache can handle terabyte scale daasets with a &lt;10 ms latency and single instance cover 100k ops/sec. The ability to cache entire db in memory event at 100s of GB helps avoid partial caching schemas. The scale need appears at the ops/sec or the network and not in the storage.</p>
@@ -396,7 +1673,39 @@ Non-Functional Requirements - System qualities. The questions like - The system 
 <p>Application Server - Modern backend can handle 100k open client connection. Its not on RAM its on CPU. The JSON parsing, auth, business logic, rendering, encryption server runs out of compute than memory.</p>
 <p>The trend of stateless service is valuable for scaling - the point is server has substantial memory available. To leverage the memory - local caching, in memory computations, session handling.</p>
 <p>CPU will be the bottleneck and not memory. When need to scale we can spin new instance in cloud in 30-60 sec for containerized app.</p>
-<h3 id="todotable">Todo.Table.</h3>
+<h3 id="component-and-metric">Component and metric.</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Key Metric</th>
+<th>Scale Trigger.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Caching</strong></td>
+<td>- ~1 millisecond latency- 100k+ operations/second per instance in inmemory like Elasticache redis.<br>- Memory-bound (up to 1TB).<br>- 100-200k</td>
+<td>- Hit rate &lt; 80% <br>- Latency &gt; 1ms <br>- Memory usage &gt; 80%<br>- Cache churn/thrashing.</td>
+</tr>
+<tr>
+<td><strong>Databases</strong></td>
+<td>- Up to 50k transactions/second (read) and 10-20k TPS in single node for write.<br>- 1-5ms read latency (cached), 5-30ms read latency for disk (optimized configurations for RDS and Aurora). The write latency 5-15 ms for commit latency.<br>- Single instance ca handle upto 64 TiB+ storage capacity. Aurora supporting up to 25TiB. <br>- 5-20k concurrent cnnections depending on db and instance type.</td>
+<td>- Write throughput &gt; 10k TPS- Read latency &gt; 5ms uncached- Geographic distribution needs.br&gt;Consider sharding or scaling - db size nealy 50TiB, write throughput consistently exceeding 10k TPS, read latency below 5ms for uncached data, Cross region replication and the backup or recovery that needs an hours.</td>
+</tr>
+<tr>
+<td><strong>App Server</strong></td>
+<td>- 100k+ concurrent connections.<br>- 8-64 cores @ 2-4 GHz.<br>- 64-512GB RAM standard, up to 2TB high memeory instance.<br>- Network 25Gbps standard and max 50-100Gbps.<br>- Start up time of 30-60 seconds for containerized app.</td>
+<td>- CPU &gt; 70% utilization- Response latency &gt; SLA- Connections near 100k/instance- Memory &gt; 80%.<br>Horizontal scaling when - CPU utilization above 70-80%, Latency exceeding SLA, Memory usage above 70-80%, Network bandwidth approaching instance limits.</td>
+</tr>
+<tr>
+<td><strong>Message Queues</strong></td>
+<td>- Up to 1 million msgs/sec per broker.<br>- 1-5ms end-to-end latency.<br>- Message size 1KB-10MB.<br>- Up to 50TB storage per broker.<br>- Week to infinite data retention depending on disk capacity and configuration.</td>
+<td>- Throughput near 800k msgs/sec.<br>- Partition count ~200k per cluster.&gt;br&gt;- Growing consumer lag.</td>
+</tr>
+</tbody>
+</table>
+<p>Needs to upgrade when Dataset size approaching 1TB. Sustained throughput 100k+ops/sec and read latency need below 0.5ms consistently.</p>
 <p>The numbers will help in better scaling decision - Single db can handle TBs of data. Cacahe store entire datasets in memory. Message Queue are fast enough for  synchrnous flows. Application server have enough memory for local optimization.</p>
 <p>Application server uses RAM - <strong>a mid-sized e-commerce site</strong> could run with application servers storing shopping carts and user sessions in memory. As long as traffic is manageable and servers have enough RAM, this avoids the complexity of distributed caching systems.</p>
 <p>Common mistake.</p>
@@ -435,82 +1744,61 @@ Non-Functional Requirements - System qualities. The questions like - The system 
 <p>Handling large blobs.</p>
 <p>Multi step processes.</p>
 <p>Proximity Based Services.</p>
-<p>Pattern Selection.</p></div>
-            </div>
-        </div>
+<p>Pattern Selection.</p>
 
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script src="../../js/bootstrap.bundle.min.js"></script>
-        <script>
-            var base_url = "../..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="../../js/base.js"></script>
-        <script src="../../search/main.js"></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-            <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
-                <form>
-                    <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
 </div>
-
-    </body>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.tabs.sticky", "navigation.expand", "navigation.path", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
 </html>
