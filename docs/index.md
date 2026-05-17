@@ -50,7 +50,7 @@ Practice UML diagram to get teh class relation ship of the system and no need to
 
 <iframe
 class="pdf-viewer"
-src="/pdfs/Graph.pdf">
+src="pdfs/Graph.pdf">
 </iframe>
 
 
