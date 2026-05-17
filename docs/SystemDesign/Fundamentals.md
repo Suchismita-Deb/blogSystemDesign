@@ -7,128 +7,138 @@
 > Avoid - ❌ Too shallow and ❌ Too deep (over-engineering)
 >
 > Get the ambiguously defined high level problem and break it down to small piece of infrastructure and solve it.
+> 
+System Design Type - **Product design**(Uber)  and **Infrastructure Design** (Rate Limiter).  
+The interviewer is looking to assess some skills and knowledge throughout the interview go through the thought process and give them points to evaluate.
 
-System Design Type - Product design(Uber)  and Infrastructure Design (Rate Limiter).  
-The interviewer is looking to asses some skills and knowledge throughout the interview go through the thought process and give them points to evaluate.
-
-First target - complete the full design with the requirements.
-
+**First target** - complete the full design with the requirements.  
 Next work through all the basics and then discuss the depth of the knowledge in deep dives.
 
-
-## 🧠 Mental Model
-Main points - **Problem Navigation, Solution Design, Technical Excellence, and Communication and Collaboration.**
-
+## 🧠 **Mental Model**
+**Problem Navigation, Solution Design, Technical Excellence, and Communication and Collaboration.**
 
 ### Problem Navigation.
-Get to the main point of the problem. Example - Should not waste too much time in the user table.
 
-Explore the problem and gather requirements.
+> Explore the problem and gather requirements. Avoid unnecessary depth. Example - Dont waste too much time in the user table.
 
-Get the uninteriesting vs the imp points. Dont get stuck in particular piece of problem and not able be able to move forward.
-
-Dont fail to deliver a working system.
+- Identify the **core problem early**
+- Gather **requirements before design**
+- Focus on **important parts**, ignore noise. Get the uninteresting vs the imp points.
+- Don’t get **stuck on one component** and not able to move forward.
+- Always deliver a **working system**
 
 Maintain the **delivery framework** to be in track.
 
-### **Solution design**
+### Solution design.
 
-Make small part of teh problem and interview wants to see how you solve each pieces. Imp to implement core concept.
+> Make small part of the problem and interview wants to see how you solve each pieces. Imp to implement core concept.
 
-The multi layered cache is an elegant solution to the massive read volume.
+Example - The multi layered cache is an elegant solution to the massive read volume.
 
-Most common pitfalls - Not enough understanding of core concepts. Ignore scaling and performance.
+Most common pitfalls.
 
-Spaghetti design - solution not well structured and difficult to understand.
+- Not enough understanding of core concepts and ignore scaling and performance.
+- Spaghetti design - solution not well structured and difficult to understand.
 
-Interviewer does not want memorised answer they will ask probing your reasoning, doubting your answer and tradeoffs.
+Dont memorised answer they will ask probing your reasoning, doubting your answer and tradeoffs.
 
-Solid fundamentals and depth of knowledge will help.
+**Solid fundamentals and depth of knowledge will help.**
 
-### **Technical Excellence** - To design great system you need to know best practices, well-recognized patterns, current technologies and how to apply them.
+### Technical Excellence.
 
-Understanding of key technologies.
+> To design great system you need to know **best practices, well-recognized patterns, current technologies and how to apply them**.
+>
+> Understanding of key technologies. Get a strong command of Redis, Elastic Search and Inverted Indexes.
 
-They had strong command of Redis, Elastic Search and Inverted Indexes.
+Most common pitfalls.
 
-Most common pitfalls - Not knowing available technologies.
-
-Antiquated approaches or being constrained by outdated hardware constraints.
-
-No idea on how to apply in the problem.
-
-Not recognizing the pattern an best practices.
+- Not knowing available technologies.
+- Antiquated approaches or being constrained by outdated hardware constraints.
+- No idea on how to apply in the problem.
+- Not recognizing the pattern and best practices.
 
 ### Communication and Collboration.
-Dont be defensive on alternate approach.
+> Dont be defensive on alternate approach.
+>
+> Dont be argumentative with feedback and dont get lost in the weeds and not be able to find the working solution with the interviewer.
 
-Done be argumentative with feedback and dont get lost in the weeds and not be able to find the working solution with the interviewer.
-
-One week timeline.
-
-Get the fundamental core concept, key technology and common pattern and then handon and it will give 10x return.
-
-## Delivery Framework.
-Structure your thoughts and focus on most imp parts.
-
-Dont fail to design a working system and it will give a common like “time management” no need to fast its mainly focus on right thing.
+### Delivery Framework.
+> Structure your thoughts and focus on most imp parts.
+>
+> Dont fail to design a working system and it will give a common like “time management” no need to fast its mainly focus on right thing.
 
 ![SystemDesignDeliveryFramework.png](..%2Fimages%2FSystemDesign%2FSystemDesignDeliveryFramework.png)
 
-### Requierements
-5 mins.
+## **Delivery Framework.**
+### Requirements - 5 mins.
 
-Functional Requirements - User or client should be able to do feature.
+🎯 **Functional**  
+- User/client should be able to **do feature**  
+- Ask targeted -  
+    - Does system need **X**?  
+    - What if **Y**?  
+- Get **prioritized core features (Top 3 points)**. Keep it **strategic**, not long list it will create problem.  
+- The target is to make the system to complete the requirements.
 
-Ask targetted question - does the system need to do X? What would happen if Y?
+**3W Framework**  
+- **Who (Producer)** → Who sends data?  
+- **What (Request)** → What data? contents?  
+- **Where (Outcome)** → Desired output/event?  
 
-Get a prioritised list of core features.   
-The requirement should be strategic - the target is to make the system to complete the requirement. Top 3 design. Dont make a list of requirement it will create problem.
+⚙️ **Non-Functional Requirements.**  
+- System qualities. The questions like - The **“System should be able to”**.  
+- Key -  
+  -- Read/Write heavy.  
+  -- Partitioning.  
+  -- Consistency.  
+  -- Availability.  
+  -- Durability.  
+  -- Latency.  
 
-The who? (Producer) - Who's sending data?
-
-The what? (Request) - What kind of data are they sending? What does it include?
-
-The where? (Outcome) - What is the desired output or event?
-Non-Functional Requirements - System qualities. The questions like - The system should be able to.
-
-Read or write-heavy, Need partition, Consistency( system data should be correct), Availability (system should be available), Durability or Latency.
-
-Dont make it generic - The system should be low latency - every system feature. Make it specific and target to the system like the system should have low latency searc <500 ms. It identifies the part of the system that needs low latency and provides target.
+Dont make it generic - The system should be low latency - every system feature. Make it specific and target to the system like the system should have low latency search <500 ms. It identifies the part of the system that needs low latency and provides target.
 
 Identify the top 3-5 NFR that can be considered.
 
-**CAP -** System prioritize C or A. P is always there in distributed system.
-
-**Environment Cnstraint -** Any consraints like the system should run in low battery, or limited storage or limited bandwidth.
-
-**Scalability -** Get inn case there is any specific scaling in the system - does the system have bursty traffic at any specific day ?Does the system need to scale in read or write.
-
-**Latency -** The time system will take to response to the user request. Low latency search in designing Yelp.
-
-**Durability** - How imp is i that the data in the system is not lost? Social media can loss some data.
-
-**Security -** How secure the system to be - data protection, access control compliance with regulations.
+**The most common NFR.**  
 
 **Fault Tolerance -** Redundancy, Failover and Recovery Mechanism.
 
 **Compliance -** Legal or regulatory things the system to meet - industry standard and data protection.
 
-FCC SLEDS
+**CAP -** System prioritize **C or A** (P always exists).
 
-Furry Cat Climbs Steep Ledges Every Day Securely.
+**Scalability -** Get inn case there is any specific scaling in the system - does the system have bursty traffic at any specific day ?Does the system need to scale in read or write.
 
-Capacity Estimation - Perform the calculation in case it directly influence the design. In general cases its a distributed system. Tell the interviewer upfront that you would like to skip the estimation upfront and will do the math while designing.
+**Latency -** The time system will take to response to the user request. Low latency search in designing Yelp.
 
-Example - Design top K systems for trending topics in post. In that case the calculation impact in case of single topic to see the post then the min-heap and in case you need to get multiple instance then shard.
+**Environment Cnstraint -** Any consraints like the system should run in low battery, or limited storage or limited bandwidth.
+
+**Durability** - How imp is i that the data in the system is not lost? Social media can loss some data.
+
+**Security -** How secure the system to be - data protection, access control compliance with regulations.
+
+> **FCC SLEDS** - Furry Cat Climbs Steep Ledges Every Day Securely.
+
+**Capacity Estimation.**
+
+- Do only if it **influence design**.  
+- Usually distributed → can **skip upfront**.  
+- Tell the interviewer that you will do math **during design**
+
+
+Example - Design top K systems for trending topics in post. In that case the calculation impact the structure. In case of single topic to see the post then the min-heap and in case you need to get multiple instance then shard.
 
 Get estimation understanding its better to design the tradeoffs. The estimation is called Fermi estimation. Estimation helps you in the quantitative part of the design.
 
-How much storage the design need.
+Key Question - 
 
-Communicate the thougt process, reasonable argument, ask relevant things.
+- How much storage the design need.
+- Data transfer time.
+- Memory required.
 
-The estimation is not mandatory but the estimation strenthens the quantitative backing.
+Communicate the thought process, reasonable argument, ask relevant things.
+
+The estimation is not mandatory but the estimation strengthens the quantitative backing.
 
 Things like how long the data transfer take? How much memory will this feature require? In the cases make an educative guess. It highligh quick decision and good instincts a sign of exp.
 
@@ -148,18 +158,13 @@ Get the start point - Tweets are 150 characters (storage/tweets) and Daily Activ
 
 (storage/tweets) * (tweets/users) * (user/day) we can get the storage/day.
 
-Facts to know -
+**Facts to know.**
 
-1 byte - 8 bits.
-
-1 Thousand ≈ 1 KB ≈ 1000 bytes (1000^1 or 1024).
-
-1 Million ≈ 1 MegaByte ≈ 1000000 bytes (1000^2 or 2^20 or 10^6)
-
-1 Billion ≈ 1 GigaByte ≈ 1000^3 (10^9).
-
-1 Trillion ≈ 1 TeraByte ≈ 1000^4 (10^12).
-
+1 byte - 8 bits.  
+1 Thousand ≈ 1 KB ≈ 1000 bytes (1000^1 or 1024).  
+1 Million ≈ 1 MegaByte ≈ 1000000 bytes (1000^2 or 2^20 or 10^6)  
+1 Billion ≈ 1 GigaByte ≈ 1000^3 (10^9).   
+1 Trillion ≈ 1 TeraByte ≈ 1000^4 (10^12).  
 1 Quadrillion ≈ 1 Peta ≈ 1000^5 (10^15).
 
 Stick with the factor of 1000 and get comfortable with the how much space would 5 million 1 kb records take - 5*10^6*10^3 = 5*10^9 = 5GB.
@@ -417,7 +422,7 @@ Storage system AWS i3en.24xlarge provide 60TB of local SSD storage, the D3en.12x
 
 Network capabilities - In a datacenter - 25Gbps is common for standard instances - max 50 to 100Gbps.
 
-Cross Availability zone band width within a region is limited by the instance network capacity. The NIC (Network Interface Card) the virtualized hardwar that connects the instance to the AWS.
+Cross Availability zone band width within a region is limited by the instance network capacity. The NIC (Network Interface Card) the virtualized hardware that connects the instance to the AWS.
 
 Latency - 1 ms within an AZ, 1-2 ms across Availability Zone in the same region, 50-150 ms cross region.
 
@@ -457,7 +462,26 @@ The trend of stateless service is valuable for scaling - the point is server has
 
 CPU will be the bottleneck and not memory. When need to scale we can spin new instance in cloud in 30-60 sec for containerized app.
 
-### Todo.Table.
+### Component and metric.
+
+|Component|Key Metric|Scale Trigger.|
+|---|---|---|
+|**Caching**|- ~1 millisecond latency- 100k+ operations/second per instance in inmemory like Elasticache redis.<br>- Memory-bound (up to 1TB).<br>- 100-200k|- Hit rate < 80% <br>- Latency > 1ms <br>- Memory usage > 80%<br>- Cache churn/thrashing.|
+|**Databases**|- Up to 50k transactions/second (read) and 10-20k TPS in single node for write.<br>- 1-5ms read latency (cached), 5-30ms read latency for disk (optimized configurations for RDS and Aurora). The write latency 5-15 ms for commit latency.<br>- Single instance ca handle upto 64 TiB+ storage capacity. Aurora supporting up to 25TiB. <br>- 5-20k concurrent cnnections depending on db and instance type.|- Write throughput > 10k TPS- Read latency > 5ms uncached- Geographic distribution needs.br>Consider sharding or scaling - db size nealy 50TiB, write throughput consistently exceeding 10k TPS, read latency below 5ms for uncached data, Cross region replication and the backup or recovery that needs an hours.|
+|**App Server**|- 100k+ concurrent connections.<br>- 8-64 cores @ 2-4 GHz.<br>- 64-512GB RAM standard, up to 2TB high memeory instance.<br>- Network 25Gbps standard and max 50-100Gbps.<br>- Start up time of 30-60 seconds for containerized app.|- CPU > 70% utilization- Response latency > SLA- Connections near 100k/instance- Memory > 80%.<br>Horizontal scaling when - CPU utilization above 70-80%, Latency exceeding SLA, Memory usage above 70-80%, Network bandwidth approaching instance limits.|
+|**Message Queues**|- Up to 1 million msgs/sec per broker.<br>- 1-5ms end-to-end latency.<br>- Message size 1KB-10MB.<br>- Up to 50TB storage per broker.<br>- Week to infinite data retention depending on disk capacity and configuration.|- Throughput near 800k msgs/sec.<br>- Partition count ~200k per cluster.>br>- Growing consumer lag.|
+
+
+
+
+
+
+
+
+
+
+
+Needs to upgrade when Dataset size approaching 1TB. Sustained throughput 100k+ops/sec and read latency need below 0.5ms consistently.
 
 The numbers will help in better scaling decision - Single db can handle TBs of data. Cacahe store entire datasets in memory. Message Queue are fast enough for  synchrnous flows. Application server have enough memory for local optimization.
 

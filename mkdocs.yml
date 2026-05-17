@@ -1,22 +1,47 @@
 site_name: System Design Toolkit
+
 nav:
   - Home: index.md
-  - Nav:
+  - "Nav":
       - Dropdown: yo.md
   - System Design:
-      - SystemDesign/Fundamentals.md
-      - Sample.md
-      - Pattern.md
+      - Fundamentals: SystemDesign/Fundamentals.md
+      - Sample: Sample.md
+      - Pattern: Pattern.md
       - Key Technologies:
-          - Redis.md
-          - DynamoDb.md
-          - Cassandra.md
+          - Redis: Redis.md
+          - DynamoDb: DynamoDb.md
+          - Cassandra: Cassandra.md
+  - KafkaFundamentals:
+      - ProducerConsumer: KafkaFundamentals/ProducerConsumer.md
 
+
+markdown_extensions:
+  - md_in_html
 theme:
-  name: mkdocs
-#  palette:
-#    scheme: default
-#    primary: green
-#    accent: light green
+  name: material
+  palette:
+    - scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - navigation.tabs.sticky
+    - navigation.expand
+    - navigation.path
+    - toc.follow
+#    - toc.integrate
+#    - header.autohide
 extra_css:
   - css/custom.css
