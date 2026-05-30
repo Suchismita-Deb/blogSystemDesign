@@ -44,7 +44,7 @@ Making the image small - `<img src="/images/SystemDesign/NetworkLayer.png" style
 
 https://suchismita-deb.github.io/blogSystemDesign/
 
-Practice UML diagram to get teh class relation ship of the system and no need to write to the code. Design Pattern and UML diagram.
+Practice UML diagram to get teh class relationship of the system and no need to write to the code. Design Pattern and UML diagram.
 
 # System Design PDF
 
