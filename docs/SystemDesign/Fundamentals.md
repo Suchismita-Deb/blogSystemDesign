@@ -509,37 +509,197 @@ Single postgres instance refers to the single running postgress process in one m
 
 Prior to message queue consider simple solution like using fast SSD, lots of RAM, strong CPU and batch write, optimising schema and index, using connection pooling, async commit.
 
-Key Technologies.
+### Key Technologies.
 
-Focus on breadth before depth.
-
+Focus on breadth before depth. Junior breadth and senior depth.  
 Elastic search - search index, describe the inverted index or the reason about its scaling is an issue - depth knowledge.
 
 Core database.
 
 Storing the data in db or blob storage.
 
-Product design - relational db.
-
-Infrastructure design - NoSql.
+Product design - relational db (postgres).  
+Infrastructure design - NoSql(DynamoDB). 
 
 Dont go to the discussion of the SQL vs NoSql.
 
 NO SQL.
 
-Key value store - Fast access and simple model.
-
-Document Store - Flexible.
-
-Column Family Store - High performance for write.
-
+Key value store - Fast access and simple model.  
+Document Store - Flexible.  
+Column Family Store - High performance for write.  
 Graph - db - Efficient retrieval.
 
-Dont think that the thing SQL can do noSql cant or vice versa. SQL can also have a json column and store the data in any order. The correct architecture the SQL can also scale horizontally. Nosql also perform indexing like B-Tree and Hash Table index. Nosql scale horizontally using consistent hashing or sharding. Dont make any claim.
+Dont think that the thing SQL can do noSql cant or vice versa. SQL can also have a json column and store the data in any order.   
+The correct architecture the SQL can also scale horizontally.  
+Nosql also perform indexing like B-Tree and Hash Table index.  
+Nosql scale horizontally using consistent hashing or sharding. Dont make any claim.  
+Cassandra is good in write heavy workloads as its append only storage model.  
 
-Cassandra is good for write heavy.
+### Blob Storage.
 
-Common Pattern.
+- Store unstructured blob of data like image, videos, files.
+- In traditional db it will be expensive and inefficient.
+- Use blob storage service like Amazon S3 or Google Cloud Storage.
+- Upload the blob of data and the data is stored and get back a URL and the URL can be used to download the blob of data. The core db will store the blob url.
+- The blob storage works with CDN and we can get fast downloads. Upload the file (origin) and use a CDN to cache the file in edge locations.
+
+> _Dont use blob storage as primary DB. It is a set of blob and Postgress or Dynamodb that points to the url to the blob stored S3._
+>
+> _The db to query and index the data with low latency and get the blob storage._
+
+Example - Youtube (Store the videos in blob and the metadata in db) Instagram (Store the image and video in blob storage and metadata in db) Dropbox (Store the files in blob and metadata in db).
+
+**Upload**
+- Client want to upload a file - request a resigned URL from the server, server sends and recorded it in db.
+- Client upload the file in the url and blob storage trigger a notification to the server the upload is complete.
+
+**Download**
+- Client request the file to the server and it returns the URL.
+- Client uses the url to download teh file via CDN which proxies the request to the blob.
+
+### Things to know about Blob storage.
+|Properties|Details.|
+|---|---|
+|Durability|Durable.<br>Follow replication(data in leader-follower or multi leader).<br> Data is safe in case of disk or server fails.|
+|Scalability|Infinetely scalable within the limit of the account.|
+|Cost|Cost effective.|
+|Security|Encryption in rest and in transit. There is access control feature.|
+|Upload and download directly from client|Its a good ppoint for application that has large blob of data. The preassigned URL give temporary access to a blob - either for upload or download.|
+|Chunking.|Chunking to upload large file in smaller pieces. Resume an upload and also upload file in parallel. S3 support with the multipart upload API. https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html|
+
+
+### Search Optimised Database.
+Full text search as a feature of the design. Given large amount of text find the relevant answer. In SQL it will look like `SELECT * FROM documents WHERE document_text LIKE '%search_term%'` It will do full table scan and no indexing or look up.
+
+Search optimized db uses indexing, tokenization and stemming to make it efficient. They work by building inverted index. Inverted matrix are data structure that maps from words to the documents that contains it. It will find documents that containd the word.
+
+Example of an inverted index.
+```sql
+{
+  "word1": [doc1, doc2, doc3],
+  "word2": [doc2, doc3, doc4],
+  "word3": [doc1, doc3, doc4]
+}
+```
+The db will look up the word in the query and find all the matching documents.
+
+Search large number of tweets to find result.
+
+### Things to know about Search Optimized Db.
+|Inverted Index|It maps from words to the documents that contains it.|
+|Tokenization|It is the process of breaking the piece of text into words. It allows to map from words to documents in the inverted index.|
+|Stemming|It is the process of reducing words to the root form.<br>Running, runs all reduced to run.|
+|Fuzzy Search|It is the ability to search find result that are similar to the given search term.<br>The algorithm can tolerate slight misspelling or variations in the search term.<br>It uses techniques like edit distance which measures how many letters to change, add or remove to transform one word to another.|
+|Scaling|It scale by adding more node in the cluster and sharding data across the nodes.|
+
+Example - Elasticsearch - distributed RESTful search and analytics engine build on top of Apache Lucene. Postgres has GIN indexes that supports full text search.
+
+### API Gateways.
+API gateway route the incoming request to the best backend service. It also manages cross-cutting concerns like authentication, rate limiting, logging.
+
+Example - AWS API Gateway, Kong, Apigee. An nginx or Apache webserver act as the API gateway.
+
+### Load Balancer.
+When the services are horizontally scaled and multiple servers can handle the same request then a load balancer is needed.
+In application a loadbalancer is needed when there is multiple machines capable of handling the same request.
+The specific features of the load balancer like sticky sessions or persistent connections, L4 or L7 load balancer.
+
+
+When persistent connections like websockets then L4. In all cases use L7 - flexible connection routing to all services and minimizing the connection load downstream.
+
+Example - AWS Elastic Load Balancer, nginx (open sourc web server used as a load balancer), HAProxy (open source)
+
+### Queue
+Used as a buffer for brusty traffic.
+Careful to use in synchronous environment. The application need strong latency <500ms adding queue it will break the latency constraints.  
+Queue is used to manage sudden surge in load. It act as a buffer without overloading the server or degrading user experience.  
+It distribute work across system. The queue store the user data then many consumer can consume from the same queue.
+
+Imp points to know - Message ordering, Retry mechanism, DLQ, Scaling with partition.
+Backpressure - The point is queue overwhelm the system. System support 200 requests and get 300 every sec it will never finish. Backpressure is a way to slow down the production of messages when the queue is overwhelmed. When the queue is full then you dont take request or show an error to the user.
+
+Kafka, SQS (fully managed queue service provided by AWS).
+
+### Streams/ Event Sourcing.
+
+Streams are used to handle large amount of data in real timeor in event sourcing.
+> _Event Sourcing - Its a technique where the changes in application state are stored as a sequence of events. The events can be replayed to reconstruct the application state and used in cases like audit trail or reverse transaction.
+
+Unlike message queue streams store data for a period of time and allow consumers to read or re-read from any specific position.  
+Streams used in - large amount of data in real time(social media to display real-time analytics it will store user engagement like comments, like, share) - event sourcing (banking application storing transaction are all taken care, it enable to audit transaction or rollback or replay the events) - support multiple consumers reading same stream(chat application user send message to group then all member will subscribe the central stream).
+
+Things to know about queue -   
+
+Scaling with partitioning - Stream are scaled using partition across multiple servers. Each partitions are processed by different consumer allowing horizontal scaling.  
+Multiple consumers - There are multiple consumer group for the stream like in real time analytics system a single consumer group update the dashboard and another store in db.  
+Replication.  
+Windowing - It group event based on time or count. Real time dashboard show the data per region in an hourly basis.
+
+### Distributed Lock.
+
+In system Ticketmaster the resource like ticket should be locked for like 10 mins. SQL with ACID property helps put the lock but its not designed for longer-term lock.  
+
+Distributed lock is used in this case to lock across different system. It is used with the distributed key-value store like Zookeeper or Redis. The main idea - the key-value store is used to store lock and then use the atomicity of the key-value store to ensure that only one process can acquire the lock at a time.
+
+Redis instance with key `tkt123` and to lock set it to `locked` and no process will use it and when done changed to `unlock`.  
+
+Distributed lock can be set to expiry after a period of time. It ensures that lock does not get stuck in case process crashed or killed.
+
+Example to use distributed lock - 
+E comm checkout system - It store high demand, limited item in user cart for a duration like 10 mins during checkout to ensure one user completing the payment process is completed.  
+Ride sharing confirmation - It is used to manage the assignemnt fo driers to rider. When rider makes a ride the system lock the nearby drivers and it is removed until the driver confirm or decline the ride.  
+Distributed cron job - The system that runs scheduled task cron job across server - the distributed lock ensures the task is executed by only one server at a time.  
+Online Auction Bidding System - It locks the system in the last seconds preventing others from placing a bid.
+
+Things you should know about distributed locks - 
+
+Locking mechanism - There are different locking mechanism - Using Redis called Redlock.  
+Lock Expiry.  
+Locking Granularity - It can be used to lock single resource or group of resource. Example - You wanna lock a single ticket in ticketing system or lock a group of tickets in a section of stadium.  
+Deadlock - It happens when 2 or more system waiting for each other to release a lock. Example - Process A holds Lock 1 and wants Lock 2, while Process B holds Lock 2 and wants Lock 1.
+
+
+### Distributed Cache.
+Use to - Scale system + low latency.  
+A cache is a server that stores data (expensive to compute or retrive from db) in memory.
+
+Cache to use to -
+Save Aggregated Metrics - Analytics platform aggregates data asynchronously (e.g., hourly jobs), stores results in distributed cache, and serves dashboards from cache to avoid expensive recomputation → fast retrieval, low latency.
+Reduce Db queries - In web application user sessions are stored in cache to reduce the load on the db in the sustem that support a large number of concurrent users. When user logs in system will store the session data in cache and retrieve faster.
+Speed Up Expensive Queries - Queries takes time to run oon a disk based db. Example - Twitter show posts of people you follow involves heavy joinsand filtering slow in Postgres.  
+Cache solution - Run once → store in distributed cache → serve fast. Stale risk: Cache may lag then fix with TTL expiry or refresh strategies.
+
+Imp points -
+Eviction policy - It determines which item are removed from the cache when the cache is full - LRU (Evicts the least recently used items), FIFO(Evicts items in order they were added), LFU(Evicts items that are least frequently accessed).
+
+Cache Invalidation Strategy - It is used to ensure the data in the cache is up to date removing and updating the changes when the source changes. It includes - TTL, Event driven.  
+TTL - Time To Live Each cache data expires after a duration, simple and predictable but may serve stale data until expiry.  
+Event Driven Invalidation - Cache is invalidated immediately when the underlying data changes (e.g., publish/subscribe events). Ensures near-zero staleness but adds system complexity.  
+Write Through/Write behind - Cache is updated alongside the database on every write. Keeps cache fresh but increases write latency.  
+Cache Aside(Lazy loading) - Application deletes cache entry on update; next read repopulates from DB. Simple, but may cause a brief stale window.   
+Tag based invalidation - Group related cache entries with tags; invalidate all at once when data changes. Useful for systems like Ticketmaster where events share attributes.
+
+In Tickermaster any change in the evnt time and venue should be updated.
+Mention the data that stored in cache and include the data structure to store the data.
+
+
+Example - Redis (key-value store that supports data structured like strings, hashes, sets, sorted sets, bitmaps, hyperlogslogs) and Memcached (key value store that supports strings and binary objects).
+
+### CDN.
+A type of cache that uses distributor server to deliver mainly static content like image, video, HTML file and dynamic content like API response to user based on their location.
+Example - social media platform like Instagram then in CDN cache the user profile pic.
+
+Imp -
+CDN is not just for static content it used to cache dynamic content that is accessed frequently and changes infrequently like blog pos update once a day can be cached.  
+CDN can be used to cache API response.  
+CDn has eviction policy that determines when the content is removed. TTL for cache content or cache invalidation mechanism to remove content from cache.
+
+Example - Cloudflare, Akamai, Amazon CloudFront.
+Feature - caching, DDoS protection, web application firewalls, global network of edge locations meaning they can deliver the content to users around the globe in low latency.
+Example - Kafka, Flink, Kinesis.
+
+### Common Pattern.
 
 The issue we generally face in system.
 
