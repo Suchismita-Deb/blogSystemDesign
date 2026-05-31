@@ -4,8 +4,7 @@ nav:
   - Home: index.md
   - System Design:
       - Fundamentals: SystemDesign/Fundamentals.md
-      - Sample: Sample.md
-      - Pattern: Pattern.md
+      - Pattern: SystemDesign/Pattern.md
       - Key Technologies:
           - Redis: Redis.md
           - DynamoDb: DynamoDb.md
