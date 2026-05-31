@@ -25,9 +25,7 @@ Scan in 10 seconds
 
 Revise in 2 minutes
 
-Remember key points
-
-
+Remember key points  
 To deploy - push the code in github and `mkdocs gh-deploy`.
 
 Adding image.
@@ -62,3 +60,9 @@ src="./pdfs/Graph.pdf">
 class="pdf-viewer"
 src="./pdfs/SystemDesignTips.pdf">
 </iframe>
+
+```
+git config user.name
+git config user.email
+
+```
