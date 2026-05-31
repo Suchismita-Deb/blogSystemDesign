@@ -25,7 +25,6 @@
     color: green !important;
 }
 
-
 footer {
     display: none !important;
 }
@@ -34,12 +33,6 @@ img {
     display: block;
     margin: auto;
 }
-
-
-
-
-
-
 /*The table title in one row and the content in column.
 | **Kafka Partition Assignment Configuration** |||
 | `partition.assignment.strategy`| Defines how partitions are distributed among consumers in a group.| All consumers in the same group must use the same strategy. Accepts comma-separated fully qualified assignor class names implementing `PartitionAssignor`.|
@@ -49,18 +42,8 @@ Table when the first column contains text and act as heading.
     white-space: nowrap !important;
     width: auto !important;
 }
-
-
 .pdf-viewer {
     width: 100%;
     height: 90vh;
     border: none;
-}
-
-.md-nav__list .md-nav__list {
-    display: none;
-}
-
-.md-nav__item--active > .md-nav__list {
-    display: block;
 }
