@@ -2,8 +2,6 @@ site_name: System Design Toolkit
 
 nav:
   - Home: index.md
-  - "Nav":
-      - Dropdown: yo.md
   - System Design:
       - Fundamentals: SystemDesign/Fundamentals.md
       - Sample: Sample.md

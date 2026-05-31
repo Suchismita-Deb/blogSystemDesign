@@ -699,24 +699,3 @@ Example - Cloudflare, Akamai, Amazon CloudFront.
 Feature - caching, DDoS protection, web application firewalls, global network of edge locations meaning they can deliver the content to users around the globe in low latency.
 Example - Kafka, Flink, Kinesis.
 
-### Common Pattern.
-
-The issue we generally face in system.
-
-Pushing realtime update.
-
-Managing long-running task.
-
-Dealing with contentions.
-
-Scaling reads.
-
-Scaling writes.
-
-Handling large blobs.
-
-Multi step processes.
-
-Proximity Based Services.
-
-Pattern Selection.
