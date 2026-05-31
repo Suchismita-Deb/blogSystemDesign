@@ -56,3 +56,11 @@ Table when the first column contains text and act as heading.
     height: 90vh;
     border: none;
 }
+
+.md-nav__list .md-nav__list {
+    display: none;
+}
+
+.md-nav__item--active > .md-nav__list {
+    display: block;
+}
