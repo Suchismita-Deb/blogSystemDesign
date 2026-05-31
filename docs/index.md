@@ -54,8 +54,6 @@ class="pdf-viewer"
 src="./pdfs/Graph.pdf">
 </iframe>
 
-
-
 <iframe
 class="pdf-viewer"
 src="./pdfs/SystemDesignTips.pdf">
