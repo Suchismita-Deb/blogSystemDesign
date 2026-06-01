@@ -6,9 +6,14 @@ nav:
       - Fundamentals: SystemDesign/Fundamentals.md
       - Pattern: SystemDesign/Pattern.md
       - Key Technologies:
-          - Redis: Redis.md
+          - Redis: SystemDesign/KeyTechnologies/Redis.md
           - DynamoDb: DynamoDb.md
           - Cassandra: Cassandra.md
+      - Core Concepts:
+          - Network Fundamentals: SystemDesign/CoreConcepts/Network.md
+      - Advanced Concept:
+          - Vector Db: SystemDesign/AdvancedConcept/Vector.md
+          - Time Series Db: SystemDesign/AdvancedConcept/TimeSeriesDb.md
   - KafkaFundamentals:
       - ProducerConsumer: KafkaFundamentals/ProducerConsumer.md
 
