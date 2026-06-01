@@ -11,6 +11,9 @@ nav:
           - Cassandra: Cassandra.md
       - Core Concepts:
           - Network Fundamentals: SystemDesign/CoreConcepts/Network.md
+          - Db Fundamentals: SystemDesign/CoreConcepts/Db.md
+          - Caching: SystemDesign/CoreConcepts/Caching.md
+          - API Design: SystemDesign/CoreConcepts/API.md
       - Advanced Concept:
           - Vector Db: SystemDesign/AdvancedConcept/Vector.md
           - Time Series Db: SystemDesign/AdvancedConcept/TimeSeriesDb.md
