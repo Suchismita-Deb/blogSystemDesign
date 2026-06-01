@@ -19,7 +19,7 @@ nav:
           - Time Series Db: SystemDesign/AdvancedConcept/TimeSeriesDb.md
   - KafkaFundamentals:
       - ProducerConsumer: KafkaFundamentals/ProducerConsumer.md
-  - Quiz: quiz.md
+  - Quiz: Quiz.md
 markdown_extensions:
   - md_in_html
 theme:
