@@ -1,9 +1,11 @@
 # Common Pattern - The success is all about the pattern.
 
 ## Pushing realtime update.
+
 ## Scaling Reads.
 The need to scale read is in physics - CPU core can execute limited num of instruction per second, disk I/O bounded by the speed of the spinning platters or SSD write cycles. More code will not improve the case.  
-The scaling read included - optimize read performance within your database using _indexing_ and _denormalization_, _scale horizontally_ with read replicas and _add external caching layers_ like Redis and CDN.
+
+> The scaling read included - optimize read performance within your database using _indexing_ and _denormalization_, _scale horizontally_ with read replicas and _add external caching layers_ like Redis and CDN.
 
 ### Optimize the db.
 Index - An index is essentially a sorted lookup table that points to rows in your actual data. Without index its full table scan O(n) and with index its log time O(logn).
@@ -66,9 +68,24 @@ CDN cache the data all users are mainly searching no need to cache personal deta
 > 
 > You should e able to determine the read blocker. Example When designing the API input like "The userprofile endpoint will get hit everytime someone view the profile. With millions of users and billions of read we need to take care. Will cover in deep dive."
 
-
-
 ## Common scenarios.
+
+URL Shortener/ Bitly - URL shortened once and read million times. Its a ideal cache candidate. Cache the short URL to long URL mapping in Redis with no expiration - the url does not change. CDN to handle global traffic. The db is hit in cache miss or unpopular link.
+
+Ticketmaster - Event page to cache as everyone visit the page. The seat availability can't be cached as it will change.
+
+News Feed System - Linkedin, Twitter feed generation is read intensive. Precompute the feed for active user - cache recent post from followed user - smart pagination to avoid loading entire feed at once. User read first few posts no use of caching all data.
+
+Youtube - Video metadata creates read load. The recommended video, channel info, view count does not change. Cache video metadata aggressively - title, description as they dont change. View count is eventual consistency and CDN for the thumbnail.
+
+When to not use read scale -  
+Write heavy system - Uber driver updating the location every second.  
+Small scale application.
+Strongly consistent system.  
+Real time collaboration system.
+
+> Real scale is to reduce the db load. In case db handle the load and the application need low latency then its a different problem (edge computing or service mesh optimization).
+
 
 ### Queries started taking longer as the data set grows.
 
@@ -162,9 +179,10 @@ The issue is memory usage and cache consistency. Storing the same data in multip
 ### User try to rebuild an expired cache.
 
 In the application the home page data gets 100 K request per second serving from the cache and it has one hour ttl After one hour the entry expires and 100 K request will go cache miss and all request will go to the db. The db can handle 1000 queries per second I'm getting 100K request will act as a ddos attack. The cash stampede happens because the cash expiration is binary one moment that it exists and the next it does not.   
-The problem multiplies when Requires joining say the homepage will be generated after joining with 10 tables or calling external api - more parallel calls.
-Solution distributed locks to serialise rebuilds. The first request will get rebuilt while everyone else wait for the rebuild to complete.   
+The problem multiplies when requires joining say the homepage will be generated after joining with 10 tables or calling external api - more parallel calls.  
+Solution **distributed locks** to serialise rebuilds. The first request will get rebuilt while everyone else wait for the rebuild to complete.   
 The issue - In case the rebuilds fails or takes longer thousands of requests timeout will happen. We need to add complex timeout handling process and fallback logic.   
+
 Solution - Use probabilistic early refresh - Serving cached data when refreshing it in the background. It will refresh the cache before expiring say the expiry is in 60 minutes, a request at min 50 ve have 1% chance of refreshing it, at min 55 it will have 5% chance and at 59 it might be 20%.  
 Not giving 100K request at minute spread the request across last 10 to 15 minutes. Most user will get the cache data while few of them will trigger refresh.
 
@@ -173,23 +191,41 @@ Th most critical cached data the approaches are not good. Background refresh sho
 
 ### Cache invalidation when data update needs to be immediately visible.
 
-Event organiser updates the address and the attendees were not able to see that updates for another one As it's cached somewhere. The data might be cached in multiple layers like radius cdn and even browser cache. invalidating all of that would be hard.
-Solution A knife approach is deleted the cash entry after a write. Sounds simple but it has problem Which cache do you delete from application cache cdn or browser? What will happen if an invalidation request fail? What if the request comes in right after you delete the old value but before adding the new venue - It will compute the cache stale data again. It is the race condition.
+Event organizer updates the address and the attendees were not able to see that updates for another one As it's cached somewhere. The data might be cached in multiple layers like redis, CDN edge, browser cache. Invalidating all of that would be hard.  
+Solution A naive approach is deleted the cache entry after a write. Sounds simple but it has problem  -  
+Which cache do you delete  application cache cdn or browser?   
+What will happen if an invalidation request fail?  
+What if the request comes in right after you delete the old value but before adding the new venue - It will compute the cache stale data again. It is the race condition.
 
-Solution a better approach for entry level data is cache versioning. Instead of deleting old cash We make them irrelevant by changing the cash key When the data is changed.
+Solution a better approach for entry level data is cache versioning. Instead of deleting old cache we make them irrelevant by changing the cache key When the data is changed.
 
-Each record has a version's number in the db When the record is updated the version is incremented in the same transaction.
-On read - Read the version number from the small Version key cach Fall back to the DB. Construct a cash key using that version like `event:123:v12`. Read the data using that version key. On cash miss fetch From db and write it back using the same version key.
-On write - Begin a dv transaction update the row increment the version column and commit then write the new data into the new version key.
+Each record has a version's number in the db when the record is updated the version is incremented in the same transaction. 
 
-The old cash is not deleted it's just become unreachable. Cdn browser cache naturally Expire still version As the version is part of the url or cache key.
 
-No race consition as latest write overwrite new data.
-No partial invalidation.
+**On read** - Read the version number from the small "version key" (cached) or fall back to the DB. Construct a cache key using that version like `event:123:v12`. Read the data using that version key. On cache miss fetch from db and write it back using the same version key.     
+**On write** - Begin a db transaction, update the row, increment the version column and commit then write the new data into the new version key.
+
+The old cache is not deleted it's just become unreachable. Cdn browser cache expire stale version as the version is part of the url or cache key.
+
+No race condition as db forces a new version number.
+No partial invalidation as its not deleting cache its rerouting. 
 Its good under concurrency as version change are atomic in db.
 
-The issue - There are 2 cache lookups per request - to get the version number and the actual data. Old cahe will store stale data, set the TTL to clean up the stale data.
-The pattern works in single entity caches like user profiles or product details and no with computed data like searh results or feeds where invalidation is difficult.
+The issue - There are 2 cache lookups per request - to get the version number and the actual data. Old cache will store stale data and it will accumulate as its not deleted so set the TTL to clean up the stale data.
+The pattern works in single entity caches like user profiles or product details and no with computed data like search results or feeds where invalidation is difficult.
+
+When versioning is not practical - caching search results or aggregated data - need explicit strategy.   
+Solution - Use **deleted items cache** its a smaller working set of items that have been deleted, hidden or changed.  
+
+
+Instead of Invalidating all field Continue the deleted post we maintain a cache of recent deleted post id.  When serving feed we first see the small cache and filter out matches. It will help to serve mostly correct cached data immediately and background work on the invalidation of the complex data.
+
+In global system - CDN caching invalidation is difficult making update in hundreds of edge locations.   
+
+CDN APIs help but takes time - critical update use cache header to prevent CDN caching - trading performance for consistency. Rest of the data use shorter TTL at the edge and maintaining longer TTL in application. 
+
+> Data have different consistency need user profile update fine with 5 min staleness but venue update should be immediate.
+
 
 
 ## Managing long-running task.

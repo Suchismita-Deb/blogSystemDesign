@@ -117,11 +117,14 @@ Set - `enable.auto.commit=false`
 | `ConstrainedCooperativeStickyAssignor` | Advanced sticky assignor enables more incremental rebalancing, which can reduce the latency and resources required during the rebalance process. | Reduces rebalance impact, not the frequency of rebalances. For consumer groups where all members subscribe to the same set of topics, it provides the same benefits and is optimized for this common scenario. | Works for common-topic subscription pattern only. |
 
 
-kafka-consumer-groups command line to view and manage consumers group.
+`kafka-consumer-groups` command line to view and manage consumers group.
 
-List consumer groups - `bin/kafka-consumer-groups --bootstrap-server host:9092 --list`  
-Describe groups - `bin/kafka-consumer-groups --bootstrap-server host:9092 --describe --group test-1234`
-Reset offsets - reset offsets by shifting forward or backward with shift-by or reset them to the beginning with --to-earliest. To reset the offsets back by 20 positions `bin/kafka-consumer-groups.sh --bootstrap-server host:9092 --group test-1234 --reset-offsets --shift-by -20 --topic test-metrics -execute --group test-1234`
+**List consumer groups** - `bin/kafka-consumer-groups --bootstrap-server host:9092 --list`    
+
+**Describe groups** - `bin/kafka-consumer-groups --bootstrap-server host:9092 --describe --group test-1234`  
+
+**Reset offsets** - reset offsets by shifting forward or backward with shift-by or reset them to the beginning with `--to-earliest`.   
+To reset the offsets back by 20 positions `bin/kafka-consumer-groups.sh --bootstrap-server host:9092 --group test-1234 --reset-offsets --shift-by -20 --topic test-metrics -execute --group test-1234`
 
 
 
