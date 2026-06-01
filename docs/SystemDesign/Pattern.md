@@ -1,11 +1,9 @@
-### Common Pattern - The success is all about the pattern.
+# Common Pattern - The success is all about the pattern.
 
-The issue we generally face in system.
-
-### Pushing realtime update.
-### Scaling Reads.
-The need to scale read is in physics - CPU core can execute limited num of instruction per second, disk I/O bounded by the speed of the spinning platters or SSD write cycles. More code will not improve the case.
-The scaling read included - optimize read performance within your database using indexing and denormalization, scale horizontally with read replicas and add external caching layers like Redis and CDN.
+## Pushing realtime update.
+## Scaling Reads.
+The need to scale read is in physics - CPU core can execute limited num of instruction per second, disk I/O bounded by the speed of the spinning platters or SSD write cycles. More code will not improve the case.  
+The scaling read included - optimize read performance within your database using _indexing_ and _denormalization_, _scale horizontally_ with read replicas and _add external caching layers_ like Redis and CDN.
 
 ### Optimize the db.
 Index - An index is essentially a sorted lookup table that points to rows in your actual data. Without index its full table scan O(n) and with index its log time O(logn).
@@ -42,26 +40,35 @@ Client - Load Post - Server - Fetch post (Db1)
 Geographic shard is effective for global read scaling. Store Us data in US. Shard add complexity and mainly a write scale solution. In read scale adding cache is more effective.
 
 ### Adding Cache.
-In optimized db in case the read is not optimized then Solution - Adding external cache, cdn and edge caching.
+In optimized db in case the read is not optimized then Solution - _**Adding external cache, cdn and edge caching**_.
 
 Caching when the content does not change and read replicas when the data needs to stay fresh. Example same post or product then the data is not changing then cache. Db read the data from disk and execute the queries and cache gave the data from RAM.
 
-Application Level Caching - In mem cache like Redis and Memcache sits between application and database.  
+**Application Level Caching** - In mem cache like Redis and Memcache sits between application and database.  
+
 Cache invalidation shwuld be taken care and there are many ways.  
-Time based expiration (TTL) - Update cache after a fixed time. The issue - it will serve state data until expiration. Use when the data update in a predicted pattern.   
-Write through invalidation - Update cache when there is any write in db and cache will fetch the data from the db. It adds latency to writes.
-Write behind invalidation -
+- *Time based expiration (TTL)* - Update cache after a fixed time. The issue - it will serve state data until expiration. Use when the data update in a predicted pattern.   
+- *Write through invalidation* - Update cache when there is any write in db and cache will fetch the data from the db. It adds latency to writes.
+- *Write behind invalidation* - Using asynchronous way cache invalidation. It reduces latency but there were cases where it might get stale data.  
+- *Tagged invalidation* - Invalidate all entries with the tag `user:123:posts`  
+- *Versioned keys* - It include version number in cache keys. Increment the version number and invalidate the old cache.
 
-CDN and Edge Caching -
+Most example - TTL (5 mins) and active invalidation for data like user profile or inventory count. Less critical data rely on TTL. TTl defined in the requirement in case the ask is that search should no more than 30 sec state then TTL 30 sec.
+
+**CDN and Edge Caching** - CDN extends the cache beyond data center to global edge location. CDN manage static data and also dynamic data including API and db result.
+Geographic distribution helps in latency improvement - User from Tokyo will get the edge server in Tokyo. The issue is cache invalidation of the edge server to get the latest data from the server.
+
+CDN cache the data all users are mainly searching no need to cache personal details or single user preference.
+
+> Read scale - first see the external API call the high volume - optimize it. 
+> 
+> Start with the query optimization then cache and read replica.
+> 
+> You should e able to determine the read blocker. Example When designing the API input like "The userprofile endpoint will get hit everytime someone view the profile. With millions of users and billions of read we need to take care. Will cover in deep dive."
 
 
 
-
-The consideration - cache invalidation, handling replication lag in read replicas, dealing with hot keys (millions in popular contents).
-
-
-
-### Common scenarios.
+## Common scenarios.
 
 ### Queries started taking longer as the data set grows.
 
@@ -185,7 +192,7 @@ The issue - There are 2 cache lookups per request - to get the version number an
 The pattern works in single entity caches like user profiles or product details and no with computed data like searh results or feeds where invalidation is difficult.
 
 
-# Managing long-running task.
+## Managing long-running task.
 
 ## Dealing with contentions.
 
