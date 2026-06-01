@@ -20,7 +20,6 @@ nav:
   - KafkaFundamentals:
       - ProducerConsumer: KafkaFundamentals/ProducerConsumer.md
   - Quiz: quiz.md
-
 markdown_extensions:
   - md_in_html
 theme:
