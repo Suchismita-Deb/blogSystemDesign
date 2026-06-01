@@ -36,7 +36,6 @@ The file are in say docs - SystemDesign - file.md
 
 The image url.
 
-
 `![NetworkLayer](../images/SystemDesign/NetworkLayer.png)`
 
 The tag in the base doc branch.
