@@ -9,28 +9,26 @@
       
       
       
-        <link rel="prev" href="../../SystemDesign/KeyTechnologies/Redis/">
+        <link rel="prev" href="../KafkaFundamentals/ProducerConsumer/">
       
-      
-        <link rel="next" href="../../Quiz/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>ProducerConsumer - System Design Toolkit</title>
+        <title>Quiz - System Design Toolkit</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../../css/custom.css">
+      <link rel="stylesheet" href="../css/custom.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kafka-consumer-configuration" class="md-skip">
+        <a href="#system-design-interactive-flashcards" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +90,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="System Design Toolkit" class="md-header__button md-logo" aria-label="System Design Toolkit" data-md-component="logo">
+    <a href=".." title="System Design Toolkit" class="md-header__button md-logo" aria-label="System Design Toolkit" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ProducerConsumer
+              Quiz
             
           </span>
         </div>
@@ -205,7 +203,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
   
@@ -226,7 +224,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../SystemDesign/Fundamentals/" class="md-tabs__link">
+        <a href="../SystemDesign/Fundamentals/" class="md-tabs__link">
           
   
   
@@ -242,13 +240,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../KafkaFundamentals/ProducerConsumer/" class="md-tabs__link">
           
   
   
@@ -264,9 +260,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../../Quiz/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
@@ -307,7 +305,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="System Design Toolkit" class="md-nav__button md-logo" aria-label="System Design Toolkit" data-md-component="logo">
+    <a href=".." title="System Design Toolkit" class="md-nav__button md-logo" aria-label="System Design Toolkit" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -325,7 +323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -406,7 +404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../SystemDesign/Fundamentals/" class="md-nav__link">
+      <a href="../SystemDesign/Fundamentals/" class="md-nav__link">
         
   
   
@@ -434,7 +432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../SystemDesign/Pattern/" class="md-nav__link">
+      <a href="../SystemDesign/Pattern/" class="md-nav__link">
         
   
   
@@ -516,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../SystemDesign/KeyTechnologies/Redis/" class="md-nav__link">
+      <a href="../SystemDesign/KeyTechnologies/Redis/" class="md-nav__link">
         
   
   
@@ -544,7 +542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DynamoDb.md" class="md-nav__link">
+      <a href="../DynamoDb.md" class="md-nav__link">
         
   
   
@@ -572,7 +570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Cassandra.md" class="md-nav__link">
+      <a href="../Cassandra.md" class="md-nav__link">
         
   
   
@@ -662,7 +660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../SystemDesign/CoreConcepts/Network.md" class="md-nav__link">
+      <a href="../SystemDesign/CoreConcepts/Network.md" class="md-nav__link">
         
   
   
@@ -690,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../SystemDesign/CoreConcepts/Db.md" class="md-nav__link">
+      <a href="../SystemDesign/CoreConcepts/Db.md" class="md-nav__link">
         
   
   
@@ -718,7 +716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../SystemDesign/CoreConcepts/Caching.md" class="md-nav__link">
+      <a href="../SystemDesign/CoreConcepts/Caching.md" class="md-nav__link">
         
   
   
@@ -746,7 +744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../SystemDesign/CoreConcepts/API.md" class="md-nav__link">
+      <a href="../SystemDesign/CoreConcepts/API.md" class="md-nav__link">
         
   
   
@@ -836,7 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../SystemDesign/AdvancedConcept/Vector.md" class="md-nav__link">
+      <a href="../SystemDesign/AdvancedConcept/Vector.md" class="md-nav__link">
         
   
   
@@ -864,7 +862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../SystemDesign/AdvancedConcept/TimeSeriesDb.md" class="md-nav__link">
+      <a href="../SystemDesign/AdvancedConcept/TimeSeriesDb.md" class="md-nav__link">
         
   
   
@@ -904,31 +902,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -946,7 +941,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -959,6 +954,41 @@
             
               
                 
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KafkaFundamentals/ProducerConsumer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ProducerConsumer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
   
   
     
@@ -980,42 +1010,6 @@
   <span class="md-ellipsis">
     
   
-    ProducerConsumer
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Quiz/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
     Quiz
   
 
@@ -1025,6 +1019,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1065,46 +1060,6 @@
   
 
 
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-        
-  
-  
-    <li class="md-path__item">
-      <a href="../.." class="md-path__link">
-        
-  <span class="md-ellipsis">
-    Home
-  </span>
-
-      </a>
-    </li>
-  
-
-      
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="./" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    KafkaFundamentals
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
-
               
               <article class="md-content__inner md-typeset">
                 
@@ -1112,201 +1067,300 @@
 
 
 
-<p><strong>Kafka Broker</strong> - Server in Kafka storage layer. Stores topics/partitions.<br />
-<strong>Kafka Cluster</strong> - Collection of multiple brokers. Every broker can act as a Bootstrap Server.<br />
-Connect to one broker → connect to whole cluster.</p>
-<p><strong>Security</strong><br />
-- Encryption: SSL/TLS.<br />
-- Authentication: SASL or SSL.<br />
-- Authorization: ACLs.<br />
-- Disabled by default.   </p>
-<p><strong>APIs</strong><br />
-- Consumer API → Subscribe and consume from one/more topics.<br />
-- Streams API → Consume from input topics, process stream, produce to output topics. Easy DSL, low operational overhead.<br />
-- Admin API → Create, delete, inspect, and manage topics, brokers, ACLs, and Kafka objects.</p>
-<p><strong>REST Proxy</strong><br />
-- RESTful HTTP service to interact with Kafka.<br />
-- Uses Admin API internally.<br />
-- Supports - Produce messages, Consume messages, Consumer groups, Cluster metadata inspection.<br />
-- Integrates with Schema Registry.<br />
-- Converts JSON ↔ Avro automatically.<br />
-- Any language can use Kafka via HTTP + JSON.  </p>
-<p><strong>Schema Registry</strong><br />
-- Centralized schema repository for the topic data.<br />
-- Manages and validates schemas.<br />
-- Used for serialization/deserialization.</p>
-<p><strong>Consumer Group</strong><br />
-- Consumer Group = Set of consumers consuming from topics.<br />
-- Configure using group.id.<br />
-- To use the subscribe() and commit the consumer needs to be a part of consumer group.
-- Use assign() instead of subscribe() to manually assign partitions and it does not need to be a part of group. In that case, consumer group coordination/rebalancing is not used.</p>
-<p><strong>Partition Assignment</strong><br />
-- Partitions are divided among consumers in the group.<br />
-- One partition → only one consumer in group can consume it.<br />
-- Example - 
-  - 4 consumers, 1 partition → only 1 active consumer.<br />
-  - 4 consumers, 8 partitions → each gets 2 partitions.<br />
-- One consumer can read - 
-  - Multiple partitions.<br />
-  - Multiple partitions from same topic.</p>
-<p><strong>Rebalancing</strong> - New consumer joins or old leaves → partitions reassigned. Its Rebalance.</p>
-<p><strong>Group Coordinator</strong><br />
-- One broker acts as Group Coordinator.
-- Manages - Group members and Partition assignments.
-- Chosen from leaders of <code>_consumer_offsets</code> that stores committed offsets.</p>
-<p><strong>Heartbeat</strong> - Consumers send heartbeat periodically. No heartbeat → consumer removed. Rebalance triggered.</p>
-<p><strong>Offset Management</strong><br />
-- Initial Offset - 
-  - Controlled using auto.offset.reset - earliest or latest.
-- Offset Commit - 
-  - Consumer reads message → commits offset.
-  - If consumer crashes → next consumer starts from last committed offset.</p>
-<p><strong>Auto Commit</strong><br />
-- Default behavior = Automatic offset commit.
-- Commit happens at regular interval.
-- Config - 
-  - <code>enable.auto.commit=true</code><br />
-  - <code>auto.commit.offset.interval.ms</code>
-- Delivery Semantics - Auto commit gives at-least-once delivery.
-- Duplicate Scenario - 
-  - Messages after last commit are re-read after failure.
-  - Message processed but offset not committed → read again.
-- Data Loss Scenario - 
-  - Auto commit happens before processing completes.
-  - Crash after commit but before processing → data loss.
-- Reduce Duplicates - Reduce auto-commit interval.</p>
-<p><strong>Manual Commit</strong><br />
-Set - <code>enable.auto.commit=false</code>  <br />
-<strong>Synchronous Commit</strong><br />
-- Blocking call until commit response returns.<br />
-- Improve Throughput. 
-  - Increase poll batch size using - <code>fetch.min.bytes</code>.<br />
-  - Broker waits until - enough data available OR <code>fetch.max.wait.ms</code> expires.</p>
-<p><strong>Asynchronous Commit</strong><br />
-- Consumer sends commit request and continues immediately.
-- Faster than sync commit.
-- Issue - <br />
-  - Failed commits are not retried automatically.
-  - Commit ordering issue - Later offsets may already be committed. Retrying old commit can create duplicates.</p>
-<h1 id="kafka-consumer-configuration">Kafka Consumer Configuration</h1>
-<table>
-<thead>
-<tr>
-<th>Config</th>
-<th>Purpose</th>
-<th>Important Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>bootstrap.servers</code></td>
-<td>Initial broker list for connecting to Kafka cluster.</td>
-<td>Consumer discovers full cluster from these brokers.</td>
-</tr>
-<tr>
-<td><code>client.id</code></td>
-<td>Identifies the consumer client instance.</td>
-<td>Used for logging, metrics, request tracing on broker side. Usually unique per consumer instance.</td>
-</tr>
-<tr>
-<td><code>group.id</code></td>
-<td>Consumer group identifier.</td>
-<td>Required for <code>subscribe()</code> and Kafka-managed offset commits. Not required with manual <code>assign()</code>.</td>
-</tr>
-<tr>
-<td><code>session.timeout.ms</code></td>
-<td>Time coordinator waits before marking consumer dead.</td>
-<td>Default ~10 sec. Longer timeout delays failure detection/rebalance. Network issues or long GC pause can trigger rebalance. Consumer normally sends LeaveGroup before shutdown.</td>
-</tr>
-<tr>
-<td><code>heartbeat.interval.ms</code></td>
-<td>Interval for sending heartbeats to coordinator.</td>
-<td>Default 3 sec. Must be lower than <code>session.timeout.ms</code>. Missing heartbeats triggers rebalance.</td>
-</tr>
-<tr>
-<td><code>max.poll.interval.ms</code></td>
-<td>Maximum allowed time between <code>poll()</code> calls.</td>
-<td>Default 300 sec. If exceeded, consumer considered failed and rebalance happens.</td>
-</tr>
-<tr>
-<td><code>max.poll.records</code></td>
-<td>Max records returned in each <code>poll()</code>.</td>
-<td>Tune batch size to avoid processing delays and <code>max.poll.interval.ms</code> timeout.</td>
-</tr>
-<tr>
-<td><code>enable.auto.commit</code></td>
-<td>Enables automatic offset commits.</td>
-<td>Default <code>true</code>. Consumer commits offsets periodically.</td>
-</tr>
-<tr>
-<td><code>auto.commit.interval.ms</code></td>
-<td>Interval for auto offset commit.</td>
-<td>Default 5 sec. Smaller interval reduces duplicate window but increases commit overhead.</td>
-</tr>
-<tr>
-<td><code>auto.offset.reset</code></td>
-<td>Defines behavior when no committed offset exists or offset is invalid/out of range.</td>
-<td>Options- <code>latest</code> (default), <code>earliest</code>, or reset based on configured <code>duration/timestamp</code>.</td>
-</tr>
-<tr>
-<td><strong>Kafka Partition Assignment Configuration</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>partition.assignment.strategy</code></td>
-<td>Defines how partitions are distributed among consumers in a group.</td>
-<td>All consumers in the same group must use the same strategy. Accepts comma-separated fully qualified assignor class names implementing <code>PartitionAssignor</code>.</td>
-</tr>
-<tr>
-<td><code>group.protocol=classic</code></td>
-<td>Enables classic consumer group protocol.</td>
-<td><code>partition.assignment.strategy</code> works only with <code>classic</code> protocol (default).</td>
-</tr>
-<tr>
-<td><code>group.protocol=consumer</code></td>
-<td>New consumer group protocol.</td>
-<td><code>partition.assignment.strategy</code> not supported.</td>
-</tr>
-<tr>
-<td>Assignment Strategies</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>RangeAssignor</code> (Default)</td>
-<td>Assigns partition of each topic across the consumers in the consumer group.</td>
-<td>Simple and efficient. Good when partitions &gt; consumers.</td>
-</tr>
-<tr>
-<td><code>RoundRobinAssignor</code></td>
-<td>Assigns partitions one-by-one across all consumers.</td>
-<td>Better balanced partition distribution.</td>
-</tr>
-<tr>
-<td><code>StickyAssignor</code></td>
-<td>Tries to keep existing assignments during rebalance.</td>
-<td>Minimizes partition movement and duplicate processing.</td>
-</tr>
-<tr>
-<td><code>CooperativeStickyAssignor</code></td>
-<td>Incremental rebalance version of StickyAssignor.</td>
-<td>Less disruptive and lower rebalance impact.</td>
-</tr>
-<tr>
-<td><code>ConstrainedCooperativeStickyAssignor</code></td>
-<td>Advanced sticky assignor enables more incremental rebalancing, which can reduce the latency and resources required during the rebalance process.</td>
-<td>Reduces rebalance impact, not the frequency of rebalances. For consumer groups where all members subscribe to the same set of topics, it provides the same benefits and is optimized for this common scenario.</td>
-</tr>
-</tbody>
-</table>
-<p><code>kafka-consumer-groups</code> command line to view and manage consumers group.</p>
-<p><strong>List consumer groups</strong> - <code>bin/kafka-consumer-groups --bootstrap-server host:9092 --list</code>    </p>
-<p><strong>Describe groups</strong> - <code>bin/kafka-consumer-groups --bootstrap-server host:9092 --describe --group test-1234</code>  </p>
-<p><strong>Reset offsets</strong> - reset offsets by shifting forward or backward with shift-by or reset them to the beginning with <code>--to-earliest</code>. <br />
-To reset the offsets back by 20 positions <code>bin/kafka-consumer-groups.sh --bootstrap-server host:9092 --group test-1234 --reset-offsets --shift-by -20 --topic test-metrics -execute --group test-1234</code></p>
-<p>Book.
-Connectors vs. tasks vs. workers.</p>
+<h1 id="system-design-interactive-flashcards">System Design Interactive Flashcards</h1>
+<p>Practice one question at a time. Submit your answer to see whether it is correct, read a short explanation, and then go to the next question.</p>
+<div class="flashcard-quiz" id="flashcard-quiz">
+  <div class="quiz-header">
+    <p id="quiz-progress">Question 1</p>
+    <p id="quiz-score">Score: 0</p>
+  </div>
+
+  <h2 id="quiz-question">Loading question...</h2>
+
+  <form id="quiz-form">
+    <div id="quiz-options"></div>
+
+    <div class="quiz-actions">
+      <button type="submit" id="submit-btn">Submit answer</button>
+      <button type="button" id="next-btn" hidden>Next question</button>
+    </div>
+  </form>
+
+  <div id="quiz-feedback" class="quiz-feedback" aria-live="polite"></div>
+</div>
+
+<style>
+  .flashcard-quiz {
+    max-width: 780px;
+    margin: 1rem auto;
+    padding: 1rem;
+    border: 1px solid #d5d7da;
+    border-radius: 10px;
+    background: #ffffff;
+  }
+
+  .quiz-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  #quiz-question {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .option-item {
+    display: block;
+    margin: 0.5rem 0;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .option-item:hover {
+    background: #f8f9fb;
+  }
+
+  .quiz-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .quiz-actions button {
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  #submit-btn {
+    background: #0b57d0;
+    color: #ffffff;
+  }
+
+  #next-btn {
+    background: #2e7d32;
+    color: #ffffff;
+  }
+
+  .quiz-feedback {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    display: none;
+  }
+
+  .quiz-feedback.correct {
+    display: block;
+    background: #e8f5e9;
+    border: 1px solid #a5d6a7;
+  }
+
+  .quiz-feedback.wrong {
+    display: block;
+    background: #ffebee;
+    border: 1px solid #ef9a9a;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .flashcard-quiz {
+      background: #1f1f1f;
+      border-color: #3d3d3d;
+    }
+
+    .option-item {
+      border-color: #4a4a4a;
+    }
+
+    .option-item:hover {
+      background: #2a2a2a;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  function initQuiz() {
+    var root = document.getElementById("flashcard-quiz");
+    if (!root || root.dataset.ready === "true") {
+      return;
+    }
+    root.dataset.ready = "true";
+
+    var questions = [
+      {
+        question: "Which CAP property is always present in distributed systems?",
+        options: ["Consistency", "Availability", "Partition Tolerance", "Latency"],
+        answer: 2,
+        description: "Network partitions are unavoidable, so the real trade-off is consistency vs availability."
+      },
+      {
+        question: "For a one-way server-to-client live update stream, which protocol is usually simpler?",
+        options: ["WebSockets", "SSE", "gRPC", "FTP"],
+        answer: 1,
+        description: "SSE is simpler for unidirectional real-time updates such as scores and notifications."
+      },
+      {
+        question: "When should denormalization usually be introduced?",
+        options: ["At the start of schema design", "When reads are heavy and joins become expensive", "Only for write-heavy systems", "Never"],
+        answer: 1,
+        description: "Start normalized first, then denormalize only when read performance needs it."
+      },
+      {
+        question: "A good non-functional requirement should be:",
+        options: ["Generic", "Measurable and specific", "As short as possible", "Optional"],
+        answer: 1,
+        description: "Specific targets like 'search latency < 500 ms' are testable and actionable."
+      },
+      {
+        question: "What is a common threshold before database sharding is seriously considered?",
+        options: ["Around 500 GB", "Around 1 TB", "Around 10-100 TB", "Around 50 GB"],
+        answer: 2,
+        description: "Sharding adds complexity, so teams usually wait until very large data or throughput pressure."
+      },
+      {
+        question: "In cache-aside pattern, what happens on a cache miss?",
+        options: ["Return empty response", "Read from DB and populate cache", "Delete the key", "Scale the cache cluster"],
+        answer: 1,
+        description: "On miss, fetch from the database, put result in cache, and return to caller."
+      },
+      {
+        question: "For external public APIs, which protocol is usually preferred?",
+        options: ["gRPC", "REST", "Raw TCP", "Kafka"],
+        answer: 1,
+        description: "REST is widely supported by browsers and clients; gRPC is often used internally."
+      },
+      {
+        question: "Which change most improves search over billions of documents?",
+        options: ["Add Redis cache", "Move to inverted index engine", "Add 10% CPU", "Increase app threads only"],
+        answer: 1,
+        description: "Index-based search architecture usually provides the largest gain over brute-force scanning."
+      }
+    ];
+
+    var current = 0;
+    var score = 0;
+    var locked = false;
+
+    var progressEl = document.getElementById("quiz-progress");
+    var scoreEl = document.getElementById("quiz-score");
+    var questionEl = document.getElementById("quiz-question");
+    var optionsEl = document.getElementById("quiz-options");
+    var feedbackEl = document.getElementById("quiz-feedback");
+    var formEl = document.getElementById("quiz-form");
+    var submitBtn = document.getElementById("submit-btn");
+    var nextBtn = document.getElementById("next-btn");
+
+    function renderQuestion() {
+      locked = false;
+      feedbackEl.className = "quiz-feedback";
+      feedbackEl.style.display = "none";
+      feedbackEl.textContent = "";
+      nextBtn.hidden = true;
+      submitBtn.hidden = false;
+      submitBtn.disabled = false;
+
+      var q = questions[current];
+      progressEl.textContent = "Question " + (current + 1) + " of " + questions.length;
+      scoreEl.textContent = "Score: " + score;
+      questionEl.textContent = q.question;
+
+      optionsEl.innerHTML = q.options
+        .map(function (option, index) {
+          return (
+            '<label class="option-item">' +
+            '<input type="radio" name="quiz-option" value="' + index + '"> ' +
+            option +
+            "</label>"
+          );
+        })
+        .join("");
+    }
+
+    function showResults() {
+      progressEl.textContent = "Completed";
+      questionEl.textContent = "You finished the flashcards.";
+      optionsEl.innerHTML = "";
+      submitBtn.hidden = true;
+      nextBtn.hidden = true;
+      feedbackEl.className = "quiz-feedback correct";
+      feedbackEl.style.display = "block";
+      feedbackEl.innerHTML =
+        "Final score: <strong>" +
+        score +
+        " / " +
+        questions.length +
+        "</strong><br>Refresh the page to practice again.";
+    }
+
+    formEl.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (locked) {
+        return;
+      }
+
+      var selected = formEl.querySelector('input[name="quiz-option"]:checked');
+      if (!selected) {
+        feedbackEl.className = "quiz-feedback wrong";
+        feedbackEl.style.display = "block";
+        feedbackEl.textContent = "Please choose an answer before submitting.";
+        return;
+      }
+
+      locked = true;
+      submitBtn.disabled = true;
+      submitBtn.hidden = true;
+      nextBtn.hidden = false;
+
+      var selectedIndex = Number(selected.value);
+      var q = questions[current];
+      var isCorrect = selectedIndex === q.answer;
+
+      if (isCorrect) {
+        score += 1;
+        feedbackEl.className = "quiz-feedback correct";
+        feedbackEl.innerHTML = "Correct. " + q.description;
+      } else {
+        feedbackEl.className = "quiz-feedback wrong";
+        feedbackEl.innerHTML =
+          "Wrong. Correct answer: <strong>" +
+          q.options[q.answer] +
+          "</strong>. " +
+          q.description;
+      }
+      feedbackEl.style.display = "block";
+      scoreEl.textContent = "Score: " + score;
+    });
+
+    nextBtn.addEventListener("click", function () {
+      current += 1;
+      if (current >= questions.length) {
+        showResults();
+        return;
+      }
+
+      renderQuestion();
+      root.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    renderQuestion();
+  }
+
+  if (typeof document$ !== "undefined" && document$.subscribe) {
+    document$.subscribe(function () {
+      initQuiz();
+    });
+  } else {
+    document.addEventListener("DOMContentLoaded", initQuiz);
+  }
+})();
+</script>
 
 
 
@@ -1356,10 +1410,10 @@ Connectors vs. tasks vs. workers.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.tabs.sticky", "navigation.expand", "navigation.path", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.tabs.sticky", "navigation.expand", "navigation.path", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
