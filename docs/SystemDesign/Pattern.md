@@ -2,6 +2,62 @@
 
 ## Pushing realtime update.
 
+It means delivering immediate notification from sulphur to client as it occurs  
+ 
+Example - It enables low latency and bidirectional communication In case of chat application. 
+ 
+ Example in Google docs for collaborative editing one user making and change will be reflected in a millisecond And it cannot The polling for the server for every updates Next time.
+ 
+The target - efficient persistent communication between clients and servers.   
+Http follows a request response model.  
+
+Problems which use real time updates includes - 
+Ticketmaster, Whatsapp, Google Docs, Uber, Robinhood, Strava.
+
+There are main 2 parts - How to get the update from the server to the client and how to get the update from client to server.
+
+## Client-Server Connection Protocol.
+
+The first part - make a communication channel between client and server. HTTP request-response is not suitable for real time update as it is unidirectional and stateless and real time system needs persistent connection or poling to enable server to push update to client.
+
+### Networking Layers.
+
+There are 3 layer imp for developer - Application layer, Transport layer and Network layer.  
+
+**Network Layer** - Layer 3 - IP addressing and routing. Data breaks into packets and provide best effort delivery to send to the destination. There is no guarantee of delivery and it can get lost.
+
+**Transport Layer** - Layer 4 - TCP and UDP.    
+TCP is **connection oriented** and provide reliable delivery and in order. The connection should be established first and it takes time to maintain resource and bandwidth.       
+UDP is **connectionless** and faster but no guarantee of delivery or order. It send data to any IP without any prior set up. Real time system use UDP for low latency but it can tolerate some loss like video streaming.    
+For critical data like chat application use TCP.
+
+Application Layer - Layer 7 - Protocols like DNS, HTTP, WebSockets, gRPC. These are common build on top of TCP.
+
+**Request Lifecycle**  
+**URL** - **DNS convert to IP** - **TCP connection and TCP handshake** (Syn, Syn Ack, Ack) - **HTTP request** (TCP establish te clients ends GET request to server) - **Server process** the request and send the **HTTP response** - **TCP Teardown**.
+
+The client initiate a TCP connection with the srever - SYN( The client send a SYN packet to the server to request a connection) - SYN ACK (The server respond with a SYN ACK packet to acknowledge the connection request) - ACK (The client send an ACK packet to acknowledge the server's response and establish the connection).
+
+The data transfer is complete the connection close using 4 way handshake - FIN, ACK, FIN, ACK.  
+
+FIN (The client send a FIN(finish) packet to the server to close the connection) - ACK (The server respond with an ACK packet) - FIN (The server send a FIN packet to the client to close its side of the connection) - ACK (The client acknowledges the server).
+
+> The TCP all the round trip adds latency to the requests and TCP connection is state and client and server need to maintain. There is feature HTTP keep-alive to not make the connection set up for every request.
+
+**Load Balancer**  
+There are 2 main type L4 and L7.
+Layer 4 - operates on TCP/UDP - they make routing decision based on IP address and post and not considering the packet.  
+Key characteristics - maintain TCP connection between client and server
+
+
+User need to see the new message send to the chat room.
+### Simple Polling.
+
+
+
+
+
+
 ## Scaling Reads.
 The need to scale read is in physics - CPU core can execute limited num of instruction per second, disk I/O bounded by the speed of the spinning platters or SSD write cycles. More code will not improve the case.  
 
