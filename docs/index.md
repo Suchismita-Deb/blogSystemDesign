@@ -63,3 +63,7 @@ git config user.name
 git config user.email
 
 ```
+
+
+External monitor works - Extend display (There **Settings - Display** there will be 2 screens and moving the cursor to the left or right will point to the monitor or laptop screen) - Making any app visible in monitor then open the app and then **Win+Shift+Right/LeftKey**.  
+Duplicate Screen will open all in the laptop and monitor.

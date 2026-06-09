@@ -17,6 +17,25 @@ nav:
       - Advanced Concept:
           - Vector Db: SystemDesign/AdvancedConcept/Vector.md
           - Time Series Db: SystemDesign/AdvancedConcept/TimeSeriesDb.md
+
+  - High-Level Design (HLD): SystemDesign/HighLevelDesign.md
+
+  - Low-Level Design (LLD): SystemDesign/LowLevelDesign.md
+
+  - Microservices:
+      - Fundamentals: Microservices/Fundamentals.md
+      - Communication Patterns: Microservices/CommunicationPatterns.md
+      - Data Management: Microservices/DataManagement.md
+      - Resilience: Microservices/Resilience.md
+      - Observability: Microservices/Observability.md
+
+  - Spring Boot:
+      - Fundamentals: SpringBoot/Fundamentals.md
+      - Layered Architecture: SpringBoot/LayeredArchitecture.md
+      - Building Microservices: SpringBoot/BuildingMicroservices.md
+      - Security: SpringBoot/Security.md
+      - Testing: SpringBoot/Testing.md
+
   - KafkaFundamentals:
       - ProducerConsumer: KafkaFundamentals/ProducerConsumer.md
   - Quiz: Quiz.md

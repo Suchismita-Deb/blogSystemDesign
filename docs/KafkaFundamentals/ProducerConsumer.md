@@ -126,8 +126,12 @@ Set - `enable.auto.commit=false`
 **Reset offsets** - reset offsets by shifting forward or backward with shift-by or reset them to the beginning with `--to-earliest`.   
 To reset the offsets back by 20 positions `bin/kafka-consumer-groups.sh --bootstrap-server host:9092 --group test-1234 --reset-offsets --shift-by -20 --topic test-metrics -execute --group test-1234`
 
+All messages in a topic are on the same broker - ❎ A topic is split into partitions, and those partitions are distributed across multiple brokers
 
+All messages in a partition are on the same broker - ✅ All messages in a partition are on the same broker. Replicas of the partition exist on other brokers, but the leader holds the active copy where producers write and consumers read.
 
+All messages with the same key will be on the same broker. ✅ Messages with the same key are guaranteed to be in the same partition, and since a partition is hosted on a single broker, they will be on the same broker. 
 
-Book.
-Connectors vs. tasks vs. workers.
+The more partitions a topic has, the better. ❎ It creates overhead.
+
+Suppose there is a message in our Kafka cluster about my breakfast purchase of $12.73. Consumer c0 has consumed it to process the charge. Could consumer c7 consume this same message this afternoon? - Yes
