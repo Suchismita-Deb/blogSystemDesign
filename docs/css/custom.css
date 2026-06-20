@@ -47,3 +47,42 @@ Table when the first column contains text and act as heading.
     height: 90vh;
     border: none;
 }
+
+/* Quizlet-style card blocks for markdown quiz pages */
+.quiz-box {
+    border: 1px solid #d7e2d7;
+    border-left: 5px solid #2e7d32;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin: 14px 0;
+    background: #f8fcf8;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.quiz-box strong {
+    font-size: 1rem;
+    color: #16331a;
+}
+
+.quiz-toggle {
+    margin-top: 10px;
+    border-top: 1px dashed #cfd8cf;
+    padding-top: 10px;
+}
+
+.quiz-toggle summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #2e7d32;
+}
+
+.quiz-toggle[open] summary {
+    margin-bottom: 8px;
+}
+
+/* Wrap long code lines in quiz cards */
+.quiz-box pre code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}

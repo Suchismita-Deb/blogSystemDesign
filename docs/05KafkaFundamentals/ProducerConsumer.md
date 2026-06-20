@@ -135,3 +135,23 @@ All messages with the same key will be on the same broker. ✅ Messages with the
 The more partitions a topic has, the better. ❎ It creates overhead.
 
 Suppose there is a message in our Kafka cluster about my breakfast purchase of $12.73. Consumer c0 has consumed it to process the charge. Could consumer c7 consume this same message this afternoon? - Yes
+
+```
+Kafka Cluster (Fault Tolerant)
+├── Zookeeper Cluster (Cluster Coordination)
+│   ├── Leader (writes)
+│   ├── Follower (reads)
+│   └── Follower (reads)
+│
+├── Broker 1 [Leader] ─── Broker 2 [Replica] ─── Broker 3 [Replica]
+│   ├── Topic-A-P0 (Leader)
+│   │   ├── Offset 0: Message1
+│   │   ├── Offset 1: Message2
+│   │   └── Offset 2: Message3
+│   │
+│   ├── Topic-A-P1 (Leader)
+│   │   └── Offset 0: Message4
+│   │
+│   └── Topic-B-P0 (Leader)
+│       └── Offset 0: Message5
+```

@@ -1,7 +1,5 @@
 # Welcome to MkDocs
-
 ## Project layout
-
 HLD - Book, Jordan, Hello Interview, Any video. 
 The point is it will be topic wise. Like any topic I got anywhere I will add it in single place.
 
@@ -30,13 +28,9 @@ To deploy - push the code in github and `mkdocs gh-deploy`.
 
 Adding image.
 
-Inside docs - images - SystemDesign - Image.png
+Inside `docs - images - SystemDesign - Image.png` and the file are in say `docs - SystemDesign - file.md` the url will be go to the main folder then image.
 
-The file are in say docs - SystemDesign - file.md
-
-The image url.
-
-`![NetworkLayer](../images/SystemDesign/NetworkLayer.png)`
+The image url - `![NetworkLayer](../images/SystemDesign/NetworkLayer.png)`
 
 The tag in the base doc branch.
 
@@ -61,7 +55,8 @@ src="./pdfs/SystemDesignTips.pdf">
 ```
 git config user.name
 git config user.email
-
+git config http.sslVerify false
+git push origin main
 ```
 
 

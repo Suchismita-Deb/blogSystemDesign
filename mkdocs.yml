@@ -22,9 +22,12 @@ nav:
 
   - Low-Level Design (LLD): SystemDesign/LowLevelDesign.md
 
+  - Java:
+      - Code Quiz: 02Java/03CodeSnippet.md
+
   - Microservices:
       - Fundamentals: Microservices/Fundamentals.md
-      - Communication Patterns: Microservices/CommunicationPatterns.md
+      - Communication: 03Microservice/01Communication.md
       - Data Management: Microservices/DataManagement.md
       - Resilience: Microservices/Resilience.md
       - Observability: Microservices/Observability.md
