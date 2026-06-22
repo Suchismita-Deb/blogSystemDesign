@@ -1,0 +1,2858 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../02Java/03CodeSnippet/">
+      
+      
+        <link rel="next" href="../../Quiz/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Communication - System Design Toolkit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#synchronous-communication" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="System Design Toolkit" class="md-header__button md-logo" aria-label="System Design Toolkit" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            System Design Toolkit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Communication
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../SystemDesign/Fundamentals.md" class="md-tabs__link">
+          
+  
+  
+  System Design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../SystemDesign/HighLevelDesign.md" class="md-tabs__link">
+        
+  
+  
+    
+  
+  High-Level Design (HLD)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../07LLDExample/StructuralPattern/" class="md-tabs__link">
+          
+  
+  
+  Low-Level Design (LLD)
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02Java/03CodeSnippet/" class="md-tabs__link">
+          
+  
+  
+  Java
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../Microservices/Fundamentals.md" class="md-tabs__link">
+          
+  
+  
+  Microservices
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../SpringBoot/Fundamentals.md" class="md-tabs__link">
+          
+  
+  
+  Spring Boot
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../KafkaFundamentals/ProducerConsumer.md" class="md-tabs__link">
+          
+  
+  
+  KafkaFundamentals
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Quiz/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Quiz
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="System Design Toolkit" class="md-nav__button md-logo" aria-label="System Design Toolkit" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    System Design Toolkit
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    System Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SystemDesign/Fundamentals.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SystemDesign/Pattern.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pattern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key Technologies
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Key Technologies
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SystemDesign/KeyTechnologies/Redis.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Redis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DynamoDb.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DynamoDb
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cassandra.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cassandra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SystemDesign/CoreConcepts/Network.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SystemDesign/CoreConcepts/Db.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Db Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SystemDesign/CoreConcepts/Caching.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caching
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SystemDesign/CoreConcepts/API.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Concept
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SystemDesign/AdvancedConcept/Vector.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector Db
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SystemDesign/AdvancedConcept/TimeSeriesDb.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time Series Db
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SystemDesign/HighLevelDesign.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    High-Level Design (HLD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Low-Level Design (LLD)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Low-Level Design (LLD)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07LLDExample/StructuralPattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structural Pattern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Java
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02Java/03CodeSnippet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Quiz
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Microservices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Microservices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Microservices/Fundamentals.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Communication
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Communication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#synchronous-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Synchronous Communication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Synchronous Communication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementation-mechanisms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation Mechanisms
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Mechanisms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rest-apis-httphttps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REST APIs (HTTP/HTTPS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GraphQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feign-spring-cloud-with-service-discovery-eureka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feign (Spring Cloud) with Service Discovery (Eureka).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grpc-remote-procedure-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gRPC (Remote Procedure Call)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-issues-with-synchronous-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Issues with Synchronous Communication.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Issues with Synchronous Communication.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cascading-failure-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cascading Failure Example.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#availability-amplification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Availability Amplification.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-distributed-transaction-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Distributed Transaction Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-timeout-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Timeout Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-retry-storms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Retry Storms
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-synchronous-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Use Synchronous Communication
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asynchronous-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asynchronous Communication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Asynchronous Communication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-broker-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Message Broker Responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asynchronous-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asynchronous Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Asynchronous Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-1-point-to-point-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 1: Point-to-Point (Queue)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-2-publish-subscribe-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 2: Publish-Subscribe (Topic)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-3-event-driven-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 3: Event-Driven Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-partitions-byzantine-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Partitions &amp; Byzantine Failures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cascading-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cascading Failures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production Considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Microservices/DataManagement.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Microservices/Resilience.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resilience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Microservices/Observability.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Spring Boot
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SpringBoot/Fundamentals.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SpringBoot/LayeredArchitecture.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Layered Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SpringBoot/BuildingMicroservices.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Microservices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SpringBoot/Security.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SpringBoot/Testing.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KafkaFundamentals
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    KafkaFundamentals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../KafkaFundamentals/ProducerConsumer.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ProducerConsumer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Quiz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quiz
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#synchronous-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Synchronous Communication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Synchronous Communication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementation-mechanisms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation Mechanisms
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Mechanisms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rest-apis-httphttps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REST APIs (HTTP/HTTPS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GraphQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feign-spring-cloud-with-service-discovery-eureka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feign (Spring Cloud) with Service Discovery (Eureka).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grpc-remote-procedure-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gRPC (Remote Procedure Call)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-issues-with-synchronous-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Issues with Synchronous Communication.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Issues with Synchronous Communication.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cascading-failure-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cascading Failure Example.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#availability-amplification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Availability Amplification.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-distributed-transaction-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Distributed Transaction Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-timeout-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Timeout Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-retry-storms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Retry Storms
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-synchronous-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Use Synchronous Communication
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asynchronous-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asynchronous Communication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Asynchronous Communication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-broker-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Message Broker Responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asynchronous-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asynchronous Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Asynchronous Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-1-point-to-point-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 1: Point-to-Point (Queue)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-2-publish-subscribe-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 2: Publish-Subscribe (Topic)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-3-event-driven-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 3: Event-Driven Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-partitions-byzantine-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Partitions &amp; Byzantine Failures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cascading-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cascading Failures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production Considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../Microservices/Fundamentals.md" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Microservices
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Communication</h1>
+
+<p>In distributed systems, services need to exchange information reliably and efficiently. The choice between synchronous and asynchronous communication impacts -  <br />
+- <strong>Consistency Model</strong> (Strong vs Eventual)<br />
+- <strong>Latency SLA</strong> (P99, P95 tail latencies)  <br />
+- <strong>System Coupling</strong> (degree of interdependence)<br />
+- <strong>Failure Recovery</strong> (fault isolation)<br />
+- <strong>Scalability</strong> (horizontal scaling capabilities)  </p>
+<p><strong>Synchronous</strong> = <em>Tight Coupling + Availability Amplification</em> → Use for critical path only<br />
+<strong>Asynchronous</strong> = <em>Loose Coupling + Operational Complexity</em> → Use for background jobs<br />
+<strong>gRPC is the future</strong> → 10x faster than REST, but less accessible<br />
+<strong>Kafka is the standard</strong> → High throughput, replay capability, event sourcing<br />
+<strong>Idempotency is non-negotiable</strong> → Design all async handlers to be idempotent  <br />
+<strong>Observability is critical</strong> → Monitor latencies, lag, error rates, queue depth  <br />
+<strong>CAP theorem is reality</strong> → Partition tolerance mandatory, choose CP or AP   <br />
+<strong>Complexity scales with scale</strong> → Simple systems can be synchronous, complex ones need async  </p>
+<h2 id="synchronous-communication">Synchronous Communication</h2>
+<p>A caller service makes a request and <strong>blocks/waits for a response</strong> before proceeding. The request-response pattern is inherently synchronous.</p>
+<h3 id="implementation-mechanisms">Implementation Mechanisms</h3>
+<h4 id="rest-apis-httphttps">REST APIs (HTTP/HTTPS)</h4>
+<ul>
+<li><strong>Protocol</strong>: HTTP/1.1 or HTTP/2</li>
+<li><strong>Serialization</strong>: JSON (text-based, 2-3 KB overhead)</li>
+<li><strong>Latency</strong>: 50-500ms per call depending on network/processing</li>
+<li><strong>Use Case</strong>: Simple CRUD operations, public APIs, browser clients</li>
+</ul>
+<p><strong>Considerations</strong>:
+- Stateless by design (easier horizontal scaling)
+- Connection overhead: TCP 3-way handshake (~5-10ms for distant regions)
+- Polling complexity: consumer must repeatedly ask for updates
+- Retry logic requires idempotency keys to prevent duplicates</p>
+<h4 id="graphql">GraphQL</h4>
+<ul>
+<li><strong>Advantage</strong>: Eliminates over-fetching and under-fetching of data</li>
+<li><strong>Latency</strong>: Similar to REST but can reduce round-trips</li>
+<li><strong>Complexity</strong>: Query parsing and execution overhead (~2-5ms additional)</li>
+<li><strong>Use Case</strong>: Complex data aggregation, mobile clients with limited bandwidth</li>
+</ul>
+<p><strong>Trade-offs</strong>:
+- Solves data fetching problems but doesn't solve inherent synchronous coupling
+- Deeper query complexity can lead to N+1 problems in resolvers</p>
+<h4 id="feign-spring-cloud-with-service-discovery-eureka">Feign (Spring Cloud) with Service Discovery (Eureka).</h4>
+<ul>
+<li><strong>Purpose</strong>: Client-side HTTP client with declarative interface</li>
+<li><strong>Discovery</strong>: Automatic service location via Eureka registry</li>
+<li><strong>Circuit Breaker Integration</strong>: Works with Hystrix/Resilience4j</li>
+<li><strong>Latency</strong>: Similar to REST (~50-500ms) + discovery lookup (~5-20ms)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Service A (Feign Client) → Eureka Registry (lookup ServiceB instance)
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                        → HTTP call to ServiceB
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                        → Blocking wait
+</span></code></pre></div></li>
+</ul>
+<p><strong>Failure Scenario</strong>:
+- Service B instances crash → Eureka marks them unhealthy (takes 30-60 seconds)
+- New requests fail → Circuit breaker opens (fail-fast)
+- Cascading failures can occur if timeout not configured properly</p>
+<h4 id="grpc-remote-procedure-call">gRPC (Remote Procedure Call)</h4>
+<ul>
+<li><strong>Protocol</strong>: HTTP/2 with multiplexing</li>
+<li><strong>Serialization</strong>: Protocol Buffers (binary, ~300 bytes overhead)</li>
+<li><strong>Latency</strong>: 5-50ms (10x faster than REST due to binary format)</li>
+<li><strong>Performance</strong>: 1000+ concurrent streams per connection</li>
+<li><strong>Throughput</strong>: 100K+ requests per second per instance</li>
+</ul>
+<p><strong>Advantages</strong>:
+- Bi-directional streaming (client→server, server→client, both directions)
+- Server push capabilities
+- Native deadline/timeout management
+- Load balancing aware (gRPC can balance per request)</p>
+<p><strong>Use Cases</strong>:
+- Inter-service communication in microservices (no public API)
+- Real-time data streaming
+- High-frequency data updates (time-series, metrics)
+- Internal services where schema evolution is controlled</p>
+<p><strong>Example</strong>:
+<div class="language-protobuf highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">service</span><span class="w"> </span><span class="n">OrderService</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">CreateOrder</span><span class="p">(</span><span class="n">OrderRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">OrderResponse</span><span class="p">);</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="c1">// Bi-directional streaming</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">StreamOrders</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Order</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">OrderStatus</span><span class="p">);</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
+</span></code></pre></div></p>
+<h3 id="key-issues-with-synchronous-communication">Key Issues with Synchronous Communication.</h3>
+<ul>
+<li>Service A directly depends on Service B's availability</li>
+<li>Service B's latency becomes Service A's latency</li>
+<li>Schema changes in B require coordinated deployments</li>
+</ul>
+<h4 id="cascading-failure-example"><strong>Cascading Failure Example</strong>.</h4>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Order Service → Payment Service → Bank Service
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>     ↓              ↓                  ↓
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>1s timeout    + 1s timeout        (down)
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>     ↓              ↓
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>Result: 3 second timeout for user request
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>If 100 requests/sec → 100 connection threads blocked for 3 seconds
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>→ Rapid thread pool exhaustion → Denial of Service
+</span></code></pre></div>
+<strong>Availability Math for the Same Call Chain</strong> - For synchronous serial dependencies, end-user success needs all required services to be available at the same time - <code>A_total = A_order * A_payment * A_bank</code>.</p>
+<ul>
+<li><code>A_order = 99.99% = 0.9999</code></li>
+<li><code>A_payment = 99.9% = 0.999</code></li>
+<li><code>A_bank = 99.9% = 0.999</code></li>
+</ul>
+<p><code>A_total = 0.9999 * 0.999 * 0.999 = 0.997901099 = 99.7901%</code></p>
+<p>So failure probability is:</p>
+<p><code>1 - 0.997901099 = 0.002098901 = 0.2099%</code></p>
+<p>Annual downtime (525,600 minutes/year):</p>
+<p><code>Downtime = (1 - A_total) * 525,600 = 0.002098901 * 525,600 ~ 1,103 minutes/year (~18.4 hours/year)</code></p>
+<h4 id="availability-amplification">Availability Amplification.</h4>
+<ul>
+<li><strong>Concept</strong>: If each service has 99.9% uptime, the composite system availability decreases</li>
+<li><strong>Math</strong>: 99.9% × 99.9% × 99.9% = 99.7% (3 hops)</li>
+<li><strong>Impact</strong>: At 99.7%, you have ~26 hours of downtime per year</li>
+<li><strong>Mitigation</strong>: Circuit breakers (fail fast), timeouts, fallbacks</li>
+</ul>
+<h4 id="3-distributed-transaction-problem">3. <strong>Distributed Transaction Problem</strong></h4>
+<ul>
+<li>ACID transactions impossible across network boundaries</li>
+<li>Network partitions prevent atomic all-or-nothing outcomes</li>
+<li>Compensation logic (saga pattern) required for consistency</li>
+</ul>
+<p><strong>Example - Distributed Transaction</strong>:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Service A writes: user balance -= $100  [Success]
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Network fails
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Service B writes: order record += 1     [Fails]
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Result: Inconsistent state - money taken but no order created
+</span></code></pre></div></p>
+<h4 id="4-timeout-configuration">4. <strong>Timeout Configuration</strong></h4>
+<p>Timeouts should be based on latency SLOs, not guesswork.</p>
+<ul>
+<li>Too aggressive (for example 100ms): healthy but slow tail requests fail.</li>
+<li>Too lenient (for example 60s): threads/connections stay blocked, increasing blast radius.</li>
+<li><strong>Practical rule</strong>: start with downstream <code>P95</code> or <code>P99</code> and add safety margin + jitter.</li>
+</ul>
+<p><strong>What <code>P95</code> means (and other <code>P</code> values)</strong>:</p>
+<p><code>P</code> means percentile of latency distribution.
+- <code>P50</code> (median): 50% of requests finish at or below this latency.
+- <code>P90</code>: 90% finish at or below this latency.
+- <code>P95</code>: 95% finish at or below this latency.
+- <code>P99</code>: 99% finish at or below this latency (tail latency).</p>
+<p><strong>Example (10,000 Payment requests in 1 minute)</strong>:
+- <code>P50 = 40ms</code>
+- <code>P90 = 80ms</code>
+- <code>P95 = 120ms</code>
+- <code>P99 = 300ms</code></p>
+<p>Interpretation: 95% of calls complete within 120ms, but the slowest 1% can still take around 300ms.</p>
+<p>So when we set timeout to <code>250ms</code>, we are intentionally allowing normal tail (<code>P95</code>) while still cutting off pathological slow requests before they block resources too long.</p>
+<p><strong>Senior guidance for choosing timeout target</strong>:
+- User-facing synchronous call: usually start near <code>P99</code> (or <code>P95 + safety margin</code>) and tune using error budget.
+- High-QPS internal hop: prefer tighter timeout near <code>P95 + margin</code> to protect capacity.
+- Always combine timeout with retries (bounded), jitter, circuit breaker, and idempotency.</p>
+<p><strong>Example (timeout budget)</strong>:
+- End-to-end API SLO: <code>800ms</code>
+- Call chain: API Gateway -&gt; Order -&gt; Payment -&gt; Bank
+- Budget split: <code>Gateway(80) + Order(120) + Payment(250) + Bank(250) + buffer(100)</code>
+- Set Payment timeout near observed tail (say <code>P95=120ms</code>) with margin, e.g. <code>250ms</code>, not 60s.</p>
+<p>This keeps failures fast and recoverable, and prevents thread pool lockup.</p>
+<h4 id="5-retry-storms">5. <strong>Retry Storms</strong></h4>
+<p>A retry storm happens when many clients retry at the same time after a transient failure, multiplying load on an already unhealthy dependency.</p>
+<ul>
+<li>If 10k requests fail and each client retries 3 times immediately, backend sees up to <code>40k</code> attempts (1 original + 3 retries).</li>
+<li>This can turn a short outage into sustained overload (thundering herd).</li>
+</ul>
+<p><strong>Mitigation pattern</strong>:
+- Exponential backoff + jitter - Exponential backoff with jitter is a retry strategy where clients wait progressively longer between retries (backoff), but add randomness (jitter) to avoid synchronized “retry storms” that can overwhelm a recovering service. It’s widely used in distributed systems, including AWS SDKs, to improve resilience and fairness.<br />
+- Retry only idempotent operations
+- Cap attempts and total retry time
+- Combine with circuit breaker and rate limiting.</p>
+<p><strong>Exponential backoff</strong><br />
+On each retry, wait longer than the previous attempt (commonly 2x) to reduce pressure on an unhealthy dependency.</p>
+<p>Example sequence: <code>1s -&gt; 2s -&gt; 4s -&gt; 8s</code></p>
+<p>Formula:</p>
+<p><code>wait_interval = base * multiplier^n</code></p>
+<p>Where:
+- <code>base</code> = initial delay (for example <code>1s</code>)
+- <code>multiplier</code> = growth factor (commonly <code>2</code>)
+- <code>n</code> = retry attempt number (<code>0, 1, 2, ...</code>)</p>
+<hr />
+<p><strong>Jitter</strong><br />
+Add randomness to retry delay so clients do not retry at the exact same time.</p>
+<p>Example:</p>
+<p><code>retry_delay = 2000ms + random(0-200ms)</code></p>
+<p>Without jitter, many clients retry in lockstep and create a thundering herd.<br />
+With jitter, retries are spread over time, reducing synchronized traffic spikes and improving recovery chances.</p>
+<p><strong>Formula</strong>:</p>
+<p><code>delay = min(max_delay, base_delay * 2^attempt) + random(0, jitter)</code></p>
+<p><strong>Example delays</strong> (<code>base=100ms</code>, <code>max=2s</code>, <code>jitter=0-100ms</code>):
+- Retry 1: ~<code>100-200ms</code>
+- Retry 2: ~<code>200-300ms</code>
+- Retry 3: ~<code>400-500ms</code>
+- Retry 4: ~<code>800-900ms</code>
+- Retry 5: ~<code>1600-1700ms</code></p>
+<p>This spreads retries over time, reduces synchronized spikes, and improves recovery probability.</p>
+<h3 id="when-to-use-synchronous-communication">When to Use Synchronous Communication</h3>
+<p><strong>Query Operations (Read-Only)</strong>
+- Fetching product catalog, user profiles, inventory status
+- No side effects → Safe to retry without concern</p>
+<p><strong>Transactional Workflows (Atomic Operations)</strong>
+- Payment processing: Must validate before committing
+- Inventory reservation: Must check stock before confirming order
+- <strong>Requirement</strong>: Immediate feedback needed for validity
+<strong>Strongly Consistent Operations</strong>
+- Distributed transactions using 2-phase commit (rare, use carefully)
+- When eventual consistency is not acceptable (compliance requirements)</p>
+<h2 id="asynchronous-communication">Asynchronous Communication</h2>
+<p>A sender <strong>publishes a message</strong> to a broker and <strong>continues immediately</strong> without waiting for processing. Processing happens later by one or more consumers.</p>
+<h3 id="architecture-overview">Architecture Overview</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Producer → Message Broker → Consumer
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>         (fire &amp; forget)    (processes when ready)
+</span></code></pre></div>
+<p><strong>Key Properties</strong>:
+- Producer decoupled from Consumer
+- Broker guarantees message delivery (if configured)
+- Consumer processes at own pace
+- Enable backpressure (broker buffers messages)</p>
+<h3 id="message-broker-responsibilities">Message Broker Responsibilities</h3>
+<ol>
+<li><strong>Message Persistence</strong>: Store messages durably (disk, replicated)</li>
+<li><strong>Routing</strong>: Direct messages to correct consumers</li>
+<li><strong>Redelivery</strong>: Retry if consumer fails to acknowledge</li>
+<li><strong>Retention</strong>: Keep messages for configured duration</li>
+<li><strong>Consumer Offset Management</strong>: Track what each consumer has read</li>
+<li><strong>Fault Tolerance</strong>: Replicate data across multiple brokers</li>
+</ol>
+<h3 id="asynchronous-patterns">Asynchronous Patterns</h3>
+<h4 id="pattern-1-point-to-point-queue">Pattern 1: Point-to-Point (Queue)</h4>
+<p>Producer → Queue (Broker) (Message stays until consumed Only ONE consumer processes it Message deleted after acknowledgment)→ Consumer</p>
+<p><strong>Characteristics</strong>:
+- <strong>Delivery Guarantee</strong>: Exactly-once (with idempotent processing)
+- <strong>Consumers</strong>: One message, one handler
+- <strong>Ordering</strong>: Per-queue ordering (if single partition)
+- <strong>Retention</strong>: Until consumed and acknowledged
+- <strong>Examples</strong>: RabbitMQ, ActiveMQ, AWS SQS</p>
+<p><strong>Use Cases</strong>:
+- Task distribution: Job queues (background processing)
+- Work distribution: Order processing across multiple workers
+- Rate limiting: Decouple fast producer from slow consumer</p>
+<p><strong>Failure Handling</strong>:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Message published → Consumer processes → Crashes before ACK
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Broker detects no ACK → Retries with another consumer instance
+</span></code></pre></div></p>
+<h4 id="pattern-2-publish-subscribe-topic">Pattern 2: Publish-Subscribe (Topic)</h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Publisher → Topic (Broker) ─��→ Subscriber1
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>                            ├→ Subscriber2
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>                            └→ Subscriber3
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>Message goes to ALL active subscribers
+</span></code></pre></div>
+<p><strong>Characteristics</strong>:
+- <strong>Delivery Guarantee</strong>: At-least-once per subscriber
+- <strong>Consumers</strong>: Message goes to all subscribers
+- <strong>Ordering</strong>: Per-partition ordering (Kafka)
+- <strong>Retention</strong>: Time-based or size-based
+- <strong>Examples</strong>: Kafka, RabbitMQ (with fanout), AWS SNS</p>
+<p><strong>Use Cases</strong>:
+- Event broadcasting: User signed up → multiple services react
+- Data replication: Update propagated to read replicas
+- Real-time notifications: Push to multiple clients</p>
+<p><strong>Critical Issue - Subscriber Availability</strong>:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Scenario 1: Subscriber offline at publish time
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>→ Message lost (if not persistent topic)
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>Scenario 2: Subscriber offline but topic is persistent
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>→ Subscriber can replay from offset
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>→ Recovery is possible
+</span></code></pre></div></p>
+<h4 id="pattern-3-event-driven-architecture"><strong>Pattern 3: Event-Driven Architecture</strong></h4>
+<p><strong>Difference from Messaging</strong>:
+- <strong>Messaging</strong>: Explicit message format, tight coupling on schema
+- <strong>Events</strong>: Publish intent/state change, not contracts
+- Subscribers react to events based on their own business logic</p>
+<p><strong>Example</strong>:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Event: UserRegisteredEvent {
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  userId: &quot;123&quot;,
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  email: &quot;user@example.com&quot;,
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>  timestamp: &quot;2024-09-13T22:02:37Z&quot;
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>}
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>Subscribers:
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>- Email Service: Send welcome email
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>- Analytics Service: Track registration metrics
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>- Recommendation Service: Initialize user profile
+</span></code></pre></div></p>
+<p><strong>Advantages</strong>:
+- Loose coupling: Event structure changes don't affect all subscribers
+- Scalability: New subscribers can be added without modifying publisher
+- Auditability: Event log provides complete history</p>
+<h3 id="network-partitions-byzantine-failures">Network Partitions &amp; Byzantine Failures</h3>
+<p><strong>Scenario</strong>: Service A can't reach Service B</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Service A      Network Partition      Service B
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>(Active)                              (Active)
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>A can&#39;t call B, so:
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>- Timeout occurs
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>- Circuit breaker opens
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>- Fallback logic executes (stale cache, default value)
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>B processes messages from queue independently
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>Result: Temporarily inconsistent state (A thinks B failed, B is fine)
+</span></code></pre></div>
+<p><strong>Recovery</strong>:
+- When network heals, systems resync
+- Data reconciliation may be needed
+- Audit logs help identify inconsistencies</p>
+<h3 id="cascading-failures">Cascading Failures</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Scenario: Service B slow due to database overload
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>Service A → Service B (100ms, times out at 200ms)
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>Service C → Service A (100ms, times out at 200ms)
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>Service D → Service C (100ms, times out at 200ms)
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>A&#39;s 100 threads waiting for B → Exhausted
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>C&#39;s 100 threads waiting for A → Exhausted
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>D&#39;s 100 threads waiting for C → Exhausted
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>Entire system grinds to halt
+</span></code></pre></div>
+<p><strong>Mitigation</strong>:
+- <strong>Circuit Breaker</strong>: Stop calling failing service, fail fast
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Closed (normal) → Threshold errors exceeded → Open (failing)
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>→ After timeout → Half-Open (test)
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>→ If success → Closed
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>→ If failure → Open
+</span></code></pre></div>
+- <strong>Bulkheads</strong>: Isolate thread pools (don't use shared pool)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Service A
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>├── Thread Pool 1 (for Service B calls) [10 threads max]
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>├── Thread Pool 2 (for Service C calls) [10 threads max]
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>└── Thread Pool 3 (for Service D calls) [10 threads max]
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>If B fails: Only Pool 1 exhausted, Pool 2 &amp; 3 work fine
+</span></code></pre></div>
+- <strong>Timeouts</strong>: Kill long-running requests
+- <strong>Fallbacks</strong>: Graceful degradation
+- <strong>Retry with Exponential Backoff</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Attempt 1: Immediate
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>Attempt 2: 100ms + random(0-50ms)
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>Attempt 3: 200ms + random(0-100ms)
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>Attempt 4: 400ms + random(0-200ms)
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>Attempt 5: 800ms + random(0-400ms) [then give up]
+</span></code></pre></div>
+- <strong>Saga Pattern (Distributed Transactions)</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Order Service → Payment Service → Inventory Service
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>              → if Payment fails → Compensation (refund)
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>              → if Inventory fails → Compensation (cancel payment)
+</span></code></pre></div></p>
+<h2 id="production-considerations">Production Considerations</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Synchronous</th>
+<th>Asynchronous</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Monitoring</strong></td>
+<td>- P99, P95, P50 latencies<br>- Error rate (4xx, 5xx)<br>- Circuit breaker state changes<br>- Timeout occurrences</td>
+<td>- Consumer lag (offset - latest offset)<br> - End-to-end latency (publish to process)<br>- Message loss rate<br>- Queue depth (buildup indicates slow consumers)<br>- Redelivery rate (indicates failure)<br></td>
+</tr>
+<tr>
+<td><strong>Alerting</strong></td>
+<td>- Latency SLO breaches<br>- Error rate spikes<br>- Circuit breaker opens<br>- Timeout spikes</td>
+<td>- Consumer lag &gt; threshold<br>- End-to-end latency &gt; SLO<br>- Message loss detected<br>- Queue depth &gt; threshold<br>- Redelivery rate &gt; threshold</td>
+</tr>
+<tr>
+<td><strong>Scaling</strong></td>
+<td>Horizontal scaling: Add more instances<br>- Caching: Reduce repeated calls<br>- Database optimization: Faster responses → shorter timeout needed<br></td>
+<td>Partition keys: Distribute load evenly<br>- Consumer group scaling: Add instances<br>- Retention tuning: Balance disk space vs. replay capability<br></td>
+</tr>
+<tr>
+<td><strong>Security Considerations</strong></td>
+<td><strong>Authentication/Authorization</strong> - <br>- gRPC: mTLS (mutual TLS) for service-to-service<br>- REST: OAuth2, JWT tokens<br>- Kafka: ACLs, authentication plugins<br></td>
+<td><strong>Data Encryption</strong> - <br>- In-transit: TLS/SSL<br>- At-rest: Disk encryption, broker-side<br>- End-to-end: Application-level encryption<br></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.tabs.sticky", "navigation.expand", "navigation.path", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
