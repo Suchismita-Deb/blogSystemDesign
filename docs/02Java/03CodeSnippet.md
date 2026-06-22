@@ -239,6 +239,17 @@ A stream flows from source to intermediate steps to final terminal result.
 </div>
 
 <div class="quiz-box">
+<b>Array contains duplicate element. Print the distinct element.</b>
+<details class="quiz-toggle">
+<summary>Reveal Answer</summary>
+
+```java
+list.stream().distinct().collect(Collectors.toList());
+```
+</details>
+</div>
+
+<div class="quiz-box">
 
 **Q12. What is Zookeeper in Kafka.**
 
@@ -1408,5 +1419,435 @@ public class FinalVariableExample {
 <details class="quiz-toggle">
 <summary>Reveal Answer</summary>
 <img src="/images/Java/CollectionHierarchy.png" alt="Collection Hierarchy" style="max-width:100%; display:block; margin:auto;" />
+</details>
+</div>
+
+<div class="quiz-box">
+<b>String Interning.</b>
+<details class="quiz-toggle">
+<summary>Reveal Answer</summary>
+String interning is a process of reusing strings to optimize memory usage. Strings are immutable in java in order to
+avoid the duplicate string with same value, Java uses string pool. String pool is a special area in the heap memory.<br>
+
+<b>How string intern works.</b>
+
+A pool of unique string literals is maintained in the JVM. This pool is part of the heap memory often called the String
+Intern Pool or String Constant pool.
+We can manually ensure a string is part of the pool using the `String.intern()` method. String already present in the
+pool then the intern() returns a referenced to the pooled string. Not present then the string is added to the pool and
+the referenced to the pooled string is returned.
+
+```java
+String str = "hello"; // Added to the pool
+String str1 = "hello"; // Refering to the same object as str.
+// str and str1 points to the same object inside the pool.
+String str3 = new String("hello");
+// String object is created inside the heap memory outside the pool.
+// We can move it to the pool.
+str3 = str3.intern(); // Add str3 to the pool or returns reference to the pooled string.
+
+```
+Comparison.
+
+```java
+String s = "hello";
+String str = new String("hello");
+System.out.println(s==str1); // false different reference pool and heap.
+
+str =str.intern(); // Now str is pointing to the pool string.
+System.out.println(str1==str3);
+```
+When the string is interned then == is faster and string not interned then we have to use .equals
+</details>
+</div>
+
+<div class="quiz-box">
+<b>How the `@Autowired`, `@Resource` and `@Inject` differs from each other.</b>
+<details class="quiz-toggle">
+<summary>Reveal Answer</summary>
+Used for dependency injection and they differs in terms of usage, behaviour and source.
+
+| `@Autowired`                                                                                              | `@Resource`                                                                                                                                                                                                                                                            | `@Inject`                                                                  |
+|-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| Spring Specific and it does not works outside. Comes from Spring Framework. Works by **type**(bean type). | Java Standard and works both in spring and Java EE frameworks. Works by **name** first and then by type.                                                                                                                                                               | Java Standard and works with Java framework and Spring. Works by **type**. |
+|Behaviour - Spring attempts to match the bean type for injection. If multiple beans of the same type exists, it requires additional qualifiers(@Qualifier) to resolve ambiguity. Can be used on contructors, fields or setter method. Required Behaviour - By default @Autowired is required. If no matching bean is found it throws an exception. `@Autowired(required = false)` to make it optional. | When the name is specified (`@Resource(name = "beanName")`) then it searched for the bean with that name. No name is specified then it falls back to the field name. When not resolved then it falls back to teh type based injection. It does not supports @Qualifier. | Optional and no bean is found then it does not throw an exception by default. Does not supports @Qualifier but works with the @Named qualifier for ambiguity.|
+</details>
+</div>
+
+<div class="quiz-box">
+
+```java
+public static void main(String[] args) {
+    Integer num = 10;
+    modify(num);
+    System.out.println(num);
+}
+
+public static void modify(Integer num) {
+num = 200;
+}
+```
+<details class="quiz-toggle">
+<summary>Reveal Answer</summary>
+
+The output is 10. Java is pass by value. Primitive are pass by value. Wrapper class will work but not Integer as Integer
+is immutable. Wrapper class with immutable like `AtomicInteger` or custom Wrapper class will work.
+
+We can reassign. The object will be created. We cannot see the memory of the object. The hashcode is the unique for the
+object.
+
+```java
+public static void main(String[] args) {
+    Integer num = 10;
+    modify(num);
+    System.out.println(System.identityHashCode(num)); // 617901222
+    num = 100;
+    System.out.println(System.identityHashCode(num)); // 1159190947
+    System.out.println(num);
+}
+```
+</details>
+</div>
+
+<div class="quiz-box">
+
+```java
+class Employee {
+    Address address;
+    String name;
+    int age;
+}
+
+class Address {
+String streetNAme;
+String place;
+int pinCode;
+}
+
+public static void main(String[] args) {
+    // Sample Data
+    List<Employee> employees = Arrays.asList(
+            new Employee("John", 28, new Address("1st Main", "CityA", 560001)),
+            new Employee("Alice", 32, new Address("2nd Cross", "CityB", 560002)),
+            new Employee("Bob", 45, new Address("3rd Lane", "CityA", 560001)),
+            new Employee("Eve", 25, new Address("4th Street", "CityC", 560003))
+    );
+}
+```
+Write the employee based on the PinCode.<br>
+Group the employee based on the age.
+<details class="quiz-toggle">
+<summary>Reveal Answer</summary>
+
+```java
+// Group employees by pinCode
+Map<Integer, List<Employee>> groupedByPinCode = employees.stream()
+            .collect(Collectors.groupingBy(e -> e.address.pinCode));
+
+    // Print grouped employees
+groupedByPinCode.forEach((pinCode, employeeList) -> {
+        System.out.println("PinCode: " + pinCode);
+        employeeList.forEach(System.out::println);
+        System.out.println();
+});
+```
+The output.
+
+```md
+PinCode: 560001
+Employee{name='John', age=28, address=Address{streetName='1st Main', place='CityA', pinCode=560001}}
+Employee{name='Bob', age=45, address=Address{streetName='3rd Lane', place='CityA', pinCode=560001}}
+
+PinCode: 560002
+Employee{name='Alice', age=32, address=Address{streetName='2nd Cross', place='CityB', pinCode=560002}}
+
+PinCode: 560003
+Employee{name='Eve', age=25, address=Address{streetName='4th Street', place='CityC', pinCode=560003}
+```
+
+<br>
+Group the employee based on age.
+
+```java
+Map<Integer, List<Employee>> groupedByAge = employees.stream()
+            .collect(Collectors.groupingBy(e -> e.age));
+
+    // Print grouped employees
+groupedByAge.forEach((age, employeeList) -> {
+        System.out.println("Age: " + age);
+        employeeList.forEach(System.out::println);
+        System.out.println();
+});
+```
+</details>
+</div>
+
+<div class="quiz-box">
+What is the output?
+
+```java
+public class A1 {
+    public static void addToInt(int x, int amountToAdd) {
+        x = x + amountToAdd;
+    }
+
+    public static void main(String[] args) {
+        var a = 15;
+        var b = 10;
+        A1.addToInt(a,b);
+        System.out.println(a);
+    }
+}
+```
+<details class="quiz-toggle">
+<summary>Reveal Answer</summary>
+The output of the code - 15.<br>
+The method is getting the value and not the reference so the value of the varaiable will not change.
+</details>
+</div>
+
+<div class="quiz-box">
+<b>What are the new features introduced in Java 8.</b>
+<details class="quiz-toggle">
+<summary>Reveal Answer</summary>
+The new features revolutionizes how java applications are written and optimized.
+Lambda Expression.
+
+Enable functional programming with concise code for implementing functional interfaces.
+
+It has 3 parts - Parameters, Arrow tokens, Body.
+
+```java
+List<String> list = Arrays.asList("Java", "Spring");
+list.forEach(name->System.out.println(name));
+```
+
+It works in Functional Interfaces example Runnable, Callable, Comparator.
+
+Java 8 introduces `@FunctionalInterface` to
+enforce it.
+
+```java
+
+@FunctionalInterface
+interface MathOperation {
+    int operate(int a, int b);
+}
+
+// Lambda implementation
+MathOperation addition = (a, b) -> a + b;
+System.out.println(addition.operate(5, 3)); // Output: 8
+```
+
+Before Java 8 there was anonymous inner class to implement functional interface.
+```java
+Runnable runnable = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Running in a thread");
+    }
+};
+new Thread(runnable).start();
+```
+New one.
+```java
+Runnable runnable = () -> System.out.println("Running in a thread");
+new Thread(runnable).start();
+```
+**Difference between lambda and anonymous class.**
+
+Lambda - Short ideal for single method implementations of functional interfaces like Runnable, Callable, Comparator.
+`Runnable r = () -> System.out.println("Lambda Example");`
+It donot create a new class file. It use invoke dynamic bytecode instruction for functional interface implementation.
+Lambda expressions work only with functional interfaces, they can't be used to extend classes or implement multiple methods.
+Lambda in inline comparator.
+```java
+Collections.sort(names, (o1, o2) -> o2.compareTo(o1)); // Reverse alphabetical order
+System.out.println(names); // Output: [Zara, John, Jane, Adam]
+
+Collections.sort(names, Comparator.reverseOrder());
+```
+
+
+Anonymous class - Verbose code. It is used to implement interfaces with multiple methods or extends classes.
+```java
+Runnable r = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Anonymous Class Example");
+    }
+};
+```
+Anonymous class extend class.
+```java
+class Animal {
+    void sound() {
+        System.out.println("Some generic animal sound");
+    }
+}
+
+Animal dog = new Animal() {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+};
+dog.sound(); // Output: Dog barks
+```
+Anonymous class in sorting comparaators.
+```java
+import java.util.*;
+
+List<String> names = Arrays.asList("John", "Jane", "Adam", "Zara");
+
+Collections.sort(names, new Comparator<String>() {
+    @Override
+    public int compare(String o1, String o2) {
+        return o2.compareTo(o1); // Reverse alphabetical order
+    }
+});
+
+System.out.println(names); // Output: [Zara, John, Jane, Adam]
+```
+It creates a separate inner class file at runtime.
+
+### Stream API.
+
+Provides a functional approach to process collections, making operations like filtering, mapping and reduction easier.
+
+```java
+List<Integer> list = Arrays.asList(1, 2, 3, 4, 4, 56, 6, 7, 78, 89);
+list.stream().filter(x->x%2==0).forEach(System.out::println);
+```
+**Default and static method in interfaces.**
+```java
+interface MyInterface {
+    default void show() {
+        System.out.println("Default Method");
+    }
+}
+```
+
+### Optional Class.
+
+Provides a container to handle nullable values and avoid NullPointerException.
+```java
+Optional<String> optional = Optional.ofNullable("Hello");
+optional.ifPresent(System.out::println);
+
+```
+It encourages functional programming like map, filter, ifPresent.
+```java
+// Empty optional.
+Optional<String> empty = Optional.empty();
+// Non Empty Optional.
+Optional<String> name = Optional.of("John");
+// Optional with Nullable value.
+Optional<String> nullableName = Optional.ofNullable(null);
+```
+
+Methods in Optional.
+
+isPresent() and ifPresent()
+```java
+Optional<String> name = Optional.of("John");
+
+// Check if value is present
+if (name.isPresent()) {
+    System.out.println("Name: " + name.get());
+}
+
+// Perform action if value is present
+name.ifPresent(value -> System.out.println("Name: " + value));
+```
+orElse() and orElseGet() and orElseThrow()
+```java
+String value = nullableName.orElse("Default Name");
+System.out.println(value); // Output: Default Name
+
+String lazyValue = nullableName.orElseGet(() -> "Generated Default Name");
+System.out.println(lazyValue);
+
+String value = nullableName.orElseThrow(() -> new IllegalArgumentException("Value is missing!"));
+
+```
+get(), filter(), map() and flatMap().
+```java
+String nameValue = name.get(); // It throws NoSuchElementException.
+
+Optional<String> filtered = name.filter(n -> n.startsWith("J"));
+filtered.ifPresent(System.out::println); // Output: John
+
+Optional<Integer> length = name.map(String::length);
+length.ifPresent(System.out::println); // Output: 4
+
+Optional<Optional<String>> nestedOptional = Optional.of(Optional.of("Nested Value"));
+Optional<String> flattened = nestedOptional.flatMap(value -> value);
+flattened.ifPresent(System.out::println); // Output: Nested Value
+```
+
+Example of using Optional.
+```java
+public String getName(Person person) {
+    if (person != null) {
+        Address address = person.getAddress();
+        if (address != null) {
+            return address.getCity();
+        }
+    }
+    return "Unknown";
+}
+```
+Using Optional.
+```java
+public String getName(Person person) {
+    return Optional.ofNullable(person)
+                   .map(Person::getAddress)
+                   .map(Address::getCity)
+                   .orElse("Unknown");
+}
+```
+
+<b>Date and Time API.</b>
+It is in java.time.Package It replaces the outdated `java.util.Date` and `java.util.Calendar` package.
+
+```java
+LocalDate today = LocalDate.now();
+LocalTime now = LocalTime.now();
+```
+
+<b>Parallel Array Sorting.</b>
+Adds the Arrays.parallelSort() method for faster sorting using multiple thread.
+```java
+int[] array = {3, 2, 1};
+Arrays.parallelSort(array);
+```
+<b>Adding new collector in Stream API.</b>
+Add utilities like `Collectors.toMap`, `Collectors.groupingBy`, and `Collectors.partitioningBy` for aggregations.
+```java
+Map<Boolean, List<Integer>> partitioned = numbers.stream()
+    .collect(Collectors.partitioningBy(n -> n % 2 == 0));
+```
+<b>Concurrency Enhancement.</b>
+
+Introduces CompletableFuture for Asynchronous programming.
+
+```java
+CompletableFuture.runAsync(() -> System.out.println("Running in a separate thread"));
+```
+
+<b>Base 64 encoding and decoding.</b><br>
+
+Provides utility classes for Base 64 encoding and decoding.
+```java
+String encoded = Base64.getEncoder().encodeToString("Java8".getBytes());
+```
+</details>
+</div>
+
+<div class="quiz-box">
+<b>Collection Hierarchy.</b>
+<details class="quiz-toggle">
+<summary>Reveal Answer</summary>
 </details>
 </div>

@@ -80,9 +80,19 @@ Table when the first column contains text and act as heading.
     margin-bottom: 8px;
 }
 
-/* Wrap long code lines in quiz cards */
-.quiz-box pre code {
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-    word-break: break-word;
+/* Wrap long code lines — globally and inside quiz cards */
+pre code,
+.quiz-box pre code,
+.md-typeset pre code,
+.highlight code {
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    overflow-x: unset !important;
+}
+
+pre,
+.md-typeset pre {
+    white-space: pre-wrap !important;
+    overflow-x: unset !important;
 }
