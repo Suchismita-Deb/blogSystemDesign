@@ -3,25 +3,26 @@ site_name: System Design Toolkit
 nav:
   - Home: index.md
   - System Design:
-      - Fundamentals: SystemDesign/Fundamentals.md
-      - Pattern: SystemDesign/Pattern.md
+      - Fundamentals: 01SystemDesign/Fundamentals.md
+      - Pattern: 01SystemDesign/Pattern.md
       - Key Technologies:
-          - Redis: SystemDesign/KeyTechnologies/Redis.md
+          - Redis: 01SystemDesign/KeyTechnologies/Redis.md
           - DynamoDb: DynamoDb.md
           - Cassandra: Cassandra.md
       - Core Concepts:
-          - Network Fundamentals: SystemDesign/CoreConcepts/Network.md
-          - Db Fundamentals: SystemDesign/CoreConcepts/Db.md
-          - Caching: SystemDesign/CoreConcepts/Caching.md
-          - API Design: SystemDesign/CoreConcepts/API.md
+          - Network Fundamentals: 01SystemDesign/CoreConcepts/Network.md
+          - Db Fundamentals: 01SystemDesign/CoreConcepts/Db.md
+          - Caching: 01SystemDesign/CoreConcepts/Caching.md
+          - API Design: 01SystemDesign/CoreConcepts/API.md
       - Advanced Concept:
-          - Vector Db: SystemDesign/AdvancedConcept/Vector.md
-          - Time Series Db: SystemDesign/AdvancedConcept/TimeSeriesDb.md
+          - Vector Db: 01SystemDesign/AdvancedConcept/Vector.md
+          - Time Series Db: 01SystemDesign/AdvancedConcept/TimeSeriesDb.md
 
-  - High-Level Design (HLD): SystemDesign/HighLevelDesign.md
+  - High-Level Design (HLD): 08HLDExample/Fundamentals.md
 
   - Low-Level Design (LLD):
       - Structural Pattern: 07LLDExample/StructuralPattern.md
+      - Creational Pattern: 07LLDExample/CreationalPattern.md
 
   - Java:
       - Code Quiz: 02Java/03CodeSnippet.md
@@ -34,7 +35,7 @@ nav:
       - Observability: Microservices/Observability.md
 
   - Spring Boot:
-      - Fundamentals: SpringBoot/Fundamentals.md
+      - Fundamentals: 04Spring/Interview.md
       - Layered Architecture: SpringBoot/LayeredArchitecture.md
       - Building Microservices: SpringBoot/BuildingMicroservices.md
       - Security: SpringBoot/Security.md
@@ -50,7 +51,11 @@ markdown_extensions:
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - tables
 theme:
   name: material
@@ -75,6 +80,11 @@ theme:
     - navigation.expand
     - navigation.path
     - toc.follow
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - content.code.expand
+    - content.code.mermaid
 #    - toc.integrate
 #    - header.autohide
 extra_css:

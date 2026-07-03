@@ -30,6 +30,21 @@ System.out.println(count); // 3
 </div>
 
 <div class="quiz-box">
+<b>List of employee sort by salary then sort by name.</b>
+<details class="quiz-toggle">
+<summary>Reveal Answer</summary>
+
+```java
+
+employees.stream()
+  .sorted(Comparator.comparing(Employee::getSalary)
+  .thenComparing(Employee::getName))
+        .toList();
+```
+</details>
+</div>
+
+<div class="quiz-box">
 <b>Given a list of list put all the elements in the same list.</b>
 <details class="quiz-toggle">
 <summary>Reveal Answer</summary>
@@ -1849,5 +1864,42 @@ String encoded = Base64.getEncoder().encodeToString("Java8".getBytes());
 <b>Collection Hierarchy.</b>
 <details class="quiz-toggle">
 <summary>Reveal Answer</summary>
+</details>
+</div>
+
+
+<div class="quiz-box">
+<b>Compare 2 json values.</b>
+<details class="quiz-toggle">
+<summary>Reveal Answer</summary>
+The correct way to compare two JSON strings logically in Java is to parse them into structured objects (like Jackson’s JsonNode) and then perform a deep equality check, rather than relying on raw string comparison which fails due to differences in whitespace or key order.
+
+```java
+ObjectMapper mapper = new ObjectMapper();
+JsonNode node1 = mapper.readTree(jsonString1);
+JsonNode node2 = mapper.readTree(jsonString2);
+
+boolean isEqual = node1.equals(node2); // true if logically equal
+```
+In Java, a JsonNode is a fundamental class from the Jackson library that represents a node in a JSON tree. Instead of treating JSON as raw text, Jackson parses it into a hierarchical tree structure where each element (object, array, field, value) is a JsonNode.  
+Tree Model Representation: JSON is parsed into a tree of JsonNode objects, allowing traversal and manipulation.
+
+Immutable Structure: Once created, a JsonNode is read-only. For modifications, you use ObjectNode or ArrayNode (mutable subclasses).
+
+Type Awareness: Each node knows its type — object, array, string, number, boolean, or null.
+
+Convenient Accessors: Methods like get(), path(), fields(), elements() let you navigate deeply nested JSON easily.
+``` java
+ObjectMapper mapper = new ObjectMapper();
+JsonNode root = mapper.readTree(jsonString);
+
+// Access fields
+String name = root.get("name").asText();
+int age = root.get("age").asInt();
+
+// Navigate nested objects
+JsonNode address = root.path("address");
+String city = address.get("city").asText();
+```
 </details>
 </div>

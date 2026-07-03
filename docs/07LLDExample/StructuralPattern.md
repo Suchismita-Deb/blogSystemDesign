@@ -188,9 +188,8 @@ class BasicPizza implements Pizza {
     }
 }
 
-// ==========================================
 // Decorator abstract class
-// ==========================================
+
 abstract class PizzaDecorator implements Pizza {
     protected final Pizza decoratedPizza;
 
@@ -209,9 +208,9 @@ abstract class PizzaDecorator implements Pizza {
     }
 }
 
-// ==========================================
+
 // Concrete decorators (toppings)
-// ==========================================
+
 class CheeseDecorator extends PizzaDecorator {
     public CheeseDecorator(Pizza pizza) {
         super(pizza);
@@ -259,10 +258,7 @@ class TomatoDecorator extends PizzaDecorator {
         return super.getCost() + 15.0;
     }
 }
-
-// ==========================================
-// Main class to test
-// ==========================================
+// Main class to test.
 public class PizzaWithDecorator {
     public static void main(String[] args) {
         Pizza basic = new BasicPizza();
@@ -300,7 +296,11 @@ Basic Pizza + Cheese + Tomato -> ₹135.0
 
 ```
 
-Similar example.
+<div class="quiz-box">
+<b>Similar example.</b>
+<details class="quiz-toggle">
+<summary>Reveal Answer</summary>
+
 
 Create a base coffee with a fixed cost.  
 Dynamically add various ingredients (e.g., Milk, Sugar, Whipped Cream) as decorators that adjust the coffee's description and price.  
@@ -456,3 +456,46 @@ public class Exercise {
 }
 
 ```
+The BasicCoffee is the concrete component as the pattern needs a base to add the variety.
+```java
+Coffee coffee = new BasicCoffee();          // "Basic Coffee", $3.00
+coffee = new Milk(coffee);                  // Wraps BasicCoffee → "Basic Coffee, Milk", $3.50
+coffee = new Sugar(coffee);                 // Wraps Milk → "Basic Coffee, Milk, Sugar", $3.80
+coffee = new WhippedCream(coffee);          // Wraps Sugar → "Basic Coffee, Milk, Sugar, Whipped Cream", $4.50
+
+```
+</details>
+</div>
+All the Pizza will be a basic pizza then make it different.
+
+<div align="center">
+```mermaid
+classDiagram
+    class Pizza {
+        <<interface>>
+        +getName() String
+        +getCost() double
+    }
+
+    class BasicPizza {
+        +getName(): String
+        +getCost(): double
+    }
+
+    class PizzaDecorator {
+        <<abstract>>
+    }
+
+    class CheeseDecorator 
+    class MushroomDecorator 
+    class TomatoDecorator
+
+    Pizza <|.. BasicPizza
+    Pizza <|.. PizzaDecorator
+
+    PizzaDecorator  <|-- CheeseDecorator 
+    PizzaDecorator  <|-- MushroomDecorator  
+    PizzaDecorator  <|-- TomatoDecorator 
+
+```
+</div>
