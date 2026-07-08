@@ -62,3 +62,45 @@ git push origin main
 
 External monitor works - Extend display (There **Settings - Display** there will be 2 screens and moving the cursor to the left or right will point to the monitor or laptop screen) - Making any app visible in monitor then open the app and then **Win+Shift+Right/LeftKey**.  
 Duplicate Screen will open all in the laptop and monitor.
+
+
+
+
+
+distinctElementOptimized
+arr[] = [1, 2, 1, 3, 4, 2, 3]
+[3, 4, 4, 3]
+
+int nums[] and int k.
+Find the distinct nums in k size window in the array.
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+int[] distinctElementOptimized(int nums[], int target) {
+    Map<Integer, Integer> mp = new HashMap<>();
+    
+    int arr[] = new int[n-k+1];
+    for(int i=0;i<k;i++){
+        mp.put(nums[i],mp.getOrDefault(mp.get(nums[i]),0)+1);
+    }
+    int pointer=0;
+    int pos=1;
+    arr[0] = mp.size();
+    for(int i=k;i<n;i++){
+        mp.put(nums[pointer], mp.get(nums[pointer])-1);
+        if(mp.get(nums[pointer])==0) {
+            mp.remove(nums[pointer]);
+        }
+        mp.put(nums[i],mp.getOrDefault(mp.get(nums[i]),0)+1);
+        arr[pos++] = mp.size();
+    }
+    return arr;
+}
+```
+
+What is concurrentHashMap.
+What is the HashMap internal.
+Kafka Partition ordering.
+What is the equals method.
