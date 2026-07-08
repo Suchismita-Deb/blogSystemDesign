@@ -19,7 +19,7 @@
     
     
       
-        <title>ProducerConsumer - System Design Toolkit</title>
+        <title>Interview - System Design Toolkit</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kafka-consumer-configuration" class="md-skip">
+        <a href="#what-is-java-and-why-it-is-platform-independent" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ProducerConsumer
+              Interview
             
           </span>
         </div>
@@ -281,7 +281,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../02Java/03CodeSnippet/" class="md-tabs__link">
+        <a href="../03CodeSnippet/" class="md-tabs__link">
           
   
   
@@ -1198,7 +1198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02Java/03CodeSnippet/" class="md-nav__link">
+      <a href="../03CodeSnippet/" class="md-nav__link">
         
   
   
@@ -1761,8 +1761,509 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-java-and-why-it-is-platform-independent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Java and why it is platform independent?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-java-virtual-machine-jvm-and-how-does-it-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the Java Virtual Machine (JVM) and how does it work?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-the-differences-between-jdk-jre-and-jvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What are the differences between JDK, JRE and JVM?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explain-java-garbage-collection-process-and-how-it-helps-in-memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explain Java garbage collection process and how it helps in memory management.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Inheritance?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-polymorphism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Polymorphism ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-and-equals-methos-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between == and equals() methos in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-static-keyword-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the static keyword in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-constructor-in-java-and-how-it-is-different-from-a-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the constructor in Java and how it is different from a method?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-method-overloading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is method overloading?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-abstract-class-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Abstract class in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-an-abstract-class-and-an-interface-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between an abstract class and an interface in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-final-finally-and-finalize-in-java-next-thing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the Difference between final finally and finalize in Java next thing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-checked-and-unchecked-exceptions-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between checked and unchecked exceptions in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-multithreading-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is multithreading in Java ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-purpose-of-the-super-keyboard-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the purpose of the Super keyboard in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-diffeerence-between-string-stringbuilder-and-stringbuffer-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the diffeerence between String, StringBuilder and StringBuffer in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-hashmap-and-hashtable-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between HashMap and HashTable in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-throw-and-throws-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between throw and throws in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-teh-singleton-design-attern-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is teh Singleton design attern in java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-wait-and-sleep-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between wait and sleep in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-java-collection-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Java collection framework?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-purpose-of-the-volatile-keyboard-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the purpose of the volatile keyboard in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-trade-in-japan-how-it-is-different-from-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the trade in Japan how it is different from process ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-teh-difference-between-notify-and-notifyall-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is teh difference between notify and notifyAll in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-break-and-continue-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between break and continue in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-a-shallow-copy-and-a-deep-copy-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between a shallow copy and a deep copy in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-call-by-value-and-call-by-reference-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between call by value and call by reference in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-a-static-method-and-an-instance-method-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between a static method and an instance method in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-a-static-variable-and-an-instance-variable-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between a static variable and an instance variable in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-a-static-block-and-an-instance-block-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between a static block and an instance block in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-a-static-nested-class-and-an-inner-class-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between a static nested class and an inner class in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-a-final-class-and-an-abstract-class-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between a final class and an abstract class in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-a-final-method-and-an-abstract-method-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between a final method and an abstract method in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-a-final-variable-and-a-static-variable-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between a final variable and a static variable in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-a-final-variable-and-an-instance-variable-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between a final variable and an instance variable in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-equals-and-hashcode-methods-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between equals() and hashCode() methods in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-callable-and-runnable-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between callable and runnable in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-synchronized-and-lock-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between synchronized and lock in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-deadlock-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is deadlock in java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-reflection-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is reflection in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-comparator-and-comparable-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between comparator and comparable in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-eh-forkjoin-framework-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is eh fork/join framework in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-executor-framework-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the executor framework in Java?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-java-annotations-and-how-are-they-used-in-java-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What are Java annotations and how are they used in Java programming?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1787,222 +2288,156 @@
 
 
 
-<p><strong>Kafka Broker</strong> - Server in Kafka storage layer. Stores topics/partitions.<br />
-<strong>Kafka Cluster</strong> - Collection of multiple brokers. Every broker can act as a Bootstrap Server.<br />
-Connect to one broker → connect to whole cluster.</p>
-<p><strong>Security</strong><br />
-- Encryption: SSL/TLS.<br />
-- Authentication: SASL or SSL.<br />
-- Authorization: ACLs.<br />
-- Disabled by default.   </p>
-<p><strong>APIs</strong><br />
-- Consumer API → Subscribe and consume from one/more topics.<br />
-- Streams API → Consume from input topics, process stream, produce to output topics. Easy DSL, low operational overhead.<br />
-- Admin API → Create, delete, inspect, and manage topics, brokers, ACLs, and Kafka objects.</p>
-<p><strong>REST Proxy</strong><br />
-- RESTful HTTP service to interact with Kafka.<br />
-- Uses Admin API internally.<br />
-- Supports - Produce messages, Consume messages, Consumer groups, Cluster metadata inspection.<br />
-- Integrates with Schema Registry.<br />
-- Converts JSON ↔ Avro automatically.<br />
-- Any language can use Kafka via HTTP + JSON.  </p>
-<p><strong>Schema Registry</strong><br />
-- Centralized schema repository for the topic data.<br />
-- Manages and validates schemas.<br />
-- Used for serialization/deserialization.</p>
-<p><strong>Consumer Group</strong><br />
-- Consumer Group = Set of consumers consuming from topics.<br />
-- Configure using group.id.<br />
-- To use the subscribe() and commit the consumer needs to be a part of consumer group.
-- Use assign() instead of subscribe() to manually assign partitions and it does not need to be a part of group. In that case, consumer group coordination/rebalancing is not used.</p>
-<p><strong>Partition Assignment</strong><br />
-- Partitions are divided among consumers in the group.<br />
-- One partition → only one consumer in group can consume it.<br />
-- Example - 
-  - 4 consumers, 1 partition → only 1 active consumer.<br />
-  - 4 consumers, 8 partitions → each gets 2 partitions.<br />
-- One consumer can read - 
-  - Multiple partitions.<br />
-  - Multiple partitions from same topic.</p>
-<p><strong>Rebalancing</strong> - New consumer joins or old leaves → partitions reassigned. Its Rebalance.</p>
-<p><strong>Group Coordinator</strong><br />
-- One broker acts as Group Coordinator.
-- Manages - Group members and Partition assignments.
-- Chosen from leaders of <code>_consumer_offsets</code> that stores committed offsets.</p>
-<p><strong>Heartbeat</strong> - Consumers send heartbeat periodically. No heartbeat → consumer removed. Rebalance triggered.</p>
-<p><strong>Offset Management</strong><br />
-- Initial Offset - 
-  - Controlled using auto.offset.reset - earliest or latest.
-- Offset Commit - 
-  - Consumer reads message → commits offset.
-  - If consumer crashes → next consumer starts from last committed offset.</p>
-<p><strong>Auto Commit</strong><br />
-- Default behavior = Automatic offset commit.
-- Commit happens at regular interval.
-- Config - 
-  - <code>enable.auto.commit=true</code><br />
-  - <code>auto.commit.offset.interval.ms</code>
-- Delivery Semantics - Auto commit gives at-least-once delivery.
-- Duplicate Scenario - 
-  - Messages after last commit are re-read after failure.
-  - Message processed but offset not committed → read again.
-- Data Loss Scenario - 
-  - Auto commit happens before processing completes.
-  - Crash after commit but before processing → data loss.
-- Reduce Duplicates - Reduce auto-commit interval.</p>
-<p><strong>Manual Commit</strong><br />
-Set - <code>enable.auto.commit=false</code>  <br />
-<strong>Synchronous Commit</strong><br />
-- Blocking call until commit response returns.<br />
-- Improve Throughput. 
-  - Increase poll batch size using - <code>fetch.min.bytes</code>.<br />
-  - Broker waits until - enough data available OR <code>fetch.max.wait.ms</code> expires.</p>
-<p><strong>Asynchronous Commit</strong><br />
-- Consumer sends commit request and continues immediately.
-- Faster than sync commit.
-- Issue - <br />
-  - Failed commits are not retried automatically.
-  - Commit ordering issue - Later offsets may already be committed. Retrying old commit can create duplicates.</p>
-<h1 id="kafka-consumer-configuration">Kafka Consumer Configuration</h1>
-<table>
-<thead>
-<tr>
-<th>Config</th>
-<th>Purpose</th>
-<th>Important Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>bootstrap.servers</code></td>
-<td>Initial broker list for connecting to Kafka cluster.</td>
-<td>Consumer discovers full cluster from these brokers.</td>
-</tr>
-<tr>
-<td><code>client.id</code></td>
-<td>Identifies the consumer client instance.</td>
-<td>Used for logging, metrics, request tracing on broker side. Usually unique per consumer instance.</td>
-</tr>
-<tr>
-<td><code>group.id</code></td>
-<td>Consumer group identifier.</td>
-<td>Required for <code>subscribe()</code> and Kafka-managed offset commits. Not required with manual <code>assign()</code>.</td>
-</tr>
-<tr>
-<td><code>session.timeout.ms</code></td>
-<td>Time coordinator waits before marking consumer dead.</td>
-<td>Default ~10 sec. Longer timeout delays failure detection/rebalance. Network issues or long GC pause can trigger rebalance. Consumer normally sends LeaveGroup before shutdown.</td>
-</tr>
-<tr>
-<td><code>heartbeat.interval.ms</code></td>
-<td>Interval for sending heartbeats to coordinator.</td>
-<td>Default 3 sec. Must be lower than <code>session.timeout.ms</code>. Missing heartbeats triggers rebalance.</td>
-</tr>
-<tr>
-<td><code>max.poll.interval.ms</code></td>
-<td>Maximum allowed time between <code>poll()</code> calls.</td>
-<td>Default 300 sec. If exceeded, consumer considered failed and rebalance happens.</td>
-</tr>
-<tr>
-<td><code>max.poll.records</code></td>
-<td>Max records returned in each <code>poll()</code>.</td>
-<td>Tune batch size to avoid processing delays and <code>max.poll.interval.ms</code> timeout.</td>
-</tr>
-<tr>
-<td><code>enable.auto.commit</code></td>
-<td>Enables automatic offset commits.</td>
-<td>Default <code>true</code>. Consumer commits offsets periodically.</td>
-</tr>
-<tr>
-<td><code>auto.commit.interval.ms</code></td>
-<td>Interval for auto offset commit.</td>
-<td>Default 5 sec. Smaller interval reduces duplicate window but increases commit overhead.</td>
-</tr>
-<tr>
-<td><code>auto.offset.reset</code></td>
-<td>Defines behavior when no committed offset exists or offset is invalid/out of range.</td>
-<td>Options- <code>latest</code> (default), <code>earliest</code>, or reset based on configured <code>duration/timestamp</code>.</td>
-</tr>
-<tr>
-<td><strong>Kafka Partition Assignment Configuration</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>partition.assignment.strategy</code></td>
-<td>Defines how partitions are distributed among consumers in a group.</td>
-<td>All consumers in the same group must use the same strategy. Accepts comma-separated fully qualified assignor class names implementing <code>PartitionAssignor</code>.</td>
-</tr>
-<tr>
-<td><code>group.protocol=classic</code></td>
-<td>Enables classic consumer group protocol.</td>
-<td><code>partition.assignment.strategy</code> works only with <code>classic</code> protocol (default).</td>
-</tr>
-<tr>
-<td><code>group.protocol=consumer</code></td>
-<td>New consumer group protocol.</td>
-<td><code>partition.assignment.strategy</code> not supported.</td>
-</tr>
-<tr>
-<td>Assignment Strategies</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>RangeAssignor</code> (Default)</td>
-<td>Assigns partition of each topic across the consumers in the consumer group.</td>
-<td>Simple and efficient. Good when partitions &gt; consumers.</td>
-</tr>
-<tr>
-<td><code>RoundRobinAssignor</code></td>
-<td>Assigns partitions one-by-one across all consumers.</td>
-<td>Better balanced partition distribution.</td>
-</tr>
-<tr>
-<td><code>StickyAssignor</code></td>
-<td>Tries to keep existing assignments during rebalance.</td>
-<td>Minimizes partition movement and duplicate processing.</td>
-</tr>
-<tr>
-<td><code>CooperativeStickyAssignor</code></td>
-<td>Incremental rebalance version of StickyAssignor.</td>
-<td>Less disruptive and lower rebalance impact.</td>
-</tr>
-<tr>
-<td><code>ConstrainedCooperativeStickyAssignor</code></td>
-<td>Advanced sticky assignor enables more incremental rebalancing, which can reduce the latency and resources required during the rebalance process.</td>
-<td>Reduces rebalance impact, not the frequency of rebalances. For consumer groups where all members subscribe to the same set of topics, it provides the same benefits and is optimized for this common scenario.</td>
-</tr>
-</tbody>
-</table>
-<p><code>kafka-consumer-groups</code> command line to view and manage consumers group.</p>
-<p><strong>List consumer groups</strong> - <code>bin/kafka-consumer-groups --bootstrap-server host:9092 --list</code>    </p>
-<p><strong>Describe groups</strong> - <code>bin/kafka-consumer-groups --bootstrap-server host:9092 --describe --group test-1234</code>  </p>
-<p><strong>Reset offsets</strong> - reset offsets by shifting forward or backward with shift-by or reset them to the beginning with <code>--to-earliest</code>. <br />
-To reset the offsets back by 20 positions <code>bin/kafka-consumer-groups.sh --bootstrap-server host:9092 --group test-1234 --reset-offsets --shift-by -20 --topic test-metrics -execute --group test-1234</code></p>
-<p>All messages in a topic are on the same broker - ❎ A topic is split into partitions, and those partitions are distributed across multiple brokers</p>
-<p>All messages in a partition are on the same broker - ✅ All messages in a partition are on the same broker. Replicas of the partition exist on other brokers, but the leader holds the active copy where producers write and consumers read.</p>
-<p>All messages with the same key will be on the same broker. ✅ Messages with the same key are guaranteed to be in the same partition, and since a partition is hosted on a single broker, they will be on the same broker. </p>
-<p>The more partitions a topic has, the better. ❎ It creates overhead.</p>
-<p>Suppose there is a message in our Kafka cluster about my breakfast purchase of $12.73. Consumer c0 has consumed it to process the charge. Could consumer c7 consume this same message this afternoon? - Yes</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Kafka Cluster (Fault Tolerant)
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── Zookeeper Cluster (Cluster Coordination)
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│   ├── Leader (writes)
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│   ├── Follower (reads)
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   └── Follower (reads)
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>├── Broker 1 [Leader] ─── Broker 2 [Replica] ─── Broker 3 [Replica]
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│   ├── Topic-A-P0 (Leader)
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   │   ├── Offset 0: Message1
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   │   ├── Offset 1: Message2
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│   │   └── Offset 2: Message3
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│   │
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│   ├── Topic-A-P1 (Leader)
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│   │   └── Offset 0: Message4
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│   │
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│   └── Topic-B-P0 (Leader)
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│       └── Offset 0: Message5
-</span></code></pre></div>
+  <h1>Interview</h1>
+
+<h3 id="what-is-java-and-why-it-is-platform-independent">What is Java and why it is platform independent?</h3>
+<p>It is a high-level, object-oriented programming language developed by Sun Microsystems (now owned by Oracle Corporation). Java is designed to be platform-independent, meaning that code written in Java can run on any device or operating system that has a Java Virtual Machine (JVM) installed. This is achieved through the use of bytecode, which is an intermediate representation of the code that can be executed by the JVM, allowing developers to write code once and run it anywhere.</p>
+<h3 id="what-is-the-java-virtual-machine-jvm-and-how-does-it-work">What is the Java Virtual Machine (JVM) and how does it work?</h3>
+<p>The JVM is an abstract computing machine that enables a computer to run Java programs. It works by converting Java bytecode into machine code that can be executed by the host operating system. The JVM provides a runtime environment that includes memory management, garbage collection, and security features, allowing Java applications to run consistently across different platforms.</p>
+<h3 id="what-are-the-differences-between-jdk-jre-and-jvm">What are the differences between JDK, JRE and JVM?</h3>
+<p>JDK - Toolkit for java development.
+JRE - Environment to run Java program.
+JVM - Engine that executes the Java bytecode.</p>
+<ul>
+<li><strong>JDK (Java Development Kit)</strong>: It is a software development kit that provides tools for developing Java applications, including the JRE, compilers, and other development tools. It is used by developers to write, compile, and debug Java programs.</li>
+</ul>
+<h3 id="explain-java-garbage-collection-process-and-how-it-helps-in-memory-management">Explain Java garbage collection process and how it helps in memory management.</h3>
+<p>Java garbage collection is an automatic memory management process that helps in reclaiming memory occupied by objects that are no longer in use. The garbage collector (GC) identifies and removes these unreferenced objects from the heap memory, freeing up space for new object allocations. This process helps prevent memory leaks and ensures efficient memory utilization.</p>
+<h3 id="what-is-inheritance">What is Inheritance?</h3>
+<p>Inheritance allows one class to inherit fields and methods from another class and promote code reuse.</p>
+<h3 id="what-is-polymorphism">What is Polymorphism ?</h3>
+<p>Polymorphism allows methods to perform different tasks based on the object that act upon, implemented through method overloading and overriding.</p>
+<h3 id="what-is-the-difference-between-and-equals-methos-in-java">What is the difference between == and equals() methos in Java?</h3>
+<p>== verifies the references points to the same object in memory and equals() verifies the content of the object.</p>
+<h3 id="what-is-the-static-keyword-in-java">What is the static keyword in Java?</h3>
+<p>The static keyword indicates that a member belongs to the class rather than an instance of the class. Static methods and variables can be accessed without creating an object of the class.</p>
+<h3 id="what-is-the-constructor-in-java-and-how-it-is-different-from-a-method">What is the constructor in Java and how it is different from a method?</h3>
+<p>A constructor initializes a new object and has no return type.
+Constructors are called automatically when an object is created.</p>
+<h3 id="what-is-method-overloading">What is method overloading?</h3>
+<p>Method of loading allows multiple methods in a class to have the same name but with different parameter lists.
+It is compile time polymorphism offering flexibility when defining methods.</p>
+<h3 id="what-is-abstract-class-in-java">What is Abstract class in Java?</h3>
+<p>An abstract class cannot be instantiated and it's meant to be subclassed. It may contain both abstract method or a concrete method. Abstract classes are used to define a base for other classes.</p>
+<h3 id="what-is-the-difference-between-an-abstract-class-and-an-interface-in-java">What is the difference between an abstract class and an interface in Java?</h3>
+<p>An interface is a reference type that can contain abstract methods constant default methods and static methods.<br />
+Unlike an abstract class the class can have multiple interfaces. Abstract classes can have constructors and instance fields whereas interface cannot.</p>
+<h3 id="what-is-the-difference-between-final-finally-and-finalize-in-java-next-thing">What is the Difference between final finally and finalize in Java next thing</h3>
+<p>Final is a keyboard used to declare constant prevent method of writing or prohibit class inheritance<br />
+Finally the block that ensures execution after a try catch whether or not an exception occurs<br />
+Finalize is a method called by the garbage collector before reclaiming an object's memory </p>
+<h3 id="what-is-the-difference-between-checked-and-unchecked-exceptions-in-java">What is the difference between checked and unchecked exceptions in Java?</h3>
+<p>Checked exceptions must be declared in the method signature or handled using a try catch block like IO exception.
+Unchecked exceptions like NullPointerException do not need to be declated or explicitly caught.</p>
+<h3 id="what-is-multithreading-in-java">What is multithreading in Java ?</h3>
+<p>Multithreading allows multiple throws to execute simultaneously maximizing the Super utilizations and it can be implemented by extending the thread class or implementing through another interface.</p>
+<h3 id="what-is-the-purpose-of-the-super-keyboard-in-java">What is the purpose of the Super keyboard in Java?</h3>
+<p>The Super keyword refers to the immediate parent class it is used to access the parent class method constructor of variable that are hidden by the chat class.</p>
+<h3 id="what-is-the-diffeerence-between-string-stringbuilder-and-stringbuffer-in-java">What is the diffeerence between String, StringBuilder and StringBuffer in Java?</h3>
+<ul>
+<li>String is immutable, meaning once created, its value cannot be changed.</li>
+<li>StringBuilder is mutable and not synchronized, making it faster for single-threaded operations.</li>
+<li>StringBuffer is mutable and synchronized, making it thread-safe but slower than StringBuilder.</li>
+</ul>
+<h3 id="what-is-the-difference-between-hashmap-and-hashtable-in-java">What is the difference between HashMap and HashTable in Java?</h3>
+<p>Hashmap is not synchronised meaning its faster but not threads safe and hash table is synchronised making it thread safe but slower additionally hashmap allows null key and values while hash table does not.</p>
+<h3 id="what-is-the-difference-between-throw-and-throws-in-java">What is the difference between throw and throws in Java?</h3>
+<ul>
+<li><code>throw</code> is used to explicitly throw an exception in a method or block of code.</li>
+<li><code>throws</code> is used in a method signature to declare the exceptions that a method can throw</li>
+</ul>
+<h3 id="what-is-teh-singleton-design-attern-in-java">What is teh Singleton design attern in java?</h3>
+<p>The single independent ensures that a class has only one instance and provides a global point of access to it. This is typically implemented with the private constructor and a static instance variable.</p>
+<h3 id="what-is-the-difference-between-wait-and-sleep-in-java">What is the difference between wait and sleep in Java?</h3>
+<p>Wait is used in multithreading to pause the current thread until it's notified and it releases the monitor lock.<br />
+Sleep pauses the current thread for a specified time but does not release any locks.</p>
+<h3 id="what-is-java-collection-framework">What is Java collection framework?</h3>
+<p>Java collection framework is a set of interfaces and class for storing and processing group of objects common examples like set them up list and the implementation and get a list and  hashmap.</p>
+<h3 id="what-is-the-purpose-of-the-volatile-keyboard-in-java">What is the purpose of the volatile keyboard in Java?</h3>
+<p>The virtual keyboard ensures that a variable's value is always read from the main memory not from the thread's local cache. It helps maintain a consistency in multithreaded environment.</p>
+<h3 id="what-is-the-trade-in-japan-how-it-is-different-from-process">What is the trade in Japan how it is different from process ?</h3>
+<p>A thread is a lightweight sub process the smallest unit of CPU scheduling. Multiple threads within the same process shared memory while processes are independent and do not share memory.</p>
+<h3 id="what-is-teh-difference-between-notify-and-notifyall-in-java">What is teh difference between notify and notifyAll in Java?</h3>
+<p>Notify wakes up a single thread that is waiting on the object's monitor, while notifyAll wakes up
+    all threads that are waiting on the object's monitor. Notify is used when only one thread needs to be awakened, while notifyAll is used when multiple threads may need to proceed.</p>
+<h3 id="what-is-the-difference-between-break-and-continue-in-java">What is the difference between break and continue in Java?</h3>
+<ul>
+<li><code>break</code> is used to exit a loop or switch statement prematurely, terminating the current iteration and moving control to the next statement after the loop or switch.  </li>
+<li><code>continue</code> is used to skip the current iteration of a loop and proceed to the next iteration, allowing the loop to continue </li>
+</ul>
+<h3 id="what-is-the-difference-between-a-shallow-copy-and-a-deep-copy-in-java">What is the difference between a shallow copy and a deep copy in Java?</h3>
+<ul>
+<li>A shallow copy creates a new object but copies references to the original object's fields, meaning changes to mutable fields in the original object will affect the shallow copy.  </li>
+<li>A deep copy creates a new object and recursively copies all fields, ensuring that the new object is completely independent of the original, including any mutable objects it contains.      </li>
+</ul>
+<h3 id="what-is-the-difference-between-call-by-value-and-call-by-reference-in-java">What is the difference between call by value and call by reference in Java?</h3>
+<ul>
+<li>Java uses call by value for primitive data types, meaning that a copy of the value is passed to methods, and changes to the parameter do not affect the original variable.  </li>
+<li>For objects, Java uses call by reference for object references, meaning that a copy of the reference is passed, allowing methods to modify the object's state, but the reference itself cannot be changed to point to a different object.</li>
+</ul>
+<h3 id="what-is-the-difference-between-a-static-method-and-an-instance-method-in-java">What is the difference between a static method and an instance method in Java?</h3>
+<ul>
+<li>A static method belongs to the class and can be called without creating an instance of the class</li>
+<li>An instance method belongs to an object and can only be called on an instance of the class, allowing it to access instance variables and methods.   </li>
+</ul>
+<h3 id="what-is-the-difference-between-a-static-variable-and-an-instance-variable-in-java">What is the difference between a static variable and an instance variable in Java?</h3>
+<ul>
+<li>A static variable is shared among all instances of a class and belongs to the class itself, while an instance variable is unique to each instance of the class and belongs to the object. </li>
+</ul>
+<h3 id="what-is-the-difference-between-a-static-block-and-an-instance-block-in-java">What is the difference between a static block and an instance block in Java?</h3>
+<ul>
+<li>A static block is executed when the class is loaded and is used for static initialization, while<br />
+an instance block is executed when an instance of the class is created and is used for instance initialization.</li>
+</ul>
+<h3 id="what-is-the-difference-between-a-static-nested-class-and-an-inner-class-in-java">What is the difference between a static nested class and an inner class in Java?</h3>
+<ul>
+<li>A static nested class is a static member of the outer class and can be instantiated without an instance of the outer class, while an inner class is associated with an instance of the outer class and can access its members directly.   </li>
+</ul>
+<h3 id="what-is-the-difference-between-a-final-class-and-an-abstract-class-in-java">What is the difference between a final class and an abstract class in Java?</h3>
+<ul>
+<li>A final class cannot be subclassed, meaning no other class can extend it, while an    abstract class is intended to be subclassed and can contain abstract methods that must be implemented by its subclasses.</li>
+</ul>
+<h3 id="what-is-the-difference-between-a-final-method-and-an-abstract-method-in-java">What is the difference between a final method and an abstract method in Java?</h3>
+<ul>
+<li>A final method cannot be overridden by subclasses, ensuring that its implementation remains unchanged, while an       abstract method is declared without an implementation and must be implemented by subclasses, allowing for polymorphic behavior. </li>
+</ul>
+<h3 id="what-is-the-difference-between-a-final-variable-and-a-static-variable-in-java">What is the difference between a final variable and a static variable in Java?</h3>
+<ul>
+<li>A final variable is a constant whose value cannot be changed once assigned, while a static variable       is shared among all instances of a class and can be modified, but it belongs to the class rather than any specific instance.</li>
+</ul>
+<h3 id="what-is-the-difference-between-a-final-variable-and-an-instance-variable-in-java">What is the difference between a final variable and an instance variable in Java?</h3>
+<ul>
+<li>A final variable is a constant whose value cannot be changed once assigned, while an instance variable    is unique to each instance of a class and can be modified, allowing each object to maintain its own state.  </li>
+</ul>
+<h3 id="what-is-the-difference-between-equals-and-hashcode-methods-in-java">What is the difference between equals() and hashCode() methods in Java?</h3>
+<ul>
+<li>The <code>equals()</code> method is used to compare the contents of two objects for equality, while the <code>hashCode()</code> method returns an integer representation of the object's memory address or a computed hash value    </li>
+</ul>
+<h3 id="what-is-the-difference-between-callable-and-runnable-in-java">What is the difference between callable and runnable in Java?</h3>
+<ul>
+<li>A <code>Runnable</code> is an interface that represents a task that can be executed by a thread, but it does not return a result or throw checked exceptions.  </li>
+<li>A <code>Callable</code> is a similar interface that represents a task that can be executed by a thread, but it can return a result and throw checked exceptions, making it more flexible for concurrent programming.</li>
+</ul>
+<h3 id="what-is-the-difference-between-synchronized-and-lock-in-java">What is the difference between synchronized and lock in Java?</h3>
+<p>The synchronized keyword provides a special mechanism to control access to critical sections. Lock is more flexible and powerful mechanism from the Java.util.concurrent package offering additional features like time locks and interruptible locks.</p>
+<h3 id="what-is-deadlock-in-java">What is deadlock in java?</h3>
+<p>Adidas cockles went two or more threads are waiting for each other's resources causing them to remain in a waiting state for a wrapper it is a commonly threatening issue that should be avoided.</p>
+<h3 id="what-is-reflection-in-java">What is reflection in Java?</h3>
+<p>Reflection is a feature that allows a program to inspect and modify its own structure and behaviour at runtime. It is often used for dynamic method invocation and inspecting classes methods and fields.</p>
+<h3 id="what-is-the-difference-between-comparator-and-comparable-in-java">What is the difference between comparator and comparable in Java?</h3>
+<ul>
+<li>The <code>Comparable</code> interface is used to define the natural ordering of objects by implementing the <code>compareTo()</code> method, allowing objects to be sorted based on their inherent properties.  </li>
+<li>The <code>Comparator</code> interface is used to define custom ordering of objects by implementing the <code>compare()</code> method,<ul>
+<li>allowing for multiple sorting criteria and flexibility in sorting objects that do not have a natural order.</li>
+</ul>
+</li>
+</ul>
+<h3 id="what-is-eh-forkjoin-framework-in-java">What is eh fork/join framework in Java?</h3>
+<p>The Fork/Join framework is a parallel programming framework introduced in Java 7 that allows for efficient.</p>
+<h3 id="what-is-the-executor-framework-in-java">What is the executor framework in Java?</h3>
+<p>The Executor framework is a high-level API introduced in Java 5 that provides a way to manage and control thread execution, allowing developers to submit tasks for execution without having to manage thread creation and lifecycle.</p>
+<h3 id="what-are-java-annotations-and-how-are-they-used-in-java-programming">What are Java annotations and how are they used in Java programming?</h3>
+<p>Java annotations are metadata that provide additional information about the code to the compiler or runtime environment. They are used to influence the behavior of the code, provide documentation, and enable frameworks to process the annotated elements. Annotations can be applied to classes, methods, fields, parameters, and other program elements.</p>
 
 
 

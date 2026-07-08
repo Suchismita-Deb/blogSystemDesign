@@ -19,7 +19,7 @@
     
     
       
-        <title>Db - System Design Toolkit</title>
+        <title>CreationalDesignPattern - System Design Toolkit</title>
       
     
     
@@ -71,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#builder-design-pattern" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -103,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Db
+              CreationalDesignPattern
             
           </span>
         </div>
@@ -217,7 +222,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../Fundamentals/" class="md-tabs__link">
+        <a href="../../01SystemDesign/Fundamentals/" class="md-tabs__link">
           
   
   
@@ -256,7 +261,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../07LLDExample/StructuralPattern/" class="md-tabs__link">
+        <a href="../StructuralPattern/" class="md-tabs__link">
           
   
   
@@ -494,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Fundamentals/" class="md-nav__link">
+      <a href="../../01SystemDesign/Fundamentals/" class="md-nav__link">
         
   
   
@@ -522,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Pattern/" class="md-nav__link">
+      <a href="../../01SystemDesign/Pattern/" class="md-nav__link">
         
   
   
@@ -604,7 +609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../KeyTechnologies/Redis/" class="md-nav__link">
+      <a href="../../01SystemDesign/KeyTechnologies/Redis/" class="md-nav__link">
         
   
   
@@ -750,7 +755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CoreConcepts/Network.md" class="md-nav__link">
+      <a href="../../01SystemDesign/CoreConcepts/Network.md" class="md-nav__link">
         
   
   
@@ -778,7 +783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CoreConcepts/Db.md" class="md-nav__link">
+      <a href="../../01SystemDesign/CoreConcepts/Db.md" class="md-nav__link">
         
   
   
@@ -806,7 +811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CoreConcepts/Caching.md" class="md-nav__link">
+      <a href="../../01SystemDesign/CoreConcepts/Caching.md" class="md-nav__link">
         
   
   
@@ -834,7 +839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CoreConcepts/API.md" class="md-nav__link">
+      <a href="../../01SystemDesign/CoreConcepts/API.md" class="md-nav__link">
         
   
   
@@ -924,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AdvancedConcept/Vector.md" class="md-nav__link">
+      <a href="../../01SystemDesign/AdvancedConcept/Vector.md" class="md-nav__link">
         
   
   
@@ -952,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AdvancedConcept/TimeSeriesDb.md" class="md-nav__link">
+      <a href="../../01SystemDesign/AdvancedConcept/TimeSeriesDb.md" class="md-nav__link">
         
   
   
@@ -1076,7 +1081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../07LLDExample/StructuralPattern/" class="md-nav__link">
+      <a href="../StructuralPattern/" class="md-nav__link">
         
   
   
@@ -1104,7 +1109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../07LLDExample/CreationalPattern.md" class="md-nav__link">
+      <a href="../CreationalPattern.md" class="md-nav__link">
         
   
   
@@ -1757,6 +1762,25 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#builder-design-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Builder Design Pattern.
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1780,11 +1804,54 @@
 
 
 
-  <h1>Db</h1>
+  <h1>CreationalDesignPattern</h1>
 
-<p>Data Modeling.</p>
-<p>Database Indexing. </p>
-<p>Sharding.</p>
+<h3 id="builder-design-pattern">Builder Design Pattern.</h3>
+<p>When there is an object with many parameters (optional) then the constructor becomes difficult to maintain. </p>
+<p>Long constructor parameter list.<br />
+Not able to understand which parameter is optional and which is mandatory.<br />
+No flexibility when it comes to set limited values.
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">House</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">structure</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">roof</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rooms</span><span class="p">;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">hasSwimmingPool</span><span class="p">;</span><span class="w"> </span><span class="c1">// optional</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">hasParkingLot</span><span class="p">;</span><span class="w"> </span><span class="c1">// optional</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="c1">// Constructor overloading is not possible.</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">House</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">roof</span><span class="p">);</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">House</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">structure</span><span class="p">);</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="c1">// The constructor with the same parameter type House(String roof) and House(String structure) not possible they should have different parameter type.</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">House</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">structure</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">roof</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rooms</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">hasSwimmingPool</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">hasParkingLot</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">structure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">structure</span><span class="p">;</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">roof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roof</span><span class="p">;</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">rooms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rooms</span><span class="p">;</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">hasSwimmingPool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">hasParkingLot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hasParkingLot</span><span class="p">;</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="c1">// Setting the optional parameter with the constructor is not convenient.</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="p">}</span>
+</span></code></pre></div></p>
+<p>Solution - It separates the construction of an object from its representation - an interface for creating an object.
+In order to construct and object we will use a separate class - nested class.</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">House</span><span class="w"> </span><span class="n">house</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">House</span><span class="p">.</span><span class="na">HouseBuilder</span><span class="p">()</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">                </span><span class="p">.</span><span class="na">setStructure</span><span class="p">(</span><span class="s">&quot;Concrete&quot;</span><span class="p">)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">                </span><span class="p">.</span><span class="na">setRoof</span><span class="p">(</span><span class="s">&quot;Tile&quot;</span><span class="p">)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">                </span><span class="p">.</span><span class="na">setRooms</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">                </span><span class="p">.</span><span class="na">setHasSwimmingPool</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">                </span><span class="p">.</span><span class="na">setHasParkingLot</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1">// It is the set method. Optional parameter can be set and it can be chain in any order. Put the value needed and make the other values default. The build method will return the object.</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1">// The HouseBuilder class will live inside the House class.</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1">// The setStructure and the set methods return a HouseBuilder object. So we can chain the methods. The build method will return the House object.</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="c1">// Build method will return House.</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="c1">// Constructor for House - No call to the constructor we will create a private constructor which the builder will use to return.</span>
+</span></code></pre></div>
 
 
 
