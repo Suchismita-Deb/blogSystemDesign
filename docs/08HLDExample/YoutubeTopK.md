@@ -131,7 +131,7 @@ Simple and elegant put a distributed cache by the top-k service like Redis or Me
 
 The cache entry with the key like `top-k: {windwow}:{truncated_timestamp}` and the value will be the list of top k videos for that time window. The cache will be updated every 1 minute with the new top k videos for that time window.
 
-<img src="/images/HLDExample/CacheTopK.png">
+![CacheTopK.png](..%2Fimages%2FHLDExample%2FCacheTopK.png)
 
 Issue - When the cache expires then there will be huge request and it will break the SLA as the time should be no longer than 10s ms.  
 
