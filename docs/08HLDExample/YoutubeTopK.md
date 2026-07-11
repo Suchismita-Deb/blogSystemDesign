@@ -86,6 +86,7 @@ The cost in this system is that in every write we need to update the view index 
 
 <br>
 
+
 ### Client should be able to query tumbling windows of 1 hour, day, month. 
  
 We need to extend the system to support time window queries. We need to change the table schema to include a timestamp column. We need to set this column to be the timestamp of the hour of the view event, There will be one row for each video that has been viewed at least once in an hour  
