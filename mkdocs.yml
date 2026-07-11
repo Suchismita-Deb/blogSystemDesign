@@ -18,7 +18,7 @@ nav:
           - Vector Db: 01SystemDesign/AdvancedConcept/Vector.md
           - Time Series Db: 01SystemDesign/AdvancedConcept/TimeSeriesDb.md
 
-  - High-Level Design (HLD): 08HLDExample/Fundamentals.md
+  - High-Level Design (HLD): 08HLDExample/YoutubeTopK.md
 
   - Low-Level Design (LLD):
       - Structural Pattern: 07LLDExample/StructuralPattern.md

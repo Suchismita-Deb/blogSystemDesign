@@ -1,6 +1,8 @@
 # Java Quiz - Stream and Kafka
 
 ### Streams
+
+[//]: # (Find sum of even numbers from array.)
 <div class="quiz-box">
 <b>Stream problems - Find sum of even numbers from array.</b>
 <details class="quiz-toggle">
@@ -16,6 +18,7 @@ System.out.println(sum);
 
 </div>
 
+[//]: # (Count the occurrence "apple" in the list.)
 <div class="quiz-box">
 <b>Count the occurrence "apple" in the list.</b>
 <details class="quiz-toggle">
@@ -29,6 +32,7 @@ System.out.println(count); // 3
 </details>
 </div>
 
+[//]: # (List of employee sort by salary then sort by name.)
 <div class="quiz-box">
 <b>List of employee sort by salary then sort by name.</b>
 <details class="quiz-toggle">
@@ -44,6 +48,7 @@ employees.stream()
 </details>
 </div>
 
+[//]: # (Given a list of list put all the elements in the same list.)
 <div class="quiz-box">
 <b>Given a list of list put all the elements in the same list.</b>
 <details class="quiz-toggle">
@@ -63,6 +68,7 @@ System.out.println(allSkills);
 ```
 </div>
 
+[//]: # (Find the skills starting with character 's'.)
 <div class="quiz-box">
 <b>Find the skills starting with character 's'.</b>
 <details class="quiz-toggle">
@@ -76,6 +82,7 @@ System.out.println(skillsStartsWithS);
 </details>
 </div>
 
+[//]: # (Age of an employee above 30.)
 <div class="quiz-box">
 <b>Age of an employee above 30.</b>
 <details class="quiz-toggle">
@@ -98,6 +105,7 @@ Apply `filter(x -> x > threshold)` to keep only higher ages.
 
 </div>
 
+[//]: # (Count to get the frequency of the string in the list.)
 <div class="quiz-box">
 <b>Count to get the frequency of the string in the list.</b>
 <details class="quiz-toggle">
@@ -120,6 +128,7 @@ Frequency counting groups equal values and counts each group.
 
 </div>
 
+[//]: # (Reverse a list using stream.)
 <div class="quiz-box">
 <b>Reverse a list using stream.</b>
 <details class="quiz-toggle">
@@ -148,10 +157,9 @@ System.out.println(reversed); // [5, 4, 3, 2, 1]
 </details>
 </div>
 
+[//]: # (Find employee with highest salary using Java 8.)
 <div class="quiz-box">
-
 <b>Find employee with highest salary using Java 8.</b>
-
 <details class="quiz-toggle">
 <summary>Reveal Answer</summary>
 
@@ -186,20 +194,17 @@ Opional<Employee> empWithHigestSalary = empList.stream()
                 .findFirst();
 // Sort salaries in descending order and take the first employee.
 ```
-
 </div>
 
+[//]: # (Find employee with second highest salary.)
 <div class="quiz-box">
-
-**Q9. Find employee with second highest salary.**
-
+<b>Find employee with second highest salary.</b>
 <details class="quiz-toggle">
 <summary>Reveal Answer</summary>
 
 ```java
 Opional<Employee> empWithHigestSalary = empList.stream().sorted(Comparator.comparingDouble(Employee::getSalary).reversed()).skip(1).findFirst();
 ```
-
 </details>
 
 <details class="quiz-toggle">
@@ -211,48 +216,35 @@ After sorting descending, skip one record and read the next.
 
 </div>
 
+[//]: # (Why are streams called lazy?)
 <div class="quiz-box">
-
-**Q10. Why are streams called lazy?**
-
+<b>Why are streams called lazy?</b>
 <details class="quiz-toggle">
 <summary>Reveal Answer</summary>
-
 Stream are called lazy because intermediate operations are not evaluated unless terminal operation is invoked. They are only evaluated when a terminal operation is invoked. The operations are lazy, meaning they do not executed immediately.
-
 </details>
-
 <details class="quiz-toggle">
 <summary>Reveal Explanation</summary>
-
 Intermediate operations build a pipeline, and terminal operations trigger execution.
-
 </details>
-
 </div>
 
+[//]: # (How does streams work in Java 8?)
 <div class="quiz-box">
-
-**Q11. How does streams work in Java 8?**
-
+<b>How does streams work in Java 8?</b>
 <details class="quiz-toggle">
 <summary>Reveal Answer</summary>
-
 Java Stream is a pipeline of functions that can be evaluated. Java Stream is not a data structure and cannot mutate data, they can only transform data. Streams are built around its main interface, the Stream interface which was released in JDK 8.  
 Three phases - Splitting, Applying and Combining.  
 Elements of a stream is processed individually and then tey finally get collected.
-
 </details>
-
 <details class="quiz-toggle">
 <summary>Reveal Explanation</summary>
-
 A stream flows from source to intermediate steps to final terminal result.
-
 </details>
-
 </div>
 
+[//]: # (Print the distinct element.)
 <div class="quiz-box">
 <b>Array contains duplicate element. Print the distinct element.</b>
 <details class="quiz-toggle">
@@ -264,6 +256,80 @@ list.stream().distinct().collect(Collectors.toList());
 </details>
 </div>
 
+[//]: # (Java Stream collector.)
+<div class="quiz-box">
+<b>Java Stream collector.</b>
+<details class="quiz-toggle">
+<summary>Reveal Answer</summary>
+Collectors in the <code>java.util.stream.Collectors</code> class.
+<code>partitioningBy</code> - Splits elements into two groups based on a boolean predicate (true / false) Example - Even and odd number.<br>
+
+```java
+List<Integer> numbers = Arrays.asList(1,2,3,4,5,6);
+
+Map<Boolean, List<Integer>> partitioned = numbers
+                                          .stream()
+                                          .collect(Collectors.partitioningBy(n -> n % 2 == 0));
+
+System.out.println(partitioned);
+// {false=[1, 3, 5], true=[2, 4, 6]}
+```
+<code>groupingBy</code> - Groups elements into multiple categories based on a classifier function. Example - group student by departments.
+
+```java
+List<String> words = Arrays.asList("apple", "bat", "ball", "cat");
+
+Map<Integer, List<String>> grouped = words.stream()
+                                          .collect(Collectors.groupingBy(String::length));
+
+System.out.println(grouped);
+// {3=[bat, cat], 4=[ball], 5=[apple]}
+```
+
+```java
+List<String> words = Arrays.asList("apple", "bat", "ball", "cat", "dog", "ant");
+
+// 1. toList
+List<String> listResult = words.stream().collect(toList());
+System.out.println("toList: " + listResult);
+
+// 2. toSet
+Set<String> setResult = words.stream().collect(toSet());
+System.out.println("toSet: " + setResult);
+
+// 3. toMap
+Map<String, Integer> mapResult = words.stream()
+                                      .collect(toMap(w -> w, String::length));
+System.out.println("toMap: " + mapResult);
+
+// 4. joining
+String joined = words.stream().collect(joining(", "));
+System.out.println("joining: " + joined);
+
+// 5. counting
+long count = words.stream().collect(counting());
+System.out.println("counting: " + count);
+
+// 6. partitioningBy (split into two groups)
+Map<Boolean, List<String>> partitioned = words.stream()
+                                              .collect(partitioningBy(w -> w.length() > 3));
+System.out.println("partitioningBy: " + partitioned);
+
+
+// 7. groupingBy (group by length)
+Map<Integer, List<String>> grouped = words.stream()
+                                          .collect(groupingBy(String::length));
+System.out.println("groupingBy: " + grouped);
+
+// 8. summarizingInt (statistics)
+IntSummaryStatistics stats = 
+            words.stream().collect(summarizingInt(String::length));
+        System.out.println("summarizingInt: " + stats);
+```
+</details>
+</div>
+
+### Kafka
 <div class="quiz-box">
 
 **Q12. What is Zookeeper in Kafka.**
@@ -1903,3 +1969,4 @@ String city = address.get("city").asText();
 ```
 </details>
 </div>
+

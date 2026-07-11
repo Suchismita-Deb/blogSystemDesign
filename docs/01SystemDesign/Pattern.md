@@ -285,19 +285,212 @@ CDN APIs help but takes time - critical update use cache header to prevent CDN c
 
 
 ## Managing long-running task.
+Task takes too long for synchronous processing - video encoding, report generation, bulk operations. Managing long running task pattern splits API request into **acknowledgement** and **background processing**.
+
+User sends the task - web server push to queue(RabbitMq or Kafka) and returns the job id. Worker pulls the jobs from the queue and execute. Main part queue for coordination and worker pools for processing. The job done then notify via email or push notification or websocket update.
+Use wants to see the profile page - db fetch the data and format the response - 100 ms. The job like generate the user activity pdf for a year - query multipl etable, aggregate the data, render the chart and make a document 45 sec of job. User will not wait and make a refresh more issue. Synchronous will not work.
+
+The _async_ part means the original HTTP request completes without waiting for the work to finish and the _worker pool_ refresh the collection of processes dedicated to executing the background task.
+
+The webserver does not need expensive GPUs to process video uploading the worker can use GPU instance and each part can scale when needed. The month end report generated then get more workers in the system.
+This pattern is used in everyplace where the job takes more than a few seconds. Example - Image processing, video transcoding, bulk data imports, third-party API calls with strict rate limits, report generation, email campaigns.
+
+**Pros of the system**
+
+_Fast user response time_ - User gets an acknowledgement that the job is received.   
+_Independent scaling_ - Scale the worker when needed.   
+Fault isolation - A worker crashed processing one video will not stop the API the failed job will be retried without user inputs.   
+_Better resource utilization_ - CPU intensive worker runs on compute optimized instances. Memory heavy task gets high memory machines and web severs use general purpose instance.
+
+**Cons of the pattern**
+
+_System complexity_ - queue, worker, job status tracker - more parts meaning more parts can break.  
+_Eventual consistency_ - Worker will not see the updates when they are doing the job. User will see stale data time of starting the request to the execution.    
+_Job status_ - Store the job status traction, handle retries expose status endpoint.  
+_Monitoring_ - Need to see the queue depth, worker health, job failure rates and monitorisng a distributed system and not a request response.
+_Planning in the design_ - There will be some design like what happens when the queue is fills up? How to handle poison message that crashes the worker? When to stop retry the failed job?
+
+### Implementation.
+
+The message queue and the pool of workers.
+
+
+**Message Queue.**
+
+Redis with Bull/BullMQ - Redis provides the storage and the Bull adds the job queue automatic retries, delayed jobs, priority queue.  
+Redis adds persistence options the point is its memory first the job will be lost in hard crash. Any durability add the Rabbit MQ or SQS.
+
+AWS SQS - No operational overhead. Amazon manages the infrastructure and scale. Its pay per message - good when less data and expensive at scale. The limit is 1 Mb so the data is storing in separate place and the queue is used to store the job id.
+
+RabbitMQ - Its self hosting and good in complex routing pattern. The cluster, upgrades and disk usage are all manual.
+
+Kafka - Its append only log, replay of the messages, fan-out to multiple consumers - retention time and ordering inside the partition.
+
+**Pool of worker.**
+
+How to run the worker - Normal server, serverless function, containerized service.  
+**_Normal server_** - There are 20 worker process on machines and each executing jobs pulling in the queue. Pros - control over the environment, easy to debug ssh to the server and see the logs. Cons - need to manage the server and pay for the idle capacity in low period.
+
+```java
+while (true) {
+    Job job = queue.pop(); // Blocks until job available
+    if (job != null) {
+        processJob(job);
+        markComplete(job.getId());
+    }
+}
+```
+_Serverless function_ - Lambda, Cloud function, Azure function. Pros - no server management, auto scaling, pay per execution. It is good for spiky workload like one minute 1000 and next 100. Cons - It is limited to 15-60 minutes execution time, cold start adds latency and local storage is minimal.
+
+_Container-based worker_ - It deployed on Kubernetes or ECS. The workers are put in the docker container and the orchestrator handle scaling and deployment. 
+
+![AsyncWorkPool.png](..%2Fimages%2FSystemDesign%2FFundamental%2FAsyncWorkPool.png)
+
+<figure>
+  <figcaption><b>AsyncWorkPool</b> — Async task queue with worker pool: web server enqueues jobs, workers process independently.</figcaption>
+</figure>
+Web server create a job id in the db and the status 'pending' and push to queue the job id (not full data as it will be more than 1Mb) - workers pull and get the detail from db - worker update the job as 'processing' - worker store the result in S3 for file or db and update the status as 'completed'.
+
+> Dont overcomplicate by adding the server less part pick kafka and show that the main is to separation of the concern. 
+> 
+> Dont go to the debate of the queues and merits.
+
+### When to use.
+Dont wait for the interviewer to mention long running task. Recognize the place where it will take more time and put async pattern.
+
+Common cases - Any slow processing.
+
+When any term like -  "video transcoding", "image processing", "PDF generation", "sending bulk emails", or "data exports" then its a hint.
+The process takes several minutes so return the job id and process it.
+
+When the math not support - When the system mention "process 1 million images per day" and image processing takes 10 sec so do the math loud - single day 85k sec and 1M (1M/85k = 11.6) 12 message per sec. Each job takes 10 sec meaning in one sec you have to do 120 sec of work. The dedicated worker will scale on compute optimized hardware.
+
+
+When different operation need different hardware - Say the work include API request and GPU heavy - We should not run GPU workload on the server that handle login then separate the async work on GPU instance.
+
+When they ask about scale or failure - The cases like "when the server crash? Scale the system to 10x" 
+
+### Common cases.
+
+**What will happen when the worker crash?**
+
+The job will be taken by another worker.   
+The heartbeat will tell in case the worker alive the interval is a deciding factor. When one is not responding the other worker will pick up the task based on the offset. There is an option to set something like session timeout.
+
+**What will happen when the job keeps failing?**
+
+Data error or any doomed job that will keep retry and stop the worker and the other message in the queue.
+Solution - DLQ when the job fails say 3 times message will be in DLQ. The DLQ will store the data that need human debug. When done the jobs are back to the queue.
+
+**User click on the generate report for 3 times how to prevent the identical jobs in the queue?**
+
+Without deduplication the resource waste doing identical jobs. Worst case send the email 3 times and charging the money. The issue in the task which are not idempotent.
+
+The solution is idempotency key. When any job arrive make a key that represents the operation. Any user initiated action combine the key (user id+action+timestamp) and system generated jobs user the id based on the input data. Before taking the job see if that task exists like db or cache in case it does then return the job id exists and not the new job.
+
+```java
+public String submitJob(String userId, String jobType, String jobData, String idempotencyKey) {
+        // Check if job already exists
+        Job existingJob = db.getJobByKey(idempotencyKey);
+        if (existingJob != null) {
+            return existingJob.getId();
+        }
+
+        // Create new job
+        String jobId = createJob(userId, jobType, jobData);
+        db.storeIdempotencyKey(idempotencyKey, jobId);
+        queue.push(jobId);
+        return jobId;
+}
+
+private String createJob(String userId, String jobType, String jobData) {
+        // Actual job creation logic (e.g., insert into DB)
+        Job job = new Job(userId, jobType, jobData);
+        db.saveJob(job);
+        return job.getId();
+}
+```
+
+**Its sale time and huge traffic and 100X more jobs and the workers cant pick up What is the solution.**
+Worker cannot process fast enough or the load is more then the jobs gets rejected.  
+Solution - Backpressure meaning slow down job acceptance when the worker is overwhelmed. Set the queue depth limit and reject new job its better than keeping it wait. Autoscale the worker based on the queue depth. There is a limit and queue depth at that limit then scale up the worker. The point is its the queue depth and not the CPU usage and by the time the CPU is high the queue is backed up.
+
+
+**How to separate the jobs like some report 5 mins and yearly account say 5 hours?** 
+
+Long jobs will block the short jobs and the simple report wait for an hour. The worker utilization is not optimum some doing more task and long one job.
+
+Solution -  
 
 ## Dealing with contentions.
+Multiple users try to access the same resource like tickets and seats then there should be a way to prevent race in system. 
 
+Solution - db level approach like pessimistic locking and optimistic locking. The solution like distributed coordination mechanism.
+Pessimistic locking - lock the row until the transaction is complete.   
+Optimistic locking - check the version number of the row before updating it. If the version number has changed then retry the operation.
+
+Main part is understanding when to use the atomicity and transaction and when explicit locking.
+
+Distributed system - distributed locks, two-phase commit protocols, or queue-based serialization.
+
+> DB are made to solve the problem of contention. Put the data in multiple db then we are taking the challenges in our hand that the db is designed to solve. 
+> 
+> Think then propose the solution.
 
 ## Scaling reads.
+Managing high read request through db optimization, horizontal scaling and caching.
+
+
+Solution - optimize the db using indexing and denormalization, scale horizontally with read replicas and add external caching layers like Redis and CDN.
+
 
 ## Scaling writes.
 
+The scaling write including the parts like sharding, batching and load management.
+Sharding - distributing data across multiple servers.    
+Vertical partitioning - separating different types of data.    
+Handing write bursts through queue (buffer temporary spikes) and load shedding (prioritize important writes during overload).     
+Batching will help reduce per-operation overhead with grouping multiple writes.
+
+Main part select good partition key and make the load even and make the data together.
 
 ## Handling large blobs.
+Large files like video, image, documents - no routing of Gbs of data through application server - make client-to-storage transfer with the URL (application server makes the URL and client upload the file to the direct storage S3) and CDN delivery (download the data from the CDN).
 
+The server is not at the bottleneck to resume upload or progress tracking.
+
+Main point - state synchronization between db and blob storage, handling upload failure, managing lifecycle of large files, event notification from storage service to keep the state consistent.
 ## Multi step processes.
+Services have multiple connections and long running operations that should take care of failures, retries and external dependencies. There should be coordination.
+Solution like single server or workflow. Event sourcing has a distributed approach and each step will emit events that trigger steps.  
 
+Modern workflow like Temporal or AWS Step Function handle state management, filure recobery and retry logic.
+
+Main point upgrade from scatter state management to workflow definition and the system will guarantee exactly once execution.
 ## Proximity Based Services.
+Uber, Airbnb - need the search by location.  
+Gespatial index helps to query and get the data based on geographical proximity. It is an extension to db like PostgreSQL with PostGIS extension or Redis geospatial data type.
 
+The search is not global and when the user search it like local to them. It will reduce the search space.
+Geospatial index when to index millions of items and when search of 1000 items then search and not the build of a index or service.
 ## Pattern Selection.
+Start simple like polling and single db and then add the parts when needed. Make the focus in design rather than implementation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

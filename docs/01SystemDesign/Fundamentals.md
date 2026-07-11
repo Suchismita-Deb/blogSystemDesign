@@ -507,7 +507,9 @@ Message queue become valuable when need guaranteed delivery of message, event so
 
 Single postgres instance refers to the single running postgress process in one machine or VM or container and not in cluster or distributed set up. Multi instance set up like read-replica set up, distributed db where the throughput is distributed across multiple servers.
 
-Prior to message queue consider simple solution like using fast SSD, lots of RAM, strong CPU and batch write, optimising schema and index, using connection pooling, async commit.
+Prior to message queue consider simple solution like using fast SSD, lots of RAM, strong CPU and batch write, optimizing schema and index, using connection pooling, async commit.
+
+Batch processing reduces system resource consumption per operations by removing multiple network call and transactions and improves throughput.
 
 ### Key Technologies.
 
