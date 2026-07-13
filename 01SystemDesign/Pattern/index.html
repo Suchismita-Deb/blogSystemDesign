@@ -246,7 +246,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../08HLDExample/Fundamentals.md" class="md-tabs__link">
+      <a href="../../08HLDExample/YoutubeTopK/" class="md-tabs__link">
         
   
   
@@ -775,6 +775,45 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Managing long-running task.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to use.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common cases.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1325,7 +1364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../08HLDExample/Fundamentals.md" class="md-nav__link">
+      <a href="../../08HLDExample/YoutubeTopK/" class="md-nav__link">
         
   
   
@@ -2276,6 +2315,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Managing long-running task.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to use.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common cases.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2622,13 +2700,135 @@ Solution - Use <strong>deleted items cache</strong> its a smaller working set of
 <p>Data have different consistency need user profile update fine with 5 min staleness but venue update should be immediate.</p>
 </blockquote>
 <h2 id="managing-long-running-task">Managing long-running task.</h2>
+<p>Task takes too long for synchronous processing - video encoding, report generation, bulk operations. Managing long running task pattern splits API request into <strong>acknowledgement</strong> and <strong>background processing</strong>.</p>
+<p>User sends the task - web server push to queue(RabbitMq or Kafka) and returns the job id. Worker pulls the jobs from the queue and execute. Main part queue for coordination and worker pools for processing. The job done then notify via email or push notification or websocket update.
+Use wants to see the profile page - db fetch the data and format the response - 100 ms. The job like generate the user activity pdf for a year - query multipl etable, aggregate the data, render the chart and make a document 45 sec of job. User will not wait and make a refresh more issue. Synchronous will not work.</p>
+<p>The <em>async</em> part means the original HTTP request completes without waiting for the work to finish and the <em>worker pool</em> refresh the collection of processes dedicated to executing the background task.</p>
+<p>The webserver does not need expensive GPUs to process video uploading the worker can use GPU instance and each part can scale when needed. The month end report generated then get more workers in the system.
+This pattern is used in everyplace where the job takes more than a few seconds. Example - Image processing, video transcoding, bulk data imports, third-party API calls with strict rate limits, report generation, email campaigns.</p>
+<p><strong>Pros of the system</strong></p>
+<p><em>Fast user response time</em> - User gets an acknowledgement that the job is received. <br />
+<em>Independent scaling</em> - Scale the worker when needed. <br />
+Fault isolation - A worker crashed processing one video will not stop the API the failed job will be retried without user inputs. <br />
+<em>Better resource utilization</em> - CPU intensive worker runs on compute optimized instances. Memory heavy task gets high memory machines and web severs use general purpose instance.</p>
+<p><strong>Cons of the pattern</strong></p>
+<p><em>System complexity</em> - queue, worker, job status tracker - more parts meaning more parts can break.<br />
+<em>Eventual consistency</em> - Worker will not see the updates when they are doing the job. User will see stale data time of starting the request to the execution.  <br />
+<em>Job status</em> - Store the job status traction, handle retries expose status endpoint.<br />
+<em>Monitoring</em> - Need to see the queue depth, worker health, job failure rates and monitorisng a distributed system and not a request response.
+<em>Planning in the design</em> - There will be some design like what happens when the queue is fills up? How to handle poison message that crashes the worker? When to stop retry the failed job?</p>
+<h3 id="implementation">Implementation.</h3>
+<p>The message queue and the pool of workers.</p>
+<p><strong>Message Queue.</strong></p>
+<p>Redis with Bull/BullMQ - Redis provides the storage and the Bull adds the job queue automatic retries, delayed jobs, priority queue.<br />
+Redis adds persistence options the point is its memory first the job will be lost in hard crash. Any durability add the Rabbit MQ or SQS.</p>
+<p>AWS SQS - No operational overhead. Amazon manages the infrastructure and scale. Its pay per message - good when less data and expensive at scale. The limit is 1 Mb so the data is storing in separate place and the queue is used to store the job id.</p>
+<p>RabbitMQ - Its self hosting and good in complex routing pattern. The cluster, upgrades and disk usage are all manual.</p>
+<p>Kafka - Its append only log, replay of the messages, fan-out to multiple consumers - retention time and ordering inside the partition.</p>
+<p><strong>Pool of worker.</strong></p>
+<p>How to run the worker - Normal server, serverless function, containerized service.<br />
+<strong><em>Normal server</em></strong> - There are 20 worker process on machines and each executing jobs pulling in the queue. Pros - control over the environment, easy to debug ssh to the server and see the logs. Cons - need to manage the server and pay for the idle capacity in low period.</p>
+<p><div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">Job</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue</span><span class="p">.</span><span class="na">pop</span><span class="p">();</span><span class="w"> </span><span class="c1">// Blocks until job available</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">job</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="n">processJob</span><span class="p">(</span><span class="n">job</span><span class="p">);</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="n">markComplete</span><span class="p">(</span><span class="n">job</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<em>Serverless function</em> - Lambda, Cloud function, Azure function. Pros - no server management, auto scaling, pay per execution. It is good for spiky workload like one minute 1000 and next 100. Cons - It is limited to 15-60 minutes execution time, cold start adds latency and local storage is minimal.</p>
+<p><em>Container-based worker</em> - It deployed on Kubernetes or ECS. The workers are put in the docker container and the orchestrator handle scaling and deployment. </p>
+<p><img alt="AsyncWorkPool.png" src="../../images/SystemDesign/Fundamental/AsyncWorkPool.png" /></p>
+<figure>
+  <figcaption><b>AsyncWorkPool</b> — Async task queue with worker pool: web server enqueues jobs, workers process independently.</figcaption>
+</figure>
+<p>Web server create a job id in the db and the status 'pending' and push to queue the job id (not full data as it will be more than 1Mb) - workers pull and get the detail from db - worker update the job as 'processing' - worker store the result in S3 for file or db and update the status as 'completed'.</p>
+<blockquote>
+<p>Dont overcomplicate by adding the server less part pick kafka and show that the main is to separation of the concern. </p>
+<p>Dont go to the debate of the queues and merits.</p>
+</blockquote>
+<h3 id="when-to-use">When to use.</h3>
+<p>Dont wait for the interviewer to mention long running task. Recognize the place where it will take more time and put async pattern.</p>
+<p>Common cases - Any slow processing.</p>
+<p>When any term like -  "video transcoding", "image processing", "PDF generation", "sending bulk emails", or "data exports" then its a hint.
+The process takes several minutes so return the job id and process it.</p>
+<p>When the math not support - When the system mention "process 1 million images per day" and image processing takes 10 sec so do the math loud - single day 85k sec and 1M (1M/85k = 11.6) 12 message per sec. Each job takes 10 sec meaning in one sec you have to do 120 sec of work. The dedicated worker will scale on compute optimized hardware.</p>
+<p>When different operation need different hardware - Say the work include API request and GPU heavy - We should not run GPU workload on the server that handle login then separate the async work on GPU instance.</p>
+<p>When they ask about scale or failure - The cases like "when the server crash? Scale the system to 10x" </p>
+<h3 id="common-cases">Common cases.</h3>
+<p><strong>What will happen when the worker crash?</strong></p>
+<p>The job will be taken by another worker. <br />
+The heartbeat will tell in case the worker alive the interval is a deciding factor. When one is not responding the other worker will pick up the task based on the offset. There is an option to set something like session timeout.</p>
+<p><strong>What will happen when the job keeps failing?</strong></p>
+<p>Data error or any doomed job that will keep retry and stop the worker and the other message in the queue.
+Solution - DLQ when the job fails say 3 times message will be in DLQ. The DLQ will store the data that need human debug. When done the jobs are back to the queue.</p>
+<p><strong>User click on the generate report for 3 times how to prevent the identical jobs in the queue?</strong></p>
+<p>Without deduplication the resource waste doing identical jobs. Worst case send the email 3 times and charging the money. The issue in the task which are not idempotent.</p>
+<p>The solution is idempotency key. When any job arrive make a key that represents the operation. Any user initiated action combine the key (user id+action+timestamp) and system generated jobs user the id based on the input data. Before taking the job see if that task exists like db or cache in case it does then return the job id exists and not the new job.</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">submitJob</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">jobType</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">jobData</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">idempotencyKey</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">        </span><span class="c1">// Check if job already exists</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="n">Job</span><span class="w"> </span><span class="n">existingJob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="na">getJobByKey</span><span class="p">(</span><span class="n">idempotencyKey</span><span class="p">);</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">existingJob</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">existingJob</span><span class="p">.</span><span class="na">getId</span><span class="p">();</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="c1">// Create new job</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">jobId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createJob</span><span class="p">(</span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">jobType</span><span class="p">,</span><span class="w"> </span><span class="n">jobData</span><span class="p">);</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="n">db</span><span class="p">.</span><span class="na">storeIdempotencyKey</span><span class="p">(</span><span class="n">idempotencyKey</span><span class="p">,</span><span class="w"> </span><span class="n">jobId</span><span class="p">);</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="n">queue</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">jobId</span><span class="p">);</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">jobId</span><span class="p">;</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="p">}</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">createJob</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">jobType</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">jobData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="c1">// Actual job creation logic (e.g., insert into DB)</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="n">Job</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Job</span><span class="p">(</span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">jobType</span><span class="p">,</span><span class="w"> </span><span class="n">jobData</span><span class="p">);</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="n">db</span><span class="p">.</span><span class="na">saveJob</span><span class="p">(</span><span class="n">job</span><span class="p">);</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="na">getId</span><span class="p">();</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Its sale time and huge traffic and 100X more jobs and the workers cant pick up What is the solution.</strong>
+Worker cannot process fast enough or the load is more then the jobs gets rejected.<br />
+Solution - Backpressure meaning slow down job acceptance when the worker is overwhelmed. Set the queue depth limit and reject new job its better than keeping it wait. Autoscale the worker based on the queue depth. There is a limit and queue depth at that limit then scale up the worker. The point is its the queue depth and not the CPU usage and by the time the CPU is high the queue is backed up.</p>
+<p><strong>How to separate the jobs like some report 5 mins and yearly account say 5 hours?</strong> </p>
+<p>Long jobs will block the short jobs and the simple report wait for an hour. The worker utilization is not optimum some doing more task and long one job.</p>
+<p>Solution -  </p>
 <h2 id="dealing-with-contentions">Dealing with contentions.</h2>
+<p>Multiple users try to access the same resource like tickets and seats then there should be a way to prevent race in system. </p>
+<p>Solution - db level approach like pessimistic locking and optimistic locking. The solution like distributed coordination mechanism.
+Pessimistic locking - lock the row until the transaction is complete. <br />
+Optimistic locking - check the version number of the row before updating it. If the version number has changed then retry the operation.</p>
+<p>Main part is understanding when to use the atomicity and transaction and when explicit locking.</p>
+<p>Distributed system - distributed locks, two-phase commit protocols, or queue-based serialization.</p>
+<blockquote>
+<p>DB are made to solve the problem of contention. Put the data in multiple db then we are taking the challenges in our hand that the db is designed to solve. </p>
+<p>Think then propose the solution.</p>
+</blockquote>
 <h2 id="scaling-reads_1">Scaling reads.</h2>
+<p>Managing high read request through db optimization, horizontal scaling and caching.</p>
+<p>Solution - optimize the db using indexing and denormalization, scale horizontally with read replicas and add external caching layers like Redis and CDN.</p>
 <h2 id="scaling-writes">Scaling writes.</h2>
+<p>The scaling write including the parts like sharding, batching and load management.
+Sharding - distributing data across multiple servers.  <br />
+Vertical partitioning - separating different types of data.  <br />
+Handing write bursts through queue (buffer temporary spikes) and load shedding (prioritize important writes during overload).   <br />
+Batching will help reduce per-operation overhead with grouping multiple writes.</p>
+<p>Main part select good partition key and make the load even and make the data together.</p>
 <h2 id="handling-large-blobs">Handling large blobs.</h2>
+<p>Large files like video, image, documents - no routing of Gbs of data through application server - make client-to-storage transfer with the URL (application server makes the URL and client upload the file to the direct storage S3) and CDN delivery (download the data from the CDN).</p>
+<p>The server is not at the bottleneck to resume upload or progress tracking.</p>
+<p>Main point - state synchronization between db and blob storage, handling upload failure, managing lifecycle of large files, event notification from storage service to keep the state consistent.</p>
 <h2 id="multi-step-processes">Multi step processes.</h2>
+<p>Services have multiple connections and long running operations that should take care of failures, retries and external dependencies. There should be coordination.
+Solution like single server or workflow. Event sourcing has a distributed approach and each step will emit events that trigger steps.  </p>
+<p>Modern workflow like Temporal or AWS Step Function handle state management, filure recobery and retry logic.</p>
+<p>Main point upgrade from scatter state management to workflow definition and the system will guarantee exactly once execution.</p>
 <h2 id="proximity-based-services">Proximity Based Services.</h2>
+<p>Uber, Airbnb - need the search by location.<br />
+Gespatial index helps to query and get the data based on geographical proximity. It is an extension to db like PostgreSQL with PostGIS extension or Redis geospatial data type.</p>
+<p>The search is not global and when the user search it like local to them. It will reduce the search space.
+Geospatial index when to index millions of items and when search of 1000 items then search and not the build of a index or service.</p>
 <h2 id="pattern-selection">Pattern Selection.</h2>
+<p>Start simple like polling and single db and then add the parts when needed. Make the focus in design rather than implementation.</p>
 
 
 

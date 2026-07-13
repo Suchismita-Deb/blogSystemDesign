@@ -246,7 +246,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../08HLDExample/Fundamentals.md" class="md-tabs__link">
+      <a href="../../08HLDExample/YoutubeTopK/" class="md-tabs__link">
         
   
   
@@ -1407,7 +1407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../08HLDExample/Fundamentals.md" class="md-nav__link">
+      <a href="../../08HLDExample/YoutubeTopK/" class="md-nav__link">
         
   
   
@@ -2927,7 +2927,8 @@ Next work through all the basics and then discuss the depth of the knowledge in 
 <p>Over engineering given a high write throughput - System with 5k wtites per sec no need to add a message queue. A well tuned Postgress instance good write 20k+ writes per second. Things that limits write capacity - complex transaction, spanning multiple table, write amplification from excessive indexes, writes that triggers expensive cascading updates, heavy concurrent reads competing with writes.</p>
 <p>Message queue become valuable when need guaranteed delivery of message, event sourcing pattern, handling write spikes (above 20k+ write for a single postgres instance), decoupling producer from consumer.</p>
 <p>Single postgres instance refers to the single running postgress process in one machine or VM or container and not in cluster or distributed set up. Multi instance set up like read-replica set up, distributed db where the throughput is distributed across multiple servers.</p>
-<p>Prior to message queue consider simple solution like using fast SSD, lots of RAM, strong CPU and batch write, optimising schema and index, using connection pooling, async commit.</p>
+<p>Prior to message queue consider simple solution like using fast SSD, lots of RAM, strong CPU and batch write, optimizing schema and index, using connection pooling, async commit.</p>
+<p>Batch processing reduces system resource consumption per operations by removing multiple network call and transactions and improves throughput.</p>
 <h3 id="key-technologies">Key Technologies.</h3>
 <p>Focus on breadth before depth. Junior breadth and senior depth.<br />
 Elastic search - search index, describe the inverted index or the reason about its scaling is an issue - depth knowledge.</p>

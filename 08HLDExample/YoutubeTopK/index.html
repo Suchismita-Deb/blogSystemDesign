@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../../01SystemDesign/KeyTechnologies/Redis/">
+      
+      
+        <link rel="next" href="../../07LLDExample/StructuralPattern/">
       
       
         
@@ -19,7 +23,7 @@
     
     
       
-        <title>Interview - System Design Toolkit</title>
+        <title>High-Level Design (HLD) - System Design Toolkit</title>
       
     
     
@@ -72,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#what-is-java-and-why-it-is-platform-independent" class="md-skip">
+        <a href="#youtube-top-k" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Interview
+              High-Level Design (HLD)
             
           </span>
         </div>
@@ -238,9 +242,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../../08HLDExample/YoutubeTopK/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
@@ -281,7 +287,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../03CodeSnippet/" class="md-tabs__link">
+        <a href="../../02Java/03CodeSnippet/" class="md-tabs__link">
           
   
   
@@ -997,10 +1003,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../08HLDExample/YoutubeTopK/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    High-Level Design (HLD)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1016,6 +1049,126 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functional-requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functional requirement.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non functional requirements.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#high-level-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High level design.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="High level design.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-should-be-able-to-query-the-top-key-videos-for-all-time-max-up-to-1k-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client should be able to query the top key videos for all time Max up to 1K result.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-should-be-able-to-query-tumbling-windows-of-1-hour-day-month" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client should be able to query tumbling windows of 1 hour, day, month.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deep-dives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deep Dives.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deep Dives.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-cut-down-the-number-of-queries-to-the-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to cut down the number of queries to the db.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-handle-the-massive-write-in-the-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to handle the massive write in the db.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1198,7 +1351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03CodeSnippet/" class="md-nav__link">
+      <a href="../../02Java/03CodeSnippet/" class="md-nav__link">
         
   
   
@@ -1761,6 +1914,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1769,10 +1924,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-java-and-why-it-is-platform-independent" class="md-nav__link">
+  <a href="#functional-requirement" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is Java and why it is platform independent?
+        Functional requirement.
       
     </span>
   </a>
@@ -1780,10 +1935,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-is-the-java-virtual-machine-jvm-and-how-does-it-work" class="md-nav__link">
+  <a href="#non-functional-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is the Java Virtual Machine (JVM) and how does it work?
+        Non functional requirements.
       
     </span>
   </a>
@@ -1791,475 +1946,80 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-are-the-differences-between-jdk-jre-and-jvm" class="md-nav__link">
+  <a href="#high-level-design" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What are the differences between JDK, JRE and JVM?
+        High level design.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="High level design.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-should-be-able-to-query-the-top-key-videos-for-all-time-max-up-to-1k-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client should be able to query the top key videos for all time Max up to 1K result.
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#explain-java-garbage-collection-process-and-how-it-helps-in-memory-management" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#client-should-be-able-to-query-tumbling-windows-of-1-hour-day-month" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Explain Java garbage collection process and how it helps in memory management.
+        Client should be able to query tumbling windows of 1 hour, day, month.
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#what-is-inheritance" class="md-nav__link">
+  <a href="#deep-dives" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is Inheritance?
+        Deep Dives.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deep Dives.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-cut-down-the-number-of-queries-to-the-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to cut down the number of queries to the db.
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-polymorphism" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-handle-the-massive-write-in-the-db" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is Polymorphism ?
+        How to handle the massive write in the db.
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-and-equals-methos-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between == and equals() methos in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-static-keyword-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the static keyword in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-constructor-in-java-and-how-it-is-different-from-a-method" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the constructor in Java and how it is different from a method?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-method-overloading" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is method overloading?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-abstract-class-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is Abstract class in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-an-abstract-class-and-an-interface-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between an abstract class and an interface in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-final-finally-and-finalize-in-java-next-thing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the Difference between final finally and finalize in Java next thing
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-checked-and-unchecked-exceptions-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between checked and unchecked exceptions in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-multithreading-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is multithreading in Java ?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-purpose-of-the-super-keyboard-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the purpose of the Super keyboard in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-diffeerence-between-string-stringbuilder-and-stringbuffer-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the diffeerence between String, StringBuilder and StringBuffer in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-hashmap-and-hashtable-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between HashMap and HashTable in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-throw-and-throws-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between throw and throws in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-teh-singleton-design-attern-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is teh Singleton design attern in java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-wait-and-sleep-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between wait and sleep in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-java-collection-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is Java collection framework?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-purpose-of-the-volatile-keyboard-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the purpose of the volatile keyboard in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-trade-in-japan-how-it-is-different-from-process" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the trade in Japan how it is different from process ?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-teh-difference-between-notify-and-notifyall-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is teh difference between notify and notifyAll in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-break-and-continue-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between break and continue in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-a-shallow-copy-and-a-deep-copy-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between a shallow copy and a deep copy in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-call-by-value-and-call-by-reference-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between call by value and call by reference in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-a-static-method-and-an-instance-method-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between a static method and an instance method in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-a-static-variable-and-an-instance-variable-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between a static variable and an instance variable in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-a-static-block-and-an-instance-block-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between a static block and an instance block in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-a-static-nested-class-and-an-inner-class-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between a static nested class and an inner class in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-a-final-class-and-an-abstract-class-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between a final class and an abstract class in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-a-final-method-and-an-abstract-method-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between a final method and an abstract method in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-a-final-variable-and-a-static-variable-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between a final variable and a static variable in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-a-final-variable-and-an-instance-variable-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between a final variable and an instance variable in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-equals-and-hashcode-methods-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between equals() and hashCode() methods in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-callable-and-runnable-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between callable and runnable in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-synchronized-and-lock-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between synchronized and lock in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-deadlock-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is deadlock in java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-reflection-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is reflection in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-difference-between-comparator-and-comparable-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the difference between comparator and comparable in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-eh-forkjoin-framework-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is eh fork/join framework in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-executor-framework-in-java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the executor framework in Java?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-are-java-annotations-and-how-are-they-used-in-java-programming" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What are Java annotations and how are they used in Java programming?
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2288,156 +2048,91 @@
 
 
 
-  <h1>Interview</h1>
-
-<h3 id="what-is-java-and-why-it-is-platform-independent">What is Java and why it is platform independent?</h3>
-<p>It is a high-level, object-oriented programming language developed by Sun Microsystems (now owned by Oracle Corporation). Java is designed to be platform-independent, meaning that code written in Java can run on any device or operating system that has a Java Virtual Machine (JVM) installed. This is achieved through the use of bytecode, which is an intermediate representation of the code that can be executed by the JVM, allowing developers to write code once and run it anywhere.</p>
-<h3 id="what-is-the-java-virtual-machine-jvm-and-how-does-it-work">What is the Java Virtual Machine (JVM) and how does it work?</h3>
-<p>The JVM is an abstract computing machine that enables a computer to run Java programs. It works by converting Java bytecode into machine code that can be executed by the host operating system. The JVM provides a runtime environment that includes memory management, garbage collection, and security features, allowing Java applications to run consistently across different platforms.</p>
-<h3 id="what-are-the-differences-between-jdk-jre-and-jvm">What are the differences between JDK, JRE and JVM?</h3>
-<p>JDK - Toolkit for java development.
-JRE - Environment to run Java program.
-JVM - Engine that executes the Java bytecode.</p>
-<ul>
-<li><strong>JDK (Java Development Kit)</strong>: It is a software development kit that provides tools for developing Java applications, including the JRE, compilers, and other development tools. It is used by developers to write, compile, and debug Java programs.</li>
-</ul>
-<h3 id="explain-java-garbage-collection-process-and-how-it-helps-in-memory-management">Explain Java garbage collection process and how it helps in memory management.</h3>
-<p>Java garbage collection is an automatic memory management process that helps in reclaiming memory occupied by objects that are no longer in use. The garbage collector (GC) identifies and removes these unreferenced objects from the heap memory, freeing up space for new object allocations. This process helps prevent memory leaks and ensures efficient memory utilization.</p>
-<h3 id="what-is-inheritance">What is Inheritance?</h3>
-<p>Inheritance allows one class to inherit fields and methods from another class and promote code reuse.</p>
-<h3 id="what-is-polymorphism">What is Polymorphism ?</h3>
-<p>Polymorphism allows methods to perform different tasks based on the object that act upon, implemented through method overloading and overriding.</p>
-<h3 id="what-is-the-difference-between-and-equals-methos-in-java">What is the difference between == and equals() methos in Java?</h3>
-<p>== verifies the references points to the same object in memory and equals() verifies the content of the object.</p>
-<h3 id="what-is-the-static-keyword-in-java">What is the static keyword in Java?</h3>
-<p>The static keyword indicates that a member belongs to the class rather than an instance of the class. Static methods and variables can be accessed without creating an object of the class.</p>
-<h3 id="what-is-the-constructor-in-java-and-how-it-is-different-from-a-method">What is the constructor in Java and how it is different from a method?</h3>
-<p>A constructor initializes a new object and has no return type.
-Constructors are called automatically when an object is created.</p>
-<h3 id="what-is-method-overloading">What is method overloading?</h3>
-<p>Method of loading allows multiple methods in a class to have the same name but with different parameter lists.
-It is compile time polymorphism offering flexibility when defining methods.</p>
-<h3 id="what-is-abstract-class-in-java">What is Abstract class in Java?</h3>
-<p>An abstract class cannot be instantiated and it's meant to be subclassed. It may contain both abstract method or a concrete method. Abstract classes are used to define a base for other classes.</p>
-<h3 id="what-is-the-difference-between-an-abstract-class-and-an-interface-in-java">What is the difference between an abstract class and an interface in Java?</h3>
-<p>An interface is a reference type that can contain abstract methods constant default methods and static methods.<br />
-Unlike an abstract class the class can have multiple interfaces. Abstract classes can have constructors and instance fields whereas interface cannot.</p>
-<h3 id="what-is-the-difference-between-final-finally-and-finalize-in-java-next-thing">What is the Difference between final finally and finalize in Java next thing</h3>
-<p>Final is a keyboard used to declare constant prevent method of writing or prohibit class inheritance<br />
-Finally the block that ensures execution after a try catch whether or not an exception occurs<br />
-Finalize is a method called by the garbage collector before reclaiming an object's memory </p>
-<h3 id="what-is-the-difference-between-checked-and-unchecked-exceptions-in-java">What is the difference between checked and unchecked exceptions in Java?</h3>
-<p>Checked exceptions must be declared in the method signature or handled using a try catch block like IO exception.
-Unchecked exceptions like NullPointerException do not need to be declated or explicitly caught.</p>
-<h3 id="what-is-multithreading-in-java">What is multithreading in Java ?</h3>
-<p>Multithreading allows multiple throws to execute simultaneously maximizing the Super utilizations and it can be implemented by extending the thread class or implementing through another interface.</p>
-<h3 id="what-is-the-purpose-of-the-super-keyboard-in-java">What is the purpose of the Super keyboard in Java?</h3>
-<p>The Super keyword refers to the immediate parent class it is used to access the parent class method constructor of variable that are hidden by the chat class.</p>
-<h3 id="what-is-the-diffeerence-between-string-stringbuilder-and-stringbuffer-in-java">What is the diffeerence between String, StringBuilder and StringBuffer in Java?</h3>
-<ul>
-<li>String is immutable, meaning once created, its value cannot be changed.</li>
-<li>StringBuilder is mutable and not synchronized, making it faster for single-threaded operations.</li>
-<li>StringBuffer is mutable and synchronized, making it thread-safe but slower than StringBuilder.</li>
-</ul>
-<h3 id="what-is-the-difference-between-hashmap-and-hashtable-in-java">What is the difference between HashMap and HashTable in Java?</h3>
-<p>Hashmap is not synchronised meaning its faster but not threads safe and hash table is synchronised making it thread safe but slower additionally hashmap allows null key and values while hash table does not.</p>
-<h3 id="what-is-the-difference-between-throw-and-throws-in-java">What is the difference between throw and throws in Java?</h3>
-<ul>
-<li><code>throw</code> is used to explicitly throw an exception in a method or block of code.</li>
-<li><code>throws</code> is used in a method signature to declare the exceptions that a method can throw</li>
-</ul>
-<h3 id="what-is-teh-singleton-design-attern-in-java">What is teh Singleton design attern in java?</h3>
-<p>The single independent ensures that a class has only one instance and provides a global point of access to it. This is typically implemented with the private constructor and a static instance variable.</p>
-<h3 id="what-is-the-difference-between-wait-and-sleep-in-java">What is the difference between wait and sleep in Java?</h3>
-<p>Wait is used in multithreading to pause the current thread until it's notified and it releases the monitor lock.<br />
-Sleep pauses the current thread for a specified time but does not release any locks.</p>
-<h3 id="what-is-java-collection-framework">What is Java collection framework?</h3>
-<p>Java collection framework is a set of interfaces and class for storing and processing group of objects common examples like set them up list and the implementation and get a list and  hashmap.</p>
-<h3 id="what-is-the-purpose-of-the-volatile-keyboard-in-java">What is the purpose of the volatile keyboard in Java?</h3>
-<p>The virtual keyboard ensures that a variable's value is always read from the main memory not from the thread's local cache. It helps maintain a consistency in multithreaded environment.</p>
-<h3 id="what-is-the-trade-in-japan-how-it-is-different-from-process">What is the trade in Japan how it is different from process ?</h3>
-<p>A thread is a lightweight sub process the smallest unit of CPU scheduling. Multiple threads within the same process shared memory while processes are independent and do not share memory.</p>
-<h3 id="what-is-teh-difference-between-notify-and-notifyall-in-java">What is teh difference between notify and notifyAll in Java?</h3>
-<p>Notify wakes up a single thread that is waiting on the object's monitor, while notifyAll wakes up
-    all threads that are waiting on the object's monitor. Notify is used when only one thread needs to be awakened, while notifyAll is used when multiple threads may need to proceed.</p>
-<h3 id="what-is-the-difference-between-break-and-continue-in-java">What is the difference between break and continue in Java?</h3>
-<ul>
-<li><code>break</code> is used to exit a loop or switch statement prematurely, terminating the current iteration and moving control to the next statement after the loop or switch.  </li>
-<li><code>continue</code> is used to skip the current iteration of a loop and proceed to the next iteration, allowing the loop to continue </li>
-</ul>
-<h3 id="what-is-the-difference-between-a-shallow-copy-and-a-deep-copy-in-java">What is the difference between a shallow copy and a deep copy in Java?</h3>
-<ul>
-<li>A shallow copy creates a new object but copies references to the original object's fields, meaning changes to mutable fields in the original object will affect the shallow copy.  </li>
-<li>A deep copy creates a new object and recursively copies all fields, ensuring that the new object is completely independent of the original, including any mutable objects it contains.      </li>
-</ul>
-<h3 id="what-is-the-difference-between-call-by-value-and-call-by-reference-in-java">What is the difference between call by value and call by reference in Java?</h3>
-<ul>
-<li>Java uses call by value for primitive data types, meaning that a copy of the value is passed to methods, and changes to the parameter do not affect the original variable.  </li>
-<li>For objects, Java uses call by reference for object references, meaning that a copy of the reference is passed, allowing methods to modify the object's state, but the reference itself cannot be changed to point to a different object.</li>
-</ul>
-<h3 id="what-is-the-difference-between-a-static-method-and-an-instance-method-in-java">What is the difference between a static method and an instance method in Java?</h3>
-<ul>
-<li>A static method belongs to the class and can be called without creating an instance of the class</li>
-<li>An instance method belongs to an object and can only be called on an instance of the class, allowing it to access instance variables and methods.   </li>
-</ul>
-<h3 id="what-is-the-difference-between-a-static-variable-and-an-instance-variable-in-java">What is the difference between a static variable and an instance variable in Java?</h3>
-<ul>
-<li>A static variable is shared among all instances of a class and belongs to the class itself, while an instance variable is unique to each instance of the class and belongs to the object. </li>
-</ul>
-<h3 id="what-is-the-difference-between-a-static-block-and-an-instance-block-in-java">What is the difference between a static block and an instance block in Java?</h3>
-<ul>
-<li>A static block is executed when the class is loaded and is used for static initialization, while<br />
-an instance block is executed when an instance of the class is created and is used for instance initialization.</li>
-</ul>
-<h3 id="what-is-the-difference-between-a-static-nested-class-and-an-inner-class-in-java">What is the difference between a static nested class and an inner class in Java?</h3>
-<ul>
-<li>A static nested class is a static member of the outer class and can be instantiated without an instance of the outer class, while an inner class is associated with an instance of the outer class and can access its members directly.   </li>
-</ul>
-<h3 id="what-is-the-difference-between-a-final-class-and-an-abstract-class-in-java">What is the difference between a final class and an abstract class in Java?</h3>
-<ul>
-<li>A final class cannot be subclassed, meaning no other class can extend it, while an    abstract class is intended to be subclassed and can contain abstract methods that must be implemented by its subclasses.</li>
-</ul>
-<h3 id="what-is-the-difference-between-a-final-method-and-an-abstract-method-in-java">What is the difference between a final method and an abstract method in Java?</h3>
-<ul>
-<li>A final method cannot be overridden by subclasses, ensuring that its implementation remains unchanged, while an       abstract method is declared without an implementation and must be implemented by subclasses, allowing for polymorphic behavior. </li>
-</ul>
-<h3 id="what-is-the-difference-between-a-final-variable-and-a-static-variable-in-java">What is the difference between a final variable and a static variable in Java?</h3>
-<ul>
-<li>A final variable is a constant whose value cannot be changed once assigned, while a static variable       is shared among all instances of a class and can be modified, but it belongs to the class rather than any specific instance.</li>
-</ul>
-<h3 id="what-is-the-difference-between-a-final-variable-and-an-instance-variable-in-java">What is the difference between a final variable and an instance variable in Java?</h3>
-<ul>
-<li>A final variable is a constant whose value cannot be changed once assigned, while an instance variable    is unique to each instance of a class and can be modified, allowing each object to maintain its own state.  </li>
-</ul>
-<h3 id="what-is-the-difference-between-equals-and-hashcode-methods-in-java">What is the difference between equals() and hashCode() methods in Java?</h3>
-<ul>
-<li>The <code>equals()</code> method is used to compare the contents of two objects for equality, while the <code>hashCode()</code> method returns an integer representation of the object's memory address or a computed hash value    </li>
-</ul>
-<h3 id="what-is-the-difference-between-callable-and-runnable-in-java">What is the difference between callable and runnable in Java?</h3>
-<ul>
-<li>A <code>Runnable</code> is an interface that represents a task that can be executed by a thread, but it does not return a result or throw checked exceptions.  </li>
-<li>A <code>Callable</code> is a similar interface that represents a task that can be executed by a thread, but it can return a result and throw checked exceptions, making it more flexible for concurrent programming.</li>
-</ul>
-<h3 id="what-is-the-difference-between-synchronized-and-lock-in-java">What is the difference between synchronized and lock in Java?</h3>
-<p>The synchronized keyword provides a special mechanism to control access to critical sections. Lock is more flexible and powerful mechanism from the Java.util.concurrent package offering additional features like time locks and interruptible locks.</p>
-<h3 id="what-is-deadlock-in-java">What is deadlock in java?</h3>
-<p>Adidas cockles went two or more threads are waiting for each other's resources causing them to remain in a waiting state for a wrapper it is a commonly threatening issue that should be avoided.</p>
-<h3 id="what-is-reflection-in-java">What is reflection in Java?</h3>
-<p>Reflection is a feature that allows a program to inspect and modify its own structure and behaviour at runtime. It is often used for dynamic method invocation and inspecting classes methods and fields.</p>
-<h3 id="what-is-the-difference-between-comparator-and-comparable-in-java">What is the difference between comparator and comparable in Java?</h3>
-<ul>
-<li>The <code>Comparable</code> interface is used to define the natural ordering of objects by implementing the <code>compareTo()</code> method, allowing objects to be sorted based on their inherent properties.  </li>
-<li>The <code>Comparator</code> interface is used to define custom ordering of objects by implementing the <code>compare()</code> method,<ul>
-<li>allowing for multiple sorting criteria and flexibility in sorting objects that do not have a natural order.</li>
-</ul>
-</li>
-</ul>
-<h3 id="what-is-eh-forkjoin-framework-in-java">What is eh fork/join framework in Java?</h3>
-<p>The Fork/Join framework is a parallel programming framework introduced in Java 7 that allows for efficient.</p>
-<h3 id="what-is-the-executor-framework-in-java">What is the executor framework in Java?</h3>
-<p>The Executor framework is a high-level API introduced in Java 5 that provides a way to manage and control thread execution, allowing developers to submit tasks for execution without having to manage thread creation and lifecycle.</p>
-<h3 id="what-are-java-annotations-and-how-are-they-used-in-java-programming">What are Java annotations and how are they used in Java programming?</h3>
-<p>Java annotations are metadata that provide additional information about the code to the compiler or runtime environment. They are used to influence the behavior of the code, provide documentation, and enable frameworks to process the annotated elements. Annotations can be applied to classes, methods, fields, parameters, and other program elements.</p>
+<h1 id="youtube-top-k">YouTube Top K.</h1>
+<p>Ask targeted question to get the specific scope of the design.</p>
+<p>At any moment we will be able to query <strong>precisely</strong> the top K most viewed videos for the last one hour 1 day one month.</p>
+<p>Get the idea of the data - Youtube shorts get 70 billion of views per day and 1 hour of youtube content is uploaded every seconds.</p>
+<h2 id="functional-requirement"><strong>Functional requirement.</strong></h2>
+<p>In Top K videos design a small change in the requirement can dramatically impact the design . The target to get the most viewed videos is not so difficult the important part arises when we go for a specific time.</p>
+<p>We need to understand what time period or windows the system needs to support like last one hour 1 day one month   </p>
+<p>When we were talking about the duration it's better to discuss about windows, there are mainly 2 primary types of window used in streaming system <strong>the sliding window</strong> and <strong>the tumbling windows</strong>.</p>
+<p>The sliding window the last one hour is the time between T-1 hour and T hours example the current time is 10:08 then the last one hour time is between 9:08 and 10:08.</p>
+<p>The tumbling window is teh last full hour that start and end on an hour boundary.  The time between <code>[Floor(T - 1 hour, 'hour')]</code> and <code>[Floor(T, 'hour')]</code> example the current time is 10:08 then the last full hour time is between 9:00 and 10:00.</p>
+<p>We can proceed to tumbling window - there might be some ambiguity in the requirement will change as required.</p>
+<p>It is important to mention the time period we are going to support say designing an arbitrary time period system meaning top K videos for the month of June 2025 in October 2025. In this case it becomes a simple time series TV queries type of problem there's nothing to design we can't really store the data so there is no way of precompute.</p>
+<p>There should be range for the size of the top cake  get a practical idea of clients requirement let's say for application of top key  1k is in a build limit. In case you want to query the top 1,000,000 videos so it's more likely to load the full data set provided ban on the system.</p>
+<p><strong>Core Requirements.</strong></p>
+<p>Client should be able to query the Top Gear videos for all time up to a maximum 1K result<br />
+Client should be able to create a tumbling windows of one hour day or month and all time up to Max of 1K results  </p>
+<p>Further design arbitrary time. Arbitrary starting and ending point.</p>
+<h2 id="non-functional-requirements"><strong>Non functional requirements.</strong></h2>
+<p>Understanding the top key calculation is carried out views from YouTube videos are events that happen at a real point button distributor system there will be some delays in processing these events. <br />
+For a particular video say at 9:59:00 the view increased by 1 count but it took time to arrive into the system say at 10:00:55 How long should we wait for the events to be processed given a generous of one minute buffer time but when a view happens and it can include into our system.</p>
+<p>We will try to give the correct answer but most probably approximate the correct answer because it should be available so giving a return is more important.</p>
+<p>The latency of the system say the system is respond within 10 millisecond we have to precompute the results of the cache won't take much time so we can achieve this latency.</p>
+<p>Get an approximate size would be very useful calculating the top case song played by a single user in Spotify can be done on a single CPU but for YouTube it's going to be massive we need to see how many videos are going to be watched and how many views are going to be processed per second so we know how to scale the system.</p>
+<p><strong>Core requirements</strong>.</p>
+<p>The system at most manage One minute delay between the view occur and getting calculated into the system.<br />
+The latency 10 millisecond.<br />
+The system should handle massive number of views and massive number of videos.</p>
+<p><strong>Set up.</strong></p>
+<p>First we'll design A sub optimal spacing system that actually fulfills the requirement for example calculate the top game we use for all time and then we will extend the support for the time windows  </p>
+<p>Define the core entities - There are some basic entities to build the API videos, views, time window.
+API or system interface<br />
+<code>GET /views/top-k?window={WINDOW}&amp;k={K} -&gt; { videoId: string, views: number }[]</code>
+For variable length result sets we will consider pagination but for this example we are limiting the response to no more than one K result so pagination is less of a concern.</p>
+<p>Do not waste much time on trivial things get to them interesting part of the design it's very important as a senior developer to distinguish between more complex space and more trivial piece.</p>
+<h2 id="high-level-design"><strong>High level design.</strong></h2>
+<p>The target is to make a simple design and then optimize it  mention the bottleneck that are there in the design dononet wait for the interview to </p>
+<h3 id="client-should-be-able-to-query-the-top-key-videos-for-all-time-max-up-to-1k-result">Client should be able to query the top key videos for all time Max up to 1K result.</h3>
+<p>The system will store all time top key videos we will add some counters for each videos and we'll query the top videos from the list</p>
+<p>It will not accept a <code>view</code> API call the recent Kafka stream of <code>ViewEvent</code> topic present that will consume the details. The videos shown to the user will be recorded into the topic the <code>ViewEvent</code> topic is partitioned by video ID and there will be simple consumer service that will pull the data from the topic and update to the postgres database.
+<img alt="AllTimeTopK.png" src="../../images/HLDExample/AllTimeTopK.png" />
+The view consumer gets the data from the Kafka stream and keeps the counter for the video ID in the postgres DB.</p>
+<p>There will be a lot of writes into the postgres DB .  </p>
+<p>We need a way for users to query the top key videos the postgres database already has the values we need to add an index to the table and query it a <code>Top K service</code> can handle this particular query and return the response.
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="ss">&quot;videoId&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;views&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">VideoViews</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="ss">&quot;views&quot;</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="n">k</span><span class="p">;</span>
+</span></code></pre></div>
+We can create an index on the view column and greater rate efficiently . The query planner will grab the view index which is a sorted list a video ID by the number of views . This will effectively take O(k) operations.</p>
+<p>The cost in this system is that in every write we need to update the view index and the SQL database can be complex so the write operation can take a simple O(1) append to O(log n) update to the index.</p>
+<p><br></p>
+<h3 id="client-should-be-able-to-query-tumbling-windows-of-1-hour-day-month">Client should be able to query tumbling windows of 1 hour, day, month.</h3>
+<p>We need to extend the system to support time window queries. We need to change the table schema to include a timestamp column. We need to set this column to be the timestamp of the hour of the view event, There will be one row for each video that has been viewed at least once in an hour  </p>
+<p>It means there will be many rows of videos that have been viewed multiple times over several hours. The number of writes is not changing as we're still writing one for every views that happens. We are storing multiple row for videos so the number of rows is more. We will fix it in later part.</p>
+<p><img alt="BasicTimeWindow.png" src="../../images/HLDExample/BasicTimeWindow.png" /></p>
+<p>The read side it needs to update to the time window inputs. In the SQL it is easy to add the timestamp and also add index in the timestamp column.</p>
+<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="ss">&quot;videoId&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="ss">&quot;views&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="ss">&quot;views&quot;</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">VideoViews</span><span class="w"> </span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="ss">&quot;timestamp&quot;</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="err">{</span><span class="n">windowStart</span><span class="err">}</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="ss">&quot;timestamp&quot;</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="err">{</span><span class="n">windowEnd</span><span class="err">}</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="ss">&quot;videoId&quot;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="ss">&quot;views&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="err">{</span><span class="n">k</span><span class="err">}</span><span class="p">;</span>
+</span></code></pre></div>
+The query execution going to vary based on statistic and the query optimizer but we will have to scan through out the db.</p>
+<p>Mention that scan billions of row is a big deal.</p>
+<h2 id="deep-dives"><strong>Deep Dives.</strong></h2>
+<h3 id="how-to-cut-down-the-number-of-queries-to-the-db">How to cut down the number of queries to the db.</h3>
+<p>There are lot of db calls to get the top k in case million requests for top k comes to the service then there will be trouble.</p>
+<p>The requirement mention that there is 1 min of grace period when the video view happened and the data added into the result.  </p>
+<p>The buffer will be used to cache or pre compute - its is mainly the read problem so the first thought should be scaling read pattern.</p>
+<p>There are like good solution - cache the top k for each time window and a great solution - precompute the top k for each time window.</p>
+<p><strong>Cache the top k for each time window</strong></p>
+<p>Simple and elegant put a distributed cache by the top-k service like Redis or Memcached. Return the result and in case not in cache then pre compute and store in cache with TTL of an hour.</p>
+<p>The cache entry with the key like <code>top-k: {windwow}:{truncated_timestamp}</code> and the value will be the list of top k videos for that time window. The cache will be updated every 1 minute with the new top k videos for that time window.</p>
+<p><img alt="CacheTopK.png" src="../../images/HLDExample/CacheTopK.png" /></p>
+<p>Issue - When the cache expires then there will be huge request and it will break the SLA as the time should be no longer than 10s ms.  </p>
+<p>We can partially solve by coalescing requests meaning only allowing one request per server a given time window to the database, have all the other requests wait for that response. The SLA will not be solved.</p>
+<p><strong>Precompute the top k for each time window</strong></p>
+<p>Adding a cron to the system on fixed intervals will precompute the top k for each time window and warms the cache and the request that are coming will be to the cache and never to the db.</p>
+<p><img alt="CronTopk.png" src="../../images/HLDExample/CronTopk.png" /></p>
+<p>It will solve the SLA issue and the cron running in fixed intervals and it has time to "get ahead" of the expiration that would have happened.</p>
+<p>Issue - Operation complexity and what will happen when the cron fails? 
+How to monitor the cron jobs?<br />
+Short answer will store the cache result for like more hours then service will give stale data.</p>
+<p>There are lot more to design in the system unless they ask we can park the topic and come back later time permits.</p>
+<h3 id="how-to-handle-the-massive-write-in-the-db">How to handle the massive write in the db.</h3>
+<p>There will be lots of write to the db lets assume the amount of write then will decide optimization.</p>
+<p>We can consider big and move on and in general when there is deeper infra design then better to show off 😜
+Thumb rule time permits then do the math else do it when it is needed to and when it influence the design.</p>
 
 
 
