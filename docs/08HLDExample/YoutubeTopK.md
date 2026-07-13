@@ -156,8 +156,56 @@ There are lot more to design in the system unless they ask we can park the topic
 
 There will be lots of write to the db lets assume the amount of write then will decide optimization.
 
-We can consider big and move on and in general when there is deeper infra design then better to show off 😜
+We can consider big and move on and in general when there is deeper infra design then better to show off 😜  
 Thumb rule time permits then do the math else do it when it is needed to and when it influence the design.
+
+The calculation is simple `70B views/day / (100k seconds/day) = 700k tps`  
+Modern db handle 10k+ writes per second per node.
+
+Storage needed -  
+```
+Videos/Day = 1 hour content/second / (6 minutes content/video) * (100k seconds/day) = 1M videos/day
+Total Videos = 1M videos/day * 365 days/year * 10 years = 3.6B videos
+```
+
+We have to find out how big the table of id and count `Naive Storage = 4B videos * (8 bytes/ID + 8 bytes/count) = 64 GB`
+
+Every time we keep a set of views for all videos we need 64 GB of storage.
+
+**Sharding Ingesting** - To handle the write throughput we will do the big thing first sharding. The topic `viewEvent` is partitioned by videoId.
+
+To scale write sharding, partitioning and batching are first line of defence. The view consumer is scaled horizontally by spinning instance to read from each partition. The shard will have partial view of the subset of videos. 
+
+When write of a view it is assigned to a shard based on the video Id. The view consumer for the partition reads te view event from the topic and fires off a write to the db for the shard.
+
+We want to bring the throughput of the db down to 10K TPS( Transaction per second) we need to shard  the db into 70 instances. Its huge given the task of the trivial work.
+
+The value 70 got by the total write rate per db node. The eatimates rate 700k TPS and when db to manage 10k TPS then 700k/10k = 70 shards. Each shard take each slice of the traffic.
+
+When using the shard the single SQL query to get top k result is not a single query and we need to query each shard and merge the results (easy way using Citus). Its easy get the top k from each shard and sort and get the global top k.
+
+Batching Ingestion - The 70 shard is a bit wasteful for simple function. 
+
+There is one case like total 4 billion videos will not get the view the small group of videos will get the huge count like Taylor Swift and all. In that case we dont have to write for each view and better to batch up the writes for each videos and flush the batch periodically.
+
+Flink is a stream processing framework that helps up handling batch and aggregation. Flink has checkpoint and no need to worry about loing data or issue like event delay. 
+
+In the Flink solution will use `BoundedOutOfOrdernessWatermarkStrategy`to handle late events and will tell Flink that we are okat to wait upto say 30 sec and will use the tumbling window of 1 hour to aggregate the views for each video.
+
+Flink is reading from Kafka and when anything goes dow flink rewind the checkpoint offset in the Kafka topic.
+
+![FlinkBatching.png](..%2Fimages%2FHLDExample%2FFlinkBatching.png)
+
+The Flink is getting individual event and output the sum of views per video on a i hours interval.
+
+There will be no write every sec its a good amount of write per hour and as the db is spreach across shard its fine and db handle bulk update much better than individual writes.
+
+The number of write will be also less (2-100x) as we are adding the sum of many views in a single write. The shard count can be reduced to 5-10 number.
+
+### How to optimize the top k queries?
+
+
+
 
 
 

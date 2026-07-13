@@ -371,18 +371,17 @@ When different operation need different hardware - Say the work include API requ
 When they ask about scale or failure - The cases like "when the server crash? Scale the system to 10x" 
 
 ### Common cases.
-
-**What will happen when the worker crash?**
+#### What will happen when the worker crash?
 
 The job will be taken by another worker.   
 The heartbeat will tell in case the worker alive the interval is a deciding factor. When one is not responding the other worker will pick up the task based on the offset. There is an option to set something like session timeout.
 
-**What will happen when the job keeps failing?**
+#### What will happen when the job keeps failing?
 
 Data error or any doomed job that will keep retry and stop the worker and the other message in the queue.
 Solution - DLQ when the job fails say 3 times message will be in DLQ. The DLQ will store the data that need human debug. When done the jobs are back to the queue.
 
-**User click on the generate report for 3 times how to prevent the identical jobs in the queue?**
+#### User click on the generate report for 3 times how to prevent the identical jobs in the queue? How to prevent duplicate work ?
 
 Without deduplication the resource waste doing identical jobs. Worst case send the email 3 times and charging the money. The issue in the task which are not idempotent.
 
@@ -410,17 +409,56 @@ private String createJob(String userId, String jobType, String jobData) {
         return job.getId();
 }
 ```
-
-**Its sale time and huge traffic and 100X more jobs and the workers cant pick up What is the solution.**
+#### Its sale time and huge traffic and 100X more jobs and the workers cant pick up What is the solution.
 Worker cannot process fast enough or the load is more then the jobs gets rejected.  
 Solution - Backpressure meaning slow down job acceptance when the worker is overwhelmed. Set the queue depth limit and reject new job its better than keeping it wait. Autoscale the worker based on the queue depth. There is a limit and queue depth at that limit then scale up the worker. The point is its the queue depth and not the CPU usage and by the time the CPU is high the queue is backed up.
 
 
-**How to separate the jobs like some report 5 mins and yearly account say 5 hours?** 
 
-Long jobs will block the short jobs and the simple report wait for an hour. The worker utilization is not optimum some doing more task and long one job.
+#### How to separate the jobs like some report takes 5 mins and yearly account say 5 hours? How to handle the mixed workload?
 
-Solution -  
+Long jobs will block the short jobs and the simple report will wait for an hour. The worker utilization is not optimum some doing more task and long one job. Auto scaling is not good as there is no timeline for the jobs.
+
+Solution -  The solution is to separate the queue by job type or expected duration.  Easy will go to fast queue and the complex will go to slow queue. The alternate solution to break the large jobs into smaller chunks and use the same queue.
+
+```
+queues:
+  fast:
+    max_duration: 60s
+    worker_count: 50
+    instance_type: t3.medium
+    
+  slow:
+    max_duration: 6h
+    worker_count: 10
+    instance_type: c5.xlarge
+```
+In case you dont know how much time will take to channel to the queue then put in fast queue and in case taking time then route them to the slow queue.
+
+
+#### How to orchestrate the job dependencies like a job report has 3 steps like fetch data, generate report and email.
+
+It needs orchestration and without design it will be spaghetti code. Say get teh step 1 and then directly queue step 2 it fails then hard to debug and monitor and should it retry step 2 or start again.
+
+Simple each worker queue the next job before marking itself complete. There will be full context in each job so it can be retried independently.
+
+```java
+{
+  "workflow_id": "report_123",
+  "step": "generate_pdf",
+  "previous_steps": ["fetch_data"],
+  "context": {
+    "user_id": 456,
+    "data_s3_url": "s3://bucket/data.json"
+  }
+}
+```
+The system that has workflow steps and parallel work there are application like Airflow.  It will help in workflow as a code and handle retries per step.
+![FlowChart.png](..%2Fimages%2FHLDExample%2FFlowChart.png)
+
+> When a system taking time and resource mismatch or scale then solution is common - queue and return and process asynchronously.
+> 
+> Take the front seat and you should identify the issue so that it show you are thinking of timeouts and user experience.
 
 ## Dealing with contentions.
 Multiple users try to access the same resource like tickets and seats then there should be a way to prevent race in system. 
@@ -446,13 +484,210 @@ Solution - optimize the db using indexing and denormalization, scale horizontall
 
 ## Scaling writes.
 
-The scaling write including the parts like sharding, batching and load management.
-Sharding - distributing data across multiple servers.    
-Vertical partitioning - separating different types of data.    
-Handing write bursts through queue (buffer temporary spikes) and load shedding (prioritize important writes during overload).     
-Batching will help reduce per-operation overhead with grouping multiple writes.
+It include high volume write when a single db becomes the bottleneck and when the application grows to million of writes per sec and the component limit hits in disk and CPU and network bandwidth.
 
-Main part select good partition key and make the load even and make the data together.
+
+
+The scaling write including the main parts like - 
+
+Vertical scaling and db choices,   
+Sharding and partitioning,   
+Handling Bursts with Queue and Load shedding.  
+Batching and Heirarchical Aggregation.
+
+### Vertical Scaling and write optimization.
+Scaling in single server to make sure we have used the hardware to the full limit. Make sure to address that you are not pre maturely adding more in the system you hit the limit by the math and the estimation like the write rate and in case its in limit of hardware.
+
+Vertical Scaling - There are system with 200 CPU core and 10 gigabit of network interface. The increase of the limit will help.
+
+Db choice - The db choice of write heavy is imp. Example Cassandra is write heavy and superior write though put. Its append only commit log architecture writes sequentially in the disk and not updating data in place(it takes time expensive disk seeks). It manage 10k write per sec rather than traditional db like 1k per sec.
+
+The issue is read performance is not good and needs to see many files and merging results and its trading read vs write.
+
+Example of db.  
+**Timeseries DB** - **InfluxDB** or **TimescaleDB** build For high volume sequential writes with timestamp and it also has built in data encoding give better storage.   
+**Log structured database** - **LevelDB** app and new data rather than updating in place  
+**Column store** - **ClickHouse** can batch writes efficiently for analytics workload
+
+There are many other things that we can do to optimize the DB writes - 
+
+Disable expensive features like foreign key constraint complex triggers or full text search index during high write.    
+Tune write-ahead logging like in postgres we can batch multiple transactions before flushing to disk.   
+Reduce index overhead meaning fewer indexes means faster write.
+
+
+In case for any details then mention why the Cassandra append only writes are faster than MySQl B-tree updates.
+
+### Scaling and Partitioning.
+
+The point when we exhaust the hardware limit then we have to move to horizontal scaling.
+
+When a single server can handle 1000 writes per second then 10 servers SHOULD handle 10k writes/sec. We should distribute the volume across multiple servers so that one handles manageable portion and we call this extra server as shards and there are many shots can exist in a logical database.
+
+Sharding - A database scaling technique that partitions data across multiple database instances. Each shard holds a subset of the data, enabling horizontal scaling.
+
+**Horizontal Sharding** - A simple example of sharding is a Redis cluster. Redis store with the single string key and using hash (CRC function) to gets the slot number and the slot number are assigned to different node in the cluster.
+
+Client queried the Redis cluster to track the server in the cluster and the slot numbers and when it wants to write a value it hash the key written by the slot number get this specific slot and send the right request to the server.        
+Consistent Hashing to determine which server to write.
+
+![RedisClusterSharding.png](..%2Fimages%2FHLDExample%2FRedisClusterSharding.png)
+
+**Select a good partition key** - To answer how the good partition key will help the data to evenly store in the server get good idea on consistent hashing, virtual node and slot assigment schemes.
+Example of good key - hash on te user id it will be even.
+
+Say incorrect key like hash on country then will write a lot in highly populated country like China. There are shard not utilized. Easy way like shard on user id or post id.
+
+The system should also consider how the data will be read if all the data are spread across shards then each request needs to collect data from single every single Shard and there will be a lot of overhead and readers might get lossy network calls.
+
+**Vertical partitioning** - horizontal partitioning splits the row and vertical partitioning splits the column separate the type of data that have different access pattern and scaling requirements .  
+
+Example like a social media post say there is this monolith service and a single database code - 
+```sql
+TABLE posts (
+    id BIGINT PRIMARY KEY,
+    user_id BIGINT,
+    content TEXT,
+    media_urls TEXT[],
+    created_at TIMESTAMP,
+    like_count INTEGER,
+    comment_count INTEGER,
+    share_count INTEGER,
+    view_count INTEGER,
+    last_updated TIMESTAMP
+);
+```
+The post table will be the center for all queries user write the content, the system updates engagement metrics and analytics queries scan through the massive amount of data.
+
+In vertical partitioning the split will happen into specific tables.
+```sql
+-- Core post content (write-once, read-many)
+TABLE post_content (
+    post_id BIGINT PRIMARY KEY,
+    user_id BIGINT,
+    content TEXT,
+    media_urls TEXT[],
+    created_at TIMESTAMP
+);
+
+-- Engagement metrics (high-frequency writes)
+TABLE post_metrics (
+    post_id BIGINT PRIMARY KEY,
+    like_count INTEGER DEFAULT 0,
+    comment_count INTEGER DEFAULT 0,
+    share_count INTEGER DEFAULT 0,
+    view_count INTEGER DEFAULT 0,
+    last_updated TIMESTAMP
+);
+
+-- Analytics data (append-only, time-series)
+TABLE post_analytics (
+    post_id BIGINT,
+    event_type VARCHAR(50),
+    timestamp TIMESTAMP,
+    user_id BIGINT,
+    metadata JSONB
+);
+```
+
+When we have separated the data then we can move each table to a different database and it can be optimized for specific access. Example - The **post content** we will use traditional B tree index and it's optimized for read performance. The **post metrics** we will use in-memory storage for high frequency updates and **post analytics** we will use time series optimised storage a DB with column oriented compression.
+
+### Handling Bursts with Queue and Load Shedding.
+
+The partitioning and sharding will help you for 80% to scale but there will be still cases when things like sale and when the order becomes 5X next thing  
+In case we need to scale for say 5X write volume - Then autoscaling is not the great solution. The scaling up and down will take time and it means we either need a buffer the right so that it can process them as quickly as it can sweetie or to get rid of the writes that business is acceptable.
+
+
+Queue - The frustrated is using cube like Kafka it will the right acceptance from right processing and allowing the system to write continuously.
+
+There are few benefits mainly the burst absorption the queue will act as a buffer soothing the traffic spikes and DB will process the write in a steady rate. 
+ 
+It's a temporary solution in case the server right is not increased then there would be a lot of records waiting in the queue. The user need to now do a call back to see if the request is processed or not in this case the system is taking delay when the traffic is highest. 
+
+
+**Load Shedding Strategies** - When there is this huge amount of right wing many to decide which right to accept and which to reject it's for load shedding and it's better than making everything fail  
+ 
+We need to decide that if it is a less important data that then if we can make it remove and at least make the system up and running that would be good example application like Strava or Uber where users are reporting their location at regular interval if there are more number of user running a queue to the system setup would just blow up the queue but if you just take a step and then like you know realise that you're going to take the updates after a few seconds and we dropped one right and take the next one and that won't make much of a difference in the application.
+
+In Uber it's the location update in analytical systems it might be some of the impressions for a while to ensure that we can track more important clicks.
+
+### Batching and Heirarchical Aggregation.
+Individual rights has the overhead like the network round trip transaction setups and index updates additionally databases process batches more efficiently than individual writes. 
+
+Batching instead of processing the rights one by one we should batch multiple rights together to amortize this overhead. It can be done at the application layer, in between process or even the database layer.
+
+**Application Layer** - And the application layer the client will batch up the rights before it sends to the DB . It should be in the case when the application itself is not the source of truth for the data  
+ 
+Example if a service reading from Kafka topic performing some processing and then writing to the DB then we can patch up the rides together before we send them to the DB next thing  
+In case the application crash we can read it from the Kafka topic but it shouldn't be at the first phase with the climbing direction in this case we can handle the data loss.
+
+Intermediate process another option is to have an intermediate process to batch up rights before they are sent to the DB.  
+Example the system which accept like events and tries to track off the count of likes the batch can read number of these events and get the final count of likes for each post and then forward it to the DB .  
+
+
+
+Example a post receives 100 likes in a window of one minute then we can reduce the number of writes from 100 to 1.
+The further discussion can be on the thing like the batch efficacy. When a post is getting one like in an hour a batch frequency of one minute providing 0 benefit to the system to get to the details it can be a good conversation.
+
+Database layer most databases have a configurable options on how often the rights are flushed to the desk disk being the bottleneck for most systems next  
+Redis default configuration is to flush writes to disk every 100 Ms. It means in case there is 1000 writes in a single batch we will only write to disk 100 ms after the last write. It's a big way of solving the problem it should be used in extreme cases.
+
+Hierarchical aggregation the system with high volume data like analytics and stream processing we need an aggregated view.
+
+Example in live video streams viewers are often going to post a comment and like a comment on the stream. Whenever you perform this event all other user needs to be notified if we design a system like that way then it will be messy.
+
+The simple solution is that all of the viewers are looking for the same eventual consistent view they want to see the latest comment and the count associated with them. We will assign the user to broadcast node using consistent hashing and instead of writing independently send the user to broadcast mode we use it to broadcast node using consistent hashing and instead of writing independently To each of them we can write out the broadcast notes and then it will forward to the respective viewer.
+
+In this case instead of writing to north viewers we are writing to M broadcast notes but the issue lies in the root processor as its receiving incoming notes from all the viewers the solution we will achieve by using the same way uisng the write processor.
+
+![HierarchicalAggregationBroadCastNode.png](..%2Fimages%2FHLDExample%2FHierarchicalAggregationBroadCastNode.png)
+
+The right processor to call can be selected based on the ID of the comment using some hashing it will aggregate the like on the comment over a timeline of window size and forward an update to the root processor to merger the result.
+
+The solution involves aggregating the data with the right processor and disaggregating with the broadcast node we will get the reduced number of writes in the system.
+
+### Common Deep Dives.
+
+#### How to handle recharging when there is a need to add more shards?  
+Example you started with eight Shard and then you need 16 how to migrate the data without downtime.  
+The naive approach is to make the system offline and rehash all data and move it to the new Shard.  
+Production system uses gradual migrations which target the rights to both the location that is the Shard that is migrating from and the new Shard . The process would be gradual and the system would be available. This dual write phase ensures no data is losing during migration. The writing in both shards old and new but the reading would be from the new Shard.
+ 
+#### What happens when there hot key meaning too popular to even keep in a single shard?
+Hot key -A cache or database key that receives disproportionately high traffic compared to others. Can create bottlenecks when traffic concentrates on a single shard or server.
+
+The point is to distribute the load across all the shards but say a tweet that goes viral having 100K likes per second this would cause problems so there are two ways to handle it split all keys and split hot keys dynamically  
+ 
+**Split all keys** - It splits all key a fixed k number of times. It's easier solution we don't put the tweets likes on a single shard we store them across multiple shards.  
+The `post1Likes` key, we can have post1Likes-0, post1Likes-1, post1Likes-2, all the way through to post1Likes-k-1. Each chart will have its own subset of data for a given post the right volume would be reduced by K times .  
+ 
+Issues it is actually increasing the size of the overall data set by K times  
+The read volume is also increased by k times in order to get the number of likes for a given post we now need to reach to all the postId1,2,3 upto k-1.  
+In case it's just a trending post and it would be back to normal after two to three days then we're good to go with this solution.
+
+Splits hotkeys dynamically  - It means splitting the heart key into multiple sub keys based on which is hot key for example in the viral tweet we can split the like count across 100 sub keys each handling 1K likes per second and when reading we will aggregate the count from all subkeys.
+
+The approaches works for the metrics that can be aggregated like the sum, count and not for the data that must be remain atomic like user profile.
+
+
+In this kind of scenarios both the riders and the writers need to agree upon the key that are not rights is spreading across multiple key sub keys and readers is not reading from all the subjects then we have a problem. There are many two solutions 
+ 
+We should have the readers always read from all the sub keys When the writer detects a key as a hot and then writing to the sub keys. The reader will see in case there any subkey and then read it.
+The alternate way is that the writer announces the split to the reader and the reader needs to receive it before the split executed it's complex but it's efficient as the reader will not read from the splits that does not exist.
+
+
+
+
+
+
+
+
+
+Sharding and partitioning is the first place to start in case it's dealing with high volume analytics or numeric data than batching and give 5 to 10 X improvement.
+
+Queues will be great for async processing  
+ 
+The main point is to reduce the throughput per component either by spreading 10K rights across 10 shards or smoothing the burst through queues or batching them into 100 bulk operations make each component easy to manage the load.
 
 ## Handling large blobs.
 Large files like video, image, documents - no routing of Gbs of data through application server - make client-to-storage transfer with the URL (application server makes the URL and client upload the file to the direct storage S3) and CDN delivery (download the data from the CDN).

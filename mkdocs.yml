@@ -5,6 +5,7 @@ nav:
   - System Design:
       - Fundamentals: 01SystemDesign/Fundamentals.md
       - Pattern: 01SystemDesign/Pattern.md
+      - Tips: 01SystemDesign/Tips.md
       - Key Technologies:
           - Redis: 01SystemDesign/KeyTechnologies/Redis.md
           - DynamoDb: DynamoDb.md
