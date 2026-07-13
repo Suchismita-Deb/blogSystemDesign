@@ -560,6 +560,34 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../01SystemDesign/Tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -576,10 +604,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
             
   
   
@@ -597,8 +625,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -722,10 +750,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
         
           
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
             
   
   
@@ -743,8 +771,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -896,10 +924,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
         
           
-          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
             
   
   
@@ -917,8 +945,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1154,6 +1182,17 @@
     <span class="md-ellipsis">
       
         How to handle the massive write in the db.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-optimize-the-top-k-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to optimize the top k queries?
       
     </span>
   </a>
@@ -2018,6 +2057,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#how-to-optimize-the-top-k-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to optimize the top k queries?
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2131,8 +2181,32 @@ Short answer will store the cache result for like more hours then service will g
 <p>There are lot more to design in the system unless they ask we can park the topic and come back later time permits.</p>
 <h3 id="how-to-handle-the-massive-write-in-the-db">How to handle the massive write in the db.</h3>
 <p>There will be lots of write to the db lets assume the amount of write then will decide optimization.</p>
-<p>We can consider big and move on and in general when there is deeper infra design then better to show off 😜
+<p>We can consider big and move on and in general when there is deeper infra design then better to show off 😜<br />
 Thumb rule time permits then do the math else do it when it is needed to and when it influence the design.</p>
+<p>The calculation is simple <code>70B views/day / (100k seconds/day) = 700k tps</code><br />
+Modern db handle 10k+ writes per second per node.</p>
+<p>Storage needed -<br />
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Videos/Day = 1 hour content/second / (6 minutes content/video) * (100k seconds/day) = 1M videos/day
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Total Videos = 1M videos/day * 365 days/year * 10 years = 3.6B videos
+</span></code></pre></div></p>
+<p>We have to find out how big the table of id and count <code>Naive Storage = 4B videos * (8 bytes/ID + 8 bytes/count) = 64 GB</code></p>
+<p>Every time we keep a set of views for all videos we need 64 GB of storage.</p>
+<p><strong>Sharding Ingesting</strong> - To handle the write throughput we will do the big thing first sharding. The topic <code>viewEvent</code> is partitioned by videoId.</p>
+<p>To scale write sharding, partitioning and batching are first line of defence. The view consumer is scaled horizontally by spinning instance to read from each partition. The shard will have partial view of the subset of videos. </p>
+<p>When write of a view it is assigned to a shard based on the video Id. The view consumer for the partition reads te view event from the topic and fires off a write to the db for the shard.</p>
+<p>We want to bring the throughput of the db down to 10K TPS( Transaction per second) we need to shard  the db into 70 instances. Its huge given the task of the trivial work.</p>
+<p>The value 70 got by the total write rate per db node. The eatimates rate 700k TPS and when db to manage 10k TPS then 700k/10k = 70 shards. Each shard take each slice of the traffic.</p>
+<p>When using the shard the single SQL query to get top k result is not a single query and we need to query each shard and merge the results (easy way using Citus). Its easy get the top k from each shard and sort and get the global top k.</p>
+<p>Batching Ingestion - The 70 shard is a bit wasteful for simple function. </p>
+<p>There is one case like total 4 billion videos will not get the view the small group of videos will get the huge count like Taylor Swift and all. In that case we dont have to write for each view and better to batch up the writes for each videos and flush the batch periodically.</p>
+<p>Flink is a stream processing framework that helps up handling batch and aggregation. Flink has checkpoint and no need to worry about loing data or issue like event delay. </p>
+<p>In the Flink solution will use <code>BoundedOutOfOrdernessWatermarkStrategy</code>to handle late events and will tell Flink that we are okat to wait upto say 30 sec and will use the tumbling window of 1 hour to aggregate the views for each video.</p>
+<p>Flink is reading from Kafka and when anything goes dow flink rewind the checkpoint offset in the Kafka topic.</p>
+<p><img alt="FlinkBatching.png" src="../../images/HLDExample/FlinkBatching.png" /></p>
+<p>The Flink is getting individual event and output the sum of views per video on a i hours interval.</p>
+<p>There will be no write every sec its a good amount of write per hour and as the db is spreach across shard its fine and db handle bulk update much better than individual writes.</p>
+<p>The number of write will be also less (2-100x) as we are adding the sum of many views in a single write. The shard count can be reduced to 5-10 number.</p>
+<h3 id="how-to-optimize-the-top-k-queries">How to optimize the top k queries?</h3>
 
 
 
