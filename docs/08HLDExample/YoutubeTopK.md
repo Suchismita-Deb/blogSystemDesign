@@ -204,7 +204,62 @@ The number of write will be also less (2-100x) as we are adding the sum of many 
 
 ### How to optimize the top k queries?
 
+Use a **Min-Heap of size K** per shard. Each shard maintains its own heap. The Top K service queries all shards in parallel, collects K results per shard, does a final merge sort and returns the global Top K. Since we already precomputed via Cron → Redis, this query path is only hit on a cold start.
 
+---
+
+## 🧠 Summary & Mnemonics — Connect the Design
+
+> **One-liner:** *"Events stream into Kafka, Flink batches them, sharded DB stores them, a Cron precomputes them, Redis serves them fast."*
+
+---
+
+### 🔑 Mnemonic: **"K-FACTS"**
+
+| Letter | Concept | What it does |
+|--------|---------|--------------|
+| **K** | **Kafka** | Streams `ViewEvent` topic — partitioned by `videoId` |
+| **F** | **Flink** | Aggregates & batches views per tumbling window; handles late events via `BoundedOutOfOrdernessWatermarkStrategy` (30s grace) |
+| **A** | **Aggregate → Sharded DB** | Flink outputs `(videoId, hour, sumOfViews)` → written to 5–10 sharded Postgres nodes (was 70 without batching) |
+| **C** | **Cron** | Runs every minute, precomputes Top K for each window, warms the Redis cache **before** TTL expires |
+| **T** | **Tumbling Window** | Fixed hour/day/month boundaries — `[Floor(T-1h,'h'), Floor(T,'h')]` — simpler than sliding, agreed with interviewer |
+| **S** | **Serve via Redis** | Top K Service reads from Redis in **< 10 ms**; key pattern: `top-k:{window}:{truncated_ts}` |
+
+---
+
+### 🗺️ Design Conversation Flow (connect the dots)
+
+```
+1. CLARIFY   →  Sliding vs Tumbling? (Pick Tumbling) | K ≤ 1K | 1-min grace
+2. ESTIMATE  →  70B views/day → 700K TPS → need batching + sharding
+3. BASELINE  →  Kafka → Consumer → Postgres (All-time counter + timestamp col)
+4. PROBLEM 1 →  700K TPS too high for DB → Flink batching (2–100× write reduction)
+5. PROBLEM 2 →  70 shards too many → Flink reduces to 5–10 shards
+6. PROBLEM 3 →  Million read requests for Top K → Redis cache TTL 1 min
+7. PROBLEM 4 →  Cache cold-start breaks 10 ms SLA → Cron precomputes every minute
+8. MERGE     →  Per-shard Min-Heap(K) + parallel merge for global Top K
+```
+
+---
+
+### ⚡ Quick-Recall Card
+
+```
+WRITE PATH:   ViewEvent → Kafka (by videoId)
+                       → Flink (tumbling window, late-event watermark)
+                       → Sharded Postgres (5-10 shards, bulk upsert/hr)
+
+READ PATH:    Client → Top K Service → Redis (hit 99%+)
+                                     → DB (miss, merge from shards, store in Redis)
+                                     ← Cron keeps Redis warm every 60s
+
+SCALE TRICKS: Batch writes (Flink)   → fewer shards
+              Precompute (Cron)      → no SLA spikes
+              Coalesce reads         → no thundering herd
+              Min-Heap per shard     → O(n) merge instead of full sort
+```
+
+---
 
 
 

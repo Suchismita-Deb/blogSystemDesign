@@ -1,3 +1,21 @@
+## Thumb Rule.
+
+Dont fail to deliver a working model they will mention as time management issue. Make a linear way to build a system.
+
+System Up time say 99.99% available (52 mins down in a year).
+
+1 year = 360 days * 24 hours * 60 mins = 525600 mins.
+
+99.99% up time = 0.01% downtime.
+
+0.01% of 520000 = 52 mins.  
+99.999% uptime = 0.001% downtime = 5 mins.
+
+
+Load Balancer be set anywhere between user and web server, web server and application server, application server and database server.
+
+
+
 ## Understand the expectation.
 
 ### Midlevel.
@@ -11,3 +29,4 @@ Drive and take the backseat - The first part drive the interview and you might n
 ## Senior
 
 ## Staff.
+

@@ -70,9 +70,15 @@ Most common pitfalls.
 ![SystemDesignDeliveryFramework.png](..%2Fimages%2FSystemDesign%2FSystemDesignDeliveryFramework.png)
 
 ## **Delivery Framework.**
+
+> Requirement 5 mins
+> API Design 3 mins
+> Data Model 3 mins
+> High Level Design 15 mins
+> Deep Dive 10 mins
 ### Requirements - 5 mins.
 
-🎯 **Functional**  
+#### 🎯 **Functional**  
 - User/client should be able to **do feature**  
 - Ask targeted -  
     - Does system need **X**?  
@@ -85,15 +91,15 @@ Most common pitfalls.
 - **What (Request)** → What data? contents?  
 - **Where (Outcome)** → Desired output/event?  
 
-⚙️ **Non-Functional Requirements.**  
+#### ⚙️ **Non-Functional Requirements.**  
 - System qualities. The questions like - The **“System should be able to”**.  
 - Key -  
-  -- Read/Write heavy.  
+  -- Availability or Consistency.  
+  -- Read/Write heavy.    
+  -- Scalability.  
   -- Partitioning.  
-  -- Consistency.  
-  -- Availability.  
-  -- Durability.  
-  -- Latency.  
+  -- Latency. (Any specific number will help to achieve a target Latency of 500ms to load the post feed.)    
+  -- Durability.   
 
 Dont make it generic - The system should be low latency - every system feature. Make it specific and target to the system like the system should have low latency search <500 ms. It identifies the part of the system that needs low latency and provides target.
 
@@ -101,20 +107,13 @@ Identify the top 3-5 NFR that can be considered.
 
 **The most common NFR.**  
 
-**Fault Tolerance -** Redundancy, Failover and Recovery Mechanism.
-
-**Compliance -** Legal or regulatory things the system to meet - industry standard and data protection.
-
-**CAP -** System prioritize **C or A** (P always exists).
-
-**Scalability -** Get inn case there is any specific scaling in the system - does the system have bursty traffic at any specific day ?Does the system need to scale in read or write.
-
-**Latency -** The time system will take to response to the user request. Low latency search in designing Yelp.
-
-**Environment Cnstraint -** Any consraints like the system should run in low battery, or limited storage or limited bandwidth.
-
-**Durability** - How imp is i that the data in the system is not lost? Social media can loss some data.
-
+**Fault Tolerance -** Redundancy, Failover and Recovery Mechanism.  
+**Compliance -** Legal or regulatory things the system to meet - industry standard and data protection.  
+**CAP -** System prioritize **C or A** (P always exists).  
+**Scalability -** Get inn case there is any specific scaling in the system - does the system have bursty traffic at any specific day ?Does the system need to scale in read or write.  
+**Latency -** The time system will take to response to the user request. Low latency search in designing Yelp.  
+**Environment Cnstraint -** Any consraints like the system should run in low battery, or limited storage or limited bandwidth.  
+**Durability** - How imp is i that the data in the system is not lost? Social media can loss some data.  
 **Security -** How secure the system to be - data protection, access control compliance with regulations.
 
 > **FCC SLEDS** - Furry Cat Climbs Steep Ledges Every Day Securely.
@@ -171,26 +170,20 @@ Stick with the factor of 1000 and get comfortable with the how much space would 
 
 Latencies - Intuitions about latency.
 
-Reading 1mb sequentially from memory - 0.25ms.
-
-Reading 1mb sequentially from SSD - 1 ms - 4x memory.
-
-Reading 1mb sequentially from spinning disk - 20 ms - 20xSSD.
-
-Round trip network latency CA to Netherlands - 150 ms.
+Reading 1mb sequentially from memory - 0.25ms.   
+Reading 1mb sequentially from SSD - 1 ms - 4x memory.   
+Reading 1mb sequentially from spinning disk - 20 ms - 20xSSD.   
+Round trip network latency CA to Netherlands - 150 ms.   
 
 https://gist.github.com/jboner/2841832
 
-SSDs are fast and affortable. Many severs work can be done by SSD.
+SSDs are fast and affordable. Many severs work can be done by SSD.
 
 Storage - The sample storage of media.
 
-2 hour movie - 1GB.
-
-Book of plain text - 1MB.
-
-A high resolution photo - 1MB.
-
+2 hour movie - 1GB.  
+Book of plain text - 1MB.  
+A high resolution photo - 1MB.  
 A Medium resolution image or site layout graphic - 100kb.
 
 Business - The interviewer will give a figure for the system.
@@ -221,7 +214,9 @@ Twitter example - entity - User, Tweet, Follow.
 
 To identify the entity ask the actor of the system and are they overlapping. The noun or resource needed to fulfill functional requirement.
 
-### API System Interface - Approx 5 mins.
+### Core Entities.
+The object API will use the data model the table and the data to work with.
+#### API System Interface - Approx 5 mins.
 
 Which API protocol to use - REST, GraphQL (Client spefy what data they need avoiding over and under fetching. Used when diverse client with different data need), RPC(Remote Procedure Call - Action oriented protocol that acts faster than REST for service to service communication), Real Time use WebSocket.
 
@@ -240,11 +235,9 @@ Comfortable in the entity, api of the system - proceed with the High Level to re
 
 Key technology idea will give more value in the component architecture.
 
-Dont over think here - the target to satisfy the API and fulfill the requirement. Go with one by one API endpoint and build the design to satisfy each one.
+Dont over think here - the target to satisfy the API and fulfill the requirement. Go with one by one API endpoint and build the design to satisfy each one. Dont make it complex now - target to serve 100 customer with the functionality then layer to serve the non-functionality.
 
-Dont make it complex now - target to serve 100 customer with the functionality then layer to serve the non-functionality.
-
-In the high level designw e can identify the places to add cache and message queue at this point callout or note it and move on.
+In the high level design we can identify the places to add cache and message queue at this point callout or note it and move on.
 
 Be loud and tlk the thought process and show the data flow and the state (db, cache, message queue) change with each request starting from the API request to the response.
 
