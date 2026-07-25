@@ -32,6 +32,7 @@ nav:
   - Java:
       - Code Quiz: 02Java/03CodeSnippet.md
       - Interview Questions: 02Java/Interview.md
+      - Interview Questions Part 1: 02Java/01InterviewQuestion.md
       - Java OOPs: 02Java/OOPs.md
       - Multithreading: 02Java/Multithreading.md
 
