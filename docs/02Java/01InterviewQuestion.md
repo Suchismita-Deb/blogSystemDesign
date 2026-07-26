@@ -146,3 +146,22 @@ They are functionally same and its the semantics. The @Repository enables automa
 <summary>Reveal Answer</summary>
 </details>
 </div>
+
+DSA - BinarySearch, DP.
+StringInterning, Multithreading.  
+Java 8 theoretical. Java 8 features lambda, stream.
+
+Design Pattern Code.  
+Singleton Design Pattern.  
+Stream API.
+Spring Data JPA.
+
+Multithreading executor framework.  
+Comparator and comparable. 
+HashMap internal working. Hashcode and equals method.
+Why string immutable.
+Microservice design pattern.
+
+HR Round.
+
+OOPS and strong design pattern. Spring - IOC, Bean, AOP, Spring Data JPA, Spring Security.
