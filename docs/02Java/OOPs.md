@@ -1,13 +1,49 @@
 <div class="quiz-box">
-<b>Possible to overload 2 methods only by changing the return type while keeping the same parameter?</b>
+<b>Method Overloading and Method Overriding.</b>
 <details class="quiz-toggle">
 <summary>Reveal Answer</summary>
-No we cannot overload a method only by changing the return type in Java method overloading depends on the parameter and the number of parameter types and order must be different.
+Method Overloading - Same method name with different parameter(compile time polymorphism). <br>
+Method Overriding - Redefining a parent class method in a subclass with the same signature(runtime polymorphism).
 
-When we call an overloaded method Java compiler verifies the argument that we are passing is this the number of arguments and the type of argument and then completely select the method.
+<br><br>
+<b>Overloading</b> - The parameter number, type or order should differ. The return type alone cannot distinguish the method. It is decided at compile time to class the method based on the signature(parameter) of the method.
+
+```java
+
+static int sum(int a, int b) {
+    return a + b;
+}
+static int sum(int a, int b, int c) {
+    return a + b + c;
+}
+
+static double sum(double a, double b) {
+    return a + b;
+}
+```
+
+Overriding - Same method name, same parameter and same return type. The access level should not be stricter than the parent class method. It is decided at runtime the decision like which version of the method to execute is done at the runtime. 
+```java
+// Parent class
+class Calculator {
+    public int sum(int a, int b) {
+        System.out.println("Parent class sum:");
+        return a + b;
+    }
+}
+
+// Child class
+class AdvancedCalculator extends Calculator {
+    @Override
+    public int sum(int a, int b) {
+        System.out.println("Child class overridden sum:");
+        return a + b + 10;
+    }
+}
+
+```
 </details>
 </div>
-
 <div class="quiz-box">
 <b>How is the method overloading connected to the polymorphism in Java?</b>
 <details class="quiz-toggle">

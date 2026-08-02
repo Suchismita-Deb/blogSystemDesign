@@ -104,3 +104,5 @@ What is concurrentHashMap.
 What is the HashMap internal.
 Kafka Partition ordering.
 What is the equals method.
+
+In Spring project in the properties file when set it like `spring.ai.openai.api-key=${OPENAI_API_KEY}` In the env edit configuration in the Modify Options add the `OPENAI_API_KEY="Val"` The apply and run.

@@ -155,3 +155,4 @@ Kafka Cluster (Fault Tolerant)
 │   └── Topic-B-P0 (Leader)
 │       └── Offset 0: Message5
 ```
+
