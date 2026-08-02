@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../01InterviewQuestion/">
+        <link rel="prev" href="../ProjectRESTAPI/">
       
       
-        <link rel="next" href="../Multithreading/">
+        <link rel="next" href="../../03Microservice/01Communication/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Java OOPs - System Design Toolkit</title>
+        <title>Sample - System Design Toolkit</title>
       
     
     
@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#java-lambda" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -107,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Java OOPs
+              Sample
             
           </span>
         </div>
@@ -1458,17 +1463,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../OOPs/" class="md-nav__link">
         
   
   
@@ -1484,7 +1482,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1550,10 +1547,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../Sample/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1569,6 +1591,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#java-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Java Lambda.
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2117,6 +2168,25 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#java-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Java Lambda.
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2180,213 +2250,180 @@
 
 
 
-  <h1>Java OOPs</h1>
+  <h1>Sample</h1>
 
-<div class="quiz-box">
-<b>Method Overloading and Method Overriding.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-Method Overloading - Same method name with different parameter(compile time polymorphism). <br>
-Method Overriding - Redefining a parent class method in a subclass with the same signature(runtime polymorphism).
-
-<br><br>
-<b>Overloading</b> - The parameter number, type or order should differ. The return type alone cannot distinguish the method. It is decided at compile time to class the method based on the signature(parameter) of the method.
-
-<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">}</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<p><strong>Securing the application</strong> - Using APIGEE to secure the connection of the pods. Server to server using OAuth 2.
+<strong>Feature deployment</strong> - the feature available to specific user to see the work.</p>
+<p><strong>What encapsulation work in real code base.</strong><br />
+It protects the object internal state from unintended modifications. Example when a bank account balance field is public then another field may change the value to negative. So we will be able to write a validation in setter that we will not be adding any negative value.</p>
+<p><strong>In your project how are you using the principle of object oriented programming.</strong>
+There are many abstract class base class and with the help of builder we are making the objects.
+Record and sealed class are introduced in Java 17.</p>
+<p><strong>Feature introduced in Java 21 and not in Java 17.</strong></p>
+<p>Overloading resolve at compile time or runtime. 
+Overriding in run time.
+<strong>API versioning. Deploy the updated API to user.</strong></p>
+<p>Deploy like the location basis then 100k in specific location the user the user name hashmap to get the range.</p>
+<p><strong>Design pattern you work - Factory, Builder.</strong></p>
+<p><strong>There are 2 method getData(String s) and getData(Object obj) - When null is passed to the 2 overloaded method which one is called.</strong></p>
+<p>When passing the value null then there will be ambiguity and the compiler will not understand which method to call. It will be compile time error.</p>
+<p><strong>Example when you used super and this keyword?</strong>
+Can a constructor call an overridable instance method?
+Yes but its risky - the method is already overridden the subclass will be executes before the subclass constructor completes.</p>
+<p><strong>Can an abstract class have a constructor if it is never be instantiated.</strong></p>
+<p><strong>Differences between abstract class and interface.</strong></p>
+<p><strong>Spring version.</strong></p>
+<p><strong>Spring Projects</strong> - what are thing used like spring boot spring security.
+There is a legacy code how would you update? Create a new API.
+<strong>What the @ComponentScanAnnotation do in package scanning? What will be the problem in case the main is not in the root package.</strong></p>
+<p>Give project structure.</p>
+<p>Create a custom starter that other application will use it.   Spring data jpa starter.</p>
+<p>Can a user be authenticated but not authorized for a specific access?</p>
+<p>What are the roles and authorities in spring security.</p>
+<p>What are the use case in synchronous and asynchronous design patter?
+What is teh orchestration and choreography microservcie design pattern.</p>
+<p>Git branch 30 commits and need only 5-6 commits then merge only the 6 commit and they are not in the master branch. How to do it?</p>
+<p>Cherry pick the hashcode.</p>
+<p>Does polymorphism applies to private and static method.<br />
+No. They are hidden. Runtime polymorphism work in overriden instance method. Private method are not inherited and static method are resolve at compile time using reference type. So dynamic method dispatch does not apply to private and static method.</p>
+<p>Explain solid principle to real use case.</p>
+<p>Polymorphism.</p>
+<p>A class implements2 interface having the same default method. What will happen? The class must override the method and provide its own implementation. The compiler will not understand which method to use so it will give compile time error. The solution is to implement.</p>
+<p>Design true immutable class.</p>
+<p>How springboot understand what to configure.
+Springboot analyse the class path, existing beana and configuration properties. There might be conditinal properties like @ConditionOnClass.</p>
+<p>how to disable a specific auto configuration class in springboot.</p>
+<p>We use @ExcludeAutoConfiguration or spring.autoconfigure.exclude property in application.properties.</p>
+<h3 id="java-lambda">Java Lambda.</h3>
+<p>Pass function as parameter.
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@Data</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Hotel</span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pricePerNight</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rating</span><span class="p">;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">HotelType</span><span class="w"> </span><span class="n">hotelType</span><span class="p">;</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">HotelType</span><span class="p">{</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">BUDGET</span><span class="p">,</span><span class="w"> </span><span class="n">LUXURY</span><span class="p">,</span><span class="w"> </span><span class="n">BUSINESS</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nd">@Service</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HotelService</span><span class="p">{</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Hotel</span><span class="o">&gt;</span><span class="w"> </span><span class="n">hotels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">HotelService</span><span class="p">(){</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="n">hotels</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Hotel</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">HotelType</span><span class="p">.</span><span class="na">BUDGET</span><span class="p">));</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="n">hotels</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Hotel</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">HotelType</span><span class="p">.</span><span class="na">BUSINESS</span><span class="p">));</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="n">hotels</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Hotel</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">HotelType</span><span class="p">.</span><span class="na">LUXURY</span><span class="p">));</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">}</span>
+</span></code></pre></div></p>
+<p>Why StringBuilder and not stringBuffer?</p>
+<p>Stringbuffer slow nut thread safe.</p>
+<p>A webserver handling 1000s of request that involves string manipulation. Which one to use StringBuilder or StringBuffer?</p>
+<p>StringBuilder - A web server that changes the string in a single thread. Faster - its non-synchronized mutable nature. StringBuffer - A web server that changes the string in multiple threads.</p>
+<p>Why String immutable in Java? Name predefined immutable class in Java.</p>
+<p>Integer, String, BigDecimal, BigInteger, LocalDateTime, LocalDate, LocalTime, ZonedDateTime, Instant, Duration, Period, UUID.
+What security thread arise when the string is not immutable in multithreaded env?</p>
+<p>What is teh difference between == and equals() in Java?
+== - It checks the reference equality. It checks if both references point to the same object in memory.<br />
+equals() - It checks the value equality. It checks if the values of the objects are the same. The equals() method can be overridden in a class to provide custom equality logic based on the object's state. For example, two different String objects with the same sequence of characters will be considered equal when using equals(), but they will not be the same object in memory, so == will return false.</p>
+<p>What happens internally when we concat 2 string using the + operator in Java?</p>
+<p>When you use the + operator to concatenate two strings in Java, the compiler internally converts it into a StringBuilder (or StringBuffer in older versions) operation. Here's what happens step by step:
+1. <strong>StringBuilder Creation</strong>: The compiler creates a new instance of StringBuilder.
+2. <strong>Append Operations</strong>: It appends the first string to the StringBuilder, then appends the second string.
+3. <strong>Conversion to String</strong>: Finally, it converts the StringBuilder back to a String using the <code>toString()</code> method.
+For example, the expression:
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">String</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;World!&quot;</span><span class="p">;</span>
 </span></code></pre></div>
-
-Overriding - Same method name, same parameter and same return type. The access level should not be stricter than the parent class method. It is decided at runtime the decision like which version of the method to execute is done at the runtime. 
-<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Parent class</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">class</span> <span class="nc">Calculator</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Parent class sum:&quot;</span><span class="p">);</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1">// Child class</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="kd">class</span> <span class="nc">AdvancedCalculator</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Calculator</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nd">@Override</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Child class overridden sum:&quot;</span><span class="p">);</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="p">}</span>
+is internally transformed by the compiler to:
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">StringBuilder</span><span class="w"> </span><span class="n">sb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">();</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;Hello, &quot;</span><span class="p">);</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;World!&quot;</span><span class="p">);</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">String</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span>
 </span></code></pre></div>
-</details>
-</div>
-<div class="quiz-box">
-<b>How is the method overloading connected to the polymorphism in Java?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-Method of overloading is connected with compile time polymorphism - In this case same method name can do different work based on parameter.
-</details>
-</div>
-
-<div class="quiz-box">
-<b>The static method be overridden in Java or they are hidden?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-No static method cannot be overridden in Java . Study method belongs to the class center to the object. 
-
-In case you write the same static method in giant class then it is called method hiding and not method overriding. 
-</details>
-</div>
-<div class="quiz-box">
-<b>What happens in case a superclass method is overridden by more than one subclass in java?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-In this many subclasses overwrite the same method from the parent class then every subclass will have its own version of that method and at runtime Java will call the method based on the actual object.
-</details>
-</div>
-
-<div class="quiz-box">
-<b>What will happen if we create the main method in Java without the static keyword? </b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-JVM will not be able to start the program JVM calls the main method without creating an object so without the main method being static it will be not able to start.
-</details>
-</div>
-
-<div class="quiz-box">
-<b>Can you overload the main method in Java by changing the parameters of the main method ?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-The main method is static and the main method similarly cannot be overridden in any other place. To do method overriding child class should have same method name, same parameter and same return type. The method in channel in parent class at runtime.
-Yes we can overload the main method in Java we can create more main methods with different parameters but JP will only look at the standard main method which is static and within a parameter of String args[].
-To perform the method overloading the method name should be same but the parameter should be different so we can call number of parameters type of parameters or any order of the parameter to be different and changing the return type without any other change is not enough.
-</details>
-</div>
-
-<div class="quiz-box">
-<b>What will happen if you write a return statement inside a try or catch block while the final block still run or will it be skipped ?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-The final block will still run even if the return statement is there in the trial the catch block finally will be executed before the method actually returns.
-</details>
-</div>
-
-<div class="quiz-box">
-<b>Can a study block through an exception while the class is loading? </b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-Yes starting block and throw an exception but it should be handled properly if exceptions is not handled class loading can fail and program can stop with error.
-</details>
-</div>
-
-<p>Autoboxing - Wrapper to Primitive.
-Unboxing - Primitive to wrapper.
-In the auto boxing from wrapper to primitive say the wrapper integer is having value null in it to convert it to primitive it will be error sometimes autoboxing and gives error.</p>
-<div class="quiz-box">
-<b>Anyways to Install the JDK without the JD or Dust JDK already condenser required runtime parts ?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-JDK already contains the required runtime parts to run the Java application and JDK is mainly for development but it also has runtime benefits and so we don't need separate JRE when JDK is installed.
-</details>
-</div>
-
-<div class="quiz-box">
-<b>Which garbage collection algorithms are used by JVM to clean our newest objects from memory ?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-The remaining garbage collection algorithms like Mark and sweep, mark and compact and generational garbage collection.
-</details>
-</div>
-
-<div class="quiz-box">
-<b>Java already has automatic garbage collection and how memory it happens in Java application ?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-Memory can happen when objects are not needed but they are still referenced for example garbage collector can only remove those of the seats and not reachable you talk you have to stay with each other garbage collector will not remove it.
-</details>
-</div>
-<div class="quiz-box">
-<b>Why should we use getter and setter method when we can directly make variables public and access them ?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-Getter and setter gives control over data we can add validation before setting any values and also we can add internal logic later without changing other code.
-</details>
-</div>
-<p>The top class cannot be private or protected it should be default or public.<br />
- We can use private constructor in Java only in case of singleton class or utility class. Private constructor stops other classes from creating objects directly.</p>
-<div class="quiz-box">
-<b>how to create singleton class so hat one object of that class can be created?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-To create single term class we make constructor private. Create one private static object of the same class and then provide the public static method to run that object.
-</details>
-</div>
-
-<div class="quiz-box">
-<b>What problem can happen in Singleton classic 2 threads try to create the objective at the same time ?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-Singleton is not threat safe, two threads can create two different objects of the same class at the same time. To make it threat safe we can use synchronized keyword in the method, synchronized block to eager initialization.
-</details>
-</div>
-
-<div class="quiz-box">
-<b>Why are immutable objects considered safe and useful when multiple threads are working together ?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-Immutable objects cannot be changed after creation so many threads can use the same object safely.
-To create an immutable class make the class final and the fields private and final and do not provide any setter, initialise values using constructor and in case field is mutable object return copy instead of original object.
-
-The final keyboard help in making the opportunity mutable and safe for multiple threads.  When a variable is declared is assigned as final then it cannot be changed. When it cannot be changed it is safe to share with multiple threads.
-</details>
-</div>
-
-<div class="quiz-box">
-<b>What happens if a class contains even one abstract method inside it ?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-If a glass is even one abstract method then the class must be declared abstract. We cannot create object of the abstract class directly. Child class has to implement the abstract method.
-</details>
-</div>
-
-<div class="quiz-box">
-<b>Why does Java not support multiple inheritance using glasses ?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-Java multiple entherence with classes because it can create confusion if two parent classes have the same method a Java will not know which method to use. This is called diamond problem.
-</details>
-</div>
-
-<div class="quiz-box">
-<b>When should you use an interface and when should you extend an existing class </b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-Interface when we want to defend rules that different laws should follow.  
-Use class extention when we want to reuse the code from the parent class.
-</details>
-</div>
-
-<div class="quiz-box">
-<b>Interface in Java with static method and how do we call those static methods </b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-Yes interface can have static methods and we can call them using the interface name we do not interpret objects to call the static methods.
-</details>
-</div>
-
-<p>Functional interface can implement another interface the only catch here is that it total it should be only one abstract method there should not be 2 abstract method.</p>
-<div class="quiz-box">
-<b>What is dynamic method dispatch and how does a job decides which overridden method to call at runtime ?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-Dynamic method dispatch means Java decides at runtime which overridden method should run.  
-It depends on the actual object not on the reference type. It is runtime polymorphism.
-</details>
-</div>
+What is Serialization in Java? How to make a class serializable?
+Serialization in Java is the process of converting an object into a byte stream, which can then be saved to a file, sent over a network, or stored in a database. This allows the object's state to be preserved and reconstructed later. To make a class serializable, you need to implement the <code>java.io.Serializable</code> interface. This is a marker interface, meaning it does not contain any methods. It simply indicates that the class can be serialized. Here's an example:</p>
+<p>What happens when a class does not implement a serializable interface and we try to serialize it and the object is serialized?</p>
+<p>When we try to implement a object of class that does not implement the Serializable interface, the Java runtime will throw a <code>java.io.NotSerializableException</code>. This exception indicates that the class is not eligible for serialization. The serialization process requires that the class explicitly declare its intent to be serializable by implementing the <code>Serializable</code> interface. If this is not done, any attempt to serialize an instance of that class will fail, and the object cannot be converted into a byte stream for storage or transmission.</p>
+<p>How to prevent certain fields in the class from being serialized?
+When you want to prevent certain fields in a class from being serialized, you can use the <code>transient</code> keyword. Fields marked as <code>transient</code> will not be included in the serialization process, meaning their values will not be saved when the object is serialized. Here's an example:</p>
+<p><div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.Serializable</span><span class="p">;</span><span class="w">        </span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">User</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Serializable</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">transient</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">;</span><span class="w"> </span><span class="c1">// This field will not be serialized</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">User</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">username</span><span class="p">;</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">password</span><span class="p">;</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="c1">// Getters and setters</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">}</span>
+</span></code></pre></div>
+In this example, the <code>password</code> field is marked as <code>transient</code>, so when an instance of the <code>User</code> class is serialized, the <code>password</code> field will not be included in the byte stream. When the object is deserialized, the <code>password</code> field will be initialized to its default value (null for objects, 0 for numeric types, false for boolean, etc.).</p>
+<p>How to make a class immutable?
+The class is declared final, so it cannot be subclassed. All fields are private and final, ensuring they can only be set once. The constructor initializes all fields, and no setter methods are provided, preventing modification after construction. The access to the object is limited to getter methods, which return the values of the fields without allowing any changes. If the class contains mutable objects, defensive copies are made in the constructor and getter methods to prevent external modification.</p>
+<p>The advantages and disadvantage of immutable object?
+Advantage - Thread safety. The immutable objects are inherently thread-safe, as their state cannot be changed after creation. This eliminates the need for synchronization when accessing immutable objects in a multi-threaded environment. 
+Disadvantage - Memory overhead. Creating new instances of immutable objects for every change can lead to increased memory usage, especially if the objects are large or frequently modified. This can result in higher garbage collection overhead and potential performance issues in memory-constrained environments.</p>
+<p>Why String boot and not spring?</p>
+<p>In the application when there are so many dependencies then how the dependency injection helps in development and maintenance? How the IOC improves the modularity and testability of the application? How the dependency injection helps in decoupling the components of the application?</p>
+<p>IOC provides modularity by providing loose coupling between components. Components dont directly instantiate or operate or directly depends on each other. Instead, they rely on abstractions and interfaces, which allows for easier swapping of implementations without affecting the rest of the system. This modularity makes it easier to maintain and extend the application over time and enhance testability as the components can be tested in isolation with mock implementation.</p>
+<p>What are the type of dependency injections supported in Spring framework?</p>
+<p>Why the constructor injection is preferred over setter injection? When to use setter injection?</p>
+<p>Constructor injection is preferred over setter injection because it ensures that the dependencies are provided at the time of object creation, making the object immutable and ensuring that all required dependencies are available. This leads to better encapsulation and makes the class easier to test. Setter injection, on the other hand, allows for optional dependencies and can lead to partially constructed objects if not handled carefully. Setter injection is typically used when a dependency is optional or when circular dependencies exist.</p>
+<p>Constructor injection is preferred when the dependency is mandatory and should be provided at the time of object creation like user db,access object. It ensures that the object is always in a valid state and reduces the risk of null pointer exceptions. Setter injection is preferred when the dependency is optional or when there are circular dependencies between beans, allowing for more flexibility in configuring the beans.</p>
+<p>What is the use of @RestControllerAnnotation in Spring Boot? How is it different from @Controller?
+The <code>@RestController</code> annotation in Spring Boot is a specialized version of the <code>@Controller</code> annotation. It is used to create RESTful web services and combines the functionality of <code>@Controller</code> and <code>@ResponseBody</code>. When a class is annotated with <code>@RestController</code>, it indicates that the class is a controller where every method returns a domain object instead of a view. The <code>@ResponseBody</code> annotation is automatically applied to all methods, meaning that the return values of the methods will be serialized directly into the HTTP response body, typically in JSON or XML format.</p>
+<p>HTTP methos?
+GET,PUT,POST,Delete.</p>
+<p>How the Spring MVC handle file upload and what configuration are needed?</p>
+<p>Spring MVC provides built-in support for handling file uploads through the use of the <code>MultipartFile</code> interface. To enable file upload functionality, you need to configure a multipart resolver in your Spring configuration. Here's how you can handle file uploads in Spring MVC:
+1. <strong>Add Dependencies</strong>: Ensure you have the necessary dependencies in your <code>pom.xml</code>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">&lt;dependency&gt;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-web<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nt">&lt;/dependency&gt;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nt">&lt;dependency&gt;</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>commons-fileupload<span class="nt">&lt;/groupId&gt;</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>commons-fileupload<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nt">&lt;/dependency&gt;</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="nt">&lt;dependency&gt;</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>commons-io<span class="nt">&lt;/groupId&gt;</span><span class="w">           </span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="nt">&lt;artifaceId&gt;</span>commons-io<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="nt">&lt;/dependency&gt;</span>
+</span></code></pre></div>
+2. <strong>Configure Multipart Resolver</strong>: In your Spring Boot application, you can configure the multipart resolver by adding the following properties to your <code>application.properties</code> file:
+<div class="language-properties highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="na">spring.servlet.multipart.enabled</span><span class="o">=</span><span class="s">true</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="na">spring.servlet.multipart.max-file-size</span><span class="o">=</span><span class="s">10MB</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="na">spring.servlet.multipart.max-request-size</span><span class="o">=</span><span class="s">10MB</span>
+</span></code></pre></div>
+3. <strong>Create a Controller Method</strong>: Create a controller method to handle the file upload.
+<div class="language-java highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.*</span><span class="p">;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.multipart.MultipartFile</span><span class="p">;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.http.ResponseEntity</span><span class="p">;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nd">@RestController</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&quot;/api/files&quot;</span><span class="p">)</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FileUploadController</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/upload&quot;</span><span class="p">)</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">uploadFile</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="p">(</span><span class="s">&quot;file&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">MultipartFile</span><span class="w"> </span><span class="n">file</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">        </span><span class="c1">// Handle the file upload logic here</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">fileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">getOriginalFilename</span><span class="p">();</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">        </span><span class="c1">// Save the file to the server or process it as needed</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="s">&quot;File uploaded successfully: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fileName</span><span class="p">);</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="p">}</span>
+</span></code></pre></div>
+4. <strong>Handle File Storage</strong>: Implement the logic to store the uploaded file on the server or process it as needed. You can save the file to a specific directory or store it in a database, depending on your application's requirements.
+5. <strong>Testing the Upload</strong>: You can test the file upload functionality using tools like Postman or curl. Make a POST request to the <code>/api/files/upload</code> endpoint with a file attached in the request body.
+With these steps, you can handle file uploads in a Spring MVC application. The <code>MultipartFile</code> interface provides methods to access the file's content, name, and other metadata, allowing you to process the uploaded files as needed.</p>
+<p>How do you test an API?
+How do you secure the REST API?</p>
+<p>What is JWT token?
+Tokens contains the user information and the claims. The token is signed using a secret key or a public/private key pair. The server can verify the token's authenticity and integrity by checking the signature. The token is usually sent in the HTTP Authorization header as a Bearer token. The server can then extract the user information and claims from the token to authenticate and authorize the user for specific actions or resources.    </p>
+<p>Why maven clean before maven install?</p>
+<p>What is the way microservice communicate with each othe?</p>
+<p>Eureka service discovery, API gateway, REST API, gRPC, message broker (Kafka, RabbitMQ), event-driven architecture, and asynchronous messaging. </p>
 
 
 
