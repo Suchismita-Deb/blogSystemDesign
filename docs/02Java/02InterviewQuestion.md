@@ -19,7 +19,136 @@ Java garbage collection is an automatic memory management process that helps in 
 
 ### What is Inheritance?
 
-Inheritance allows one class to inherit fields and methods from another class and promote code reuse.
+Inheritance allows one class to inherit fields and methods from another class and promote code reuse. It model "is-a" relationship like the Manager is an Employee. 
+```java
+class User {
+    String name;
+    String email;
+
+    User(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    void login() {
+        System.out.println(name + " logged in with email " + email);
+    }
+
+    void displayRole() {
+        System.out.println("I am a generic user");
+    }
+}
+class Admin extends User {
+  Admin(String name, String email) {
+    super(name, email);
+  }
+
+  @Override
+  void displayRole() {
+    System.out.println("I am an Admin, I manage users");
+  }
+
+  void manageUsers() {
+    System.out.println("Managing users...");
+  }
+}
+
+class Teacher extends User {
+  Teacher(String name, String email) {
+    super(name, email);
+  }
+
+  @Override
+  void displayRole() {
+    System.out.println("I am a Teacher, I create courses");
+  }
+
+  void createCourse() {
+    System.out.println("Creating a new course...");
+  }
+}
+
+class Student extends User {
+  Student(String name, String email) {
+    super(name, email);
+  }
+
+  @Override
+  void displayRole() {
+    System.out.println("I am a Student, I enroll in courses");
+  }
+
+  void enrollCourse() {
+    System.out.println("Enrolling in a course...");
+  }
+}
+public class InheritanceDemo {
+  public static void main(String[] args) {
+    User u1 = new Admin("Alice", "alice@company.com");
+    User u2 = new Teacher("Bob", "bob@school.com");
+    User u3 = new Student("Charlie", "charlie@student.com");
+
+    u1.login(); u1.displayRole();
+    u2.login(); u2.displayRole();
+    u3.login(); u3.displayRole();
+  }
+}
+
+```
+There are many type of Inheritance - Single Inheritance - One subclass extends one superclass.  
+Multilevel inheritance - A class extends another class which itseld extends a third.  
+Hierarchical Inheritance - Multiple subclasses extend a single superclass.  
+Multiple inhertitance with interface - Achieved via interface, class extends multiple parents not possible.
+
+Inheritance is applicable in IS-A relationship (Manager IS-A Employee) and HAS-A relationship (Car HAS-A Engine) prefer composition.  
+
+Polymorphism: Inheritance enables runtime polymorphism via overriding.
+
+Access Modifiers: Subclasses inherit non-private members. The difference between public and protected is important. Subclass can use public and protected members not private.      
+public → Inherited by subclasses. It is accessible everywhere(same package, different package, subclasses, external classes).  
+protected → Inherited by subclasses. It is accessible in the same package and by subclasses (even in different packages).  
+default/package-private → Inherited only within the same package. Not accessible outside the package, even by subclasses.   
+private - Not inherited. Accessible only within the same class. Subclasses cannot directly access private members.
+
+Diamond Problem: Java avoids multiple class inheritance to prevent ambiguity. Interfaces solve this safely.
+
+
+### Why does Java allow multiple inheritance via interfaces but not via classes?
+Multiple class inheritance is not possible - It causes ambiguity.
+
+When 2 parent classes have the same method signature and a child class inherits from both, it is unclear which method to call. This is known as the "Diamond Problem." 
+```java
+class A {
+    void show() { System.out.println("A"); }
+}
+
+class B {
+    void show() { System.out.println("B"); }
+}
+
+// ❌ Not allowed in Java
+// class C extends A, B { }
+```
+Multiple Interface solves the issue as Interface are contracts and it tells what must be done not how. There is no state conflict. When there are two interface have default method s with the same signature Java forces to resolve it explicitly.
+```java
+interface A {
+    default void show() { System.out.println("A"); }
+}
+
+interface B {
+    default void show() { System.out.println("B"); }
+}
+
+class C implements A, B {
+    @Override
+    public void show() {
+        // Explicit resolution
+        A.super.show();
+        B.super.show();
+        System.out.println("C resolves the diamond problem");
+    }
+}
+```
 
 ### What is Polymorphism ?
 Polymorphism allows methods to perform different tasks based on the object that act upon, implemented through method overloading and overriding.
@@ -45,10 +174,120 @@ Final is a keyboard used to declare constant prevent method of writing or prohib
 Finally the block that ensures execution after a try catch whether or not an exception occurs  
 Finalize is a method called by the garbage collector before reclaiming an object's memory 
 
+### Explain the Exception Handling in Java?
+It is an **event** that occurs during the execution of the program. When executing the program the event will disrupt the program normal flow.
+When an exception happens the runtime system creates an Exception object which contains the information about the error like - 
+Its type of exception and message.  
+Stack trace.  
 
+Runtime system use this exception object and find the class which can handle it. When exception comes then internally one exception object is created.
+
+Example - Program starts from main. Main calls Method 1 -> Method 2 -> Method 3. There is an exception in Method 3 then internally it will create an Exception Object.
+
+Now the runtime use the Exception Object and it will check the class that can handle the exception.
+
+First it will check Method 3 if it can handle the exception. Then it will go to Method 2 to handle the exception. Similarly it will ask main. If the exception is not handled then the runtime will terminate the program abruptly.
+
+```java
+public class ExceptionHandling {
+    public static void main(String[] args) {
+        method1();
+    }
+    private static void method1(){
+        method2();
+    }
+    private static void method2() {
+        method3();
+    }
+    private static void method3() {
+        int a = 8/0;
+    }
+}
+```
+The output will look like.
+```bash
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+        at designPattern.ExceptionHandling.method3(ExceptionHandling.java:20)
+        at designPattern.ExceptionHandling.method2(ExceptionHandling.java:16)
+        at designPattern.ExceptionHandling.method1(ExceptionHandling.java:12)
+        at designPattern.ExceptionHandling.main(ExceptionHandling.java:8)
+```
+The first line in the output shows the exception and the next lines shows the stack trace. Stack Trace - Starting the place where exception to the main.  
+When exception happened in one method say 3 then it see the method declaring the method 3 say method 2 if it can handle then good else it will go to the method that declared method 2 say method 1.
+
+
+<img src="/images/Java/ExceptionHierarchy.png">
+Object is parent of all and its child class is Throwable and it has Error and Exception.  
+Error - You cannot control. Like OutOfMemoryError, StackOverflowError. These are related to JVM issue. Like JVM can not able to create any new object in heap and heap is full then OutOfMemoryError. Error is unchecked exception as it will compile when running I will get the out of memory error. Error will be in runtime.
+
+```java
+public class ExceptionHandling {
+    public static void main(String[] args) {
+        String[] arr = new String[900000000 * 90000000 * 900000000 * 90000000];
+    }
+}
+//The output 
+// Exception in thread "main" java.lang.OutOfMemoryError: Java heap space at designPattern.ExceptionHandling.main(ExceptionHandling.java:9)
+```
+Error is JVM issue and we cannot able to control that. Exception is on the basis of our code. We can handle Exception.
 ### What is the difference between checked and unchecked exceptions in Java?  
 Checked exceptions must be declared in the method signature or handled using a try catch block like IO exception.
 Unchecked exceptions like NullPointerException do not need to be declated or explicitly caught.
+
+### Give a scenario when to create a custom checked exception and when to create a custom unchecked exception in Java?
+- **Custom Checked Exception**: Create a custom checked exception when you want to enforce the caller to handle the exception explicitly. For example, if you are developing a library that interacts with a database, you might create a custom checked exception like `DatabaseConnectionException` to indicate that the connection to the database failed. This forces the caller to handle the exception, ensuring that they are aware of the potential issue and take appropriate action. The custom checked exception is created when we want to enforce error handling by the caller of the method and when the error is recoverable and can be handled gracefully in response to the exception.
+- **Custom Unchecked Exception**: Create a custom unchecked exception when the error is a result of a programming mistake or a condition that should not be recoverable. For example, if you are developing a utility class that processes user input, you might create a custom unchecked exception like `InvalidUserInputException` to indicate that the input provided by the user is invalid. This allows the caller to choose whether to handle the exception or let it propagate, as it is considered a programming error that should be fixed rather than handled. The custom unchecked exceptions are usually created for programming errors that the application itself should catch where no specific recovery action is expected from the caller.
+
+### How the exception propagation works in Java?
+When an exception occurs in a method, the runtime system searches for an appropriate exception handler in the current method. If it doesn't find one, it propagates the exception to the calling method, and this process continues up the call stack until a suitable handler is found or the program terminates. 
+Example - Method 1 calls Method 2, which calls Method 3. If an exception occurs in Method 3 and is not handled there, it propagates to Method 2, and if not handled there, it propagates to Method 1, and so on.
+
+### How do you handle a centralised exception handling in Spring?
+Global exception handling in Spring can be achieved using the `@ControllerAdvice` annotation along with `@ExceptionHandler` methods. This allows you to define a centralized exception handling mechanism that applies to all controllers in your application. You can create a class annotated with `@ControllerAdvice` and define methods annotated with `@ExceptionHandler` to handle specific exceptions and return appropriate responses. 
+Example
+```java
+// Centralized exception handler
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+  // Handle custom ResourceNotFoundException
+  @ExceptionHandler(ResourceNotFoundException.class)
+  public ResponseEntity<String> handleResourceNotFound(ResourceNotFoundException ex) {
+    return ResponseEntity
+            .status(HttpStatus.NOT_FOUND)
+            .body("Resource not found: " + ex.getMessage());
+  }
+
+  // Handle IllegalArgumentException
+  @ExceptionHandler(IllegalArgumentException.class)
+  public ResponseEntity<String> handleIllegalArgument(IllegalArgumentException ex) {
+    return ResponseEntity
+            .status(HttpStatus.BAD_REQUEST)
+            .body("Invalid input: " + ex.getMessage());
+  }
+
+  // Handle all other exceptions (fallback)
+  @ExceptionHandler(Exception.class)
+  public ResponseEntity<String> handleGeneralException(Exception ex) {
+    return ResponseEntity
+            .status(HttpStatus.INTERNAL_SERVER_ERROR)
+            .body("An unexpected error occurred: " + ex.getMessage());
+  }
+}
+```
+`@ControllerAdvice` to centralize exception handling across all controllers.
+Each `@ExceptionHandler` method maps a specific exception type to a structured HTTP response.
+For example, `ResourceNotFoundException` returns a `404 NOT_FOUND, IllegalArgumentException` returns a `400 BAD_REQUEST`, and any unhandled exception falls back to a `500 INTERNAL_SERVER_ERROR`.
+This ensures consistency in error responses and keeps controller code clean.
+
+### Explain how to design a fault-tolerant system using Java exception handling for distributed system.
+Use the resilience patterns like Retry, Circuit Breaker, and Fallback to handle transient failures in distributed systems. Implement custom exceptions to represent specific failure scenarios and use centralized exception handling to log errors and provide meaningful responses. For example, when a service call fails due to a network issue, you can retry the operation a few times before falling back to a default response or an alternative service.
+
+### What is the difference between retries, fallbacks and circuit breakers?
+- **Retries**: Automatically re-attempting a failed operation a specified number of times before giving up. Useful for transient failures like network timeouts.
+- **Fallbacks**: Providing an alternative response or behavior when the primary operation fails. This ensures that the system can continue to function even when a specific service is unavailable.
+- **Circuit Breakers**: Monitoring the success and failure rates of operations and temporarily halting requests to a failing service to prevent cascading failures. Once the service is deemed healthy again, the circuit breaker allows requests to resume.
+
 
 ### What is multithreading in Java ?
 Multithreading allows multiple throws to execute simultaneously maximizing the Super utilizations and it can be implemented by extending the thread class or implementing through another interface.
@@ -56,13 +295,13 @@ Multithreading allows multiple throws to execute simultaneously maximizing the S
 ### What is the purpose of the Super keyboard in Java?
 The Super keyword refers to the immediate parent class it is used to access the parent class method constructor of variable that are hidden by the chat class.
 
-### What is the diffeerence between String, StringBuilder and StringBuffer in Java?
+### What is the difference between String, StringBuilder and StringBuffer in Java?
 - String is immutable, meaning once created, its value cannot be changed.
 - StringBuilder is mutable and not synchronized, making it faster for single-threaded operations.
 - StringBuffer is mutable and synchronized, making it thread-safe but slower than StringBuilder.
 
 ### What is the difference between HashMap and HashTable in Java?
-Hashmap is not synchronised meaning its faster but not threads safe and hash table is synchronised making it thread safe but slower additionally hashmap allows null key and values while hash table does not.
+Hashmap is not synchronized meaning its faster but not threads safe and hash table is synchronized making it thread safe but slower additionally hashmap allows null key and values while hash table does not.
 
 ### What is the difference between throw and throws in Java?
 - `throw` is used to explicitly throw an exception in a method or block of code.
@@ -83,7 +322,7 @@ Java collection framework is a set of interfaces and class for storing and proce
 ### What is the purpose of the volatile keyboard in Java?
 The virtual keyboard ensures that a variable's value is always read from the main memory not from the thread's local cache. It helps maintain a consistency in multithreaded environment.
 
-### What is the trade in Japan how it is different from process ?
+### What is the thread in Java how it is different from process ?
 A thread is a lightweight sub process the smallest unit of CPU scheduling. Multiple threads within the same process shared memory while processes are independent and do not share memory.
 
 ### What is teh difference between notify and notifyAll in Java?
@@ -131,6 +370,138 @@ an instance block is executed when an instance of the class is created and is us
 ### What is the difference between equals() and hashCode() methods in Java?
 - The `equals()` method is used to compare the contents of two objects for equality, while the `hashCode()` method returns an integer representation of the object's memory address or a computed hash value    
 
+
+### What happens if we do not override the equals() method and the hashCode() method in Java?
+
+>
+
+equals() Method - <br>
+By default, the equals() method in Java, inherited from Object, checks for reference equality (whether two objects point to the same memory location).
+If not overridden, even if two objects have identical properties, they will not be considered equal unless they refer to the same memory location.
+
+hashCode() Method - <br>
+By default, the hashCode() method generates a hash code based on the memory address of the object.
+If not overridden, objects with identical properties may generate different hash codes, affecting their behavior in hash-based collections (like HashSet, HashMap)
+
+```java
+class Person {
+String name;
+int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+public class Main {
+public static void main(String[] args) {
+Person p1 = new Person("Alice", 30);
+Person p2 = new Person("Alice", 30);
+
+        System.out.println("p1.equals(p2): " + p1.equals(p2)); // Reference equality
+
+        HashSet<Person> set = new HashSet<>();
+        set.add(p1);
+        set.add(p2);
+
+        System.out.println("Set size: " + set.size()); // Unexpected behavior
+    }
+}
+```
+
+The output.
+```java
+p1.equals(p2): false
+Set size: 2
+```
+
+Since equals() is not overridden, the two Person objects are not considered equal, even though they have identical properties.  
+The hashCode() method is also not overridden, so the two objects have different hash codes, leading to both being stored in the HashSet
+
+Only doing the equal method.
+```java
+import java.util.HashSet;
+
+class Person {
+    String name;
+    int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person person = (Person) obj;
+        return age == person.age && name.equals(person.name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p1 = new Person("Alice", 30);
+        Person p2 = new Person("Alice", 30);
+
+        HashSet<Person> set = new HashSet<>();
+        set.add(p1);
+        set.add(p2);
+
+        System.out.println("Set size: " + set.size()); // Still unexpected behavior
+    }
+}
+```
+Set size is 2.
+
+Even though equals() is overridden, the default hashCode() still generates different hash codes for p1 and p2. Therefore, both objects are stored in the HashSet.
+
+Overridding both the equal and hashCode().
+```java
+import java.util.HashSet;
+import java.util.Objects;
+
+class Person {
+    String name;
+    int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person person = (Person) obj;
+        return age == person.age && name.equals(person.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p1 = new Person("Alice", 30);
+        Person p2 = new Person("Alice", 30);
+
+        HashSet<Person> set = new HashSet<>();
+        set.add(p1);
+        set.add(p2);
+
+        System.out.println("Set size: " + set.size()); // Correct behavior
+    }
+}
+```
+When two object are equal() then the hashCode() should also be equal. When two hashCode is equal then the object may not be equal.
+
+
 ### What is the difference between callable and runnable in Java?
 - A `Runnable` is an interface that represents a task that can be executed by a thread, but it does not return a result or throw checked exceptions.  
   - A `Callable` is a similar interface that represents a task that can be executed by a thread, but it can return a result and throw checked exceptions, making it more flexible for concurrent programming.
@@ -163,3 +534,6 @@ The Executor framework is a high-level API introduced in Java 5 that provides a 
 
 ### What are Java annotations and how are they used in Java programming?
 Java annotations are metadata that provide additional information about the code to the compiler or runtime environment. They are used to influence the behavior of the code, provide documentation, and enable frameworks to process the annotated elements. Annotations can be applied to classes, methods, fields, parameters, and other program elements.
+
+
+Priyanka - Omega HealthCare.

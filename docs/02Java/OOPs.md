@@ -207,14 +207,12 @@ Yes interface can have static methods and we can call them using the interface n
 
 Functional interface can implement another interface the only catch here is that it total it should be only one abstract method there should not be 2 abstract method.
 
-<div class="quiz-box">
-<b>What is dynamic method dispatch and how does a job decides which overridden method to call at runtime ?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### What is dynamic method dispatch and how does a job decides which overridden method to call at runtime ?
+
 Dynamic method dispatch means Java decides at runtime which overridden method should run.  
 It depends on the actual object not on the reference type. It is runtime polymorphism.
-</details>
-</div>
+
+### How the inheritance and polymorphism works together?
 
 
 

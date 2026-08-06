@@ -1,22 +1,15 @@
 <img src="/images/Spring/Process.png" alt="Spring process flow">
 
-### Spring Bean.
-[//]: # (What is Spring Bean?)
-<div class="quiz-box">
-<b>What is Spring Bean?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-A Spring Bean is an object managed by the <b>Spring IoC (Inversion of Control)</b> container. In the Spring Framework, beans are the backbone of your application, and they are created, configured, and assembled by the container. <br> 
-It is defined in a configuration file (XML, Java-based annotations, or Java Config) or discovered through component scanning.    
-A bean's lifecycle involves creation, initialization, use, and destruction, all managed by the Spring container.<br>
-There are 2 ways to create Beans - @Component and @Bean.
-The IoC container instantiates the bean from the bean’s definition in the XML file.
-Spring then populates all of the properties using the dependency injection as specified in the bean definition.
-The bean factory container calls setBeanName() which take the bean ID and the corresponding bean has to implement BeanNameAware interface.
-The factory then calls setBeanFactory() by passing an instance of itself (if BeanFactoryAware interface is implemented in the bean).
-If BeanPostProcessors is associated with a bean, then the preProcessBeforeInitialization() methods are invoked.
-If an init-method is specified, then it will be called.
-Lastly, postProcessAfterInitialization() methods will be called if there are any BeanPostProcessors associated with the bean that needs to be run post creation.
+## Spring Bean.
+
+### What is Spring Bean?
+A Spring Bean is an object managed by the **Spring IoC (Inversion of Control)** container. In the Spring Framework, beans are the backbone of your application, and they are _created, configured, and assembled_ by the container. It is defined in a configuration file (XML, Java-based annotations, or Java Config) or discovered through component scanning.    
+
+A bean's lifecycle involves **creation, initialization, use, and destruction**, all managed by the Spring container.
+There are 2 ways to create Beans - `@Component` and `@Bean`.
+The IoC container instantiates the bean from the bean’s definition in the XML file. Spring then populates all of the properties using the dependency injection as specified in the bean definition.
+
+When the bean implements the `BeanNameAware` interface, the container calls `setBeanName(String beanId)` method to pass the bean ID. If the bean implements `BeanFactoryAware`, the container calls `setBeanFactory()` to pass an instance of itself. If there are any `BeanPostProcessors` associated with the bean, the container invokes their `postProcessBeforeInitialization()` methods before calling any initialization callbacks (like `@PostConstruct`, `afterPropertiesSet()`, or a custom init-method). After initialization, if there are any `BeanPostProcessors`, their `postProcessAfterInitialization()` methods are invoked.
 
 ```mermaid
 flowchart TD
@@ -165,75 +158,25 @@ public class AppConfig {
 
 <b>Lifecycle Order Summary - </b>
 
-<table style="width:100%">
-    <thead>
-        <tr>
-            <th>Method</th>
-            <th>Interface/Annotation</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Constructor</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>Setter/Field Injection</td>
-            <td>@Autowired</td>
-        </tr>
-        <tr>
-            <td>setBeanName()</td>
-            <td>BeanNameAware</td>
-        </tr>
-        <tr>
-            <td>setBeanFactory()</td>
-            <td>BeanFactoryAware</td>
-        </tr>
-        <tr>
-            <td>postProcessBeforeInitialization()</td>
-            <td>BeanPostProcessor</td>
-        </tr>
-        <tr>
-            <td>@PostConstruct</td>
-            <td>javax.annotation</td>
-        </tr>
-        <tr>
-            <td>afterPropertiesSet()</td>
-            <td>InitializingBean</td>
-        </tr>
-        <tr>
-            <td>init-method</td>
-            <td>@Bean(initMethod)</td>
-        </tr>
-        <tr>
-            <td>postProcessAfterInitialization()</td>
-            <td>BeanPostProcessor</td>
-        </tr>
-        <tr>
-            <td>@PreDestroy</td>
-            <td>javax.annotation</td>
-        </tr>
-        <tr>
-            <td>destroy()</td>
-            <td>DisposableBean</td>
-        </tr>
-        <tr>
-            <td>destroy-method</td>
-            <td>@Bean(destroyMethod)</td>
-        </tr>
-    </tbody>
-</table>
-<br><br>
+| Method                               | Interface / Annotation        |
+|--------------------------------------|-------------------------------|
+| Constructor                          | -                             |
+| Setter / Field Injection             | @Autowired                    |
+| setBeanName()                        | BeanNameAware                 |
+| setBeanFactory()                     | BeanFactoryAware              |
+| postProcessBeforeInitialization()    | BeanPostProcessor             |
+| @PostConstruct                       | javax.annotation              |
+| afterPropertiesSet()                 | InitializingBean              |
+| init-method                          | @Bean(initMethod)             |
+| postProcessAfterInitialization()     | BeanPostProcessor             |
+| @PreDestroy                          | javax.annotation              |
+| destroy()                            | DisposableBean                |
+| destroy-method                       | @Bean(destroyMethod)      |
 
-<img src="../images/Spring/BeanLifeCycle.png" alt="Spring bean lifecycle">
-</details>
-</div>
 
-[//]: # (What is Bean Scope?)
-<div class="quiz-box">
-<b>What is Bean Scope?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+![BeanLifeCycle](../images/Spring/BeanLifeCycle.png)
+
+### What is Bean Scope?
 There are different bean scope that determines how and when they are created.<br>
 <b>Singleton (default)</b> - There will be a single instance of the bean is created for the entire Spring container.<br>Default scope. Only one instance created per IOC. Singleton are eagerly initialized by IOC ( means at the time of application startup, object gets created ).<br>
 <b>Prototype</b> - A new instance is created every time the bean is created. It is lazily initialized.<br>
@@ -339,30 +282,11 @@ It is used when the dependency is private to a single bean and should not be reu
 
 <b>Bean Initialization - </b>
 
-<table style="width:100%">
-    <thead>
-        <tr>
-            <th>Type</th>
-            <th>When Created</th>
-            <th>Scopes</th>
-            <th>Why</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><b>Eager</b></td>
-            <td>At application startup</td>
-            <td>Singleton (default)</td>
-            <td>Fail-fast — wiring errors surface at boot, not in production</td>
-        </tr>
-        <tr>
-            <td><b>Lazy</b></td>
-            <td>On first actual use</td>
-            <td>Prototype, Request, Session</td>
-            <td>Saves memory/time for beans that may never be used</td>
-        </tr>
-    </tbody>
-</table>
+| Type     | When Created            | Scopes                         | Why                                                   |
+|----------|--------------------------|---------------------------------|-------------------------------------------------------|
+| **Eager** | At application startup   | Singleton (default)             | Fail-fast — wiring errors surface at boot, not later |
+| **Lazy**  | On first actual use      | Prototype, Request, Session     | Saves memory/time for beans that may never be used   |
+
 
 <br>
 <b>Why Eager?</b><br>
@@ -380,15 +304,9 @@ You can force any bean to be lazy using `@Lazy` on a singleton.
 public class HeavyReportService { }
 ```
 > Use `@Lazy` sparingly — it trades startup safety for deferred load time.
-</details>
-</div>
 
-[//]: # (What is Bean Factory?)
-<div class="quiz-box">
-<b>What is Bean Factory?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-A BeanFactory in Spring is the root interface for accessing the Spring IoC container. It defines the fundamental contract for managing beans — instantiation, wiring, and lifecycle. It is the simplest container that provides basic dependency injection. The key point is that BeanFactory <b>lazily initializes</b> beans - It creates them only when you explicitly request them via getBean(). This makes it lightweight but less feature‑rich compared to ApplicationContext, which eagerly initializes singletons and adds enterprise features like event propagation, internationalization, and annotation scanning. In practice, we rarely use BeanFactory directly in modern applications — ApplicationContext is the standard.
+### What is Bean Factory?
+A BeanFactory in Spring is the root interface for accessing the Spring IoC container. It defines the fundamental contract for managing beans — instantiation, wiring, and lifecycle. It is the simplest container that provides basic dependency injection. The key point is that BeanFactory <b>lazily initializes</b> beans - It creates them only when you explicitly request them via `getBean()`. This makes it lightweight but less feature‑rich compared to `ApplicationContext`, which eagerly initializes singletons and adds enterprise features like event propagation, internationalization, and annotation scanning. In practice, we rarely use `BeanFactory` directly in modern applications — `ApplicationContext` is the standard.
 
 ```java
 public class BeanFactoryDemo {
@@ -402,15 +320,9 @@ public class BeanFactoryDemo {
 }
 ```
 BeanFactory is conceptual — it shows how Spring achieves IoC at its core.
-</details>
-</div>
 
-[//]: # (How spring boot finds the bean.)
-<div class="quiz-box">
-<b>How spring boot finds the bean.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-Spring Boot finds beans mainly in two ways: <b>component scanning</b> and <b>auto-configuration</b>.<br><br>
+### How spring boot finds the bean.
+Spring Boot finds beans mainly in two ways: <b>component scanning</b> and <b>auto-configuration</b>.<br>
 
 <b>Component Scanning</b><br>
 When your app starts, `@SpringBootApplication` enables `@ComponentScan`.<br>
@@ -425,11 +337,11 @@ public class SpringbootApplication{
     }
 }
 ```
-Each discovered class is registered as a bean in the ApplicationContext.<br>
-When we donot provide the @ComponentScan it will still work. @SpringBootApplication also has compoennt internally. First it will go to the main package and then it will start from the package and goes to the sub-packages.<br><br>
+Each discovered class is registered as a bean in the `ApplicationContext`.<br>
+When we donot provide the `@ComponentScan` it will still work. `@SpringBootApplication` also has component internally. First it will go to the main package and then it will start from the package and goes to the sub-packages.<br>
 
-<b>Java/XML Bean Definitions</b><br>
-Beans declared using `@Bean` methods in `@Configuration` classes (or XML definitions) are also registered.<br><br>
+<b>Java/XML Bean Definitions</b>
+Beans declared using `@Bean` methods in `@Configuration` classes (or XML definitions) are also registered.<br>
 
 <b>Auto-Configuration</b><br>
 Spring Boot checks classpath + properties and conditionally creates infrastructure beans using `@Conditional...` rules.
@@ -459,7 +371,7 @@ If Bean found spring will inject it. Different was of the injection - Constructo
 
 If Bean is not found then spring will create one and then inject it.
 
-@PostContruct when the bean is already created.
+`@PostContruct` when the bean is already created.
 ```java
 @Component
 public class User{
@@ -476,73 +388,9 @@ public class User{
     }
 }
 ```
-</details>
-</div>
+## Build - Maven Gradle.
 
-### Autowiring in Spring.
-[//]: # (What is Autowiring in Spring?)
-<div class="quiz-box">
-<b>What is Autowiring in Spring?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-Autowiring is a feature in the Spring Framework that enables the automatic injection of dependencies into a bean. Instead of explicitly configuring the dependencies in a Spring configuration file, the container automatically resolves and injects them based on a specified strategy.
-
-**Uses**.
-
-**Reduces Boilerplate Code** - Eliminates the need to manually specify bean dependencies.  
-**Simplifies Configuration** - Container automatically manages relationships between beans.  
-**Improves Readability** - Makes the code cleaner and easier to maintain.
-
-Types of Autowiring Modes.
-
-**no (Default)**  
-No autowiring is performed. Dependencies must be explicitly defined using property or constructor-arg.
-```xml
-<bean id="userService" class="com.example.UserService">
-<property name="userRepository" ref="userRepository" />
-</bean>
-```
-**byName**  
-Autowires a bean by matching its property name with a bean name in the configuration.
-```xml
-<bean id="userService" class="com.example.UserService" autowire="byName" />
-<bean id="userRepository" class="com.example.UserRepository" />
-```
-**byType**  
-Autowires a bean if a single bean of the matching type exists in the container.
-```xml
-<bean id="userService" class="com.example.UserService" autowire="byType" />
-<bean id="userRepository" class="com.example.UserRepository" />
-```
-**constructor**  
-Autowires dependencies by matching constructor parameters with bean types in the container.
-```xml
-<bean id="userService" class="com.example.UserService" autowire="constructor" />
-<bean id="userRepository" class="com.example.UserRepository" />
-```
-**autodetect (Deprecated in Spring 4.3)**  
-Spring attempts to autowire using constructor. If that fails, it falls back to byType
-
-Modern Spring applications prefer annotations over XML for autowiring.
-
-`@Autowired` - Automatically injects the required bean by type.  
-`@Qualifier` - Resolves conflicts when multiple beans of the same type exist by specifying the bean name.  
-`@Primary` - Marks a bean as the primary candidate for autowiring when multiple beans of the same type exist.
-
-Tradeoffs of Autowiring.
-
-**Ambiguities** - Can cause issues when multiple beans of the same type exist.  
-**Hidden Dependencies** - Makes it harder to track bean relationships.  
-**Testing Challenges** - Autowired dependencies may complicate unit testing.
-</details>
-</div>
-
-### Build Lifecycle of Maven Build.
-[//]: # (What is the lifecycle of the Maven build?)
-<div class="quiz-box">
-<b>What is the lifecycle of the Maven build?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### What is the lifecycle of the Maven build?
 Maven is a project management tool not just build management tool.  
 It helps in build generation, dependency resolution and documentation.  
 Maven uses POM(Project Object Model) to do it. When maven command given it looks pom and get the configuration.  
@@ -552,23 +400,25 @@ The groupId, artifactId, version and project name are the unique identifier of t
 There is properties tag - the key value pair.  
 The repository tag - the link maven will use to download the dependencies.
 
-Build lifecycle.<br>
-<b>Validate</b> -> **Compile** -> **Test**.  
-**Package**.  
-**Verify**.  
-**Install**.  
-**Deploy**.
+**Build lifecycle.**<br>
+
+<b>Validate</b> -> **Compile** -> **Test** -> **Package** -> **Verify** -> **Install** -> **Deploy**.<br>
 To run the package phase all the first phases needs to be executed and each phase has multiple tasks.<br>
 When you want to add additional tasks in one phase then with the help of a build tag we can add the task in plugins.<br>
-In the install step it will install the .jar pacakge in local maven repository which is in home directory.
-</details>
-</div>
+In the install step it will install the .jar package in local maven repository which is in home directory.
 
-[//]: # (Why to use Spring?)
-<div class="quiz-box">
-<b>Why to use Spring Framework?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+
+## **What is the role of POM in spring project?**
+
+### Why do we use Maven?
+
+### The dependency how they connect internally behind the project? Do we store in local or fetch from the internet?
+
+
+
+## Spring and Spring Boot.
+### Why to use Spring Framework?
+
 No need to use web.xml and servlet.xml and Spring introduces the annotation based configuration.<br>
 
 Inversion Of Control - Servlet depends on servlet container to create object and maintain its lifecycle. IOC is more flexible way to manage object dependencies and its lifecycle (through Dependency Injection).<br>
@@ -686,18 +536,8 @@ Each microservice is a standalone JAR — self-contained, independently deployab
 <b>Repository</b> — DB access. Works with Entity (direct DB table representation).<br>
 <b>DTO</b> — Decouples API contract from DB schema. Request DTO accepts client data; Response DTO shapes what is returned.
 
-</details>
-</div>
+### What is Spring Container, Inversion of Control and Dependency Injection?
 
-[//]: # (What is @RestController = @Controller + @ResponseBody.)
-<div class="quiz-box">
-<b>What is @RestController = @Controller + @ResponseBody.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-@ResponseBody Meaning the return type is the http response.
-@RequestParamter - In the path there is ? and & and contain the value.
-@RequestBody - Data in the body will be mapped to the dto.
+Spring Container is the engine that creates, configures and manages the objet
 
-</details>
-</div>
 

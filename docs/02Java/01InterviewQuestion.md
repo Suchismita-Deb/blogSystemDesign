@@ -5,22 +5,15 @@
 </details>
 </div>
 
-<div class="quiz-box">
-<b>What are the different memory present in Java.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-Java memory is managed by JVM and it has heap for objects and stack for each thread methods and calls for local variable. Method area or meta space for class metadata and static variable. PC (Program Counter) register for the current instructions per thread and native method stack for JNI calls.
-</details>
-</div>
+### What are the different memory present in Java.
+Java memory is managed by JVM and it has heap for objects and stack for each thread methods and calls for local variable. Method area or meta space for class metadata and static variable. PC (Program Counter) register for the current instructions per thread and native method stack for JNI calls.  
+**What is the difference between heap and stack memory ?**  
+Heap memory is shared across all the threads and it is used for objects and class instances. Stack memory is per thread and it is used for method calls and local variables.    
+Stack memory is faster than heap memory and it is automatically managed by the JVM. Heap memory is managed by the garbage collector and it can be tuned by the JVM options.    Stack memory is limited and can cause stack overflow if the recursion is too deep or the method calls are too many. Heap memory can cause out of memory error if the objects are too many or too large.
 
-<div class="quiz-box">
-<b> The production of freezes intermittently under load how would you determine whether it's a deadlock a long GC pause or a throat starvation ? </b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### The production of freezes intermittently under load how would you determine whether it's a deadlock a long GC pause or a throat starvation ?
 Take a thread dump first. The deadlock show up as a clear cyclic logs. Verify the GCS logs for long post in case threads are in long pause.  
 If there's a real life but just waiting on the pool then that's thread starvation. The notice part is thread poll soze and queue length.
-</details>
-</div>
 
 <div class="quiz-box">
 <b> A counter incremented by multiple threads inside a synchronized method is still producing wrong totals what are the possible causes ? </b>

@@ -4,7 +4,7 @@
 
 **Beginner**
 1. Process vs Thread
-2. Creating threads â€“ `Thread` class vs `Runnable` interface
+2. Creating threads by `Thread` class vs `Runnable` interface
 3. `start()` vs `run()`
 4. Thread lifecycle (NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED)
 5. `sleep()`, `join()`
