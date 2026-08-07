@@ -294,3 +294,12 @@ Practice one question at a time. Submit your answer to see whether it is correct
   }
 })();
 </script>
+
+<div class="quiz-box">
+<b>How does Spring Boot auto configuration work internally like the @ConditionalOnClass and @ConditionalOnMissingBean?</b>
+<details class="quiz-toggle">
+<summary>Reveal Answer</summary>
+Spring Boot scan auto configuration classes listed on the auto configurations.import file. Each class activates when the condition matches.
+Example ConsitionalOnClass in case a dependency is on the class path or @ConditionalOnMissingBean in case the bean is not defined.
+</details>
+</div>

@@ -523,3 +523,73 @@ Note the `finally` block for `ReentrantLock` â€” unlike `synchronized`, whi
 ## â­ï¸ Next Up
 
 **Topic 4: Thread lifecycle** (NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED) â€” not yet covered, continue from here.
+
+<div class="quiz-box">
+<b>Difference between Future and CompletableFuture, Runnable and Callable.</b>
+<details class="quiz-toggle">
+<summary>Reveal Answer</summary>
+<table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Future</th>
+            <th>CompletableFuture</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b>Core Idea</b></td>
+            <td>Represents the result of an asynchronous computation.</td>
+            <td>Extends <code>Future</code> with composition and callback APIs for async workflows.</td>
+        </tr>
+        <tr>
+            <td><b>Result Handling</b></td>
+            <td>Mostly blocking retrieval via <code>get()</code>.</td>
+            <td>Provides non-blocking callbacks like <code>thenAccept()</code>, <code>thenApply()</code>, and <code>thenCompose()</code>.</td>
+        </tr>
+        <tr>
+            <td><b>Composition</b></td>
+            <td>No built-in fluent chaining for multiple async stages.</td>
+            <td>Supports fluent chaining, combining, and dependent async operations.</td>
+        </tr>
+        <tr>
+            <td><b>Exception Handling</b></td>
+            <td>No rich built-in exception pipeline; handling is typically done around <code>get()</code>.</td>
+            <td>Built-in exception handling via <code>exceptionally()</code>, <code>handle()</code>, and <code>whenComplete()</code>.</td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Runnable</th>
+            <th>Callable</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b>Return Value</b></td>
+            <td>Returns no result (<code>void</code>).</td>
+            <td>Returns a result of type <code>V</code>.</td>
+        </tr>
+        <tr>
+            <td><b>Exception Support</b></td>
+            <td>Cannot throw checked exceptions from <code>run()</code>.</td>
+            <td>Can throw checked exceptions from <code>call()</code>.</td>
+        </tr>
+        <tr>
+            <td><b>Typical Use</b></td>
+            <td>Best for fire-and-forget tasks.</td>
+            <td>Best for tasks that compute and return a value.</td>
+        </tr>
+        <tr>
+            <td><b>Method Signature</b></td>
+            <td><code>public abstract void run();</code></td>
+            <td><code>V call() throws Exception;</code></td>
+        </tr>
+    </tbody>
+</table>
+</details>
+</div>

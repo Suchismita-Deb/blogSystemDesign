@@ -520,20 +520,14 @@ Reflection is a feature that allows a program to inspect and modify its own stru
 
 ### What is the difference between comparator and comparable in Java?
 - The `Comparable` interface is used to define the natural ordering of objects by implementing the `compareTo()` method, allowing objects to be sorted based on their inherent properties.  
-  - The `Comparator` interface is used to define custom ordering of objects by implementing the `compare()` method,
-    - allowing for multiple sorting criteria and flexibility in sorting objects that do not have a natural order.
+- The `Comparator` interface is used to define custom ordering of objects by implementing the `compare()` method,
+  - allowing for multiple sorting criteria and flexibility in sorting objects that do not have a natural order.
 
 ### What is eh fork/join framework in Java?
 The Fork/Join framework is a parallel programming framework introduced in Java 7 that allows for efficient.
 
-
-
 ### What is the executor framework in Java?
 The Executor framework is a high-level API introduced in Java 5 that provides a way to manage and control thread execution, allowing developers to submit tasks for execution without having to manage thread creation and lifecycle.
 
-
 ### What are Java annotations and how are they used in Java programming?
 Java annotations are metadata that provide additional information about the code to the compiler or runtime environment. They are used to influence the behavior of the code, provide documentation, and enable frameworks to process the annotated elements. Annotations can be applied to classes, methods, fields, parameters, and other program elements.
-
-
-Priyanka - Omega HealthCare.

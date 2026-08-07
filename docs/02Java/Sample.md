@@ -246,3 +246,19 @@ What is the way microservice communicate with each othe?
 
 Eureka service discovery, API gateway, REST API, gRPC, message broker (Kafka, RabbitMQ), event-driven architecture, and asynchronous messaging. 
 
+Java 8 theoretical. Java 8 features lambda, stream.
+
+Design Pattern Code.  
+Singleton Design Pattern.  
+Stream API.
+Spring Data JPA.
+
+Multithreading executor framework.  
+Comparator and comparable.
+HashMap internal working. Hashcode and equals method.
+Why string immutable.
+Microservice design pattern.
+
+HR Round.
+
+OOPS and strong design pattern. Spring - IOC, Bean, AOP, Spring Data JPA, Spring Security.

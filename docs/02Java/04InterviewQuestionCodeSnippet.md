@@ -1,12 +1,8 @@
 # Java Quiz - Stream and Kafka
 
-### Streams
+## Streams
 
-[//]: # (Find sum of even numbers from array.)
-<div class="quiz-box">
-<b>Stream problems - Find sum of even numbers from array.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Find sum of even numbers from array.</b>
 
 ``` java
 int num[] = {1,2,3,4,4,5,6,7,8};
@@ -14,30 +10,16 @@ int sum = Arrays.stream(nums).filter(n->n%2==0).sum();
 System.out.println(sum);
 // `filter` keeps only even values and `sum()` adds them. 
 ```
-</details>
 
-</div>
-
-[//]: # (Count the occurrence "apple" in the list.)
-<div class="quiz-box">
-<b>Count the occurrence "apple" in the list.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Count the occurrence "apple" in the list.
 
 ```java
 List<String> list = Arrays.asList("apple","banana","orange","apple","apple");
 long count = list.steam().filter(word->words.equalOrIgnoreCase("apple")).count();
 System.out.println(count); // 3
 ```
-</details>
-</div>
 
-[//]: # (List of employee sort by salary then sort by name.)
-<div class="quiz-box">
-<b>List of employee sort by salary then sort by name.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-
+### List of employee sort by salary then sort by name.
 ```java
 
 employees.stream()
@@ -45,15 +27,8 @@ employees.stream()
   .thenComparing(Employee::getName))
         .toList();
 ```
-</details>
-</div>
 
-[//]: # (Given a list of list put all the elements in the same list.)
-<div class="quiz-box">
-<b>Given a list of list put all the elements in the same list.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-
+### Given a list of list put all the elements in the same list.
 ```java
 List<List<String>> skills = Arrays.asList(
     Arrays.asList("java","Spring","SpringBoot"),
@@ -66,73 +41,32 @@ List<String> allSkills = skills.stream()
 // With stream first will get one list, flatmap will combine the list in one list. `flatMap` converts nested lists into one continuous stream.
 System.out.println(allSkills);
 ```
-</div>
 
-[//]: # (Find the skills starting with character 's'.)
-<div class="quiz-box">
-<b>Find the skills starting with character 's'.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-
+### Find the skills starting with character 's'.
 ```java
 List<String> skillsStartsWithS = allSkills.stream().filter(s -> s.charAt(0)=='s').collect(Collectors.toList());
 // s.charAt(0)=='s' and s.startsWith("S") does same thing.
 System.out.println(skillsStartsWithS);
 ```
-</details>
-</div>
 
-[//]: # (Age of an employee above 30.)
-<div class="quiz-box">
-<b>Age of an employee above 30.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-
+### Age of an employee above 30.
 ```java
 List<Integer> l = Arrays.asList(1,2,3,4,5);
 List<Integer> list - l.stream().filter(x->x>3).collect(Collectors.toList());
 System.out.println(list);
 ```
 
-</details>
-
-<details class="quiz-toggle">
-<summary>Reveal Explanation</summary>
-
 Apply `filter(x -> x > threshold)` to keep only higher ages.
 
-</details>
-
-</div>
-
-[//]: # (Count to get the frequency of the string in the list.)
-<div class="quiz-box">
-<b>Count to get the frequency of the string in the list.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-
+### Count to get the frequency of the string in the list.
 ```java
 List<String> list = Arrays.asList("Hello","Hello","World");
 
 // Output - "Hello" - 2, World - 1.
 ```
+### Frequency counting groups equal values and counts each group.
 
-</details>
-
-<details class="quiz-toggle">
-<summary>Reveal Explanation</summary>
-
-Frequency counting groups equal values and counts each group.
-
-</details>
-
-</div>
-
-[//]: # (Reverse a list using stream.)
-<div class="quiz-box">
-<b>Reverse a list using stream.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Reverse a list using stream.
  Stream with index (does not mutate original list).
 
 ```java
@@ -142,7 +76,6 @@ List<Integer> reversed = IntStream.range(0, list.size())
                 .collect(Collectors.toList());
 ```
 Stream + reduce (functional style)
-
 ```java
 List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
 
@@ -154,15 +87,8 @@ LinkedList<Integer> reversed = list.stream().reduce(
 
 System.out.println(reversed); // [5, 4, 3, 2, 1]
 ```
-</details>
-</div>
 
-[//]: # (Find employee with highest salary using Java 8.)
-<div class="quiz-box">
-<b>Find employee with highest salary using Java 8.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-
+### Find employee with highest salary using Java 8.</b>
 ```java
 class Employee {
     int id;
@@ -194,73 +120,27 @@ Opional<Employee> empWithHigestSalary = empList.stream()
                 .findFirst();
 // Sort salaries in descending order and take the first employee.
 ```
-</div>
-
-[//]: # (Find employee with second highest salary.)
-<div class="quiz-box">
-<b>Find employee with second highest salary.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-
+### Find employee with second highest salary.
 ```java
 Opional<Employee> empWithHigestSalary = empList.stream().sorted(Comparator.comparingDouble(Employee::getSalary).reversed()).skip(1).findFirst();
 ```
-</details>
 
-<details class="quiz-toggle">
-<summary>Reveal Explanation</summary>
-
-After sorting descending, skip one record and read the next.
-
-</details>
-
-</div>
-
-[//]: # (Why are streams called lazy?)
-<div class="quiz-box">
-<b>Why are streams called lazy?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Why are streams called lazy?
 Stream are called lazy because intermediate operations are not evaluated unless terminal operation is invoked. They are only evaluated when a terminal operation is invoked. The operations are lazy, meaning they do not executed immediately.
-</details>
-<details class="quiz-toggle">
-<summary>Reveal Explanation</summary>
-Intermediate operations build a pipeline, and terminal operations trigger execution.
-</details>
-</div>
 
-[//]: # (How does streams work in Java 8?)
-<div class="quiz-box">
-<b>How does streams work in Java 8?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### How does streams work in Java 8?
 Java Stream is a pipeline of functions that can be evaluated. Java Stream is not a data structure and cannot mutate data, they can only transform data. Streams are built around its main interface, the Stream interface which was released in JDK 8.  
 Three phases - Splitting, Applying and Combining.  
 Elements of a stream is processed individually and then tey finally get collected.
-</details>
-<details class="quiz-toggle">
-<summary>Reveal Explanation</summary>
-A stream flows from source to intermediate steps to final terminal result.
-</details>
-</div>
 
-[//]: # (Print the distinct element.)
-<div class="quiz-box">
-<b>Array contains duplicate element. Print the distinct element.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+
+### Array contains duplicate element. Print the distinct element.
 
 ```java
 list.stream().distinct().collect(Collectors.toList());
 ```
-</details>
-</div>
 
-[//]: # (Java Stream collector.)
-<div class="quiz-box">
-<b>Java Stream collector.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Java Stream collector.
 Collectors in the <code>java.util.stream.Collectors</code> class.
 <code>partitioningBy</code> - Splits elements into two groups based on a boolean predicate (true / false) Example - Even and odd number.<br>
 
@@ -326,49 +206,12 @@ IntSummaryStatistics stats =
             words.stream().collect(summarizingInt(String::length));
         System.out.println("summarizingInt: " + stats);
 ```
-</details>
-</div>
 
-### Kafka
-<div class="quiz-box">
-
-**Q12. What is Zookeeper in Kafka.**
-
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-
-Storig metadate - Zookeeper stores essential data for running a Kafka cluster, such as registered brokers, topic configuration and the current controller.
-
-Providing distributed coordination - Zooker acts as a centralized service that provides distributed coordination for applications deployed in a distributed system.
-
-Maintaining configurayion information - Zookeepers keeps tract of data related to Kafka topics, brokers, consumers.
-
-Fault tolerant - Zookeeper is highly available and can tolerate node failures.
-
-Consistency - Zookeper offers a cosistent view of the cluster to all clients.
-
-</details>
-
-<details class="quiz-toggle">
-<summary>Reveal Explanation</summary>
-
-ZooKeeper has been used for metadata and broker coordination in classic Kafka architecture.
-
-</details>
-
-</div>
-
-<div class="quiz-box">
-<b>How many partition we can create in kafka.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+## Kafka
+### How many partition we can create in kafka.
 Not fixed. Max pqrtitions per broker - 4000 partitions per broker. <br>Under the cluster there is broker. Max partition per cluster - 200000 partitions per cluster. Minimum partitions per topic - 1 partition per topic. Partition count is not fixed and depends on broker capacity and cluster sizing.
-</div>
 
-<div class="quiz-box">
-<b>What are nodes and how it scales up with number of nodes.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### What are nodes and how it scales up with number of nodes.
 There are nodes inside Kafka.
 Node are server that can be added to a cluster to scale up processing power and capacity.<br>
 
@@ -382,19 +225,7 @@ Node pools - You can configure node pools usng a custom resource called KafkaNod
 
 Managed disk - You can use multiple disks to achieve 16Tb for each node in the cluster.
 
-</details>
-
-<details class="quiz-toggle">
-<summary>Reveal Explanation</summary>
-
-Adding nodes improves throughput and capacity, but requires balancing partitions and resources.
-
-</details>
-
-</div>
-
-<div class="quiz-box">
-<b>What is Insync Replica?</b>
+### What is Insync Replica?</b>
 <details class="quiz-toggle">
 <summary>Reveal Answer</summary>
 In kafka way to achive data consistency and fault tolerance is by using replication to make sure tat messages are not lost if a broker fails. Every partition of a Kafka topic is replicated across multiple brokers. An insync replica ISR is a set of replicas that are fully in sync and replica with the leader replica of a partition. To put it simple, ISRs are replicas that have fully uptodate with the leader and have the same data as the leader.
@@ -464,38 +295,20 @@ Return type can be same or different, method signature (name and parameter) shou
 </details>
 </div>
 
-<div class="quiz-box">
-<b>Explain Encapsulation.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Explain Encapsulation.
 Encapsulation is the concept of bundling data (fields) and methods (functions) that operate on the data into a single unit, typically a class. It also involves restricting direct access to some of the object's components, ensuring data security and integrity through Getter and Setter methods.
-</details>
-</div>
 
-<div class="quiz-box">
-<b>Method Overloading.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Method Overloading.
 More than one method with same name as long as the method has different parameter lists (different number of parameter
 or different types of parameters). It is a compile time polymorphism.
 
 Return type can be same or different, method signature (name and parameter) should be unique. Java determines which
 method to call based on the method signature at compile time.
-</details>
-</div>
 
-<div class="quiz-box">
-Explain Encapsulation.
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Explain Encapsulation.
 Encapsulation is the concept of bundling data (fields) and methods (functions) that operate on the data into a single unit, typically a class. It also involves restricting direct access to some of the object's components, ensuring data security and integrity. Getter and setter.
-</details>
-</div>
 
-<div class="quiz-box">
-<b>Generics</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Generics.
 Wildcards in Java are a feature of generics that provide flexibility in specifying the type of elements a generic class or method can operate on. Wildcards allow you to relax the type constraints when working with generics, enabling more flexible and reusable code.
 
 Types of WildCard.
@@ -577,165 +390,35 @@ Producer: Use extends when you want to fetch data from a collection (Producer Ex
 List<? extends Number> producer = List.of(1, 2, 3); // Produces data
 List<? super Integer> consumer = new ArrayList<>();  // Consumes data
 ```
-</details>
-</div>
+### Difference between HashSet and TreeSet.
+| Feature | HashSet | TreeSet |
+|---------|---------|---------|
+| **Performance** | Faster (O(1)) | Faster (O(log n)) |
+| **Order** | Unordered. No guarantee of order; depends on the hash function. | Sorted in natural order or custom order. Depends on `Comparable` or a custom `Comparator`. |
+| **Iteration** | Iterates in no specific order. | Iterates in ascending sorted order, or as defined by a custom comparator. |
+| **Null Values** | Allows one `null` value. | Does not allow `null`. |
+| **Internal Data Structure** | Uses `HashMap` internally for storage. | Uses a Red-Black Tree (self-balancing binary search tree). |
+| **Sorting** | Custom sorting not supported. | Custom sorting supported via `Comparator`. |
 
-<div class="quiz-box">
-<b>Difference between HashSet and TreeSet.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-The HashSet and TreeSet classes in java are the implementation of Set interface.
+### Difference between HashMap and TreeMap.
+| Feature | HashMap | TreeMap |
+|---------|---------|---------|
+| **Performance** | O(1) average time complexity for basic operations. | O(log n) time complexity for basic operations. |
+| **Order** | No fixed order. | Maintains keys in sorted order, either natural ordering or via a custom comparator. |
+| **Null Key / Values** | Allows one `null` key and multiple `null` values. | Does not allow `null` keys, but allows multiple `null` values. |
+| **Internal Data Structure** | Hash table. | Red-Black Tree (self-balancing binary search tree). |
 
-<table>
-    <thead>
-        <tr>
-            <th>Feature</th>
-            <th>HashSet</th>
-            <th>TreeSet</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><b>Performance</b></td>
-            <td>Faster (O(1))</td>
-            <td>Faster (O(log n))</td>
-        </tr>
-        <tr>
-            <td><b>Order</b></td>
-            <td>Unordered. No guarantee of order; it depends on the hash function.</td>
-            <td>Sorted in natural order or custom order.<br/>The order depends on the natural ordering of elements via <code>Comparable</code> or a custom <code>Comparator</code>.</td>
-        </tr>
-        <tr>
-            <td><b>Iteration</b></td>
-            <td>Iterates in no specific order.</td>
-            <td>Iterates in ascending sorted order, or in the order defined by a custom comparator.</td>
-        </tr>
-        <tr>
-            <td><b>Null Values</b></td>
-            <td>Allows one <code>null</code> value.</td>
-            <td>Does not allow <code>null</code>.</td>
-        </tr>
-        <tr>
-            <td><b>Internal Data Structure</b></td>
-            <td>Uses <code>HashMap</code> internally for storage.</td>
-            <td>Uses a Red-Black Tree (self-balancing binary search tree) internally.</td>
-        </tr>
-        <tr>
-            <td><b>Sorting</b></td>
-            <td>Custom sorting is not supported.</td>
-            <td>Custom sorting is supported via <code>Comparator</code>.</td>
-        </tr>
-    </tbody>
-</table>
+### Difference between HashMap and Hashtable.
+ Feature | HashMap | Hashtable |
+|---------|---------|-----------|
+| **Thread Safety** | Not thread-safe. Requires external synchronization (e.g., `Collections.synchronizedMap()`) in multithreaded environments. | Thread-safe because synchronization is built into its methods. |
+| **Null Key / Values** | Allows one `null` key and multiple `null` values. | Does not allow `null` keys or `null` values; throws `NullPointerException`. |
+| **Performance** | Usually faster due to no synchronization overhead. | Usually slower because synchronization adds overhead. |
+| **Package / History** | Introduced in Java 1.2 as part of the Java Collections Framework (`java.util`). Preferred in modern code. | Legacy class from Java 1.0 in `java.util`. Generally not recommended in new code. |
+| **Usage** | Preferred in single-threaded code or when synchronization is handled externally. | Rarely used in modern applications; `ConcurrentHashMap` is usually preferred for thread-safe access. |
 
-```java
-TreeSet<Integer> treeSet = new TreeSet<>((a, b) -> b - a); // Descending order
-        treeSet.add(10);
-        treeSet.add(5);
-        treeSet.add(20);
-System.out.println(treeSet); // Output: [20, 10, 5]
 
-TreeSet<String> treeSet = new TreeSet<>();
-        treeSet.add("Apple");
-        treeSet.add("Banana");
-        treeSet.add("Orange");
-System.out.println("TreeSet: " + treeSet); // Sorted order
-
-HashSet<String> hashSet = new HashSet<>();
-        hashSet.add("Apple");
-        hashSet.add("Banana");
-        hashSet.add("Orange");
-System.out.println("HashSet: " + hashSet); // Order not guaranteed
-```
-</details>
-</div>
-
-<div class="quiz-box">
-<b>Difference between HashMap and TreeMap.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-<table>
-    <thead>
-        <tr>
-            <th>Feature</th>
-            <th>HashMap</th>
-            <th>TreeMap</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><b>Performance</b></td>
-            <td>O(1) average time complexity for basic operations.</td>
-            <td>O(log n) time complexity for basic operations.</td>
-        </tr>
-        <tr>
-            <td><b>Order</b></td>
-            <td>No fixed order.</td>
-            <td>Maintains keys in sorted order, either natural ordering or via a custom comparator.</td>
-        </tr>
-        <tr>
-            <td><b>Null Key / Values</b></td>
-            <td>Allows one <code>null</code> key and multiple <code>null</code> values.</td>
-            <td>Does not allow <code>null</code> keys, but allows multiple <code>null</code> values.</td>
-        </tr>
-        <tr>
-            <td><b>Internal Data Structure</b></td>
-            <td>Hash table.</td>
-            <td>Red-Black Tree (self-balancing binary search tree).</td>
-        </tr>
-    </tbody>
-</table>
-</details>
-</div>
-
-<div class="quiz-box">
-<b>Difference between HashMap and Hashtable.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-<table>
-    <thead>
-        <tr>
-            <th>Feature</th>
-            <th>HashMap</th>
-            <th>Hashtable</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><b>Thread Safety</b></td>
-            <td>Not thread-safe. It needs external synchronization, such as <code>Collections.synchronizedMap()</code>, in multithreaded environments.</td>
-            <td>Thread-safe because synchronization is built into its methods.</td>
-        </tr>
-        <tr>
-            <td><b>Null Key / Values</b></td>
-            <td>Allows one <code>null</code> key and multiple <code>null</code> values.</td>
-            <td>Does not allow <code>null</code> keys or <code>null</code> values and throws <code>NullPointerException</code>.</td>
-        </tr>
-        <tr>
-            <td><b>Performance</b></td>
-            <td>Usually faster because there is no synchronization overhead.</td>
-            <td>Usually slower because synchronization adds overhead.</td>
-        </tr>
-        <tr>
-            <td><b>Package / History</b></td>
-            <td>Introduced in Java 1.2 as part of the Java Collections Framework in <code>java.util</code>. Preferred in modern code.</td>
-            <td>Legacy class from Java 1.0 in <code>java.util</code>. Generally not recommended in new code.</td>
-        </tr>
-        <tr>
-            <td><b>Usage</b></td>
-            <td>Preferred in single-threaded code or when synchronization is handled externally.</td>
-            <td>Rarely used in modern applications; <code>ConcurrentHashMap</code> is usually preferred for thread-safe access.</td>
-        </tr>
-    </tbody>
-</table>
-
-</details>
-</div>
-
-<div class="quiz-box">
-<b>Difference between Map and FlatMap in streamAPI.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Difference between Map and FlatMap in streamAPI.
 MAP.
 
 **Purpose**: Transforms each element in the stream into another element.  
@@ -815,54 +498,17 @@ List<String> words = sentences.stream()
                               .collect(Collectors.toList());
 // Result: [hello, world, java, streams]
 ```
-</details>
-</div>
 
-<div class="quiz-box">
-<b>Difference between normal stream and parallel stream.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-<table>
-    <thead>
-        <tr>
-            <th>Feature</th>
-            <th>Normal Stream</th>
-            <th>Parallel Stream</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><b>Execution</b></td>
-            <td>Processed sequentially, one element at a time, in source order.</td>
-            <td>Processed concurrently by splitting the source into chunks handled by multiple threads.</td>
-        </tr>
-        <tr>
-            <td><b>Performance</b></td>
-            <td>Best for smaller datasets or lightweight operations where parallel overhead is not worth it.</td>
-            <td>Can improve performance for large datasets or CPU-intensive work, but may be slower for small tasks because of parallel overhead.</td>
-        </tr>
-        <tr>
-            <td><b>Thread Management</b></td>
-            <td>Runs in a single thread, usually the main thread.</td>
-            <td>Uses the common <code>ForkJoinPool</code>, typically with worker threads based on available CPU cores.</td>
-        </tr>
-        <tr>
-            <td><b>Order</b></td>
-            <td>Maintains encounter order.</td>
-            <td>May not preserve order unless explicitly handled, for example with <code>forEachOrdered()</code>.</td>
-        </tr>
-        <tr>
-            <td><b>Usage</b></td>
-            <td>Best for simple and small operations where parallelism is unnecessary.</td>
-            <td>Best for large collections or time-consuming operations that benefit from parallel execution.</td>
-        </tr>
-        <tr>
-            <td><b>Processing</b></td>
-            <td>Processes all elements in order and commonly uses the <code>main</code> thread.</td>
-            <td>Processes elements concurrently using multiple threads such as <code>ForkJoinPool.commonPool-worker-*</code>.</td>
-        </tr>
-    </tbody>
-</table>
+
+### Difference between normal stream and parallel stream.
+| Feature | Normal Stream | Parallel Stream |
+|---------|---------------|-----------------|
+| **Execution** | Processed sequentially, one element at a time, in source order. | Processed concurrently by splitting the source into chunks handled by multiple threads. |
+| **Performance** | Best for smaller datasets or lightweight operations where parallel overhead is not worth it. | Can improve performance for large datasets or CPU-intensive work, but may be slower for small tasks due to parallel overhead. |
+| **Thread Management** | Runs in a single thread, usually the main thread. | Uses the common `ForkJoinPool`, typically with worker threads based on available CPU cores. |
+| **Order** | Maintains encounter order. | May not preserve order unless explicitly handled (e.g., with `forEachOrdered()`). |
+| **Usage** | Best for simple and small operations where parallelism is unnecessary. | Best for large collections or time-consuming operations that benefit from parallel execution. |
+| **Processing** | Processes all elements in order using the `main` thread. | Processes elements concurrently using multiple threads such as `ForkJoinPool.commonPool-worker-*`. |
 
 The example of a normal stream.
 
@@ -892,7 +538,7 @@ items.parallelStream()
      });
 ```
 The output.
-```java
+```
 Parallel Stream:
 ForkJoinPool.commonPool-worker-1 processes A
 main processes B
@@ -900,118 +546,29 @@ ForkJoinPool.commonPool-worker-3 processes C
 ForkJoinPool.commonPool-worker-2 processes D
 main processes E
 ```
-</details>
-</div>
 
-<div class="quiz-box">
-<b>Difference between stream and collection.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-<table>
-    <thead>
-        <tr>
-            <th>Feature</th>
-            <th>Stream</th>
-            <th>Collection</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><b>Nature</b></td>
-            <td>A stream is a sequence of elements that supports sequential or parallel data processing operations.</td>
-            <td>A collection is a data structure that stores objects in memory, such as <code>List</code>, <code>Set</code>, or <code>Map</code>.</td>
-        </tr>
-        <tr>
-            <td><b>Storage</b></td>
-            <td>Does not store data; it operates on a source such as a collection or array.</td>
-            <td>Stores data in memory.</td>
-        </tr>
-        <tr>
-            <td><b>Operation</b></td>
-            <td>Mainly used for transformation and processing operations like <code>map</code>, <code>filter</code>, and <code>reduce</code>.</td>
-            <td>Manipulated through methods like <code>add</code>, <code>remove</code>, <code>get</code>, and iteration APIs.</td>
-        </tr>
-        <tr>
-            <td><b>Lazy Evaluation</b></td>
-            <td>Operations are lazy; execution happens only when a terminal operation is invoked.</td>
-            <td>Eager by nature; data is already stored and available immediately.</td>
-        </tr>
-        <tr>
-            <td><b>Consumption</b></td>
-            <td>Can be consumed only once; a new stream must be created for reuse.</td>
-            <td>Can be accessed multiple times without recreation.</td>
-        </tr>
-        <tr>
-            <td><b>Parallelism</b></td>
-            <td>Can be processed in parallel easily using <code>parallelStream()</code>.</td>
-            <td>Does not provide built-in parallel processing in the same way streams do.</td>
-        </tr>
-        <tr>
-            <td><b>Use Case</b></td>
-            <td>Designed for data transformation and processing.</td>
-            <td>Designed for storing and managing data.</td>
-        </tr>
-    </tbody>
-</table>
-</details>
-</div>
+### Difference between stream and collection.
+| Feature | Stream | Collection |
+|---------|--------|------------|
+| **Nature** | A stream is a sequence of elements that supports sequential or parallel data processing operations. | A collection is a data structure that stores objects in memory, such as `List`, `Set`, or `Map`. |
+| **Storage** | Does not store data; it operates on a source such as a collection or array. | Stores data in memory. |
+| **Operation** | Mainly used for transformation and processing operations like `map`, `filter`, and `reduce`. | Manipulated through methods like `add`, `remove`, `get`, and iteration APIs. |
+| **Lazy Evaluation** | Operations are lazy; execution happens only when a terminal operation is invoked. | Eager by nature; data is already stored and available immediately. |
+| **Consumption** | Can be consumed only once; a new stream must be created for reuse. | Can be accessed multiple times without recreation. |
+| **Parallelism** | Can be processed in parallel easily using `parallelStream()`. | Does not provide built-in parallel processing in the same way streams do. |
+| **Use Case** | Designed for data transformation and processing. | Designed for storing and managing data. |
 
-<div class="quiz-box">
-<b>Difference between ConcurrentHashMap and SynchronizedHashMap.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-
-<table>
-    <thead>
-        <tr>
-            <th>Feature</th>
-            <th>ConcurrentHashMap</th>
-            <th>SynchronizedHashMap</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><b>Synchronization Mechanism</b></td>
-            <td>Uses segment-based locking (Java 7) or bucket-level locking (Java 8+).</td>
-            <td>Entire map is locked for each operation using synchronized blocks.</td>
-        </tr>
-        <tr>
-            <td><b>Concurrency</b></td>
-            <td>Allows concurrent reads and writes by multiple threads; only writes to the same bucket are blocked.</td>
-            <td>Allows only one thread to access the map at a time.</td>
-        </tr>
-        <tr>
-            <td><b>Performance</b></td>
-            <td>Higher performance in multithreaded environments due to finer-grained locking.</td>
-            <td>Lower performance due to coarse-grained locking (locks the entire map).</td>
-        </tr>
-        <tr>
-            <td><b>Null Values</b></td>
-            <td>Does not allow <code>null</code> keys or values.</td>
-            <td>Allows a single <code>null</code> key and multiple <code>null</code> values.</td>
-        </tr>
-        <tr>
-            <td><b>Thread Safety</b></td>
-            <td>Thread-safe for concurrent access with better scalability.</td>
-            <td>Thread-safe, but less efficient in high-concurrency scenarios.</td>
-        </tr>
-        <tr>
-            <td><b>Locking Granularity</b></td>
-            <td>Fine-grained locks improve throughput by reducing contention.</td>
-            <td>Coarse-grained locks block all threads accessing the map, even for independent operations.</td>
-        </tr>
-        <tr>
-            <td><b>Iteration Behavior</b></td>
-            <td>Does not throw <code>ConcurrentModificationException</code> during iteration; reflects changes made by other threads.</td>
-            <td>Throws <code>ConcurrentModificationException</code> if the map is modified during iteration.</td>
-        </tr>
-        <tr>
-            <td><b>Use Case</b></td>
-            <td>Best suited for high-concurrency applications where reads and updates are frequent.</td>
-            <td>Suitable for low-concurrency scenarios where simplicity is preferred over performance.</td>
-        </tr>
-    </tbody>
-</table>
+### Difference between ConcurrentHashMap and SynchronizedHashMap.
+ Feature | ConcurrentHashMap | SynchronizedHashMap |
+|---------|-------------------|---------------------|
+| **Synchronization Mechanism** | Uses segment-based locking (Java 7) or bucket-level locking (Java 8+). | Entire map is locked for each operation using synchronized blocks. |
+| **Concurrency** | Allows concurrent reads and writes by multiple threads; only writes to the same bucket are blocked. | Allows only one thread to access the map at a time. |
+| **Performance** | Higher performance in multithreaded environments due to finer-grained locking. | Lower performance due to coarse-grained locking (locks the entire map). |
+| **Null Values** | Does not allow `null` keys or values. | Allows a single `null` key and multiple `null` values. |
+| **Thread Safety** | Thread-safe for concurrent access with better scalability. | Thread-safe, but less efficient in high-concurrency scenarios. |
+| **Locking Granularity** | Fine-grained locks improve throughput by reducing contention. | Coarse-grained locks block all threads accessing the map, even for independent operations. |
+| **Iteration Behavior** | Does not throw `ConcurrentModificationException` during iteration; reflects changes made by other threads. | Throws `ConcurrentModificationException` if the map is modified during iteration. |
+| **Use Case** | Best suited for high-concurrency applications where reads and updates are frequent. | Suitable for low-concurrency scenarios where simplicity is preferred over performance. |
 
 **ConcurrentHashMap**.
 
@@ -1121,14 +678,7 @@ public static void main(String[] args) {
     System.out.println("Final Map: " + map);
 }
 ```
-
-</details>
-</div>
-
-<div class="quiz-box">
-<b>Difference between StringBuilder and StringBuffer and String.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Difference between StringBuilder and StringBuffer and String.
 
 **String**.
 
@@ -1147,40 +697,13 @@ Mutable. Allows in place modification in string.
 <br/>Mutable and Thread safe. Synchronization ensures thread safety.
 <br/>
 
-</details>
-</div>
 
-<div class="quiz-box">
-<b>Difference between default and static method.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-
-<table>
-    <thead>
-        <tr>
-            <th>Feature</th>
-            <th>Default Method</th>
-            <th>Static Method</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><b>Definition</b></td>
-            <td>A method with a body in an interface, invoked on an instance.</td>
-            <td>A method declared with the <code>static</code> keyword, invoked on the class.</td>
-        </tr>
-        <tr>
-            <td><b>Purpose</b></td>
-            <td>Provides a default implementation for interface methods, ensuring backward compatibility. Works with instance variables and methods.</td>
-            <td>Defines utility or helper methods unrelated to instance-specific behavior. Works only with static data and does not access instance variables or methods.</td>
-        </tr>
-        <tr>
-            <td><b>Inheritance</b></td>
-            <td>Can be inherited and overridden by implementing classes.</td>
-            <td>Cannot be overridden but can be hidden (if declared in a class).</td>
-        </tr>
-    </tbody>
-</table>
+### Difference between default and static method.
+| Feature | Default Method | Static Method |
+|---------|----------------|---------------|
+| **Definition** | A method with a body in an interface, invoked on an instance. | A method declared with the `static` keyword, invoked on the class. |
+| **Purpose** | Provides a default implementation for interface methods, ensuring backward compatibility. Works with instance variables and methods. | Defines utility or helper methods unrelated to instance-specific behavior. Works only with static data and does not access instance variables or methods. |
+| **Inheritance** | Can be inherited and overridden by implementing classes. | Cannot be overridden but can be hidden (if declared in a class). |
 
 Default Method.
 
@@ -1215,83 +738,8 @@ public class Main {
     }
 }
 ```
-</details>
-</div>
+### What is finally, finalize and final.
 
-<div class="quiz-box">
-<b>Difference between Future and CompletableFuture, Runnable and Callable.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-<table>
-    <thead>
-        <tr>
-            <th>Feature</th>
-            <th>Future</th>
-            <th>CompletableFuture</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><b>Core Idea</b></td>
-            <td>Represents the result of an asynchronous computation.</td>
-            <td>Extends <code>Future</code> with composition and callback APIs for async workflows.</td>
-        </tr>
-        <tr>
-            <td><b>Result Handling</b></td>
-            <td>Mostly blocking retrieval via <code>get()</code>.</td>
-            <td>Provides non-blocking callbacks like <code>thenAccept()</code>, <code>thenApply()</code>, and <code>thenCompose()</code>.</td>
-        </tr>
-        <tr>
-            <td><b>Composition</b></td>
-            <td>No built-in fluent chaining for multiple async stages.</td>
-            <td>Supports fluent chaining, combining, and dependent async operations.</td>
-        </tr>
-        <tr>
-            <td><b>Exception Handling</b></td>
-            <td>No rich built-in exception pipeline; handling is typically done around <code>get()</code>.</td>
-            <td>Built-in exception handling via <code>exceptionally()</code>, <code>handle()</code>, and <code>whenComplete()</code>.</td>
-        </tr>
-    </tbody>
-</table>
-
-<table>
-    <thead>
-        <tr>
-            <th>Feature</th>
-            <th>Runnable</th>
-            <th>Callable</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><b>Return Value</b></td>
-            <td>Returns no result (<code>void</code>).</td>
-            <td>Returns a result of type <code>V</code>.</td>
-        </tr>
-        <tr>
-            <td><b>Exception Support</b></td>
-            <td>Cannot throw checked exceptions from <code>run()</code>.</td>
-            <td>Can throw checked exceptions from <code>call()</code>.</td>
-        </tr>
-        <tr>
-            <td><b>Typical Use</b></td>
-            <td>Best for fire-and-forget tasks.</td>
-            <td>Best for tasks that compute and return a value.</td>
-        </tr>
-        <tr>
-            <td><b>Method Signature</b></td>
-            <td><code>public abstract void run();</code></td>
-            <td><code>V call() throws Exception;</code></td>
-        </tr>
-    </tbody>
-</table>
-</details>
-</div>
-
-<div class="quiz-box">
-<b>What is finally, finalize and final.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
 <b>finally</b> - A block in a try-catch statement that always executes, regardless of whether an exception is thrown or not. <br>
 <b>Purpose</b> - Used for cleanup actions like closing files, releasing resources, or disconnecting from a database. <br>
 <b>Key Points</b> - The finally block executes even if the try block contains a return statement.
@@ -1360,21 +808,11 @@ public class FinalVariableExample {
 }
 ```
 
-</details>
-</div>
-
-<div class="quiz-box">
-<b>Collection Hierarchy.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Collection Hierarchy.
 <img src="/images/Java/CollectionHierarchy.png" alt="Collection Hierarchy" style="max-width:100%; display:block; margin:auto;" />
-</details>
-</div>
 
-<div class="quiz-box">
-<b>String Interning.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+
+### String Interning.
 String interning is a process of reusing strings to optimize memory usage. Strings are immutable in java in order to
 avoid the duplicate string with same value, Java uses string pool. String pool is a special area in the heap memory.<br>
 
@@ -1407,8 +845,6 @@ str =str.intern(); // Now str is pointing to the pool string.
 System.out.println(str1==str3);
 ```
 When the string is interned then == is faster and string not interned then we have to use .equals
-</details>
-</div>
 
 <div class="quiz-box">
 <b>How the `@Autowired`, `@Resource` and `@Inject` differs from each other.</b>
