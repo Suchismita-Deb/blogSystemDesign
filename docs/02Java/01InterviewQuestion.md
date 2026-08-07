@@ -21,7 +21,7 @@ Elementary difference happens when object was still getting referenced somewhere
 
 ### How to default methods let an interface evolve without breaking existing implementing classes ?
 Adding a method into the interface everyone has to implement it. 
-Default method let up add a method wth a body directly in the uinterface.
+Default method let up add a method wth a body directly in the interface.
 The entire implementing classes compiled and worked without being forced override.   
 
 ### How do you monitor application connections and identify failing connections ?
