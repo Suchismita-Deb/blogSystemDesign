@@ -2,7 +2,7 @@
 
 ## Streams
 
-### Find sum of even numbers from array.</b>
+### Find sum of even numbers from array.
 
 ``` java
 int num[] = {1,2,3,4,4,5,6,7,8};
@@ -238,9 +238,6 @@ Kafka replication models has leaders, followers, replication factor, ISR list.
 <summary>Reveal Explanation</summary>
 
 ISR members are replicas that are sufficiently caught up with the leader.
-
-</details>
-</div>
 
 <div class="quiz-box">
 <b>How do you decide on how much memory your application will require on production?</b>

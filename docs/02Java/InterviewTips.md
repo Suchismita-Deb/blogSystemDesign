@@ -11,4 +11,10 @@ The role is highlighting Kafka, project 1 to discuss.
 The point is I will decide what should be explored deeper by how much energy we put into each part when I explain. Weaker part flat one sentence but the stronger part gets more specifics and get mentioned last(recency bias - the next question will follow up the last part).
 A draft looks like - One project I can go deep on is an order platform built as event driven microservice with Kafka as backbone between services.  
 
-The core flow - When an order  
+The core flow - When an order event fires it publishes a topic partitioned by the entity Id to preserve per-entity Ordering and several services - inventory, pricing, notification and each run their own consumer group and maintain their own view of the data instead of hitting the shared db.
+I am primarily responsible for the maintaining the microservice and the consumer pipeline. The handling of data, validation, pushing processed data to the downstream service using the connector to give them the data format. Payload is Avro encoded as we are using the Confluent Cloud its easy to work as its a service provider and we are not taking care of the inhouse server.
+
+
+
+I would like to give an instance of the case that I have faced in the application - We hit an intermittent deserialization failure on the consumer side. The message key is String and not like the Avro-encoded value and teh deserilaizer set up did not handle the mismatch cleanly so the message failed silently. Across a 12 partitioned topic the failure was not uniform so I narrowed it down to the partition by partition and it turned out the issue lies in the partition 3 by extracting the message directly and conparing the key encoding across partitions.
+When identified the issue the fix was simple like key and value deserializer split but the main part was finding the root cause and narrowing to the partition.
