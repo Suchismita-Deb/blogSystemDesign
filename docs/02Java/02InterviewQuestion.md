@@ -12,11 +12,20 @@ JDK - Toolkit for java development.
 JRE - Environment to run Java program.
 JVM - Engine that executes the Java bytecode.
 
+
+### Anyways to Install the JDK without the JRE or does JDK already condenser required runtime parts ?
+
+JDK already contains the required runtime parts to run the Java application and JDK is mainly for development but it also has runtime benefits and so we don't need separate JRE when JDK is installed.
+
 - **JDK (Java Development Kit)**: It is a software development kit that provides tools for developing Java applications, including the JRE, compilers, and other development tools. It is used by developers to write, compile, and debug Java programs.
 ### Explain Java garbage collection process and how it helps in memory management.
 
-Java garbage collection is an automatic memory management process that helps in reclaiming memory occupied by objects that are no longer in use. The garbage collector (GC) identifies and removes these unreferenced objects from the heap memory, freeing up space for new object allocations. This process helps prevent memory leaks and ensures efficient memory utilization.
+Java garbage collection is an automatic memory management process that helps in reclaiming memory occupied by objects that are no longer in use. The garbage collector (GC) identifies and removes these unreferenced objects from the heap memory, freeing up space for new object allocations. This process helps prevent memory leaks and ensures efficient memory utilization.  
 
+Memory leak happens when object are not needed but still some reference is pointing them. The garbage collector removes only unreachable objects. Garbage collector removes unreachable objects and in case the object is reachable then garbage collector will not remove it. 
+
+### Which garbage collection algorithms are used for JVM to clean up on new subjects from the memory? 
+JVM uses different garbage collection algorithms like mark and sweep, mark and compact, generational garbage collection. The actual algorithm depends on which value which collector you are using. 
 ### What is Inheritance?
 
 Inheritance allows one class to inherit fields and methods from another class and promote code reuse. It model "is-a" relationship like the Manager is an Employee. 

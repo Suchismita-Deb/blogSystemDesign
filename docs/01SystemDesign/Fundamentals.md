@@ -218,7 +218,7 @@ To identify the entity ask the actor of the system and are they overlapping. The
 The object API will use the data model the table and the data to work with.
 #### API System Interface - Approx 5 mins.
 
-Which API protocol to use - REST, GraphQL (Client spefy what data they need avoiding over and under fetching. Used when diverse client with different data need), RPC(Remote Procedure Call - Action oriented protocol that acts faster than REST for service to service communication), Real Time use WebSocket.
+Which API protocol to use - **REST**, **GraphQL** (Client specify what data they need avoiding over and under fetching. Used when diverse client with different data need), RPC(Remote Procedure Call - Action oriented protocol that acts faster than REST for service to service communication), Real Time use WebSocket.
 
 API Design - The authentication is derived from the header and not the body and the url is plural tweets and not tweet (/v1/tweets).
 

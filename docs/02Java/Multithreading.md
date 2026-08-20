@@ -53,7 +53,7 @@ Quick mental model: think of a process as an office building, and threads as emp
 
 ---
 
-## Topic 2: Creating Threads â€“ `Thread` class vs `Runnable` interface
+## Topic 2: Creating Threads “ `Thread` class vs `Runnable` interface
 
 There are two main ways to create a thread in Java.
 
@@ -108,23 +108,23 @@ This is the most common style you'll see in real code.
 
 ## Topic 3: `start()` vs `run()`
 
-This trips up almost everyone at first.
-
 ```java
 Thread t1 = new Thread(() -> {
     System.out.println("Hello from: " + Thread.currentThread().getName());
 });
 
-t1.run();    // âŒ wrong way
-t1.start();  // âœ… right way
+t1.run();    // wrong way
+t1.start();  // right way
 ```
 
-**`run()`** â€” just a normal method call. It executes on the **current thread** (e.g., `main`). No new thread is created. It's like calling any regular function.
+**`run()`** a normal method call. It executes on the **current thread** (e.g., `main`). No new thread is created. It's like calling any regular function.
 
-**`start()`** â€” this is the real deal:
+**`start()`** the real deal:
 1. Creates a new OS-level thread.
 2. That new thread calls `run()` internally.
 3. Your code now executes concurrently with the caller.
+
+The start() begins the thread execution and calls the run().
 
 **Proof with code:**
 ```java
@@ -144,17 +144,60 @@ public class Test {
 ```
 
 **Important gotcha:** You can only call `start()` **once** per thread object. Calling it twice throws `IllegalThreadStateException`. If you need to run the task again, create a new `Thread` object.
+A thread that completed execution cannot be restarted.
 
-**Quick summary:**
+### What is thread safety and how it can be achieved?
 
-| Method | New thread? | Common use |
-|---|---|---|
-| `run()` | No | Rare â€” only if you want plain sequential execution |
-| `start()` | Yes | Always, for actual multithreading |
+The thread safety meaning the thread working perfectly during the execution by multiple threads. Its achieved through synchronization, immutable objects, concurrent collection, atomic variables and thread-local variables. 
+
+### What will happen when the thread run method gives an exception?
+
+When the thread is called like `start()` then the thread is created and not part of the main. When it gives error then the main thread will continue running.  
+When the thread is called like `t.run()` directly then its like normal method call and it will execute in the main and the exception will be thrown in the main thread.
+
+```java
+public class MyThreadException {
+    public static void main(String[] args) {
+        ExecutorService  executor = Executors.newFixedThreadPool(1);
+        Callable<Void> callable1 = new MyThreadCustomException();
+        Future<Void> f1 = executor.submit(callable1);
+        try {
+            f1.get(); // The return type is void see its Void. When there is no return type then use Runnable.
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println("Main thread interrupted.");
+        } finally {
+            executor.shutdown();
+        }
+        System.out.println("Main thread continues ..... ");
+    }
+}
+
+class MyThreadCustomException implements Callable<Void> {
+    @Override
+    public Void call() throws Exception {
+        try{
+            System.out.println("Error inside Callable");
+            throw new RuntimeException("Simulated error inside callable.");
+        } catch (Exception e){
+            System.out.println("Exception in thread - "+Thread.currentThread().getName());
+            throw e;
+        }
+    }
+}
+
+// Error inside Callable
+// Exception in thread - pool-1-thread-1
+// Main thread interrupted.
+// Main thread continues .....
+
+```
+### What is the difference between sleep() and wait()?
+
+sleep() causes the current thread to pause for a specified time without releasing locks. wait() causes the current thread to wait until another thread invokes notify() or notifyAll() on the same object and it releases the lock on the object.
 
 ---
 
-## ðŸ” Doubt Session 1: Threads at the OS Level (Semaphores & Depth)
+## Threads at the OS Level (Semaphores & Depth)
 
 **1. What a thread actually is in the kernel**
 
@@ -197,7 +240,7 @@ On Linux, naively blocking on every lock/semaphore operation via a full kernel s
 
 ---
 
-## ðŸ” Doubt Session 2: Cores, Kernel, JVM, Virtual Threads, CAS, Mutex
+## Cores, Kernel, JVM, Virtual Threads, CAS, Mutex
 
 ### 1. How Cores Relate to Threads
 
