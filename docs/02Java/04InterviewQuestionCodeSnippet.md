@@ -255,10 +255,7 @@ Use load testing plus memory metrics to estimate steady-state usage and producti
 </details>
 </div>
 
-<div class="quiz-box">
-<b>Why do we need Spring Boot when there is Spring.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Why do we need Spring Boot when there is Spring.
 Spring Boot is used to make Spring application development faster, more consistent, and production-ready.<br>
 <b>Faster bootstrap</b> - Auto-configuration reduces manual setup for common concerns such as web, data source, JPA, security, and messaging.<br>
 <b>Less boilerplate</b> - It follows convention over configuration, so developers spend less time wiring infrastructure and more time writing business logic.<br>
@@ -273,24 +270,15 @@ In short, Spring Boot removes setup friction, standardizes application structure
 
 ### OOPs
 
-<div class="quiz-box">
-<b>Explain the polymorphism.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Explain the polymorphism.
 Compile-time Polymorphism - Achieved using method overloading (methods with the same name but different parameter lists). The method to be called is determined at compile-time.
 
 Runtime Polymorphism - Achieved using method overriding (methods with the same name and signature in a parent and child class). The method to be called is determined at runtime, based on the object's actual type. It is Dynamic Binding.
-</details>
-</div>
 
-<div class="quiz-box">
-<b>Method Overloading.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-More than one method with same name as long as the method has different parameter lists (different number of parameter or different types of parameters). It is a compile time polymorphism.<br>
+### Method Overloading.
+More than one method with same name as long as the method has different parameter lists (different number of parameter or different types of parameters). It is a compile time polymorphism.  
 Return type can be same or different, method signature (name and parameter) should be unique. Java determines which method to call based on the method signature at compile time.
-</details>
-</div>
+
 
 ### Explain Encapsulation.
 Encapsulation is the concept of bundling data (fields) and methods (functions) that operate on the data into a single unit, typically a class. It also involves restricting direct access to some of the object's components, ensuring data security and integrity through Getter and Setter methods.

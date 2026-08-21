@@ -1,4 +1,4 @@
-HTTP status code and basics.
+HTTP status code and basics. Claude Learning.
 
 The things that separates a Senior Engineer - Rate limiting, Pagination, Versioning, Idempotency, Circuit Breaker, HATEOAS, OpenAPI, API Gateway.
 

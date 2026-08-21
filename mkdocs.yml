@@ -6,6 +6,7 @@ nav:
       - Fundamentals: 01SystemDesign/Fundamentals.md
       - Pattern: 01SystemDesign/Pattern.md
       - Tips: 01SystemDesign/Tips.md
+      - Core Concepts: 01SystemDesign/CoreConcepts.md
       - Key Technologies:
           - Redis: 01SystemDesign/KeyTechnologies/Redis.md
           - DynamoDb: DynamoDb.md
@@ -55,6 +56,9 @@ nav:
   - KafkaFundamentals:
       - ProducerConsumer: KafkaFundamentals/ProducerConsumer.md
   - Quiz: Quiz.md
+
+  - Interview Preparation:
+      - InterviewStyle: InterviewPreparation/InterviewStyle.md
 markdown_extensions:
   - md_in_html
   - pymdownx.highlight:
@@ -66,6 +70,9 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: markmap
+          class: markmap
           format: !!python/name:pymdownx.superfences.fence_code_format
   - tables
 theme:
@@ -100,3 +107,5 @@ theme:
 #    - header.autohide
 extra_css:
   - css/custom.css
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/markmap-autoloader

@@ -40,7 +40,7 @@ https://suchismita-deb.github.io/blogSystemDesign/
 
 Practice UML diagram to get teh class relationship of the system and no need to write to the code. Design Pattern and UML diagram.
 
-# System Design PDF
+## System Design PDF
 
 <iframe
 class="pdf-viewer"
@@ -105,11 +105,168 @@ What is the HashMap internal.
 Kafka Partition ordering.
 What is the equals method.
 
-Remove any folder.
-Add the idea in gitignore.
-git rm -r --cached .idea
-git commit -m "remove idea folder"
-git push origin main
-
-
 In Spring project in the properties file when set it like `spring.ai.openai.api-key=${OPENAI_API_KEY}` In the env edit configuration in the Modify Options add the `OPENAI_API_KEY="Val"` The apply and run.
+
+
+
+## System Design Mind Map
+
+```markmap
+# System Design
+
+## Key Technology Week 1 to 7
+
+### Data Structure
+- Stack and Queue
+- Priority Queue
+- B Tree and Trie
+
+### Networking
+- HTTP/HTTPs, TCP/IP, UDP
+- DNS Resolution
+- TCp 3 way handshake
+- REST API and Status Code
+- Latency and throughput
+
+### OS Concepts
+- Threads and Process
+- CPU Scheduling and Context Switching
+- IO Blocking and Async Operations
+- Virtual Memory and Paging
+- File System and Storage
+### DB Concepts
+- Sharding and Partitioning
+- Replication Models
+- Read/Write Replicas
+- CAP Theorem and Trade-offs
+- Consistency Models
+  - Eventual Consistency
+  - Strong Consistency
+
+### Load Balancing and Scaling
+- Vertical Scaling
+- Horizontal Scaling
+- L4 Load Balancer
+- L7 Load Balancer
+- DNS-Based Load Balancing
+- Health Check and Failover
+- Consistent Hashing
+
+### Caching System
+- Redis
+- Memcache
+- Eviction Policy
+  - LRU
+  - LFU
+  - FIFO
+- Write Strategy
+  - Write-through
+  - Write-back
+
+### Event and Messaging
+- Message Brokers
+  - Kafka
+  - RabbitMQ
+- Sync and Async Communication
+- Pub/Sub Models
+- Delivery Guarantees and Ordering
+- Dead Letter Queue and Retries
+
+## Design Architecture
+### Design Thinking
+- Requirement
+- Bottleneck Identification
+- Data and Control Flow
+- Stateless and Stateful
+  - Between two requests, if we need to maintain a session, then it is stateful.
+- Failure Handling
+### Design Pattern
+- Rate Limiting
+  - Token Bucket
+  - Leaky Bucket
+  - Sliding Window
+- Circuit Breaker and Retry Logic
+- Leader Election
+- Health Checks and Heartbeats
+- CQRS and Event Sourcing
+### Design Architecture
+- Monolithic
+- Microservices
+- Event-Driven
+- Layered Architecture
+- Client-Server
+- Service-Oriented
+## Practice
+### Practice Pattern Question.
+- File Storage and Sharing
+  - Drive
+  - Github
+  - Pinterest
+  - OneDrive
+  - Photos
+- Social Media and Networking
+  - Facebook
+  - Instagram Reels
+  - Twitter Feed
+    - Newsfeed generation
+    - Recommendation system
+  - LinkedIn
+  - Reddit
+  - Snapchat
+- Likes Count
+  - Instagram Reel like and comment
+- Messaging and Communication
+  - WhatsApp
+    - Real-time messaging
+    - Group chat
+    - Video streaming
+  - Telegram
+  - Slack
+  - Zoom
+  - Teams
+- Search and Discovery
+  - Google Search
+  - Amazon Product Search
+    - Indexing
+    - Ranking algorithm
+    - Query optimization
+    - Caching
+- Ride Sharing
+  - Uber
+  - Swiggy
+  - DoorDash
+  - Google Maps
+    - Real-time location tracking
+    - Dispatch algorithm
+    - Route optimization
+- Content Delivery
+  - Netflix
+  - Disney Hotstar
+  - Spotify
+  - YouTube Live
+    - Video encoding
+    - Live streaming latency
+- Ecommerce
+  - Amazon
+  - eBay
+  - Airbnb
+- Payment System
+  - PayPal
+  - Cash App
+- Collaboration
+  - Google Docs
+  - Jira
+  - Notion
+- Content Publishing
+  - Medium
+  - Quora
+- Healthcare and Fitness
+  - Practo
+  - Fitbit
+- Gaming and High Traffic
+  - PUBG
+  - Discord
+- Ad Tech and Recommendation
+  - Google Ads
+  - YouTube
+```

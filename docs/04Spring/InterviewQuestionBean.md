@@ -18,7 +18,7 @@ flowchart TD
     C["Dependency Injection - Populate Properties"]
     D["setBeanName() - if BeanNameAware"]
     E["setBeanFactory() - if BeanFactoryAware"]
-    F["postProcessBeforeInitialization() - BeanPostProcessor"]
+    F["postProcessBeforeInitialization() - BeanPostProcessor"] 
     G["Initialization Callbacks - @PostConstruct / afterPropertiesSet() / init-method"]
     H["postProcessAfterInitialization() - BeanPostProcessor"]
     I[Bean Ready for Use]
@@ -539,5 +539,34 @@ Each microservice is a standalone JAR — self-contained, independently deployab
 ### What is Spring Container, Inversion of Control and Dependency Injection?
 
 Spring Container is the engine that creates, configures and manages the objet
+
+### Implement security in a Rest API.
+
+There are 3 main pillars - Authentication, Authorization and Auditing.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
