@@ -129,4 +129,15 @@ While describing the project and your ownership do not add 10 technologies, you 
 Start with an event - Add the validation like DLQ - Data Enrichment - Downstream pattern.
 
 Sample answer.
-Start with an event say the business event is pushed into the topic then my microservice will consume it 
+Start with an event say the business event is pushed into the topic then my microservice will consume it - There are some validation and error data will go to the DLQ topic and separate consumer and reprocessing flow - The data has a key like the customer id and Loc value say MH03 like Manhattan and the partition maintains the orders - The order data does not contain everything there is data enrichment and data processing flow - There are many downstream patterns like kafka server db and kafka service API.
+
+The point of validation should be clear like when to validate the data there are structural validation and business logic validation.
+Structural validation - Field missing, malformed JSON, invalid data type, schema violation.  
+Business Validation - Status paid but amount missing, invalid order state transition, impossible quantity.
+The point is we perform payload-level validation first then followed by the business validation. The invalid events are routed to the DLQ rather than entering the downstream processing path.
+
+In case they ask like how did you implement the idempotent processing and all and in case have not worked on it then mention - Idempotent processing wasn't something I personally implemented in this flow, so I don't want to overstate my ownership. I understand it as an important concern in event-driven systems, particularly because a consumer can potentially process the same event more than once.
+
+Sample answer.
+
+The order event and the data lifecycle. The Upstream system publishes an order event to the Kafka topic using the business key based on the customer ID and the location information. Kafka loses that key to print determine the partition. When the service consumes the event the first stages of validation. 
