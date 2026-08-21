@@ -49,14 +49,73 @@ The actuator exposes production ready endpoints like health, metrics, info, env,
 ### How does Spring Boot auto configuration work internally like the @ConditionalOnClass and @ConditionalOnMissingBean?</b>
 
 Spring Boot scan auto configuration classes listed on the auto configurations.import file. Each class activates when the condition matches.
-Example ConsitionalOnClass in case a dependency is on the class path or @ConditionalOnMissingBean in case the bean is not defined.
+Example @ConditionalOnClass in case a dependency is on the class path or @ConditionalOnMissingBean in case the bean is not defined.
 
-### The Springwood service was throwing connection-po0l-exhausted errors in production so how would you solve this pool issue ?
+### The Springboot service was throwing connection-po0l-exhausted errors in production so how would you solve this pool issue ?
 The first step to see the active versus the idle connection in the pool matrix. The names of the connections that are not released like long running query. The pool size ad the load and the slow query logs.
 
 ### Any functional differences present between @Components, @Service and @Repository or its purely semantic ?
-
-
 ### A teammate wants no sequel for scalability for a service that needs a strong consistency and joins how do you make the call ?
 ### A legacy partner only supports SOAP but the team standard is REST how do you avoid duplicating logics ?</b>
 
+### How the HashMap works internally?
+
+Internally, a HashMap is backed by an array — `Node<K,V>[]` table. Each slot in that array is called a **bucket**. When you insert a key-value pair, we don't scan the whole array; we compute an index and drop the entry into that bucket.
+
+Each Node holds four things: **hash**, **key**, **value**, and a **next pointer**. That next pointer is what makes each bucket effectively a singly linked list — that's how we handle multiple keys landing in the same bucket, which is collision.
+
+**How put() decides the bucket**
+
+Two steps: compute the hash, then compute the index.
+
+For hash, Java 8 doesn't just use `key.hashCode()` directly. It runs it through a spreading function -
+
+```java
+static final int hash(Object key) {
+int h;
+return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+}
+```
+We XOR the hash with itself shifted right 16 bits. The reason - `hashCode()` gives you a 32-bit int, but our table size is usually small — say 16 or 32 buckets — so only the low bits actually get used when we compute the index. If two keys differ only in their high bits, they'd collide constantly without this step. XOR-ing the upper 16 bits into the lower 16 spreads that entropy down where it matters.
+
+Then for the index, instead of doing hash % capacity, Java does - `index = (n - 1) & hash`
+
+where n is the table length. This only works correctly because table capacity is always a power of 2 — that's a deliberate design choice, because `(n-1) & hash` is a much cheaper bitwise operation than modulo, and it's mathematically equivalent to `hash % n` when n is a power of 2.
+
+**Collision handling**
+
+When two keys hash to the same bucket, we first compare stored hash to the new hash — cheap integer comparison. If hashes match, then we call `.equals()` on the keys to confirm they're actually the same key, not just a hash collision. That's exactly why the hashCode/equals contract matters: if two objects are equal, they must return the same hashCode, otherwise your map will store duplicates and lookups will randomly fail. The reverse isn't required — different objects can share a hashCode, that's a normal collision, and `equals()` is the tiebreaker.
+
+If the key already exists (hash matches and equals returns true), we overwrite the value. Otherwise, we append a new node to the end of that bucket's linked list.
+
+**Resizing**
+
+We track a load factor, default 0.75. Threshold = capacity × loadFactor. Once size crosses that threshold, we double the capacity and rehash. Java 8 optimized this rehash step — instead of recalculating every node's bucket index from scratch, it uses the fact that capacity is always doubling in powers of 2. Each old bucket's nodes split into exactly two possible new buckets — "low" (same index) or "high" (old index + old capacity) — decided by checking a single bit: hash & oldCap. So it's a cheap split instead of a full rehash.
+
+Default size of the array 16 and the load factor 0.75
+
+threshold = capacity × loadFactor = 15 × 0.75 = 11
+Concrete example — Imagine capacity stays fixed at 15 buckets, but you keep inserting 1000 entries into it. On average, each bucket now holds 1000 / 15 ≈ 60 entries chained together in a linked list.
+
+Now think about `get()` - to find one key, you compute its bucket — fine, O(1) — but then you have to walk that bucket's linked list comparing hash and equals one node at a time until you find the match. With 62 entries per bucket, that's no longer O(1) lookup, it's closer to O(n) — you've basically degraded HashMap into a linked list with extra steps.
+
+So resizing is what keeps the average bucket size low — roughly load factor's worth of entries per bucket — so lookups stay close to O(1).
+
+
+Java 8's real headline change — treeification
+
+This is usually the part interviewers are fishing for. Before Java 8, if a bucket had a bad collision storm — say due to a poor or malicious hashCode implementation — that bucket's linked list could grow long, and lookup degraded to O(n) in the worst case.
+
+Java 8 introduced red-black trees for buckets. If a single bucket's chain length exceeds TREEIFY_THRESHOLD (8), and the overall table capacity is at least MIN_TREEIFY_CAPACITY (64), that bucket converts from a linked list to a balanced red-black tree (TreeNode, which extends LinkedHashMap.Entry). That brings worst-case lookup in that bucket down from O(n) to O(log n).
+
+Note the capacity check — if the table's still small (< 64), Java prefers to just resize the table rather than treeify, since a small table with one long bucket usually just means it needs more buckets overall, not tree overhead.
+
+There's also an UNTREEIFY_THRESHOLD of 6 — if enough entries get removed and a tree bucket shrinks back down, it converts back to a linked list, since trees have more memory and maintenance overhead than they're worth for small counts.
+
+get() lookup
+
+Compute hash, jump to bucket via (n-1) & hash, then either walk the linked list or traverse the tree, comparing hash first then equals, until we find the match or hit the end — returning null if not found.
+
+A couple of side notes.
+
+HashMap allows exactly one null key, which always hashes to bucket 0. It's not thread-safe — no synchronization — so under concurrent writes you can get infinite loops in the old Java 7 chaining resize (that's actually a classic pre-Java-8 production bug), which is part of why Java 8 rewrote resize logic, and why we reach for ConcurrentHashMap in multithreaded contexts instead of Collections.synchronizedMap.

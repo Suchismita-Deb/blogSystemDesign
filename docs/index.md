@@ -105,4 +105,11 @@ What is the HashMap internal.
 Kafka Partition ordering.
 What is the equals method.
 
+Remove any folder.
+Add the idea in gitignore.
+git rm -r --cached .idea
+git commit -m "remove idea folder"
+git push origin main
+
+
 In Spring project in the properties file when set it like `spring.ai.openai.api-key=${OPENAI_API_KEY}` In the env edit configuration in the Modify Options add the `OPENAI_API_KEY="Val"` The apply and run.
