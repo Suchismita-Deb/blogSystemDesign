@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../Multithreading/">
-      
-      
-        <link rel="next" href="../Sample/">
       
       
         
@@ -23,7 +19,7 @@
     
     
       
-        <title>REST API - System Design Toolkit</title>
+        <title>01DesignPatternSagaPattern - System Design Toolkit</title>
       
     
     
@@ -107,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              REST API
+              01DesignPatternSagaPattern
             
           </span>
         </div>
@@ -277,13 +273,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../02InterviewQuestion/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../02Java/02InterviewQuestion/" class="md-tabs__link">
           
   
   
@@ -1365,31 +1359,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -1407,7 +1398,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1425,7 +1416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02InterviewQuestion/" class="md-nav__link">
+      <a href="../../02Java/02InterviewQuestion/" class="md-nav__link">
         
   
   
@@ -1453,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01InterviewQuestion/" class="md-nav__link">
+      <a href="../../02Java/01InterviewQuestion/" class="md-nav__link">
         
   
   
@@ -1481,7 +1472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04InterviewQuestionCodeSnippet/" class="md-nav__link">
+      <a href="../../02Java/04InterviewQuestionCodeSnippet/" class="md-nav__link">
         
   
   
@@ -1509,7 +1500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../OOPs/" class="md-nav__link">
+      <a href="../../02Java/OOPs/" class="md-nav__link">
         
   
   
@@ -1537,7 +1528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Multithreading/" class="md-nav__link">
+      <a href="../../02Java/Multithreading/" class="md-nav__link">
         
   
   
@@ -1562,17 +1553,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../02Java/ProjectRESTAPI/" class="md-nav__link">
         
   
   
@@ -1588,7 +1572,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1601,7 +1584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Sample/" class="md-nav__link">
+      <a href="../../02Java/Sample/" class="md-nav__link">
         
   
   
@@ -1718,7 +1701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03Microservice/01Communication/" class="md-nav__link">
+      <a href="../01Communication/" class="md-nav__link">
         
   
   
@@ -2270,46 +2253,6 @@
   
 
 
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-        
-  
-  
-    <li class="md-path__item">
-      <a href="../.." class="md-path__link">
-        
-  <span class="md-ellipsis">
-    Home
-  </span>
-
-      </a>
-    </li>
-  
-
-      
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../02InterviewQuestion/" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Java
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
-
               
               <article class="md-content__inner md-typeset">
                 
@@ -2317,42 +2260,9 @@
 
 
 
-  <h1>REST API</h1>
+  <h1>01DesignPatternSagaPattern</h1>
 
-<p>HTTP status code and basics. Claude Learning.</p>
-<p>The things that separates a Senior Engineer - Rate limiting, Pagination, Versioning, Idempotency, Circuit Breaker, HATEOAS, OpenAPI, API Gateway.</p>
-<p>What RESTful means?</p>
-<p>Most people think REST is JSON over HTTP with clean URLs. The main thing is the client-server, stateless, cacheable, layered system, uniform interface, code on demand.<br />
-The stateless meaning - server holds zero session state between calls - auth and context must travel as token not a server session. Cacheable - server can mark responses as cacheable or not. Layered system - client does not know if it is talking to the end server or a proxy. Uniform interface - standard HTTP verbs, status codes, and media types. Code on demand - server can send code to the client to execute.</p>
-<p>Full REST (Richardson Maturity Model) - Level 0 - single endpoint, Level 1 - multiple endpoints, Level 2 - HTTP verbs, Level 3 - HATEOAS.
-The level 3 need HATEOAS - Hypermedia as the engine of application state. The server provides links to the client to navigate the API. The client does not need to hardcode URLs. Almost no production API is level 3 and mostly they are level 2 (resource + verbs + no hypermedia). Its not full REST.</p>
-<p>Idempotency.</p>
-<p>Calling an operations n times has the same effect as calling it once. In HTTP spec - GET, PUT, DELETE are idempotent. POST is not idempotent. Patch is depending on semantics. (Patch {status:"shipped") is idempotent and Patch {increment:1} is not idempotent).</p>
-<p>client calls POST /payments network time out ans wait for the response. Server processed it and moved the money. Client retries - double charge. The solution is to make the POST idempotent by providing a unique key in the request header. The server will check if the key is already processed and return the same response instead of processing it again.</p>
-<p>Idempotency-key pattern.
-<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/payments&quot;</span><span class="p">)</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">PaymentResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">createPayment</span><span class="p">(</span><span class="nd">@RequestHeader</span><span class="p">(</span><span class="s">&quot;Idempotency-Key&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">idempotencyKey</span><span class="p">,</span><span class="w">        </span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">                                                     </span><span class="nd">@RequestBody</span><span class="w"> </span><span class="n">PaymentRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">resultKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;idem:result:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">idempotencyKey</span><span class="p">;</span><span class="w">    </span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">lockKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;idem:lock:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">idempotencyKey</span><span class="p">;</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="c1">// fast path: already completed, return stored response, don&#39;t reprocess    </span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">cached</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">redis</span><span class="p">.</span><span class="na">opsForValue</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="n">resultKey</span><span class="p">);</span><span class="w">    </span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cached</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="n">deserialize</span><span class="p">(</span><span class="n">cached</span><span class="p">));</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="c1">// atomic check-and-set — THIS is where the real race is handled    </span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="n">Boolean</span><span class="w"> </span><span class="n">acquired</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">redis</span><span class="p">.</span><span class="na">opsForValue</span><span class="p">().</span><span class="na">setIfAbsent</span><span class="p">(</span><span class="n">lockKey</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;processing&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Duration</span><span class="p">.</span><span class="na">ofSeconds</span><span class="p">(</span><span class="mi">30</span><span class="p">));</span><span class="w">    </span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Boolean</span><span class="p">.</span><span class="na">FALSE</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">acquired</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">        </span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ConflictException</span><span class="p">(</span><span class="s">&quot;Request already in progress&quot;</span><span class="p">);</span><span class="w">    </span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">        </span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="n">PaymentResponse</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paymentService</span><span class="p">.</span><span class="na">process</span><span class="p">(</span><span class="n">request</span><span class="p">);</span><span class="w">        </span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="n">redis</span><span class="p">.</span><span class="na">opsForValue</span><span class="p">().</span><span class="na">set</span><span class="p">(</span><span class="n">resultKey</span><span class="p">,</span><span class="w"> </span><span class="n">serialize</span><span class="p">(</span><span class="n">response</span><span class="p">),</span><span class="w"> </span><span class="n">Duration</span><span class="p">.</span><span class="na">ofHours</span><span class="p">(</span><span class="mi">24</span><span class="p">));</span><span class="w">        </span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="n">response</span><span class="p">);</span><span class="w">    </span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w">        </span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span><span class="n">redis</span><span class="p">.</span><span class="na">delete</span><span class="p">(</span><span class="n">lockKey</span><span class="p">);</span><span class="w">    </span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="p">}</span>
-</span></code></pre></div></p>
+
 
 
 

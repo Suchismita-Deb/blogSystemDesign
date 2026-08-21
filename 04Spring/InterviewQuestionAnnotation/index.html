@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../Multithreading/">
-      
-      
-        <link rel="next" href="../Sample/">
       
       
         
@@ -23,7 +19,7 @@
     
     
       
-        <title>REST API - System Design Toolkit</title>
+        <title>InterviewQuestionAnnotation - System Design Toolkit</title>
       
     
     
@@ -75,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#autowiring" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -107,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              REST API
+              InterviewQuestionAnnotation
             
           </span>
         </div>
@@ -277,13 +278,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../02InterviewQuestion/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../02Java/02InterviewQuestion/" class="md-tabs__link">
           
   
   
@@ -323,7 +322,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../04Spring/InterviewQuestionBean/" class="md-tabs__link">
+        <a href="../InterviewQuestionBean/" class="md-tabs__link">
           
   
   
@@ -1365,31 +1364,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -1407,7 +1403,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1425,7 +1421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02InterviewQuestion/" class="md-nav__link">
+      <a href="../../02Java/02InterviewQuestion/" class="md-nav__link">
         
   
   
@@ -1453,7 +1449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01InterviewQuestion/" class="md-nav__link">
+      <a href="../../02Java/01InterviewQuestion/" class="md-nav__link">
         
   
   
@@ -1481,7 +1477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04InterviewQuestionCodeSnippet/" class="md-nav__link">
+      <a href="../../02Java/04InterviewQuestionCodeSnippet/" class="md-nav__link">
         
   
   
@@ -1509,7 +1505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../OOPs/" class="md-nav__link">
+      <a href="../../02Java/OOPs/" class="md-nav__link">
         
   
   
@@ -1537,7 +1533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Multithreading/" class="md-nav__link">
+      <a href="../../02Java/Multithreading/" class="md-nav__link">
         
   
   
@@ -1562,17 +1558,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../02Java/ProjectRESTAPI/" class="md-nav__link">
         
   
   
@@ -1588,7 +1577,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1601,7 +1589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Sample/" class="md-nav__link">
+      <a href="../../02Java/Sample/" class="md-nav__link">
         
   
   
@@ -1891,7 +1879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04Spring/InterviewQuestionBean/" class="md-nav__link">
+      <a href="../InterviewQuestionBean/" class="md-nav__link">
         
   
   
@@ -2254,6 +2242,75 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#autowiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autowiring.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Autowiring.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-autowiring-in-spring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Autowiring in Spring?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-restcontroller-controller-responsebody" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is @RestController = @Controller + @ResponseBody.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-implement-a-centralized-exception-handling-mechanism-in-spring-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to implement a centralized exception handling mechanism in spring Boot.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2270,46 +2327,6 @@
   
 
 
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-        
-  
-  
-    <li class="md-path__item">
-      <a href="../.." class="md-path__link">
-        
-  <span class="md-ellipsis">
-    Home
-  </span>
-
-      </a>
-    </li>
-  
-
-      
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../02InterviewQuestion/" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Java
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
-
               
               <article class="md-content__inner md-typeset">
                 
@@ -2317,42 +2334,53 @@
 
 
 
-  <h1>REST API</h1>
+  <h1>InterviewQuestionAnnotation</h1>
 
-<p>HTTP status code and basics. Claude Learning.</p>
-<p>The things that separates a Senior Engineer - Rate limiting, Pagination, Versioning, Idempotency, Circuit Breaker, HATEOAS, OpenAPI, API Gateway.</p>
-<p>What RESTful means?</p>
-<p>Most people think REST is JSON over HTTP with clean URLs. The main thing is the client-server, stateless, cacheable, layered system, uniform interface, code on demand.<br />
-The stateless meaning - server holds zero session state between calls - auth and context must travel as token not a server session. Cacheable - server can mark responses as cacheable or not. Layered system - client does not know if it is talking to the end server or a proxy. Uniform interface - standard HTTP verbs, status codes, and media types. Code on demand - server can send code to the client to execute.</p>
-<p>Full REST (Richardson Maturity Model) - Level 0 - single endpoint, Level 1 - multiple endpoints, Level 2 - HTTP verbs, Level 3 - HATEOAS.
-The level 3 need HATEOAS - Hypermedia as the engine of application state. The server provides links to the client to navigate the API. The client does not need to hardcode URLs. Almost no production API is level 3 and mostly they are level 2 (resource + verbs + no hypermedia). Its not full REST.</p>
-<p>Idempotency.</p>
-<p>Calling an operations n times has the same effect as calling it once. In HTTP spec - GET, PUT, DELETE are idempotent. POST is not idempotent. Patch is depending on semantics. (Patch {status:"shipped") is idempotent and Patch {increment:1} is not idempotent).</p>
-<p>client calls POST /payments network time out ans wait for the response. Server processed it and moved the money. Client retries - double charge. The solution is to make the POST idempotent by providing a unique key in the request header. The server will check if the key is already processed and return the same response instead of processing it again.</p>
-<p>Idempotency-key pattern.
-<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/payments&quot;</span><span class="p">)</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">PaymentResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">createPayment</span><span class="p">(</span><span class="nd">@RequestHeader</span><span class="p">(</span><span class="s">&quot;Idempotency-Key&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">idempotencyKey</span><span class="p">,</span><span class="w">        </span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">                                                     </span><span class="nd">@RequestBody</span><span class="w"> </span><span class="n">PaymentRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">resultKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;idem:result:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">idempotencyKey</span><span class="p">;</span><span class="w">    </span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">lockKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;idem:lock:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">idempotencyKey</span><span class="p">;</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="c1">// fast path: already completed, return stored response, don&#39;t reprocess    </span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">cached</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">redis</span><span class="p">.</span><span class="na">opsForValue</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="n">resultKey</span><span class="p">);</span><span class="w">    </span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cached</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="n">deserialize</span><span class="p">(</span><span class="n">cached</span><span class="p">));</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="c1">// atomic check-and-set — THIS is where the real race is handled    </span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="n">Boolean</span><span class="w"> </span><span class="n">acquired</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">redis</span><span class="p">.</span><span class="na">opsForValue</span><span class="p">().</span><span class="na">setIfAbsent</span><span class="p">(</span><span class="n">lockKey</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;processing&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Duration</span><span class="p">.</span><span class="na">ofSeconds</span><span class="p">(</span><span class="mi">30</span><span class="p">));</span><span class="w">    </span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Boolean</span><span class="p">.</span><span class="na">FALSE</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">acquired</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">        </span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ConflictException</span><span class="p">(</span><span class="s">&quot;Request already in progress&quot;</span><span class="p">);</span><span class="w">    </span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">        </span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="n">PaymentResponse</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paymentService</span><span class="p">.</span><span class="na">process</span><span class="p">(</span><span class="n">request</span><span class="p">);</span><span class="w">        </span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="n">redis</span><span class="p">.</span><span class="na">opsForValue</span><span class="p">().</span><span class="na">set</span><span class="p">(</span><span class="n">resultKey</span><span class="p">,</span><span class="w"> </span><span class="n">serialize</span><span class="p">(</span><span class="n">response</span><span class="p">),</span><span class="w"> </span><span class="n">Duration</span><span class="p">.</span><span class="na">ofHours</span><span class="p">(</span><span class="mi">24</span><span class="p">));</span><span class="w">        </span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="n">response</span><span class="p">);</span><span class="w">    </span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w">        </span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span><span class="n">redis</span><span class="p">.</span><span class="na">delete</span><span class="p">(</span><span class="n">lockKey</span><span class="p">);</span><span class="w">    </span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="p">}</span>
-</span></code></pre></div></p>
+<h3 id="autowiring">Autowiring.</h3>
+<h4 id="what-is-autowiring-in-spring">What is Autowiring in Spring?</h4>
+<p>Autowiring is a feature in the Spring Framework that enables the automatic injection of dependencies into a bean. Instead of explicitly configuring the dependencies in a Spring configuration file, the container automatically resolves and injects them based on a specified strategy.</p>
+<p><strong>Uses</strong>.</p>
+<p><strong>Reduces Boilerplate Code</strong> - Eliminates the need to manually specify bean dependencies.<br />
+<strong>Simplifies Configuration</strong> - Container automatically manages relationships between beans.<br />
+<strong>Improves Readability</strong> - Makes the code cleaner and easier to maintain.</p>
+<p>Types of Autowiring Modes.</p>
+<p><strong>no (Default)</strong><br />
+No autowiring is performed. Dependencies must be explicitly defined using property or constructor-arg.
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;bean</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;userService&quot;</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;com.example.UserService&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;userRepository&quot;</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;userRepository&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">&lt;/bean&gt;</span>
+</span></code></pre></div>
+<strong>byName</strong><br />
+Autowires a bean by matching its property name with a bean name in the configuration.
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&lt;bean</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;userService&quot;</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;com.example.UserService&quot;</span><span class="w"> </span><span class="na">autowire=</span><span class="s">&quot;byName&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">&lt;bean</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;userRepository&quot;</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;com.example.UserRepository&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span></code></pre></div>
+<strong>byType</strong><br />
+Autowires a bean if a single bean of the matching type exists in the container.
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">&lt;bean</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;userService&quot;</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;com.example.UserService&quot;</span><span class="w"> </span><span class="na">autowire=</span><span class="s">&quot;byType&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">&lt;bean</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;userRepository&quot;</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;com.example.UserRepository&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span></code></pre></div>
+<strong>constructor</strong><br />
+Autowires dependencies by matching constructor parameters with bean types in the container.
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">&lt;bean</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;userService&quot;</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;com.example.UserService&quot;</span><span class="w"> </span><span class="na">autowire=</span><span class="s">&quot;constructor&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">&lt;bean</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;userRepository&quot;</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;com.example.UserRepository&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span></code></pre></div>
+<strong>autodetect (Deprecated in Spring 4.3)</strong><br />
+Spring attempts to autowire using constructor. If that fails, it falls back to byType</p>
+<p>Modern Spring applications prefer annotations over XML for autowiring.</p>
+<p><code>@Autowired</code> - Automatically injects the required bean by type.<br />
+<code>@Qualifier</code> - Resolves conflicts when multiple beans of the same type exist by specifying the bean name.<br />
+<code>@Primary</code> - Marks a bean as the primary candidate for autowiring when multiple beans of the same type exist.</p>
+<p>Tradeoffs of Autowiring.</p>
+<p><strong>Ambiguities</strong> - Can cause issues when multiple beans of the same type exist.<br />
+<strong>Hidden Dependencies</strong> - Makes it harder to track bean relationships.<br />
+<strong>Testing Challenges</strong> - Autowired dependencies may complicate unit testing.</p>
+<h4 id="what-is-restcontroller-controller-responsebody">What is @RestController = @Controller + @ResponseBody.</h4>
+<p>@ResponseBody Meaning the return type is the http response.
+@RequestParamter - In the path there is ? and &amp; and contain the value.
+@RequestBody - Data in the body will be mapped to the dto.</p>
+<h3 id="how-to-implement-a-centralized-exception-handling-mechanism-in-spring-boot">How to implement a centralized exception handling mechanism in spring Boot.</h3>
+<h3 id="_1"></h3>
 
 
 

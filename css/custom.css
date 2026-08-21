@@ -133,6 +133,31 @@ pre,
     overflow-x: unset !important;
 }
 
+pre.markmap,
+.md-typeset pre.markmap,
+.md-typeset pre:has(code.language-markmap) {
+    white-space: pre !important;
+    overflow: auto !important;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: 12px;
+    background: rgba(127, 127, 127, 0.08);
+}
+
+.markmap,
+svg.markmap,
+.md-typeset .markmap,
+.markmap > svg {
+    display: block;
+    width: 100%;
+}
+
+svg.markmap,
+.markmap > svg {
+    height: auto;
+    min-height: 24rem;
+}
+
 :root {
     --gold: #E3B23C;
     --gold-light: #E8CF8A;
