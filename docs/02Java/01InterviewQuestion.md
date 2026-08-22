@@ -119,3 +119,138 @@ Compute hash, jump to bucket via (n-1) & hash, then either walk the linked list 
 A couple of side notes.
 
 HashMap allows exactly one null key, which always hashes to bucket 0. It's not thread-safe — no synchronization — so under concurrent writes you can get infinite loops in the old Java 7 chaining resize (that's actually a classic pre-Java-8 production bug), which is part of why Java 8 rewrote resize logic, and why we reach for ConcurrentHashMap in multithreaded contexts instead of Collections.synchronizedMap.
+
+### What happens if we do not override the equals() method and the hashCode() method in Java?
+
+>
+
+equals() Method - <br>
+By default, the equals() method in Java, inherited from Object, checks for reference equality (whether two objects point to the same memory location).
+If not overridden, even if two objects have identical properties, they will not be considered equal unless they refer to the same memory location.
+
+hashCode() Method - <br>
+By default, the hashCode() method generates a hash code based on the memory address of the object.
+If not overridden, objects with identical properties may generate different hash codes, affecting their behavior in hash-based collections (like HashSet, HashMap)
+
+```java
+class Person {
+String name;
+int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+public class Main {
+public static void main(String[] args) {
+Person p1 = new Person("Alice", 30);
+Person p2 = new Person("Alice", 30);
+
+        System.out.println("p1.equals(p2): " + p1.equals(p2)); // Reference equality
+
+        HashSet<Person> set = new HashSet<>();
+        set.add(p1);
+        set.add(p2);
+
+        System.out.println("Set size: " + set.size()); // Unexpected behavior
+    }
+}
+```
+
+The output.
+```java
+p1.equals(p2): false
+Set size: 2
+```
+
+Since equals() is not overridden, the two Person objects are not considered equal, even though they have identical properties.  
+The hashCode() method is also not overridden, so the two objects have different hash codes, leading to both being stored in the HashSet
+
+Only doing the equal method.
+```java
+import java.util.HashSet;
+
+class Person {
+    String name;
+    int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person person = (Person) obj;
+        return age == person.age && name.equals(person.name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p1 = new Person("Alice", 30);
+        Person p2 = new Person("Alice", 30);
+
+        HashSet<Person> set = new HashSet<>();
+        set.add(p1);
+        set.add(p2);
+
+        System.out.println("Set size: " + set.size()); // Still unexpected behavior
+    }
+}
+```
+Set size is 2.
+
+Even though equals() is overridden, the default hashCode() still generates different hash codes for p1 and p2. Therefore, both objects are stored in the HashSet.
+
+Overridding both the equal and hashCode().
+```java
+import java.util.HashSet;
+import java.util.Objects;
+
+class Person {
+    String name;
+    int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person person = (Person) obj;
+        return age == person.age && name.equals(person.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p1 = new Person("Alice", 30);
+        Person p2 = new Person("Alice", 30);
+
+        HashSet<Person> set = new HashSet<>();
+        set.add(p1);
+        set.add(p2);
+
+        System.out.println("Set size: " + set.size()); // Correct behavior
+    }
+}
+```
+When two object are equal() then the hashCode() should also be equal. When two hashCode is equal then the object may not be equal.
+
+
+
+### What is the difference between HashMap and HashTable in Java?
+Hashmap is not synchronized meaning its faster but not threads safe and hash table is synchronized making it thread safe but slower additionally hashmap allows null key and values while hash table does not.
