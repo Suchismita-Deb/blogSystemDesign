@@ -140,4 +140,17 @@ In case they ask like how did you implement the idempotent processing and all an
 
 Sample answer.
 
-The order event and the data lifecycle. The Upstream system publishes an order event to the Kafka topic using the business key based on the customer ID and the location information. Kafka loses that key to print determine the partition. When the service consumes the event the first stages of validation. 
+> The order event and the data lifecycle. The Upstream system publishes an order event to the Kafka topic using the business key based on the customer ID and the location information. Kafka loses that key to print determine the partition. When the service consumes the event the first stages of validation. We verify the required fields are presnt and then teh business-critical values are present and valid. Events that dont staisfies the validation are separated in the DLQ topic rather than further processing.
+
+> The valid events are processed by my service and perform enrichment. The original events contains order level information. The downstream application needs additional information like the user or the business information. We retrieved the required information from the relevant data source, combine it with the events and transform it into the representation required for each downstream application.  
+> 
+> The data that follow different paths in case of analytics related consumers we process the transformed information to a database table that the analytics system consumes and for operational downstream services we send the relevant subsets through our internal API integration and in other events the transformed event can be published for downstream consumption.
+> 
+> The important point that my service acts as a transformation and integration boundary between the source event system and the downstream consumers. My ownership is primarily around the service implementation, Kafka integration, transformation or enrichment of the logic and the downstream integrations.
+> 
+> I also have to deal with the performance issues around the event processing and lags. I investigated the processing path and turned the Kafka producer behaviour including batches and linger.ms and also reducing unnecessary logging and improving the performance.
+
+
+The follow up question like - Why this partition key? What is the process with the DLQ topic? How are you preventing the duplicate events? How are you making sure of the atleast once semantics?
+
+Mention in case I have nor worked in the idempotency part and you dont own that part but you know what it does.
