@@ -1,4 +1,4 @@
-# Java Quiz - Stream and Kafka
+## Java Quiz - Stream and Kafka
 
 ## Streams
 
@@ -88,7 +88,7 @@ LinkedList<Integer> reversed = list.stream().reduce(
 System.out.println(reversed); // [5, 4, 3, 2, 1]
 ```
 
-### Find employee with highest salary using Java 8.</b>
+### Find employee with highest salary using Java 8.
 ```java
 class Employee {
     int id;
@@ -141,8 +141,8 @@ list.stream().distinct().collect(Collectors.toList());
 ```
 
 ### Java Stream collector.
-Collectors in the <code>java.util.stream.Collectors</code> class.
-<code>partitioningBy</code> - Splits elements into two groups based on a boolean predicate (true / false) Example - Even and odd number.<br>
+Collectors in the `java.util.stream.Collectors` class.
+`partitioningBy` - Splits elements into two groups based on a boolean predicate (true / false) Example - Even and odd number.<br>
 
 ```java
 List<Integer> numbers = Arrays.asList(1,2,3,4,5,6);
@@ -154,7 +154,7 @@ Map<Boolean, List<Integer>> partitioned = numbers
 System.out.println(partitioned);
 // {false=[1, 3, 5], true=[2, 4, 6]}
 ```
-<code>groupingBy</code> - Groups elements into multiple categories based on a classifier function. Example - group student by departments.
+`groupingBy` - Groups elements into multiple categories based on a classifier function. Example - group student by departments.
 
 ```java
 List<String> words = Arrays.asList("apple", "bat", "ball", "cat");
@@ -225,48 +225,38 @@ Node pools - You can configure node pools usng a custom resource called KafkaNod
 
 Managed disk - You can use multiple disks to achieve 16Tb for each node in the cluster.
 
-### What is Insync Replica?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### What is Insync Replica?
+### Reveal Answer
 In kafka way to achive data consistency and fault tolerance is by using replication to make sure tat messages are not lost if a broker fails. Every partition of a Kafka topic is replicated across multiple brokers. An insync replica ISR is a set of replicas that are fully in sync and replica with the leader replica of a partition. To put it simple, ISRs are replicas that have fully uptodate with the leader and have the same data as the leader.
 
 Kafka replication models has leaders, followers, replication factor, ISR list.
 
-</details>
-
-<details class="quiz-toggle">
-<summary>Reveal Explanation</summary>
+### Reveal Explanation
 
 ISR members are replicas that are sufficiently caught up with the leader.
 
-<div class="quiz-box">
-<b>How do you decide on how much memory your application will require on production?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### How do you decide on how much memory your application will require on production?
+### Reveal Answer
 To find application memory usage with JMeter you can -
 Go to Free Memory to check memory usage in a test
 Use the PerfMon Metrics Collector Listener to monitor more than 75 PerfMon metrics, including memory
 Calculate memory usage using the formula: (Used Memory/Total Memory) * 100
 You can also use JMeter to: Identify an application's maximum operating capacity, Find bottlenecks, and Determine which element is causing system degradation
-</details>
-<details class="quiz-toggle">
-<summary>Reveal Explanation</summary>
+### Reveal Explanation
 Use load testing plus memory metrics to estimate steady-state usage and production headroom.
-</details>
-</div>
 
 ### Why do we need Spring Boot when there is Spring.
 Spring Boot is used to make Spring application development faster, more consistent, and production-ready.<br>
-<b>Faster bootstrap</b> - Auto-configuration reduces manual setup for common concerns such as web, data source, JPA, security, and messaging.<br>
-<b>Less boilerplate</b> - It follows convention over configuration, so developers spend less time wiring infrastructure and more time writing business logic.<br>
+### Faster bootstrap
+Auto-configuration reduces manual setup for common concerns such as web, data source, JPA, security, and messaging.<br>
+### Less boilerplate
+It follows convention over configuration, so developers spend less time wiring infrastructure and more time writing business logic.<br>
 Standalone deployment - Embedded servers such as Tomcat, Jetty, or Undertow allow the application to run as a self-contained service without managing a separate application server.<br>
 Dependency simplification - Starter dependencies such as `spring-boot-starter-web` and `spring-boot-starter-data-jpa` provide opinionated, compatible dependency sets.<br>
 Production readiness - Actuator adds health checks, metrics, monitoring endpoints, and operational visibility, which are essential in real systems.<br>
 Microservice friendliness - It works well with externalized configuration, containerized deployment, and Spring Cloud patterns such as config management, service discovery, and resilience.<br>
 Strong ecosystem alignment - It integrates cleanly with Spring Security, Spring Data, Spring Batch, Kafka, Redis, and other enterprise components.<br>
 In short, Spring Boot removes setup friction, standardizes application structure, and gives teams a faster path from development to production.
-</details>
-</div>
 
 ### OOPs
 
@@ -394,7 +384,7 @@ List<? super Integer> consumer = new ArrayList<>();  // Consumes data
 | **Internal Data Structure** | Hash table. | Red-Black Tree (self-balancing binary search tree). |
 
 ### Difference between HashMap and Hashtable.
- Feature | HashMap | Hashtable |
+| Feature | HashMap | Hashtable |
 |---------|---------|-----------|
 | **Thread Safety** | Not thread-safe. Requires external synchronization (e.g., `Collections.synchronizedMap()`) in multithreaded environments. | Thread-safe because synchronization is built into its methods. |
 | **Null Key / Values** | Allows one `null` key and multiple `null` values. | Does not allow `null` keys or `null` values; throws `NullPointerException`. |
@@ -544,7 +534,7 @@ main processes E
 | **Use Case** | Designed for data transformation and processing. | Designed for storing and managing data. |
 
 ### Difference between ConcurrentHashMap and SynchronizedHashMap.
- Feature | ConcurrentHashMap | SynchronizedHashMap |
+| Feature | ConcurrentHashMap | SynchronizedHashMap |
 |---------|-------------------|---------------------|
 | **Synchronization Mechanism** | Uses segment-based locking (Java 7) or bucket-level locking (Java 8+). | Entire map is locked for each operation using synchronized blocks. |
 | **Concurrency** | Allows concurrent reads and writes by multiple threads; only writes to the same bucket are blocked. | Allows only one thread to access the map at a time. |
@@ -725,9 +715,12 @@ public class Main {
 ```
 ### What is finally, finalize and final.
 
-<b>finally</b> - A block in a try-catch statement that always executes, regardless of whether an exception is thrown or not. <br>
-<b>Purpose</b> - Used for cleanup actions like closing files, releasing resources, or disconnecting from a database. <br>
-<b>Key Points</b> - The finally block executes even if the try block contains a return statement.
+### finally
+A block in a try-catch statement that always executes, regardless of whether an exception is thrown or not. <br>
+### Purpose
+Used for cleanup actions like closing files, releasing resources, or disconnecting from a database. <br>
+### Key Points
+The finally block executes even if the try block contains a return statement.
 It does not execute if the JVM terminates abruptly (e.g., with System.exit())
 
 ```java 
@@ -748,11 +741,14 @@ The output.
 Exception caught: / by zero
 This block always executes.
 ```
-<br>
-<b>finalize</b> - A method in the Object class that can be overridden to clean up resources before an object is garbage collected. <br>
-<b>Purpose</b> - Used for resource management (like closing files or releasing memory), though it's not recommended for modern applications.<br>
-<b>Deprecated</b> - As of Java 9, finalize() is deprecated due to performance issues and unpredictability.<br>
-<b>Key Points</b> - Called by the garbage collector before the object is destroyed. Not guaranteed to execute promptly or even at all.
+### finalize
+A method in the Object class that can be overridden to clean up resources before an object is garbage collected. <br>
+### Purpose
+Used for resource management (like closing files or releasing memory), though it's not recommended for modern applications.<br>
+### Deprecated
+As of Java 9, finalize() is deprecated due to performance issues and unpredictability.<br>
+### Key Points
+Called by the garbage collector before the object is destroyed. Not guaranteed to execute promptly or even at all.
 
 ```java
 public class FinalizeExample {
@@ -801,7 +797,7 @@ public class FinalVariableExample {
 String interning is a process of reusing strings to optimize memory usage. Strings are immutable in java in order to
 avoid the duplicate string with same value, Java uses string pool. String pool is a special area in the heap memory.<br>
 
-<b>How string intern works.</b>
+### How string intern works.
 
 A pool of unique string literals is maintained in the JVM. This pool is part of the heap memory often called the String
 Intern Pool or String Constant pool.
@@ -831,20 +827,14 @@ System.out.println(str1==str3);
 ```
 When the string is interned then == is faster and string not interned then we have to use .equals
 
-<div class="quiz-box">
-<b>How the `@Autowired`, `@Resource` and `@Inject` differs from each other.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### How the `@Autowired`, `@Resource` and `@Inject` differs from each other.
+### Reveal Answer
 Used for dependency injection and they differs in terms of usage, behaviour and source.
 
 | `@Autowired`                                                                                              | `@Resource`                                                                                                                                                                                                                                                            | `@Inject`                                                                  |
-|-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
-| Spring Specific and it does not works outside. Comes from Spring Framework. Works by **type**(bean type). | Java Standard and works both in spring and Java EE frameworks. Works by **name** first and then by type.                                                                                                                                                               | Java Standard and works with Java framework and Spring. Works by **type**. |
+|---|---|---|
+| Spring Specific and it does not works outside. Comes from Spring Framework. Works by **type**(bean type). | Java Standard and works both in spring and Java EE frameworks. Works by **name** first and then by type. | Java Standard and works with Java framework and Spring. Works by **type**. |
 |Behaviour - Spring attempts to match the bean type for injection. If multiple beans of the same type exists, it requires additional qualifiers(@Qualifier) to resolve ambiguity. Can be used on contructors, fields or setter method. Required Behaviour - By default @Autowired is required. If no matching bean is found it throws an exception. `@Autowired(required = false)` to make it optional. | When the name is specified (`@Resource(name = "beanName")`) then it searched for the bean with that name. No name is specified then it falls back to the field name. When not resolved then it falls back to teh type based injection. It does not supports @Qualifier. | Optional and no bean is found then it does not throw an exception by default. Does not supports @Qualifier but works with the @Named qualifier for ambiguity.|
-</details>
-</div>
-
-<div class="quiz-box">
 
 ```java
 public static void main(String[] args) {
@@ -857,8 +847,7 @@ public static void modify(Integer num) {
 num = 200;
 }
 ```
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Reveal Answer
 
 The output is 10. Java is pass by value. Primitive are pass by value. Wrapper class will work but not Integer as Integer
 is immutable. Wrapper class with immutable like `AtomicInteger` or custom Wrapper class will work.
@@ -876,10 +865,6 @@ public static void main(String[] args) {
     System.out.println(num);
 }
 ```
-</details>
-</div>
-
-<div class="quiz-box">
 
 ```java
 class Employee {
@@ -906,8 +891,7 @@ public static void main(String[] args) {
 ```
 Write the employee based on the PinCode.<br>
 Group the employee based on the age.
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Reveal Answer
 
 ```java
 // Group employees by pinCode
@@ -949,10 +933,7 @@ groupedByAge.forEach((age, employeeList) -> {
         System.out.println();
 });
 ```
-</details>
-</div>
 
-<div class="quiz-box">
 What is the output?
 
 ```java
@@ -969,17 +950,12 @@ public class A1 {
     }
 }
 ```
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Reveal Answer
 The output of the code - 15.<br>
 The method is getting the value and not the reference so the value of the varaiable will not change.
-</details>
-</div>
 
-<div class="quiz-box">
-<b>What are the new features introduced in Java 8.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### What are the new features introduced in Java 8.
+### Reveal Answer
 The new features revolutionizes how java applications are written and optimized.
 Lambda Expression.
 
@@ -1178,7 +1154,7 @@ public String getName(Person person) {
 }
 ```
 
-<b>Date and Time API.</b>
+### Date and Time API.
 It is in java.time.Package It replaces the outdated `java.util.Date` and `java.util.Calendar` package.
 
 ```java
@@ -1186,19 +1162,19 @@ LocalDate today = LocalDate.now();
 LocalTime now = LocalTime.now();
 ```
 
-<b>Parallel Array Sorting.</b>
+### Parallel Array Sorting.
 Adds the Arrays.parallelSort() method for faster sorting using multiple thread.
 ```java
 int[] array = {3, 2, 1};
 Arrays.parallelSort(array);
 ```
-<b>Adding new collector in Stream API.</b>
+### Adding new collector in Stream API.
 Add utilities like `Collectors.toMap`, `Collectors.groupingBy`, and `Collectors.partitioningBy` for aggregations.
 ```java
 Map<Boolean, List<Integer>> partitioned = numbers.stream()
     .collect(Collectors.partitioningBy(n -> n % 2 == 0));
 ```
-<b>Concurrency Enhancement.</b>
+### Concurrency Enhancement.
 
 Introduces CompletableFuture for Asynchronous programming.
 
@@ -1206,27 +1182,16 @@ Introduces CompletableFuture for Asynchronous programming.
 CompletableFuture.runAsync(() -> System.out.println("Running in a separate thread"));
 ```
 
-<b>Base 64 encoding and decoding.</b><br>
+### Base 64 encoding and decoding.
 
 Provides utility classes for Base 64 encoding and decoding.
 ```java
 String encoded = Base64.getEncoder().encodeToString("Java8".getBytes());
 ```
-</details>
-</div>
-
-<div class="quiz-box">
-<b>Collection Hierarchy.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-</details>
-</div>
+### Collection Hierarchy.
 
 
-<div class="quiz-box">
-<b>Compare 2 json values.</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
+### Compare 2 json values.
 The correct way to compare two JSON strings logically in Java is to parse them into structured objects (like Jackson’s JsonNode) and then perform a deep equality check, rather than relying on raw string comparison which fails due to differences in whitespace or key order.
 
 ```java
@@ -1256,6 +1221,4 @@ int age = root.get("age").asInt();
 JsonNode address = root.path("address");
 String city = address.get("city").asText();
 ```
-</details>
-</div>
 

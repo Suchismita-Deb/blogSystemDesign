@@ -47,7 +47,8 @@ nav:
       - Observability: Microservices/Observability.md
 
   - Spring Boot:
-      - Fundamentals: 04Spring/InterviewQuestionBean.md
+      - Interview Question1: 04Spring/InterviewQuestionBean.md
+      - Interview Question2: 04Spring/InterviewQuestionAnnotation.md
       - Layered Architecture: SpringBoot/LayeredArchitecture.md
       - Building Microservices: SpringBoot/BuildingMicroservices.md
       - Security: SpringBoot/Security.md

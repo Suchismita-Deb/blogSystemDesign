@@ -1,6 +1,4 @@
-### What is Java and why it is platform independent?
-
-It is a high-level, object-oriented programming language developed by Sun Microsystems (now owned by Oracle Corporation). Java is designed to be platform-independent, meaning that code written in Java can run on any device or operating system that has a Java Virtual Machine (JVM) installed. This is achieved through the use of bytecode, which is an intermediate representation of the code that can be executed by the JVM, allowing developers to write code once and run it anywhere.
+Java is designed to be platform-independent, meaning that code written in Java can run on any device or operating system that has a Java Virtual Machine (JVM) installed. This is achieved through the use of bytecode, which is an intermediate representation of the code that can be executed by the JVM, allowing developers to write code once and run it anywhere.
 
 ### What is the Java Virtual Machine (JVM) and how does it work?
 

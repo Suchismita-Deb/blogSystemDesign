@@ -177,14 +177,16 @@ public class AppConfig {
 ![BeanLifeCycle](../images/Spring/BeanLifeCycle.png)
 
 ### What is Bean Scope?
-There are different bean scope that determines how and when they are created.<br>
-<b>Singleton (default)</b> - There will be a single instance of the bean is created for the entire Spring container.<br>Default scope. Only one instance created per IOC. Singleton are eagerly initialized by IOC ( means at the time of application startup, object gets created ).<br>
+There are different bean scope that determines how and when they are created.  
+|Bean Scope|Description|
+|----------|-----------|
+|Singleton.|There will be a single instance of the bean is created for the entire Spring container.<br>Default scope. Only one instance created per IOC. Singleton are eagerly initialized by IOC ( means at the time of application startup, object gets created ).<br>
 <b>Prototype</b> - A new instance is created every time the bean is created. It is lazily initialized.<br>
 <b>Request</b>	- A new instance is created for each HTTP request (web applications).<br>
 <b>Session</b>	- A new instance is created for each HTTP session (web applications). When user access any endpoint the session is created. Remains active till it does not expires.<br>
 <b>Global Session</b> - Scoped to a global HTTP session (portlet applications).<br><br>
 Beans are cerated vis XML configuration files. Configuration like `@Configuration` and `@Bean`. Annotation-based configuration like `@Component`, `@Service`, `@Repository`, and `@Controller`.
-
+Spring beans support dependency injection, where their dependencies are injected by the container rather than instantiated directly. This promotes loose coupling and enhances testability.
 
 ```java
 // Every injection returns the same instance.
