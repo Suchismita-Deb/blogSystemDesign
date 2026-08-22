@@ -7,6 +7,10 @@ Java is not 100% public oriented programming language because it uses primitive 
 Method Overloading - Same method name with different parameter(compile time polymorphism). <br>
 Method Overriding - Redefining a parent class method in a subclass with the same signature(runtime polymorphism).
 
+
+</details>
+</div>
+
 <br><br>
 <b>Overloading</b> - The parameter number, type or order should differ. The return type alone cannot distinguish the method. It is decided at compile time to class the method based on the signature(parameter) of the method.
 
