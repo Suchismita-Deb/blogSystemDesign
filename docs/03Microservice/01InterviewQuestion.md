@@ -159,3 +159,20 @@ Did you plan to the productions we need to 1st perform a performance testing and
 ### The todo - Optimistic locking and pessimistic locking - study and project and code.
 ### API gateway and traceID, centralised logs set up in an application.
 ### Only API gateway should be public. - Apigee or gateway?
+
+### There are 2 services A calls B and put the data in the db. The service B becomes slow and returns 100 ms and the total time should be 30 ms. What will you solve?
+The first step to identify why the Service B is slow independently of the root cause Service A needs resilience mechanism. The timeout on A and it does not wait indefinitely. There should be retries with the exponential backoff and jitter for the transient failures. In case B is failing then use of circuit breaker to stop sending request and allow B to recover. The bulkhead should also be used so that the isolated resource allocated to B will not consume all of A's threads or connections.
+
+A circuit breaker pattern can be used in this case to solve the issue when there is a failure or excessive slow calls or timeouts.  
+REST call taking time will give timeouts. There are many ways like - **Retry** (try again selectively), **Timeout** (dont wait forever), **Circuit Breaker** (stop calling bad dependencies), **Bulkhead** (limit damage), **Fallback** (Degrade gracefully).  
+
+**Retry** meaning say B gets network issue and could not able to make the db connection then retry again with a jitter of random second so that it does not load the entire retry at a fixed time. A calls B and B takes 100ms and A waits and starts failing. Its a cascading failure. A should not wait without more than a timeout.  
+**Circuit Breaker** pattern where the service monitors the dependency. It has 3 states - CLOSED, OPEN, HALF-OPEN. Closed - Service A calling B and all calls allowed. OPEN - Many failures, timeout or slow calls. Circuit opens. Service A does not call B and it returns fallback or error. Half_Open - It gets some recovery period and in case it starts working then closed or not working then open. The design like `Closed - (failed threshold) - Open - (waits for recovery period) - (succes) Half_open (error) Open`.  
+**Fallback** meaning A is completely dependent on B or it will perform half of the task like Service A will return a value and say that the Service B is temporarily not available.  
+**BulkHead** meaning say there are many service connected like A calling B, C, D and B is taking time and taking all resources of A and C and D both failed. Its a cascading failure. Bulkhead prevents it. The services are given its separate thread pool or the connection pool.
+
+The sample design `Service A - BulkHead limit - Timeout - Retry - Circuit Breaker - Service B - Database` and the Service B design looks like `Service B slow - Timeout - Limited retry - Circuit opens - Request stop hitting B - Fallback - A stays health`.
+
+_In Synchronous REST call the solution are like the Timeout, Retry, Circuit Breaker, Bulkhead, Rate limiting._  
+
+_In asynchronous system the solution will look like consumer lag, backpressure, queue buffering, partitioning, consumer scaling._

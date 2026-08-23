@@ -31,21 +31,22 @@ nav:
       - Creational Pattern: 07LLDExample/CreationalPattern.md
 
   - Java:
-      - Interview Questions: 02Java/02InterviewQuestion.md
-      - Interview Questions Part 1: 02Java/01InterviewQuestion.md
-      - Interview Questions Part 2: 02Java/04InterviewQuestionCodeSnippet.md
-      - Interview Questions Part 3: 02Java/03InterviewQuestion.md
+      - Interview Questions: 02Java/01InterviewQuestion.md
+      - Interview Questions Part 1: 02Java/02InterviewQuestion.md
+      - Interview Questions Part 2: 02Java/03InterviewQuestion.md
+      - Interview Questions Part 3: 02Java/04InterviewQuestionCodeSnippet.md
       - Java OOPs: 02Java/OOPs.md
       - Multithreading: 02Java/Multithreading.md
       - REST API: 02Java/ProjectRESTAPI.md
       - Sample: 02Java/Sample.md
 
   - Microservices:
-      - Fundamentals: Microservices/Fundamentals.md
+      - Fundamentals: 03Microservice/Fundamentals.md
       - Communication: 03Microservice/01Communication.md
-      - Data Management: Microservices/DataManagement.md
-      - Resilience: Microservices/Resilience.md
-      - Observability: Microservices/Observability.md
+      - Data Management: 03Microservice/DataManagement.md
+      - Resilience: Microservice/Resilience.md
+      - Observability: 03Microservice/Observability.md
+      - Interview Questions: 03Microservice/01InterviewQuestion.md
 
   - Spring Boot:
       - Interview Question1: 04Spring/InterviewQuestionBean.md

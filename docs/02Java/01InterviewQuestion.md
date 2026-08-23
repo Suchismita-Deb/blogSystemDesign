@@ -121,9 +121,6 @@ A couple of side notes.
 HashMap allows exactly one null key, which always hashes to bucket 0. It's not thread-safe — no synchronization — so under concurrent writes you can get infinite loops in the old Java 7 chaining resize (that's actually a classic pre-Java-8 production bug), which is part of why Java 8 rewrote resize logic, and why we reach for ConcurrentHashMap in multithreaded contexts instead of Collections.synchronizedMap.
 
 ### What happens if we do not override the equals() method and the hashCode() method in Java?
-
->
-
 equals() Method - <br>
 By default, the equals() method in Java, inherited from Object, checks for reference equality (whether two objects point to the same memory location).
 If not overridden, even if two objects have identical properties, they will not be considered equal unless they refer to the same memory location.
@@ -250,7 +247,200 @@ public class Main {
 ```
 When two object are equal() then the hashCode() should also be equal. When two hashCode is equal then the object may not be equal.
 
+### Difference between HashMap and Hashtable.
+| Feature | HashMap | Hashtable |
+|---------|---------|-----------|
+| **Thread Safety** | Not thread-safe. Requires external synchronization (e.g., `Collections.synchronizedMap()`) in multithreaded environments. | Thread-safe because synchronization is built into its methods. |
+| **Null Key / Values** | Allows one `null` key and multiple `null` values. | Does not allow `null` keys or `null` values; throws `NullPointerException`. |
+| **Performance** | Usually faster due to no synchronization overhead. | Usually slower because synchronization adds overhead. |
+| **Package / History** | Introduced in Java 1.2 as part of the Java Collections Framework (`java.util`). Preferred in modern code. | Legacy class from Java 1.0 in `java.util`. Generally not recommended in new code. |
+| **Usage** | Preferred in single-threaded code or when synchronization is handled externally. | Rarely used in modern applications; `ConcurrentHashMap` is usually preferred for thread-safe access. |
+
+### Difference between HashSet and TreeSet.
+| Feature | HashSet | TreeSet |
+|---------|---------|---------|
+| **Performance** | Faster (O(1)) | Faster (O(log n)) |
+| **Order** | Unordered. No guarantee of order; depends on the hash function. | Sorted in natural order or custom order. Depends on `Comparable` or a custom `Comparator`. |
+| **Iteration** | Iterates in no specific order. | Iterates in ascending sorted order, or as defined by a custom comparator. |
+| **Null Values** | Allows one `null` value. | Does not allow `null`. |
+| **Internal Data Structure** | Uses `HashMap` internally for storage. | Uses a Red-Black Tree (self-balancing binary search tree). |
+| **Sorting** | Custom sorting not supported. | Custom sorting supported via `Comparator`. |
+
+### Difference between HashMap and TreeMap.
+| Feature | HashMap | TreeMap |
+|---------|---------|---------|
+| **Performance** | O(1) average time complexity for basic operations. | O(log n) time complexity for basic operations. |
+| **Order** | No fixed order. | Maintains keys in sorted order, either natural ordering or via a custom comparator. |
+| **Null Key / Values** | Allows one `null` key and multiple `null` values. | Does not allow `null` keys, but allows multiple `null` values. |
+| **Internal Data Structure** | Hash table. | Red-Black Tree (self-balancing binary search tree). |
+
+### Difference between ConcurrentHashMap and SynchronizedHashMap.
+| Feature | ConcurrentHashMap | SynchronizedHashMap |
+|---------|-------------------|---------------------|
+| **Synchronization Mechanism** | Uses segment-based locking (Java 7) or bucket-level locking (Java 8+). | Entire map is locked for each operation using synchronized blocks. |
+| **Concurrency** | Allows concurrent reads and writes by multiple threads; only writes to the same bucket are blocked. | Allows only one thread to access the map at a time. |
+| **Performance** | Higher performance in multithreaded environments due to finer-grained locking. | Lower performance due to coarse-grained locking (locks the entire map). |
+| **Null Values** | Does not allow `null` keys or values. | Allows a single `null` key and multiple `null` values. |
+| **Thread Safety** | Thread-safe for concurrent access with better scalability. | Thread-safe, but less efficient in high-concurrency scenarios. |
+| **Locking Granularity** | Fine-grained locks improve throughput by reducing contention. | Coarse-grained locks block all threads accessing the map, even for independent operations. |
+| **Iteration Behavior** | Does not throw `ConcurrentModificationException` during iteration; reflects changes made by other threads. | Throws `ConcurrentModificationException` if the map is modified during iteration. |
+| **Use Case** | Best suited for high-concurrency applications where reads and updates are frequent. | Suitable for low-concurrency scenarios where simplicity is preferred over performance. |
+
+**ConcurrentHashMap**.
+
+The ConcurrentHashMap class is part of the Java Collections Framework and extends the AbstractMap class. It implements the ConcurrentMap and Serializable interfaces. Below is the hierarchy:
+```
+java.lang.Object
+   └── java.util.AbstractMap<K, V>
+     └── java.util.concurrent.ConcurrentHashMap<K, V>
+        ├── ConcurrentMap<K, V> (Interface)
+        └── Serializable (Interface)
+```
+**How ConcurrentHashMap Works Internally?**
+
+It works on mainly 3 parts.
+
+**Segmented Locking** - The map is divided into segments (buckets) internally.
+<br/>Locking occurs at the segment level rather than the whole map, ensuring high concurrency.
+
+**CAS (Compare-And-Swap)** - Used for atomic updates without locks. Improves performance in high-concurrency scenarios.
+
+**Read-Write Operations** - Reads are generally lock-free, allowing for high throughput. Writes use fine-grained locking or CAS to minimize blocking.
+
+ConcurrentHashMap is not distributed data structure meaning Service A and Service B will point to different Concurrent hashmap. It gives thread safety within the JVM or process. IN distributed system it is Redis or Db.
+
+```java
+ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
+// Thread 1 - User123
+// Thread 2 - User123
+// Thread 3 - User123
+// The value of User123 will be 3. In HashMap There will be race condition.
+
+if(!mp.containsKey("User123")) {
+    mp.put("User123", 1);
+} else {
+    mp.put("User123", mp.get("User123") + 1);   
+}
+// Initial value = 0 
+// Thread1.get() = 0
+// Thread2.get() = 0
+// Thread1.put() = 1
+// Thread2.put() = 1
+// Expected value 2.
+
+// ConcurrentHashMap we use the Atomic operation
+map.merge("User123", 1, Integer::sum); // User123 - 3.
+```
 
 
-### What is the difference between HashMap and HashTable in Java?
-Hashmap is not synchronized meaning its faster but not threads safe and hash table is synchronized making it thread safe but slower additionally hashmap allows null key and values while hash table does not.
+**Explain CAS**
+
+Compare-And-Swap (CAS) is an atomic operation used in concurrent programming to achieve synchronization without locks. It enables threads to update shared variables safely without the overhead and contention caused by traditional locking mechanisms.
+
+**Memory Location** - CAS reads the value at the memory location.
+
+**Expected Value** - It compares the read value with the expected value.
+If the current value matches the expected value, CAS updates the variable with the new value.
+If the current value does not match the expected value, CAS fails, and no update occurs.
+
+**New Value** - The operation returns a status indicating whether the swap was successful.
+
+Example - Thread A. Memory location 5. Value = 5.   
+Expected value = 5. New Value = 10. The value is updated to 10.
+
+Example - Thread B. Memory location 5. Value = 10. Expected value = 5.   
+New Value = 15. The value is not updated as current value is 10. 
+
+```java
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class CasExample {
+    public static void main(String[] args) {
+        AtomicInteger value = new AtomicInteger(5);
+
+        // Thread A
+        boolean successA = value.compareAndSet(5, 10);
+        System.out.println("Thread A success: " + successA + ", value: " + value.get());
+
+        // Thread B
+        boolean successB = value.compareAndSet(10, 15);
+        System.out.println("Thread B success: " + successB + ", value: " + value.get());
+    }
+}
+//Thread A success: true, value: 10
+//Thread B success: true, value: 15
+```
+
+
+**Advantages of CAS**.
+
+Non-blocking - CAS ensures only the thread that successfully updates the variable proceeds. Other threads retry until they succeed, avoiding the need for locks.
+
+High Performance - Eliminates contention and overhead associated with locking. Particularly useful in high-concurrency scenarios.
+
+Atomicity - The comparison and update occur as a single, indivisible operation. Ensures thread safety.
+
+**Disadvantages of CAS**.
+
+ABA Problem - If a variable changes from value A to B and back to A, CAS may incorrectly assume nothing changed.
+Solution: Use a version number or timestamp alongside the variable.
+
+Busy-Waiting - If many threads are competing, repeated retries can cause performance degradation.
+
+Limited Use - Works well for single variable updates but becomes complex for larger data structures or multiple variables.
+
+
+Iteration in ConcurrentHashMap does not throw a `ConcurrentModificationException` even if the map is modified during the iteration.
+
+```java
+public static void main(String[] args) {
+    ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
+    map.put("A", 1);
+    map.put("B", 2);
+    map.put("C", 3);
+    // Thread to modify the map
+    new Thread(() -> map.put("D", 4)).start();
+    // Iterating over the map.
+    // It can modify the map while iterating.
+    for (String key : map.keySet()) {
+        System.out.println("Key: " + key + ", Value: " + map.get(key));
+        // Simulate adding a new key during iteration
+        if (key.equals("B")) {
+            map.put("E", 5); // Adding during iteration
+        }
+    }
+    System.out.println("Final Map: " + map);
+}
+```
+
+Synchronized HashMap.
+
+Iteration in SynchronizedHashMap requires explicit synchronization when accessed by multiple threads. Modifying the map during iteration will throw a ConcurrentModificationException unless you use explicit synchronization.
+
+```java
+
+public static void main(String[] args) {
+    Map<String, Integer> map = Collections.synchronizedMap(new HashMap<>());
+    map.put("A", 1);
+    map.put("B", 2);
+    map.put("C", 3);
+    // Thread to modify the map
+    new Thread(() -> {
+        synchronized (map) {
+            map.put("D", 4);
+        }
+    }).start();
+    // Iterating over the map
+    synchronized (map) { // Explicit synchronization required
+        for (String key : map.keySet()) {
+            System.out.println("Key: " + key + ", Value: " + map.get(key));
+            // Attempting to modify during iteration
+            if (key.equals("B")) {
+                map.put("E", 5); // This may throw ConcurrentModificationException
+            }
+        }
+    }
+    System.out.println("Final Map: " + map);
+}
+```
+

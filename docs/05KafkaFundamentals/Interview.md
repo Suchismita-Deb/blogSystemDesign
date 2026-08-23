@@ -20,3 +20,10 @@ public void process(OrderEvent event) {
     );
 }
 ```
+
+### There is a Kafka topic receiving 1M events per minute and the consumer application is unable to run at the same speed. What would you investigate first and how would you scale the Kafka consumer side to handle the increased load?
+
+The consumer need to scale so the main part to see like the number of partition and technically one consumer can consume one partition. 
+
+The first part t identify in case kafka is the bottleneck meaning partition count, producer throughput, broker health, partition distribution and consumer lag by partition.
+In case kafka good then the consumer not able to take the load in that case in increasing multiple consumer might help for short time. Teh example say one db call 10 ms then 1M per minute it will give lag.
