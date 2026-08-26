@@ -25,5 +25,7 @@ public void process(OrderEvent event) {
 
 The consumer need to scale so the main part to see like the number of partition and technically one consumer can consume one partition. 
 
-The first part t identify in case kafka is the bottleneck meaning partition count, producer throughput, broker health, partition distribution and consumer lag by partition.
-In case kafka good then the consumer not able to take the load in that case in increasing multiple consumer might help for short time. Teh example say one db call 10 ms then 1M per minute it will give lag.
+The first part t identify in case kafka is the bottleneck meaning partition count, producer throughput, broker health, partition distribution and consumer lag by partition.      
+In case kafka good then the consumer not able to take the load in that case in increasing multiple consumer might help for short time. Each consumer will consume each partition. A single spring boot application will have multiple consumers. The example say one db call 10 ms then 1M per minute it will give lag. In case its the db issue then db side needs to be updated like consumer - deserialize - business logic - db calls - commit. It will make the db work more.
+Producer batching can improve the producer or the broker efficiency but the primary focus for the consumer lag would be like partitioning, consumer parallelism, consumer processing time and downstream bottleneck.  
+
