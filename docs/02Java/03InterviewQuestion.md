@@ -31,7 +31,7 @@ System.out.println(orderFuture.get());
 executorService.shutdown();
 ```
 
-So in interview language - 
+So in interview language -
 
 > We use multithreading through the Executor Framework to run independent tasks in parallel. For tasks that return data, we use `Callable` with `Future` or `CompletableFuture`.
 

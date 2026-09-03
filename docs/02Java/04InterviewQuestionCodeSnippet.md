@@ -1,4 +1,4 @@
-## Java Quiz - Stream and Kafka
+## Java Quiz - Stream.
 
 ## Streams
 
@@ -21,7 +21,6 @@ System.out.println(count); // 3
 
 ### List of employee sort by salary then sort by name.
 ```java
-
 employees.stream()
   .sorted(Comparator.comparing(Employee::getSalary)
   .thenComparing(Employee::getName))
@@ -121,6 +120,7 @@ Opional<Employee> empWithHigestSalary = empList.stream()
 // Sort salaries in descending order and take the first employee.
 ```
 ### Find employee with second highest salary.
+
 ```java
 Opional<Employee> empWithHigestSalary = empList.stream().sorted(Comparator.comparingDouble(Employee::getSalary).reversed()).skip(1).findFirst();
 ```
@@ -236,13 +236,11 @@ Kafka replication models has leaders, followers, replication factor, ISR list.
 ISR members are replicas that are sufficiently caught up with the leader.
 
 ### How do you decide on how much memory your application will require on production?
-### Reveal Answer
 To find application memory usage with JMeter you can -
 Go to Free Memory to check memory usage in a test
 Use the PerfMon Metrics Collector Listener to monitor more than 75 PerfMon metrics, including memory
 Calculate memory usage using the formula: (Used Memory/Total Memory) * 100
-You can also use JMeter to: Identify an application's maximum operating capacity, Find bottlenecks, and Determine which element is causing system degradation
-### Reveal Explanation
+You can also use JMeter to: Identify an application's maximum operating capacity, Find bottlenecks, and Determine which element is causing system degradation.
 Use load testing plus memory metrics to estimate steady-state usage and production headroom.
 
 ### Why do we need Spring Boot when there is Spring.
@@ -681,71 +679,9 @@ System.out.println(str1==str3);
 ```
 When the string is interned then == is faster and string not interned then we have to use .equals
 
-### How the `@Autowired`, `@Resource` and `@Inject` differs from each other.
-### Reveal Answer
-Used for dependency injection and they differs in terms of usage, behaviour and source.
 
-| `@Autowired`                                                                                              | `@Resource`                                                                                                                                                                                                                                                            | `@Inject`                                                                  |
-|---|---|---|
-| Spring Specific and it does not works outside. Comes from Spring Framework. Works by **type**(bean type). | Java Standard and works both in spring and Java EE frameworks. Works by **name** first and then by type. | Java Standard and works with Java framework and Spring. Works by **type**. |
-|Behaviour - Spring attempts to match the bean type for injection. If multiple beans of the same type exists, it requires additional qualifiers(@Qualifier) to resolve ambiguity. Can be used on contructors, fields or setter method. Required Behaviour - By default @Autowired is required. If no matching bean is found it throws an exception. `@Autowired(required = false)` to make it optional. | When the name is specified (`@Resource(name = "beanName")`) then it searched for the bean with that name. No name is specified then it falls back to the field name. When not resolved then it falls back to teh type based injection. It does not supports @Qualifier. | Optional and no bean is found then it does not throw an exception by default. Does not supports @Qualifier but works with the @Named qualifier for ambiguity.|
-
-```java
-public static void main(String[] args) {
-    Integer num = 10;
-    modify(num);
-    System.out.println(num);
-}
-
-public static void modify(Integer num) {
-num = 200;
-}
-```
-### Reveal Answer
-
-The output is 10. Java is pass by value. Primitive are pass by value. Wrapper class will work but not Integer as Integer
-is immutable. Wrapper class with immutable like `AtomicInteger` or custom Wrapper class will work.
-
-We can reassign. The object will be created. We cannot see the memory of the object. The hashcode is the unique for the
-object.
-
-```java
-public static void main(String[] args) {
-    Integer num = 10;
-    modify(num);
-    System.out.println(System.identityHashCode(num)); // 617901222
-    num = 100;
-    System.out.println(System.identityHashCode(num)); // 1159190947
-    System.out.println(num);
-}
-```
-
-```java
-class Employee {
-    Address address;
-    String name;
-    int age;
-}
-
-class Address {
-String streetNAme;
-String place;
-int pinCode;
-}
-
-public static void main(String[] args) {
-    // Sample Data
-    List<Employee> employees = Arrays.asList(
-            new Employee("John", 28, new Address("1st Main", "CityA", 560001)),
-            new Employee("Alice", 32, new Address("2nd Cross", "CityB", 560002)),
-            new Employee("Bob", 45, new Address("3rd Lane", "CityA", 560001)),
-            new Employee("Eve", 25, new Address("4th Street", "CityC", 560003))
-    );
-}
-```
-Write the employee based on the PinCode.<br>
+### Write the employee based on the PinCode.<br>
 Group the employee based on the age.
-### Reveal Answer
 
 ```java
 // Group employees by pinCode

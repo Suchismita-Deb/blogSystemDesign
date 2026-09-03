@@ -202,11 +202,170 @@ The functional entities can have default methods and static methods.
 
 The compiler can automatically detect whether interface has only one abstract method. It is recommended because it will clearly tell other developers that this interface is functional interface and it will protect the code by giving compile time error in case if anyone tries to add another abstract method.
 
+### How to default methods let an interface evolve without breaking existing implementing classes ?
+Adding a method into the interface everyone has to implement it.
+Default method let up add a method wth a body directly in the interface.
+The entire implementing classes compiled and worked without being forced override.   
+
+
+### What is Inheritance?
+
+Inheritance allows one class to inherit fields and methods from another class and promote code reuse. It model "is-a" relationship like the Manager is an Employee.
+```java
+class User {
+    String name;
+    String email;
+
+    User(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    void login() {
+        System.out.println(name + " logged in with email " + email);
+    }
+
+    void displayRole() {
+        System.out.println("I am a generic user");
+    }
+}
+class Admin extends User {
+  Admin(String name, String email) {
+    super(name, email);
+  }
+
+  @Override
+  void displayRole() {
+    System.out.println("I am an Admin, I manage users");
+  }
+
+  void manageUsers() {
+    System.out.println("Managing users...");
+  }
+}
+
+class Teacher extends User {
+  Teacher(String name, String email) {
+    super(name, email);
+  }
+
+  @Override
+  void displayRole() {
+    System.out.println("I am a Teacher, I create courses");
+  }
+
+  void createCourse() {
+    System.out.println("Creating a new course...");
+  }
+}
+
+class Student extends User {
+  Student(String name, String email) {
+    super(name, email);
+  }
+
+  @Override
+  void displayRole() {
+    System.out.println("I am a Student, I enroll in courses");
+  }
+
+  void enrollCourse() {
+    System.out.println("Enrolling in a course...");
+  }
+}
+public class InheritanceDemo {
+  public static void main(String[] args) {
+    User u1 = new Admin("Alice", "alice@company.com");
+    User u2 = new Teacher("Bob", "bob@school.com");
+    User u3 = new Student("Charlie", "charlie@student.com");
+
+    u1.login(); u1.displayRole();
+    u2.login(); u2.displayRole();
+    u3.login(); u3.displayRole();
+  }
+}
+
+```
+There are many type of Inheritance - Single Inheritance - One subclass extends one superclass.  
+Multilevel inheritance - A class extends another class which itseld extends a third.  
+Hierarchical Inheritance - Multiple subclasses extend a single superclass.  
+Multiple inhertitance with interface - Achieved via interface, class extends multiple parents not possible.
+
+Inheritance is applicable in IS-A relationship (Manager IS-A Employee) and HAS-A relationship (Car HAS-A Engine) prefer composition.
+
+Polymorphism: Inheritance enables runtime polymorphism via overriding.
+
+Access Modifiers: Subclasses inherit non-private members. The difference between public and protected is important. Subclass can use public and protected members not private.      
+public → Inherited by subclasses. It is accessible everywhere(same package, different package, subclasses, external classes).  
+protected → Inherited by subclasses. It is accessible in the same package and by subclasses (even in different packages).  
+default/package-private → Inherited only within the same package. Not accessible outside the package, even by subclasses.   
+private - Not inherited. Accessible only within the same class. Subclasses cannot directly access private members.
+
+Diamond Problem: Java avoids multiple class inheritance to prevent ambiguity. Interfaces solve this safely.
+
+
+### Why does Java allow multiple inheritance via interfaces but not via classes?
+Multiple class inheritance is not possible - It causes ambiguity.
+
+When 2 parent classes have the same method signature and a child class inherits from both, it is unclear which method to call. This is known as the "Diamond Problem."
+```java
+class A {
+    void show() { System.out.println("A"); }
+}
+
+class B {
+    void show() { System.out.println("B"); }
+}
+
+// ❌ Not allowed in Java
+// class C extends A, B { }
+```
+Multiple Interface solves the issue as Interface are contracts and it tells what must be done not how. There is no state conflict. When there are two interface have default method s with the same signature Java forces to resolve it explicitly.
+```java
+interface A {
+    default void show() { System.out.println("A"); }
+}
+
+interface B {
+    default void show() { System.out.println("B"); }
+}
+
+class C implements A, B {
+    @Override
+    public void show() {
+        // Explicit resolution
+        A.super.show();
+        B.super.show();
+        System.out.println("C resolves the diamond problem");
+    }
+}
+```
+
+### What is Polymorphism ?
+Polymorphism allows methods to perform different tasks based on the object that act upon, implemented through method overloading and overriding.
+
+### What is the static keyword in Java?
+The static keyword indicates that a member belongs to the class rather than an instance of the class. Static methods and variables can be accessed without creating an object of the class.
+### What is the constructor in Java and how it is different from a method?
+A constructor initializes a new object and has no return type.
+Constructors are called automatically when an object is created.
+### What is method overloading?
+Method of loading allows multiple methods in a class to have the same name but with different parameter lists.
+It is compile time polymorphism offering flexibility when defining methods.
+### What is Abstract class in Java?
+An abstract class cannot be instantiated and it's meant to be subclassed. It may contain both abstract method or a concrete method. Abstract classes are used to define a base for other classes.
+### What is the difference between an abstract class and an interface in Java?
+An interface is a reference type that can contain abstract methods constant default methods and static methods.  
+Unlike an abstract class the class can have multiple interfaces. Abstract classes can have constructors and instance fields whereas interface cannot.
+
+### What is the purpose of the Super keyboard in Java?
+The Super keyword refers to the immediate parent class it is used to access the parent class method constructor of variable that are hidden by the chat class.
 
 
 
+### What is teh Singleton design pattern in java?
 
-
+The single independent ensures that a class has only one instance and provides a global point of access to it. This is typically implemented with the private constructor and a static instance variable.
 
 
 

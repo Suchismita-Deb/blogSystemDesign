@@ -1,8 +1,27 @@
+Java is designed to be platform-independent, meaning that code written in Java can run on any device or operating system that has a Java Virtual Machine (JVM) installed. This is achieved through the use of bytecode, which is an intermediate representation of the code that can be executed by the JVM, allowing developers to write code once and run it anywhere.
+
+### What is the Java Virtual Machine (JVM) and how does it work?
+
+The JVM is an abstract computing machine that enables a computer to run Java programs. It works by converting Java bytecode into machine code that can be executed by the host operating system. The JVM provides a runtime environment that includes memory management, garbage collection, and security features, allowing Java applications to run consistently across different platforms.
+
+### What are the differences between JDK, JRE and JVM?
+
+JDK - Toolkit for java development.
+JRE - Environment to run Java program.
+JVM - Engine that executes the Java bytecode.
+
+
+### Anyways to Install the JDK without the JRE or does JDK already condenser required runtime parts ?
+
+JDK already contains the required runtime parts to run the Java application and JDK is mainly for development but it also has runtime benefits and so we don't need separate JRE when JDK is installed.
+
+- **JDK (Java Development Kit)**: It is a software development kit that provides tools for developing Java applications, including the JRE, compilers, and other development tools. It is used by developers to write, compile, and debug Java programs.
 ## Java Memory Management and Performance Tuning.
 
 ### What are the different memory present in Java.
 Java memory is managed by JVM and it has heap for objects and stack for each thread methods and calls for local variable. Method area or meta space for class metadata and static variable. PC (Program Counter) register for the current instructions per thread and native method stack for JNI calls.  
-**What is the difference between heap and stack memory ?**  
+
+### What is the difference between heap and stack memory ?  
 Heap memory is shared across all the threads and it is used for objects and class instances. Stack memory is per thread and it is used for method calls and local variables.    
 Stack memory is faster than heap memory and it is automatically managed by the JVM. Heap memory is managed by the garbage collector and it can be tuned by the JVM options.    Stack memory is limited and can cause stack overflow if the recursion is too deep or the method calls are too many. Heap memory can cause out of memory error if the objects are too many or too large.
 
@@ -11,18 +30,18 @@ Take a thread dump first. The deadlock show up as a clear cyclic logs. Verify th
 If there's a real life but just waiting on the pool then that's thread starvation. The notice part is thread poll soze and queue length.
 
 
-### A counter incremented by multiple threads inside a synchronized method is still producing wrong totals what are the possible causes ?
-The solution involves for us to save the whole method is entirely synchronized on just part of it.  
-The next thing to see if multiple objects are being used as locks instead of one shared locsk.  
-In case the counter is itself has a non atomic Read modify write happening outside the synchronized block 
-
 ### How can a application leak memory even though the JVM has garbage collection, give an example.
 Elementary difference happens when object was still getting referenced somewhere so GC Will not be able to collect them even the app is not using it anywhere. Example - static collections keep on growing.
 
-### How to default methods let an interface evolve without breaking existing implementing classes ?
-Adding a method into the interface everyone has to implement it. 
-Default method let up add a method wth a body directly in the interface.
-The entire implementing classes compiled and worked without being forced override.   
+### Explain Java garbage collection process and how it helps in memory management.
+
+Java garbage collection is an automatic memory management process that helps in reclaiming memory occupied by objects that are no longer in use. The garbage collector (GC) identifies and removes these unreferenced objects from the heap memory, freeing up space for new object allocations. This process helps prevent memory leaks and ensures efficient memory utilization.
+
+Memory leak happens when object are not needed but still some reference is pointing them. The garbage collector removes only unreachable objects. Garbage collector removes unreachable objects and in case the object is reachable then garbage collector will not remove it.
+
+### Which garbage collection algorithms are used for JVM to clean up on new subjects from the memory?
+JVM uses different garbage collection algorithms like mark and sweep, mark and compact, generational garbage collection. The actual algorithm depends on which value which collector you are using.
+
 
 ### How do you monitor application connections and identify failing connections ?
 We should use Actuator health endpoint metric for connection pool stat and monitoring tools like Prometheues, Grafana for dashboard and alerts. 
@@ -38,25 +57,14 @@ First see the consumer group status and the lag and see if the consumer is part 
 In case stuck in rebalancing then check the network connectivity to the broker and the topic. 
 
 
-### How would you handle a Kafka consumer can that continuously fails while processing messages ?</b>
+### How would you handle a Kafka consumer can that continuously fails while processing messages ?
 
 We should use retry with backup for transient error. In case it is failing then send the letter to the dead letter review topic with the proper error message to debug and understand the issue and alert set up when message going to the dead letter queue topic.
 
-### What is Springwood Actuator and how would you use it to monitor a live app's health and connections ?
-The actuator exposes production ready endpoints like health, metrics, info, env, beans, mappings, threaddump, loggers, httptrace and many more. We can see database and connection pool health, memory usage and custom health indicators hooked up to the Prometheus.
 
 
-### How does Spring Boot auto configuration work internally like the @ConditionalOnClass and @ConditionalOnMissingBean?</b>
+## Internal Architecture.
 
-Spring Boot scan auto configuration classes listed on the auto configurations.import file. Each class activates when the condition matches.
-Example @ConditionalOnClass in case a dependency is on the class path or @ConditionalOnMissingBean in case the bean is not defined.
-
-### The Springboot service was throwing connection-po0l-exhausted errors in production so how would you solve this pool issue ?
-The first step to see the active versus the idle connection in the pool matrix. The names of the connections that are not released like long running query. The pool size ad the load and the slow query logs.
-
-### Any functional differences present between @Components, @Service and @Repository or its purely semantic ?
-### A teammate wants no sequel for scalability for a service that needs a strong consistency and joins how do you make the call ?
-### A legacy partner only supports SOAP but the team standard is REST how do you avoid duplicating logics ?</b>
 
 ### How the HashMap works internally?
 
@@ -119,6 +127,9 @@ Compute hash, jump to bucket via (n-1) & hash, then either walk the linked list 
 A couple of side notes.
 
 HashMap allows exactly one null key, which always hashes to bucket 0. It's not thread-safe — no synchronization — so under concurrent writes you can get infinite loops in the old Java 7 chaining resize (that's actually a classic pre-Java-8 production bug), which is part of why Java 8 rewrote resize logic, and why we reach for ConcurrentHashMap in multithreaded contexts instead of Collections.synchronizedMap.
+
+### What is the difference between == and equals() methos in Java?
+== verifies the references points to the same object in memory and equals() verifies the content of the object.
 
 ### What happens if we do not override the equals() method and the hashCode() method in Java?
 equals() Method - <br>
@@ -246,7 +257,7 @@ public class Main {
 }
 ```
 When two object are equal() then the hashCode() should also be equal. When two hashCode is equal then the object may not be equal.
-
+## Differences between collections.
 ### Difference between HashMap and Hashtable.
 | Feature | HashMap | Hashtable |
 |---------|---------|-----------|
@@ -443,4 +454,67 @@ public static void main(String[] args) {
     System.out.println("Final Map: " + map);
 }
 ```
+### What is the Difference between final finally and finalize in Java next thing
+Final is a keyboard used to declare constant prevent method of writing or prohibit class inheritance  
+Finally the block that ensures execution after a try catch whether or not an exception occurs  
+Finalize is a method called by the garbage collector before reclaiming an object's memory
+### What is the difference between String, StringBuilder and StringBuffer in Java?
+- String is immutable, meaning once created, its value cannot be changed.
+- StringBuilder is mutable and not synchronized, making it faster for single-threaded operations.
+- StringBuffer is mutable and synchronized, making it thread-safe but slower than StringBuilder.
+
+
+### What is the difference between throw and throws in Java?
+- `throw` is used to explicitly throw an exception in a method or block of code.
+- `throws` is used in a method signature to declare the exceptions that a method can throw
+
+### What is the difference between a static method and an instance method in Java?
+- A static method belongs to the class and can be called without creating an instance of the class
+    - An instance method belongs to an object and can only be called on an instance of the class, allowing it to access instance variables and methods.
+
+### What is the difference between a static variable and an instance variable in Java?
+- A static variable is shared among all instances of a class and belongs to the class itself, while an instance variable is unique to each instance of the class and belongs to the object.
+
+### What is the difference between a static block and an instance block in Java?
+- A static block is executed when the class is loaded and is used for static initialization, while  
+  an instance block is executed when an instance of the class is created and is used for instance initialization.
+
+### What is the difference between a static nested class and an inner class in Java?
+- A static nested class is a static member of the outer class and can be instantiated without an instance of the outer class, while an inner class is associated with an instance of the outer class and can access its members directly.
+
+### What is the difference between a final class and an abstract class in Java?
+- A final class cannot be subclassed, meaning no other class can extend it, while an    abstract class is intended to be subclassed and can contain abstract methods that must be implemented by its subclasses.
+
+### What is the difference between a final method and an abstract method in Java?
+- A final method cannot be overridden by subclasses, ensuring that its implementation remains unchanged, while an       abstract method is declared without an implementation and must be implemented by subclasses, allowing for polymorphic behavior.
+
+### What is the difference between a final variable and a static variable in Java?
+- 
+- A final variable is a constant whose value cannot be changed once assigned, while a static variable       is shared among all instances of a class and can be modified, but it belongs to the class rather than any specific instance.
+
+### What is the difference between comparator and comparable in Java?
+- The `Comparable` interface is used to define the natural ordering of objects by implementing the `compareTo()` method, allowing objects to be sorted based on their inherent properties.
+- The `Comparator` interface is used to define custom ordering of objects by implementing the `compare()` method,
+    - allowing for multiple sorting criteria and flexibility in sorting objects that do not have a natural order.
+### What is the difference between break and continue in Java?
+- `break` is used to exit a loop or switch statement prematurely, terminating the current iteration and moving control to the next statement after the loop or switch.
+    - `continue` is used to skip the current iteration of a loop and proceed to the next iteration, allowing the loop to continue 
+
+### What is the difference between call by value and call by reference in Java?
+
+- Java uses call by value for primitive data types, meaning that a copy of the value is passed to methods, and changes to the parameter do not affect the original variable.
+    - For objects, Java uses call by reference for object references, meaning that a copy of the reference is passed, allowing methods to modify the object's state, but the reference itself cannot be changed to point to a different object.
+
+
+
+### What is the difference between a final variable and an instance variable in Java?
+- A final variable is a constant whose value cannot be changed once assigned, while an instance variable    is unique to each instance of a class and can be modified, allowing each object to maintain its own state.
+
+
+
+
+
+
+
+
 

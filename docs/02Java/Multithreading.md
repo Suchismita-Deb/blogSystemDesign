@@ -636,3 +636,63 @@ Note the `finally` block for `ReentrantLock` â€” unlike `synchronized`, whi
 </table>
 </details>
 </div>
+
+### A counter incremented by multiple threads inside a synchronized method is still producing wrong totals what are the possible causes ?
+The solution involves for us to save the whole method is entirely synchronized on just part of it.  
+The next thing to see if multiple objects are being used as locks instead of one shared locsk.  
+In case the counter is itself has a non atomic Read modify write happening outside the synchronized block 
+
+### What is multithreading in Java ?
+Multithreading allows multiple throws to execute simultaneously maximizing the Super utilization and it can be implemented by extending the thread class or implementing through another interface.
+
+
+### What is the difference between wait and sleep in Java?
+
+Wait is used in multithreading to pause the current thread until it's notified and it releases the monitor lock.  
+Sleep pauses the current thread for a specified time but does not release any locks.
+
+### What is the purpose of the volatile keyboard in Java?
+The virtual keyboard ensures that a variable's value is always read from the main memory not from the thread's local cache. It helps maintain a consistency in multithreaded environment.
+
+### What is the thread in Java how it is different from process ?
+A thread is a lightweight sub process the smallest unit of CPU scheduling. Multiple threads within the same process shared memory while processes are independent and do not share memory.
+
+### What is teh difference between notify and notifyAll in Java?
+Notify wakes up a single thread that is waiting on the object's monitor, while notifyAll wakes up
+all threads that are waiting on the object's monitor. Notify is used when only one thread needs to be awakened, while notifyAll is used when multiple threads may need to proceed.
+
+
+### What is the difference between a shallow copy and a deep copy in Java?
+- A shallow copy creates a new object but copies references to the original object's fields, meaning changes to mutable fields in the original object will affect the shallow copy.
+    - A deep copy creates a new object and recursively copies all fields, ensuring that the new object is completely independent of the original, including any mutable objects it contains.
+
+
+
+
+### What is the difference between callable and runnable in Java?
+- A `Runnable` is an interface that represents a task that can be executed by a thread, but it does not return a result or throw checked exceptions.
+    - A `Callable` is a similar interface that represents a task that can be executed by a thread, but it can return a result and throw checked exceptions, making it more flexible for concurrent programming.
+
+
+### What is the difference between synchronized and lock in Java?
+
+The synchronized keyword provides a special mechanism to control access to critical sections. Lock is more flexible and powerful mechanism from the Java.util.concurrent package offering additional features like time locks and interruptible locks.
+
+### What is deadlock in java?
+
+Adidas cockles went two or more threads are waiting for each other's resources causing them to remain in a waiting state for a wrapper it is a commonly threatening issue that should be avoided.
+
+### What is reflection in Java?
+Reflection is a feature that allows a program to inspect and modify its own structure and behaviour at runtime. It is often used for dynamic method invocation and inspecting classes methods and fields.
+
+
+
+### What is eh fork/join framework in Java?
+The Fork/Join framework is a parallel programming framework introduced in Java 7 that allows for efficient.
+
+### What is the executor framework in Java?
+The Executor framework is a high-level API introduced in Java 5 that provides a way to manage and control thread execution, allowing developers to submit tasks for execution without having to manage thread creation and lifecycle.
+
+
+
+
