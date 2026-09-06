@@ -42,7 +42,7 @@ CREATE TABLE admissions (
 
 ```
 
-images/Database/SchemaRelation.png
+![](../images/Database/SchemaRelation.png)
 
 Adding sample data to the tables.
 
