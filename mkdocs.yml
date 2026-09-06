@@ -57,7 +57,9 @@ nav:
       - Testing: SpringBoot/Testing.md
 
   - KafkaFundamentals:
-      - ProducerConsumer: KafkaFundamentals/ProducerConsumer.md
+      - ProducerConsumer: 05KafkaFundamentals/ProducerConsumer.md
+  - Database:
+      - FundamentalProject: 06Database/File.md
   - Quiz: Quiz.md
 
   - Interview Preparation:
