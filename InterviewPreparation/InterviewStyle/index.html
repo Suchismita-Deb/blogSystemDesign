@@ -284,7 +284,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../02Java/02InterviewQuestion/" class="md-tabs__link">
+        <a href="../../02Java/01InterviewQuestion/" class="md-tabs__link">
           
   
   
@@ -304,7 +304,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../Microservices/Fundamentals.md" class="md-tabs__link">
+        <a href="../../03Microservice/Fundamentals.md" class="md-tabs__link">
           
   
   
@@ -1425,7 +1425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02Java/02InterviewQuestion/" class="md-nav__link">
+      <a href="../../02Java/01InterviewQuestion/" class="md-nav__link">
         
   
   
@@ -1453,7 +1453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02Java/01InterviewQuestion/" class="md-nav__link">
+      <a href="../../02Java/02InterviewQuestion/" class="md-nav__link">
         
   
   
@@ -1481,7 +1481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02Java/04InterviewQuestionCodeSnippet/" class="md-nav__link">
+      <a href="../../02Java/03InterviewQuestion/" class="md-nav__link">
         
   
   
@@ -1489,6 +1489,34 @@
     
   
     Interview Questions Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02Java/04InterviewQuestionCodeSnippet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Questions Part 3
   
 
     
@@ -1682,7 +1710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Microservices/Fundamentals.md" class="md-nav__link">
+      <a href="../../03Microservice/Fundamentals.md" class="md-nav__link">
         
   
   
@@ -1738,7 +1766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Microservices/DataManagement.md" class="md-nav__link">
+      <a href="../../03Microservice/DataManagement.md" class="md-nav__link">
         
   
   
@@ -1766,7 +1794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Microservices/Resilience.md" class="md-nav__link">
+      <a href="../../Microservice/Resilience.md" class="md-nav__link">
         
   
   
@@ -1794,7 +1822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Microservices/Observability.md" class="md-nav__link">
+      <a href="../../03Microservice/Observability.md" class="md-nav__link">
         
   
   
@@ -1802,6 +1830,34 @@
     
   
     Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03Microservice/01InterviewQuestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Questions
   
 
     
@@ -1890,7 +1946,35 @@
   <span class="md-ellipsis">
     
   
-    Fundamentals
+    Interview Question1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04Spring/InterviewQuestionAnnotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Question2
   
 
     
@@ -2523,21 +2607,40 @@
 <p>Kafka Topic - MED_MULTI_MASTER topic and get the data from the topic and using microservice modify the data and push to the database and downstream application using the internal API call and update the table so that other microservice can use it.</p>
 <p>To frame the answer dont directly go with the technology. Mention the design <strong>Business Events - Ingestion - Processing - Enrichment - Persistence - Downstream - Distribution - Observability.</strong></p>
 <p>Upstream order event - Topic(Order Event) - SpringBoot service (Consume, Validate, Transforms, Enrich) - Database persistence and Kafka Downstream - Downstream Consumer - Internal API call using API gateway.</p>
-<p>Sample answer model.
-One of the backend system I have worked on is a Spring Boot based microservice responsible for processing order-related events coming through Kafka and preparing them for the downstream consumers. </p>
-<p>From the business perspective the service sits between the upstream order-event stream and multiple downstream systems that needs different representations of the same business data. The challenges was that the source events contains more and entire data that every consumer needs so teh service performs validation, transformation and enrichment before distributing the relevant data.  </p>
+<p>Sample answer model.</p>
+<blockquote>
+<p>One of the backend system I have worked on is a Spring Boot based microservice responsible for processing order-related events coming through Kafka and preparing them for the downstream consumers.</p>
+<p>From the business perspective the service sits between the upstream order-event stream and multiple downstream systems that needs different representations of the same business data. The challenges was that the source events contains more and entire data that every consumer needs so teh service performs validation, transformation and enrichment before distributing the relevant data.</p>
 <p>Architecturally the flow starts with an auto event arriving into the Kafka topic and my spring boot service consumes that event, validates the payload, transform it into the downstream specific representations. The additional information which is recovered we get that through internal API call data sources or services. The downstream requirements we process the data and then we publish to another topic to send through an internal API call.</p>
 <p>My ownership is primarily around the microservice implementation and its event processing flow including Kafka integration the transform logic and the downstream communication and all sort of production support speed debugging or be it live support. I am not independently owning the entire platform architecture the broader architecture is and the requirement were discussed with the lead and then proposed and enterprise wise but I do own the implementation of my service and associated changes.</p>
+</blockquote>
 <p>In case you feel to add more.</p>
-<p>One of the production issue that I would love to discuss that we have encountered was the latency and the consumer and producer lag in the part of the pipeline. I had to investigate the entire data flow for data movement rather than assuming it's kafka's fault I looked into the processing time, logging overhead and producer configuration and finally the solution was optimizing few of the Kafka configuration including the batching and linger Ms. like timeline and also reducing few of the logging in our system.<br />
-The important consideration was the asynchronous processing introduce its own problem, particularly failure handling, ordering and duplicate processing so we had to make sure that making the system asynchronous is not compromising the correctness of the data.<br />
+<blockquote>
+<p>One of the production issue that I would love to discuss that we have encountered was the latency and the consumer and producer lag in the part of the pipeline. I had to investigate the entire data flow for data movement rather than assuming it's kafka's fault I looked into the processing time, logging overhead and producer configuration and finally the solution was optimizing few of the Kafka configuration including the batching and linger Ms. like timeline and also reducing few of the logging in our system.</p>
+<p>The important consideration was the asynchronous processing introduce its own problem, particularly failure handling, ordering and duplicate processing so we had to make sure that making the system asynchronous is not compromising the correctness of the data.<br />
 In terms of the performance of our design it actually changes the contribution in the throughput and it's consistent with the application around asynchronous processing using <code>CompletableFuture</code>, <code>KafkaTemplate</code> and synchronous inter service communication using <code>RestTemplate</code>.</p>
+</blockquote>
 <h3 id="points-to-notice">Points to notice.</h3>
 <p>While describing the project and your ownership do not add 10 technologies, you should add the ownership, architecture, boundaries, decision making, failure awareness, trade-off, correctness, performance, reasoning that makes sound senior </p>
 <h3 id="explain-the-project-data-and-event-in-depth">Explain the project data and event in depth.</h3>
 <p>Start with an event - Add the validation like DLQ - Data Enrichment - Downstream pattern.</p>
 <p>Sample answer.
-Start with an event say the business event is pushed into the topic then my microservice will consume it </p>
+Start with an event say the business event is pushed into the topic then my microservice will consume it - There are some validation and error data will go to the DLQ topic and separate consumer and reprocessing flow - The data has a key like the customer id and Loc value say MH03 like Manhattan and the partition maintains the orders - The order data does not contain everything there is data enrichment and data processing flow - There are many downstream patterns like kafka server db and kafka service API.</p>
+<p>The point of validation should be clear like when to validate the data there are structural validation and business logic validation.
+Structural validation - Field missing, malformed JSON, invalid data type, schema violation.<br />
+Business Validation - Status paid but amount missing, invalid order state transition, impossible quantity.
+The point is we perform payload-level validation first then followed by the business validation. The invalid events are routed to the DLQ rather than entering the downstream processing path.</p>
+<p>In case they ask like how did you implement the idempotent processing and all and in case have not worked on it then mention - Idempotent processing wasn't something I personally implemented in this flow, so I don't want to overstate my ownership. I understand it as an important concern in event-driven systems, particularly because a consumer can potentially process the same event more than once.</p>
+<p>Sample answer.</p>
+<blockquote>
+<p>The order event and the data lifecycle. The Upstream system publishes an order event to the Kafka topic using the business key based on the customer ID and the location information. Kafka loses that key to print determine the partition. When the service consumes the event the first stages of validation. We verify the required fields are presnt and then teh business-critical values are present and valid. Events that dont staisfies the validation are separated in the DLQ topic rather than further processing.</p>
+<p>The valid events are processed by my service and perform enrichment. The original events contains order level information. The downstream application needs additional information like the user or the business information. We retrieved the required information from the relevant data source, combine it with the events and transform it into the representation required for each downstream application.  </p>
+<p>The data that follow different paths in case of analytics related consumers we process the transformed information to a database table that the analytics system consumes and for operational downstream services we send the relevant subsets through our internal API integration and in other events the transformed event can be published for downstream consumption.</p>
+<p>The important point that my service acts as a transformation and integration boundary between the source event system and the downstream consumers. My ownership is primarily around the service implementation, Kafka integration, transformation or enrichment of the logic and the downstream integrations.</p>
+<p>I also have to deal with the performance issues around the event processing and lags. I investigated the processing path and turned the Kafka producer behaviour including batches and linger.ms and also reducing unnecessary logging and improving the performance.</p>
+</blockquote>
+<p>The follow up question like - Why this partition key? What is the process with the DLQ topic? How are you preventing the duplicate events? How are you making sure of the atleast once semantics?</p>
+<p>Mention in case I have nor worked in the idempotency part and you dont own that part but you know what it does.</p>
 
 
 

@@ -9,28 +9,24 @@
       
       
       
-        <link rel="prev" href="../04Spring/InterviewQuestionAnnotation/">
-      
-      
-        <link rel="next" href="../InterviewPreparation/InterviewStyle/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Quiz - System Design Toolkit</title>
+        <title>03DesignCircuitBreaker - System Design Toolkit</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,9 +45,9 @@
       
     
     
-      <link rel="stylesheet" href="../css/custom.css">
+      <link rel="stylesheet" href="../../css/custom.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#system-design-interactive-flashcards" class="md-skip">
+        <a href="#circuit-breaker-patter-using-resilience4j" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +88,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="System Design Toolkit" class="md-header__button md-logo" aria-label="System Design Toolkit" data-md-component="logo">
+    <a href="../.." title="System Design Toolkit" class="md-header__button md-logo" aria-label="System Design Toolkit" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Quiz
+              03DesignCircuitBreaker
             
           </span>
         </div>
@@ -205,7 +201,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -226,7 +222,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../01SystemDesign/Fundamentals/" class="md-tabs__link">
+        <a href="../../01SystemDesign/Fundamentals/" class="md-tabs__link">
           
   
   
@@ -246,7 +242,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../08HLDExample/DropBox.md" class="md-tabs__link">
+        <a href="../../08HLDExample/DropBox.md" class="md-tabs__link">
           
   
   
@@ -266,7 +262,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../07LLDExample/StructuralPattern/" class="md-tabs__link">
+        <a href="../../07LLDExample/StructuralPattern/" class="md-tabs__link">
           
   
   
@@ -286,7 +282,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../02Java/01InterviewQuestion/" class="md-tabs__link">
+        <a href="../../02Java/01InterviewQuestion/" class="md-tabs__link">
           
   
   
@@ -306,7 +302,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../03Microservice/Fundamentals.md" class="md-tabs__link">
+        <a href="../Fundamentals.md" class="md-tabs__link">
           
   
   
@@ -326,7 +322,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../04Spring/InterviewQuestionBean/" class="md-tabs__link">
+        <a href="../../04Spring/InterviewQuestionBean/" class="md-tabs__link">
           
   
   
@@ -346,7 +342,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../KafkaFundamentals/ProducerConsumer.md" class="md-tabs__link">
+        <a href="../../KafkaFundamentals/ProducerConsumer.md" class="md-tabs__link">
           
   
   
@@ -362,11 +358,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../../Quiz/" class="md-tabs__link">
         
   
   
@@ -387,7 +381,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../InterviewPreparation/InterviewStyle/" class="md-tabs__link">
+        <a href="../../InterviewPreparation/InterviewStyle/" class="md-tabs__link">
           
   
   
@@ -427,7 +421,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="System Design Toolkit" class="md-nav__button md-logo" aria-label="System Design Toolkit" data-md-component="logo">
+    <a href="../.." title="System Design Toolkit" class="md-nav__button md-logo" aria-label="System Design Toolkit" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -445,7 +439,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -526,7 +520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01SystemDesign/Fundamentals/" class="md-nav__link">
+      <a href="../../01SystemDesign/Fundamentals/" class="md-nav__link">
         
   
   
@@ -554,7 +548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01SystemDesign/Pattern/" class="md-nav__link">
+      <a href="../../01SystemDesign/Pattern/" class="md-nav__link">
         
   
   
@@ -582,7 +576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01SystemDesign/Tips/" class="md-nav__link">
+      <a href="../../01SystemDesign/Tips/" class="md-nav__link">
         
   
   
@@ -610,7 +604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01SystemDesign/CoreConcepts/" class="md-nav__link">
+      <a href="../../01SystemDesign/CoreConcepts/" class="md-nav__link">
         
   
   
@@ -692,7 +686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01SystemDesign/KeyTechnologies/Redis/" class="md-nav__link">
+      <a href="../../01SystemDesign/KeyTechnologies/Redis/" class="md-nav__link">
         
   
   
@@ -720,7 +714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../DynamoDb.md" class="md-nav__link">
+      <a href="../../DynamoDb.md" class="md-nav__link">
         
   
   
@@ -748,7 +742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Cassandra.md" class="md-nav__link">
+      <a href="../../Cassandra.md" class="md-nav__link">
         
   
   
@@ -838,7 +832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01SystemDesign/CoreConcepts/Network.md" class="md-nav__link">
+      <a href="../../01SystemDesign/CoreConcepts/Network.md" class="md-nav__link">
         
   
   
@@ -866,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01SystemDesign/CoreConcepts/Db.md" class="md-nav__link">
+      <a href="../../01SystemDesign/CoreConcepts/Db.md" class="md-nav__link">
         
   
   
@@ -894,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01SystemDesign/CoreConcepts/Caching.md" class="md-nav__link">
+      <a href="../../01SystemDesign/CoreConcepts/Caching.md" class="md-nav__link">
         
   
   
@@ -922,7 +916,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01SystemDesign/CoreConcepts/API.md" class="md-nav__link">
+      <a href="../../01SystemDesign/CoreConcepts/API.md" class="md-nav__link">
         
   
   
@@ -1012,7 +1006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01SystemDesign/AdvancedConcept/Vector.md" class="md-nav__link">
+      <a href="../../01SystemDesign/AdvancedConcept/Vector.md" class="md-nav__link">
         
   
   
@@ -1040,7 +1034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01SystemDesign/AdvancedConcept/TimeSeriesDb.md" class="md-nav__link">
+      <a href="../../01SystemDesign/AdvancedConcept/TimeSeriesDb.md" class="md-nav__link">
         
   
   
@@ -1137,7 +1131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08HLDExample/DropBox.md" class="md-nav__link">
+      <a href="../../08HLDExample/DropBox.md" class="md-nav__link">
         
   
   
@@ -1165,7 +1159,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08HLDExample/Youtube/" class="md-nav__link">
+      <a href="../../08HLDExample/Youtube/" class="md-nav__link">
         
   
   
@@ -1193,7 +1187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08HLDExample/Strava/" class="md-nav__link">
+      <a href="../../08HLDExample/Strava/" class="md-nav__link">
         
   
   
@@ -1221,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08HLDExample/YoutubeTopK/" class="md-nav__link">
+      <a href="../../08HLDExample/YoutubeTopK/" class="md-nav__link">
         
   
   
@@ -1310,7 +1304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../07LLDExample/StructuralPattern/" class="md-nav__link">
+      <a href="../../07LLDExample/StructuralPattern/" class="md-nav__link">
         
   
   
@@ -1338,7 +1332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../07LLDExample/CreationalPattern.md" class="md-nav__link">
+      <a href="../../07LLDExample/CreationalPattern.md" class="md-nav__link">
         
   
   
@@ -1427,7 +1421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02Java/01InterviewQuestion/" class="md-nav__link">
+      <a href="../../02Java/01InterviewQuestion/" class="md-nav__link">
         
   
   
@@ -1455,7 +1449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02Java/02InterviewQuestion/" class="md-nav__link">
+      <a href="../../02Java/02InterviewQuestion/" class="md-nav__link">
         
   
   
@@ -1483,7 +1477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02Java/03InterviewQuestion/" class="md-nav__link">
+      <a href="../../02Java/03InterviewQuestion/" class="md-nav__link">
         
   
   
@@ -1511,7 +1505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02Java/04InterviewQuestionCodeSnippet/" class="md-nav__link">
+      <a href="../../02Java/04InterviewQuestionCodeSnippet/" class="md-nav__link">
         
   
   
@@ -1539,7 +1533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02Java/OOPs/" class="md-nav__link">
+      <a href="../../02Java/OOPs/" class="md-nav__link">
         
   
   
@@ -1567,7 +1561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02Java/Multithreading/" class="md-nav__link">
+      <a href="../../02Java/Multithreading/" class="md-nav__link">
         
   
   
@@ -1595,7 +1589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02Java/ProjectRESTAPI/" class="md-nav__link">
+      <a href="../../02Java/ProjectRESTAPI/" class="md-nav__link">
         
   
   
@@ -1623,7 +1617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02Java/Sample/" class="md-nav__link">
+      <a href="../../02Java/Sample/" class="md-nav__link">
         
   
   
@@ -1712,7 +1706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03Microservice/Fundamentals.md" class="md-nav__link">
+      <a href="../Fundamentals.md" class="md-nav__link">
         
   
   
@@ -1740,7 +1734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03Microservice/01Communication/" class="md-nav__link">
+      <a href="../01Communication/" class="md-nav__link">
         
   
   
@@ -1768,7 +1762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03Microservice/DataManagement.md" class="md-nav__link">
+      <a href="../DataManagement.md" class="md-nav__link">
         
   
   
@@ -1796,7 +1790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Microservice/Resilience.md" class="md-nav__link">
+      <a href="../../Microservice/Resilience.md" class="md-nav__link">
         
   
   
@@ -1824,7 +1818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03Microservice/Observability.md" class="md-nav__link">
+      <a href="../Observability.md" class="md-nav__link">
         
   
   
@@ -1852,7 +1846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03Microservice/01InterviewQuestion/" class="md-nav__link">
+      <a href="../01InterviewQuestion/" class="md-nav__link">
         
   
   
@@ -1941,7 +1935,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04Spring/InterviewQuestionBean/" class="md-nav__link">
+      <a href="../../04Spring/InterviewQuestionBean/" class="md-nav__link">
         
   
   
@@ -1969,7 +1963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04Spring/InterviewQuestionAnnotation/" class="md-nav__link">
+      <a href="../../04Spring/InterviewQuestionAnnotation/" class="md-nav__link">
         
   
   
@@ -1997,7 +1991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../SpringBoot/LayeredArchitecture.md" class="md-nav__link">
+      <a href="../../SpringBoot/LayeredArchitecture.md" class="md-nav__link">
         
   
   
@@ -2025,7 +2019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../SpringBoot/BuildingMicroservices.md" class="md-nav__link">
+      <a href="../../SpringBoot/BuildingMicroservices.md" class="md-nav__link">
         
   
   
@@ -2053,7 +2047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../SpringBoot/Security.md" class="md-nav__link">
+      <a href="../../SpringBoot/Security.md" class="md-nav__link">
         
   
   
@@ -2081,7 +2075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../SpringBoot/Testing.md" class="md-nav__link">
+      <a href="../../SpringBoot/Testing.md" class="md-nav__link">
         
   
   
@@ -2170,7 +2164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../KafkaFundamentals/ProducerConsumer.md" class="md-nav__link">
+      <a href="../../KafkaFundamentals/ProducerConsumer.md" class="md-nav__link">
         
   
   
@@ -2202,19 +2196,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Quiz/" class="md-nav__link">
         
   
   
@@ -2230,7 +2215,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -2296,7 +2280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../InterviewPreparation/InterviewStyle/" class="md-nav__link">
+      <a href="../../InterviewPreparation/InterviewStyle/" class="md-nav__link">
         
   
   
@@ -2341,8 +2325,25 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#circuit-breaker-patter-using-resilience4j" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Circuit Breaker Patter using Resilience4j.
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2367,309 +2368,66 @@
 
 
 
-<h1 id="system-design-interactive-flashcards">System Design Interactive Flashcards</h1>
-<p>Practice one question at a time. Submit your answer to see whether it is correct, read a short explanation, and then go to the next question.</p>
-<div class="flashcard-quiz" id="flashcard-quiz">
-  <div class="quiz-header">
-    <p id="quiz-progress">Question 1</p>
-    <p id="quiz-score">Score: 0</p>
-  </div>
+  <h1>03DesignCircuitBreaker</h1>
 
-  <h2 id="quiz-question">Loading question...</h2>
-
-  <form id="quiz-form">
-    <div id="quiz-options"></div>
-
-    <div class="quiz-actions">
-      <button type="submit" id="submit-btn">Submit answer</button>
-      <button type="button" id="next-btn" hidden>Next question</button>
-    </div>
-  </form>
-
-  <div id="quiz-feedback" class="quiz-feedback" aria-live="polite"></div>
-</div>
-
-<style>
-  .flashcard-quiz {
-    max-width: 780px;
-    margin: 1rem auto;
-    padding: 1rem;
-    border: 1px solid #d5d7da;
-    border-radius: 10px;
-    background: #ffffff;
-  }
-
-  .quiz-header {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 0.75rem;
-    font-weight: 600;
-  }
-
-  #quiz-question {
-    margin-top: 0;
-    margin-bottom: 1rem;
-  }
-
-  .option-item {
-    display: block;
-    margin: 0.5rem 0;
-    padding: 0.6rem 0.75rem;
-    border: 1px solid #e1e4e8;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-
-  .option-item:hover {
-    background: #f8f9fb;
-  }
-
-  .quiz-actions {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-
-  .quiz-actions button {
-    border: none;
-    padding: 0.6rem 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-  }
-
-  #submit-btn {
-    background: #0b57d0;
-    color: #ffffff;
-  }
-
-  #next-btn {
-    background: #2e7d32;
-    color: #ffffff;
-  }
-
-  .quiz-feedback {
-    margin-top: 1rem;
-    padding: 0.75rem;
-    border-radius: 8px;
-    display: none;
-  }
-
-  .quiz-feedback.correct {
-    display: block;
-    background: #e8f5e9;
-    border: 1px solid #a5d6a7;
-  }
-
-  .quiz-feedback.wrong {
-    display: block;
-    background: #ffebee;
-    border: 1px solid #ef9a9a;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .flashcard-quiz {
-      background: #1f1f1f;
-      border-color: #3d3d3d;
-    }
-
-    .option-item {
-      border-color: #4a4a4a;
-    }
-
-    .option-item:hover {
-      background: #2a2a2a;
-    }
-  }
-</style>
-
-<script>
-(function () {
-  function initQuiz() {
-    var root = document.getElementById("flashcard-quiz");
-    if (!root || root.dataset.ready === "true") {
-      return;
-    }
-    root.dataset.ready = "true";
-
-    var questions = [
-      {
-        question: "Which CAP property is always present in distributed systems?",
-        options: ["Consistency", "Availability", "Partition Tolerance", "Latency"],
-        answer: 2,
-        description: "Network partitions are unavoidable, so the real trade-off is consistency vs availability."
-      },
-      {
-        question: "For a one-way server-to-client live update stream, which protocol is usually simpler?",
-        options: ["WebSockets", "SSE", "gRPC", "FTP"],
-        answer: 1,
-        description: "SSE is simpler for unidirectional real-time updates such as scores and notifications."
-      },
-      {
-        question: "When should denormalization usually be introduced?",
-        options: ["At the start of schema design", "When reads are heavy and joins become expensive", "Only for write-heavy systems", "Never"],
-        answer: 1,
-        description: "Start normalized first, then denormalize only when read performance needs it."
-      },
-      {
-        question: "A good non-functional requirement should be:",
-        options: ["Generic", "Measurable and specific", "As short as possible", "Optional"],
-        answer: 1,
-        description: "Specific targets like 'search latency < 500 ms' are testable and actionable."
-      },
-      {
-        question: "What is a common threshold before database sharding is seriously considered?",
-        options: ["Around 500 GB", "Around 1 TB", "Around 10-100 TB", "Around 50 GB"],
-        answer: 2,
-        description: "Sharding adds complexity, so teams usually wait until very large data or throughput pressure."
-      },
-      {
-        question: "In cache-aside pattern, what happens on a cache miss?",
-        options: ["Return empty response", "Read from DB and populate cache", "Delete the key", "Scale the cache cluster"],
-        answer: 1,
-        description: "On miss, fetch from the database, put result in cache, and return to caller."
-      },
-      {
-        question: "For external public APIs, which protocol is usually preferred?",
-        options: ["gRPC", "REST", "Raw TCP", "Kafka"],
-        answer: 1,
-        description: "REST is widely supported by browsers and clients; gRPC is often used internally."
-      },
-      {
-        question: "Which change most improves search over billions of documents?",
-        options: ["Add Redis cache", "Move to inverted index engine", "Add 10% CPU", "Increase app threads only"],
-        answer: 1,
-        description: "Index-based search architecture usually provides the largest gain over brute-force scanning."
-      }
-    ];
-
-    var current = 0;
-    var score = 0;
-    var locked = false;
-
-    var progressEl = document.getElementById("quiz-progress");
-    var scoreEl = document.getElementById("quiz-score");
-    var questionEl = document.getElementById("quiz-question");
-    var optionsEl = document.getElementById("quiz-options");
-    var feedbackEl = document.getElementById("quiz-feedback");
-    var formEl = document.getElementById("quiz-form");
-    var submitBtn = document.getElementById("submit-btn");
-    var nextBtn = document.getElementById("next-btn");
-
-    function renderQuestion() {
-      locked = false;
-      feedbackEl.className = "quiz-feedback";
-      feedbackEl.style.display = "none";
-      feedbackEl.textContent = "";
-      nextBtn.hidden = true;
-      submitBtn.hidden = false;
-      submitBtn.disabled = false;
-
-      var q = questions[current];
-      progressEl.textContent = "Question " + (current + 1) + " of " + questions.length;
-      scoreEl.textContent = "Score: " + score;
-      questionEl.textContent = q.question;
-
-      optionsEl.innerHTML = q.options
-        .map(function (option, index) {
-          return (
-            '<label class="option-item">' +
-            '<input type="radio" name="quiz-option" value="' + index + '"> ' +
-            option +
-            "</label>"
-          );
-        })
-        .join("");
-    }
-
-    function showResults() {
-      progressEl.textContent = "Completed";
-      questionEl.textContent = "You finished the flashcards.";
-      optionsEl.innerHTML = "";
-      submitBtn.hidden = true;
-      nextBtn.hidden = true;
-      feedbackEl.className = "quiz-feedback correct";
-      feedbackEl.style.display = "block";
-      feedbackEl.innerHTML =
-        "Final score: <strong>" +
-        score +
-        " / " +
-        questions.length +
-        "</strong><br>Refresh the page to practice again.";
-    }
-
-    formEl.addEventListener("submit", function (event) {
-      event.preventDefault();
-      if (locked) {
-        return;
-      }
-
-      var selected = formEl.querySelector('input[name="quiz-option"]:checked');
-      if (!selected) {
-        feedbackEl.className = "quiz-feedback wrong";
-        feedbackEl.style.display = "block";
-        feedbackEl.textContent = "Please choose an answer before submitting.";
-        return;
-      }
-
-      locked = true;
-      submitBtn.disabled = true;
-      submitBtn.hidden = true;
-      nextBtn.hidden = false;
-
-      var selectedIndex = Number(selected.value);
-      var q = questions[current];
-      var isCorrect = selectedIndex === q.answer;
-
-      if (isCorrect) {
-        score += 1;
-        feedbackEl.className = "quiz-feedback correct";
-        feedbackEl.innerHTML = "Correct. " + q.description;
-      } else {
-        feedbackEl.className = "quiz-feedback wrong";
-        feedbackEl.innerHTML =
-          "Wrong. Correct answer: <strong>" +
-          q.options[q.answer] +
-          "</strong>. " +
-          q.description;
-      }
-      feedbackEl.style.display = "block";
-      scoreEl.textContent = "Score: " + score;
-    });
-
-    nextBtn.addEventListener("click", function () {
-      current += 1;
-      if (current >= questions.length) {
-        showResults();
-        return;
-      }
-
-      renderQuestion();
-      root.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-
-    renderQuestion();
-  }
-
-  if (typeof document$ !== "undefined" && document$.subscribe) {
-    document$.subscribe(function () {
-      initQuiz();
-    });
-  } else {
-    document.addEventListener("DOMContentLoaded", initQuiz);
-  }
-})();
-</script>
-
-<div class="quiz-box">
-<b>How does Spring Boot auto configuration work internally like the @ConditionalOnClass and @ConditionalOnMissingBean?</b>
-<details class="quiz-toggle">
-<summary>Reveal Answer</summary>
-Spring Boot scan auto configuration classes listed on the auto configurations.import file. Each class activates when the condition matches.
-Example ConsitionalOnClass in case a dependency is on the class path or @ConditionalOnMissingBean in case the bean is not defined.
-</details>
-</div>
+<h3 id="circuit-breaker-patter-using-resilience4j">Circuit Breaker Patter using Resilience4j.</h3>
+<p>Order Service calling Inventory Service.</p>
+<p>The inventory service down and there is retry mechanism and when its down then repeated call is making more load and it will consume CPU, thread, Network connections. When the order service knows that the inventory service is down then it will not send the record.</p>
+<p>There is a utility added in the order service. It will see in case the inventory service is active and in case 50% of the response is not successful then it will inform that inventory service is down and it will ask the order service to handle it.</p>
+<p>Circuit Breaker stops sending request to the unhealthy service after repeated failures.</p>
+<p>There are mainly 3 states in Circuit Breaker - OPEN, CLOSED, HALF_OPEN</p>
+<p>CLOSED - All request are sent to the service and it is healthy. Initially it will be closed. The circuit breaker will records things like successful calls, failed calls, slow calls, failure rates.<br />
+Example 10 calls and 7 success and 3 failures. The failure rate is 30%. In case the configured rate is 50% then the circuit remains closed.</p>
+<p>OPEN - When the failure rate is more than the configured rate then the circuit breaker will open and it will not send any request to the service. It will return a fallback response. The circuit breaker will remain open for a configured time. After that it will go to HALF_OPEN state.
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nl">failureRateThreshold</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nl">minimumNumberOfCalls</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+</span></code></pre></div>
+In case 7 failures in the last 10 calls then the request will not go to the inventory service and it will prevent the cascading failures.</p>
+<p>HALF_OPEN - The circuit does not stays open forever. The <code>waitDurationInOpenState: 10s</code> meaning after 10 sec it will allow a limited number of test calls example <code>permittedNumberOfCallsInHalfOpenState: 3</code> to the service. If the test calls are successful then it will go to CLOSED state and if it fails then it will go to OPEN state again.</p>
+<p>The failure percentage is coming from the sliding window of the calls like the <code>slidingWindowSize: 10</code>.</p>
+<p>When the configured failure threshold is exceeded the circuit transitions to OPEN and prevents further calls to the failing downstream, dependency for the configured wait duration. It prevents the cascading failures.
+In the Order service we will put the circuit breaker before calling the service.
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@CircuitBreaker</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;inventoryServiceCircuitBreaker&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fallbackMethod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;circuitBreakerFallbackMethod&quot;</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">public</span><span class="w"> </span><span class="n">Inventory</span><span class="w"> </span><span class="nf">getInventory</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">productId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Calling Inventory Service for productId: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">productId</span><span class="p">);</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">inventoryClient</span><span class="p">.</span><span class="na">getInventory</span><span class="p">(</span><span class="n">productId</span><span class="p">);</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kd">public</span><span class="w"> </span><span class="n">Inventory</span><span class="w"> </span><span class="nf">circuitBreakerFallbackMethod</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">productId</span><span class="p">,</span><span class="w"> </span><span class="n">Throwable</span><span class="w"> </span><span class="n">throwable</span><span class="p">){</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Fallback Method Called for productId: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">productId</span><span class="p">);</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Inventory</span><span class="p">(</span><span class="n">productId</span><span class="p">.</span><span class="na">toString</span><span class="p">(),</span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">}</span>
+</span></code></pre></div></p>
+<p>In the YAML we have to set the configurations.
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">resilience4j</span><span class="p">:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">circuitbreaker</span><span class="p">:</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">instances</span><span class="p">:</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">      </span><span class="nt">inventoryServiceCircuitBreaker</span><span class="p">:</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="c1"># Sliding Window Configuration</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="nt">sliding-window-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">COUNT_BASED</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="nt">sliding-window-size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="nt">minimum-number-of-calls</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"> </span><span class="c1"># It is the minimum number of calls until it the circuit breaker will not calculate the failures.</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="c1"># Failure Threshold</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="nt">failure-rate-threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="c1"># In case the minimum-number-calls is set to 2 and the failure rate is 50 then one request fail will trigger error.</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="c1"># Open State Configuration</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">        </span><span class="nt">wait-duration-in-open-state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="c1"># Half Open Configuration</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">        </span><span class="nt">permitted-number-of-calls-in-half-open-state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span><span class="nt">max-wait-duration-in-half-open-state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">        </span><span class="nt">automatic-transition-from-open-to-half-open-enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">        </span><span class="nt">record-exceptions</span><span class="p">:</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">java.lang.RuntimeException</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">java.io.IOException</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.springframework.web.client.HttpServerErrorException</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">        </span><span class="nt">ignore-exceptions</span><span class="p">:</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">java.lang.IllegalArgumentException</span>
+</span></code></pre></div></p>
 
 
 
@@ -2719,10 +2477,10 @@ Example ConsitionalOnClass in case a dependency is on the class path or @Conditi
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.tabs.sticky", "navigation.expand", "navigation.path", "toc.follow", "content.code.annotate", "content.code.copy", "content.code.select", "content.code.expand", "content.code.mermaid"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.tabs.sticky", "navigation.expand", "navigation.path", "toc.follow", "content.code.annotate", "content.code.copy", "content.code.select", "content.code.expand", "content.code.mermaid"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
       

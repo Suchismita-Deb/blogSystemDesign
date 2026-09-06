@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../03Microservice/01Communication/">
+        <link rel="prev" href="../../03Microservice/01InterviewQuestion/">
       
       
-        <link rel="next" href="../../Quiz/">
+        <link rel="next" href="../InterviewQuestionAnnotation/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Fundamentals - System Design Toolkit</title>
+        <title>Interview Question1 - System Design Toolkit</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Fundamentals
+              Interview Question1
             
           </span>
         </div>
@@ -286,7 +286,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../02Java/02InterviewQuestion/" class="md-tabs__link">
+        <a href="../../02Java/01InterviewQuestion/" class="md-tabs__link">
           
   
   
@@ -306,7 +306,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../Microservices/Fundamentals.md" class="md-tabs__link">
+        <a href="../../03Microservice/Fundamentals.md" class="md-tabs__link">
           
   
   
@@ -1427,7 +1427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02Java/02InterviewQuestion/" class="md-nav__link">
+      <a href="../../02Java/01InterviewQuestion/" class="md-nav__link">
         
   
   
@@ -1455,7 +1455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02Java/01InterviewQuestion/" class="md-nav__link">
+      <a href="../../02Java/02InterviewQuestion/" class="md-nav__link">
         
   
   
@@ -1483,7 +1483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02Java/04InterviewQuestionCodeSnippet/" class="md-nav__link">
+      <a href="../../02Java/03InterviewQuestion/" class="md-nav__link">
         
   
   
@@ -1491,6 +1491,34 @@
     
   
     Interview Questions Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02Java/04InterviewQuestionCodeSnippet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Questions Part 3
   
 
     
@@ -1684,7 +1712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Microservices/Fundamentals.md" class="md-nav__link">
+      <a href="../../03Microservice/Fundamentals.md" class="md-nav__link">
         
   
   
@@ -1740,7 +1768,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Microservices/DataManagement.md" class="md-nav__link">
+      <a href="../../03Microservice/DataManagement.md" class="md-nav__link">
         
   
   
@@ -1768,7 +1796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Microservices/Resilience.md" class="md-nav__link">
+      <a href="../../Microservice/Resilience.md" class="md-nav__link">
         
   
   
@@ -1796,7 +1824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Microservices/Observability.md" class="md-nav__link">
+      <a href="../../03Microservice/Observability.md" class="md-nav__link">
         
   
   
@@ -1804,6 +1832,34 @@
     
   
     Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03Microservice/01InterviewQuestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Questions
   
 
     
@@ -1902,7 +1958,7 @@
   <span class="md-ellipsis">
     
   
-    Fundamentals
+    Interview Question1
   
 
     
@@ -1920,7 +1976,7 @@
   <span class="md-ellipsis">
     
   
-    Fundamentals
+    Interview Question1
   
 
     
@@ -2125,6 +2181,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InterviewQuestionAnnotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Question2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -2721,7 +2805,7 @@
 
 
 
-  <h1>Fundamentals</h1>
+  <h1>Interview Question1</h1>
 
 <p><img src="/images/Spring/Process.png" alt="Spring process flow"></p>
 <h2 id="spring-bean">Spring Bean.</h2>
@@ -2929,13 +3013,16 @@ The IoC container instantiates the bean from the bean’s definition in the XML 
 </table>
 <p><img alt="BeanLifeCycle" src="../../images/Spring/BeanLifeCycle.png" /></p>
 <h3 id="what-is-bean-scope">What is Bean Scope?</h3>
-<p>There are different bean scope that determines how and when they are created.<br>
-<b>Singleton (default)</b> - There will be a single instance of the bean is created for the entire Spring container.<br>Default scope. Only one instance created per IOC. Singleton are eagerly initialized by IOC ( means at the time of application startup, object gets created ).<br>
+<p>There are different bean scope that determines how and when they are created.<br />
+|Bean Scope|Description|
+|----------|-----------|
+|Singleton.|There will be a single instance of the bean is created for the entire Spring container.<br>Default scope. Only one instance created per IOC. Singleton are eagerly initialized by IOC ( means at the time of application startup, object gets created ).<br>
 <b>Prototype</b> - A new instance is created every time the bean is created. It is lazily initialized.<br>
 <b>Request</b>  - A new instance is created for each HTTP request (web applications).<br>
 <b>Session</b>  - A new instance is created for each HTTP session (web applications). When user access any endpoint the session is created. Remains active till it does not expires.<br>
 <b>Global Session</b> - Scoped to a global HTTP session (portlet applications).<br><br>
-Beans are cerated vis XML configuration files. Configuration like <code>@Configuration</code> and <code>@Bean</code>. Annotation-based configuration like <code>@Component</code>, <code>@Service</code>, <code>@Repository</code>, and <code>@Controller</code>.</p>
+Beans are cerated vis XML configuration files. Configuration like <code>@Configuration</code> and <code>@Bean</code>. Annotation-based configuration like <code>@Component</code>, <code>@Service</code>, <code>@Repository</code>, and <code>@Controller</code>.
+Spring beans support dependency injection, where their dependencies are injected by the container rather than instantiated directly. This promotes loose coupling and enhances testability.</p>
 <p><div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Every injection returns the same instance.</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nd">@Component</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nd">@Scope</span><span class="p">(</span><span class="s">&quot;singleton&quot;</span><span class="p">)</span>
