@@ -156,7 +156,9 @@ The follow up question like - Why this partition key? What is the process with t
 Mention in case I have nor worked in the idempotency part and you dont own that part but you know what it does.
 
 
-
+Anthropic official site.  
+IBM Tutorial channel.  
+course.dast.ai - 1 & 2.
 
 
 
