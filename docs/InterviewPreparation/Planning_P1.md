@@ -691,9 +691,9 @@ Load Balancer
 
 ## Day 1.
 ### First
-Minimum Size Subarray Sum ⭐⭐⭐⭐⭐
-Longest Substring Without Repeating Characters
-Longest Repeating Character Replacement
+Minimum Size Subarray Sum ⭐⭐⭐⭐⭐ - Sliding window when the 
+Longest Substring Without Repeating Characters - Sliding Window.
+Longest Repeating Character Replacement - Sliding Window and Map.
 Minimum Window Substring
 Container With Most Water
 Best Time to Buy and Sell Stock
@@ -701,14 +701,6 @@ Two Sum
 3Sum
 Search in Rotated Sorted Array ⭐⭐⭐⭐⭐
 Find Minimum in Rotated Sorted Array
-
-
-### Next.
-Minimum Size Subarray Sum
-Two Sum
-Stock Buy/Sell
-Rotated Sorted Array
-Container With Most Water
 
 ## Day 2.
 Largest Rectangle in Histogram ⭐⭐⭐⭐⭐
