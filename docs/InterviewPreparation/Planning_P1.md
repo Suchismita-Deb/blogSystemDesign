@@ -1,51 +1,52 @@
 Round 1 / Bar-Raiser DSA
 
 #	Question	Reported in
-1	Minimum Size Subarray Sum — minimum-length subarray whose sum is ≥ target	Kotak SDE-2 Bangalore — Rejected
-2	Minimum Size Subarray Sum	Kotak SDE-2 Sept-Nov 2025
-3	Minimum Size Subarray Sum	Kotak SDE2 Bangalore offer
-4	Best Time to Buy and Sell Stock	Kotak SDE-2 Hyderabad Backend
-5	Two Sum	Kotak SDE-2 Hyderabad Backend
-6	Search in Rotated Sorted Array	Kotak SDE-2 Bangalore Backend
-7	Search in Rotated Sorted Array	Kotak SDE2 Bangalore 2025 Offer
-8	Best Time to Buy and Sell Stock	Kotak SDE-1 Bengaluru 2024
-9	Container With Most Water	Kotak SDE-1 Interview Experience
-10	Kadane's Algorithm / Maximum Subarray-type problem	Kotak SDE-2 Backend 3 Rounds
-11	Coin Change — DP	Kotak SDE-2 Hyderabad
-12	Minimum-cost travel passes — 1-day, 1-week, 1-month passes; cover given travel days with minimum cost	Kotak SDE II Interview Exp.
-13	House Robber-type DP	Kotak SDE-2 Sept-Nov 2025
-14	Tree maximum independent set — each node has coins; choose non-adjacent nodes to maximize sum; DFS + DP	Kotak SDE-2 December 2025 Reject
-15	Variation of Jump Game — brute force → DP	Kotak SDE-1 Backend
-16	Climbing Stairs	Kotak SDE-I Experience
-17	Merge Two Sorted Arrays in-place	Kotak SDE-I Experience
-18	Merge Two Sorted Arrays — compare extra-space and in-place approaches	Recently Interviewed Kotak SDE-1
-19	Two Sum — return indexes	Recently Interviewed Kotak SDE-1
-20	Two Sum — return indexes	Kotak SDE-1 Bar Raiser
-21	Smart Cache with Dependency-Aware Eviction — cache items have dependencies; invalidating one invalidates dependents; minimize recomputation cost	Kotak SDE-1 Interview Experience
-B. Round 2 DSA
+Minimum Size Subarray Sum — minimum-length subarray whose sum is ≥ target	Kotak SDE-2 Bangalore — Rejected
+Minimum Size Subarray Sum	Kotak SDE-2 Sept-Nov 2025
+Minimum Size Subarray Sum	Kotak SDE2 Bangalore offer
+Best Time to Buy and Sell Stock	Kotak SDE-2 Hyderabad Backend
+Two Sum	Kotak SDE-2 Hyderabad Backend
+Search in Rotated Sorted Array	Kotak SDE-2 Bangalore Backend
+Search in Rotated Sorted Array	Kotak SDE2 Bangalore 2025 Offer
+Best Time to Buy and Sell Stock	Kotak SDE-1 Bengaluru 2024
+Container With Most Water	Kotak SDE-1 Interview Experience
+Kadane's Algorithm / Maximum Subarray-type problem	Kotak SDE-2 Backend 3 Rounds
+Coin Change — DP	Kotak SDE-2 Hyderabad
+Minimum-cost travel passes — 1-day, 1-week, 1-month passes; cover given travel days with minimum cost	Kotak SDE II Interview Exp.
+House Robber-type DP	Kotak SDE-2 Sept-Nov 2025
+Tree maximum independent set — each node has coins; choose non-adjacent nodes to maximize sum; DFS + DP	Kotak SDE-2 December 2025 Reject
+Variation of Jump Game — brute force → DP	Kotak SDE-1 Backend
+Climbing Stairs	Kotak SDE-I Experience
+Merge Two Sorted Arrays in-place	Kotak SDE-I Experience
+Merge Two Sorted Arrays — compare extra-space and in-place approaches	Recently Interviewed Kotak SDE-1
+Two Sum — return indexes	Recently Interviewed Kotak SDE-1
+Two Sum — return indexes	Kotak SDE-1 Bar Raiser
+Smart Cache with Dependency-Aware Eviction — cache items have dependencies; invalidating one invalidates dependents; minimize recomputation cost	Kotak SDE-1 Interview Experience.  
+
+
 #	Question	Reported in
-22	Longest Increasing Path in a Matrix — LC 329	Kotak SDE-2 Hyderabad Backend
-23	Longest Increasing Path in a Matrix — LC 329	Kotak SDE-2 Backend 3 Rounds
-24	Largest Rectangle in Histogram — LC 84	Kotak SDE2 Interview Process Selected
-25	Wildcard Matching	Kotak SDE2 Bangalore Experience
-26	Prefix Sum problem	Kotak SDE2 Bangalore Experience
-27	Max Robber / House Robber DP	Kotak SDE2 Sept-Nov 2025
-28	Minimum intervals to remove to make remaining intervals non-overlapping	Kotak SDE2 Sept-Nov 2025
-29	IPO — LC 502	Kotak SDE-2 Bangalore Backend
-30	Reorganize String — LC 767	Kotak SDE-2 Bangalore Backend
-31	Segregate prime and non-prime numbers in a Linked List — variation of Odd-Even Linked List	Kotak SDE-2 Bangalore Reject
-32	Array/string question — exact problem not disclosed	Kotak SDE-2 Bangalore Reject
-33	JSON nesting count — count nested objects in a JSON string	Kotak SDE II Interview Exp.
-34	Power + recursive digit sum — calculate 2^n, repeatedly sum digits to one digit; n ≤ 10^9	Kotak SDE II Interview Exp.
-35	Find element in rotated array	Kotak SDE-2 Hyderabad
-36	Find all palindromes for a string; optimized version	Kotak SDE-2 Hyderabad
-37	H-Index — optimized O(n) approach	Kotak SDE-1 Bengaluru 2024
-38	Candy — prefix/suffix approach	Kotak SDE-1 Bengaluru 2024
-39	Group Anagrams — LC 49	Kotak SDE-1 Interview Experience
-40	Permutations — LC 46	Kotak SDE-1 Interview Experience
-41	Minimum counters required — scheduling problem; PriorityQueue solution	Kotak SDE-1 Interview Experience
-42	Diameter of Binary Tree — O(N²) vs O(N) single traversal	Kotak SDE-1 Interview Experience
-C. Additional DSA reported in these experiences
+Longest Increasing Path in a Matrix — LC 329.     
+Largest Rectangle in Histogram.    
+Wildcard Matching.  
+Prefix Sum problem.       
+Max Robber / House Robber DP.    
+Minimum intervals to remove to make remaining intervals non-overlapping.    
+IPO — LC 502.    
+Reorganize String — LC 767.    
+Segregate prime and non-prime numbers in a Linked List — variation of Odd-Even Linked List.    
+Array/string question — exact problem not disclosed.    
+JSON nesting count — count nested objects in a JSON string.    
+Power + recursive digit sum — calculate 2^n, repeatedly sum digits to one digit; n ≤ 10^9.    
+Find element in rotated array.    
+Find all palindromes for a string; optimized version.    
+H-Index — optimized O(n) approach.    
+Candy — prefix/suffix approach.    
+Group Anagrams — LC 49.    
+Permutations — LC 46.    
+Minimum counters required — scheduling problem; PriorityQueue solution.    
+Diameter of Binary Tree — O(N²) vs O(N) single traversal.    
+
+
 #	Question	Source
 43	Merge Two Sorted Arrays	Kotak SDE-1 Bar Raiser
 44	Two Sum	Kotak SDE-1 Bar Raiser
@@ -55,8 +56,10 @@ C. Additional DSA reported in these experiences
 48	Find minimum counters / scheduling	Kotak SDE-1 Interview Experience
 49	Asteroid Collision — stack	Kotak SDE-2 Bangalore Backend
 50	Difference between maximum and minimum in every window of size k — Deque	Kotak SDE-2 Bangalore Backend
-51	Array with duplicates at most twice — modify in-place and return new length	Kotak SDE2 Bangalore 2025 Offer
-52	Burning Binary Tree — random node catches fire; 1 edge = 1 unit; find time to burn entire tree	Kotak SDE2 Bangalore 2025 Offer
+
+Array with duplicates at most twice — modify in-place and return new length.  
+Burning Binary Tree.
+
 ## LLD.
 
 ### Design the backend of an online marketplace where users can buy and sell products.
