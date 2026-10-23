@@ -16,13 +16,15 @@ JVM - Engine that executes the Java bytecode.
 JDK already contains the required runtime parts to run the Java application and JDK is mainly for development but it also has runtime benefits and so we don't need separate JRE when JDK is installed.
 
 - **JDK (Java Development Kit)**: It is a software development kit that provides tools for developing Java applications, including the JRE, compilers, and other development tools. It is used by developers to write, compile, and debug Java programs.
+
+
 ## Java Memory Management and Performance Tuning.
 
 ### What are the different memory present in Java.
 Java memory is managed by JVM and it has heap for objects and stack for each thread methods and calls for local variable. Method area or meta space for class metadata and static variable. PC (Program Counter) register for the current instructions per thread and native method stack for JNI calls.  
 
 ### What is the difference between heap and stack memory ?  
-Heap memory is shared across all the threads and it is used for objects and class instances. Stack memory is per thread and it is used for method calls and local variables.    
+Heap memory is shared across all the threads and it is used for objects and class instances. S tack memory is per thread and it is used for method calls and local variables.    
 Stack memory is faster than heap memory and it is automatically managed by the JVM. Heap memory is managed by the garbage collector and it can be tuned by the JVM options.    Stack memory is limited and can cause stack overflow if the recursion is too deep or the method calls are too many. Heap memory can cause out of memory error if the objects are too many or too large.
 
 ### The production of freezes intermittently under load how would you determine whether it's a deadlock a long GC pause or a throat starvation ?
@@ -62,6 +64,17 @@ In case stuck in rebalancing then check the network connectivity to the broker a
 We should use retry with backup for transient error. In case it is failing then send the letter to the dead letter review topic with the proper error message to debug and understand the issue and alert set up when message going to the dead letter queue topic.
 
 
+### Java Memory Management.
+
+There are JVM memory areas where the objects are allocated, there are in depth topics like how references work, how garbage collection identifies unused objects, what causes memory leaks, and how you troubleshoot high memory usage in production.
+
+**JVM allocates memory** - When you run a Java program, the JVM allocates memory for different purposes - executing methods, storing objects, tracking class metadata, and managing threads.
+
+![JVM Memory](/images/Java/JVM_Memory.png)
+
+Heap memory - The Java objects are allocated. The heap is the main memory area to store the object allocation and garbage collection.
+
+How the heap is organized - In the hotspot JVM. teh ehap is 
 
 ## Internal Architecture.
 

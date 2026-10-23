@@ -277,3 +277,42 @@ public static void main(String[] args) {
     );
 }
 ```
+
+### List all the stereotype annotation?
+
+In Spring, stereotype annotations identify classes that play specific roles in an application and allow Spring to discover and register them as beans through component scanning.
+
+The main stereotypes annotations are - **@Component** (Generic Spring-managed component. Use it for classes that don't fit a more specific role. Package: org.springframework.stereotype), **@Controller** (Marks an MVC controller that handles web requests and typically returns view names or model-and-view responses.), **@Service**(Marks a service-layer component, typically containing business logic and coordinating domain operations.), **@Repository**(Marks a persistence-layer component. It also participates in Spring's persistence exception translation when the relevant infrastructure is configured.), **@RestController** (A specialized web-controller annotation composed of @Controller and @ResponseBody. It is used to return response bodies, commonly JSON.).
+
+@RestController is commonly included when interviewers ask for Spring stereotypes, but technically it is a composed annotation built from @Controller and @ResponseBody. It is not in the same package as the four core stereotypes. 
+
+The specialized Spring annotations, such as @Configuration, @ControllerAdvice, and @RestControllerAdvice, are also relevant to component discovery and application architecture, but they serve more specific purposes.
+
+Practical code.
+
+@Component - It is used in a class and it should be managed by Spring but it does not include any web, business logic.
+```java
+@Component
+public class EmailFormatter {
+
+    public String format(String message) {
+        return "[Notification] " + message;
+    }
+}
+```
+The EmailFormatter will be injectto other class.
+```java
+@Service
+public class NotificationService {
+
+    private final EmailFormatter formatter;
+
+    public NotificationService(EmailFormatter formatter) {
+        this.formatter = formatter;
+    }
+}
+```
+@Component enables dependency injection and lets Spring manage the object's lifecycle. Avoid annotating every class indiscriminately; use more specific stereotypes when they express the class's responsibility.
+
+
+
