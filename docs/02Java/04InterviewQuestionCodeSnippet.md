@@ -207,6 +207,25 @@ IntSummaryStatistics stats =
         System.out.println("summarizingInt: " + stats);
 ```
 
+### Iterate an employee list and then sort it in ascending order of salary using JAVA 8 streams.
+
+```java
+
+// The employee class has the name, id, salary.
+employees.stream()
+         .sorted(Comparator.comparingDouble(Employee::getSalary))
+         .forEach(System.out::println);
+
+// The array say has the id and the salary.
+int[][] arr = {{3, 10}, {1, 20}, {2, 15}};
+
+Arrays.stream(arr)
+      .sorted((a, b) -> Integer.compare(a[0], b[0]))
+      .forEach(a -> System.out.println(Arrays.toString(a)));
+```
+
+
+
 ## Kafka
 ### How many partition we can create in kafka.
 Not fixed. Max pqrtitions per broker - 4000 partitions per broker. <br>Under the cluster there is broker. Max partition per cluster - 200000 partitions per cluster. Minimum partitions per topic - 1 partition per topic. Partition count is not fixed and depends on broker capacity and cluster sizing.

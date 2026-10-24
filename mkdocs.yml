@@ -31,10 +31,12 @@ nav:
       - Creational Pattern: 07LLDExample/CreationalPattern.md
 
   - Java:
-      - Interview Questions: 02Java/01InterviewQuestion.md
-      - Interview Questions Part 1: 02Java/02InterviewQuestion.md
-      - Interview Questions Part 2: 02Java/03InterviewQuestion.md
-      - Interview Questions Part 3: 02Java/04InterviewQuestionCodeSnippet.md
+      - Interview Questions Part 1: 02Java/01InterviewQuestion.md
+      - Interview Questions Part 2: 02Java/02InterviewQuestion.md
+      - Interview Questions Part 3: 02Java/03InterviewQuestion.md
+      - Interview Questions Part 4: 02Java/04InterviewQuestionCodeSnippet.md
+
+      - Interview Questions Part 5: 02Java/05InterviewQuestion.md
       - Java OOPs: 02Java/OOPs.md
       - Multithreading: 02Java/Multithreading.md
       - REST API: 02Java/ProjectRESTAPI.md
@@ -51,6 +53,7 @@ nav:
   - Spring Boot:
       - Interview Question1: 04Spring/InterviewQuestionBean.md
       - Interview Question2: 04Spring/InterviewQuestionAnnotation.md
+      - Interview Question3: 04Spring/01InterviewQuestion.md
       - Layered Architecture: SpringBoot/LayeredArchitecture.md
       - Building Microservices: SpringBoot/BuildingMicroservices.md
       - Security: SpringBoot/Security.md

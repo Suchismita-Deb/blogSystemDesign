@@ -2,49 +2,47 @@
 
 ## Full Topic List
 
-**Beginner**
-1. Process vs Thread
-2. Creating threads by `Thread` class vs `Runnable` interface
-3. `start()` vs `run()`
-4. Thread lifecycle (NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED)
-5. `sleep()`, `join()`
-6. Thread priority
+**Beginner**  
+1. Process vs Thread  
+2. Creating threads by `Thread` class vs `Runnable` interface.  
+3. `start()` vs `run()`  
+4. Thread lifecycle (NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED)  
+5. `sleep()`, `join()`  
+6. Thread priority  
 7. Daemon threads
 
-**Intermediate**
-8. Race conditions & critical section
-9. `synchronized` (method vs block)
-10. Intrinsic locks / object monitor
-11. `wait()`, `notify()`, `notifyAll()`
-12. Producer-Consumer problem
-13. Deadlock, livelock, starvation
-14. `volatile` keyword
-15. Java Memory Model (happens-before)
+**Intermediate**   
+8. Race conditions & critical section    
+9. `synchronized` (method vs block)    
+10. Intrinsic locks / object monitor  
+11. `wait()`, `notify()`, `notifyAll()`  
+12. Producer-Consumer problem  
+13. Deadlock, livelock, starvation  
+14. `volatile` keyword  
+15. Java Memory Model (happens-before)  
 
-**Advanced**
-16. Executor framework â€“ `ExecutorService`, `Executors`, `ThreadPoolExecutor`
-17. `Callable`, `Future`, `FutureTask`
-18. `CompletableFuture`
-19. Locks â€“ `ReentrantLock`, `ReadWriteLock`, `StampedLock`
-20. Atomic classes â€“ `AtomicInteger`, `AtomicLong`, `AtomicReference`
-21. Concurrent collections â€“ `ConcurrentHashMap`, `CopyOnWriteArrayList`, `BlockingQueue`
-22. Synchronizers â€“ `CountDownLatch`, `CyclicBarrier`, `Semaphore`, `Phaser`
-23. `ForkJoinPool` / Fork-Join framework
-24. `ThreadLocal`
+**Advanced**  
+16. Executor framework â€“ `ExecutorService`, `Executors`, `ThreadPoolExecutor`  
+17. `Callable`, `Future`, `FutureTask`  
+18. `CompletableFuture`  
+19. Locks â€“ `ReentrantLock`, `ReadWriteLock`, `StampedLock`  
+20. Atomic classes â€“ `AtomicInteger`, `AtomicLong`, `AtomicReference`  
+21. Concurrent collections â€“ `ConcurrentHashMap`, `CopyOnWriteArrayList`, `BlockingQueue`  
+22. Synchronizers â€“ `CountDownLatch`, `CyclicBarrier`, `Semaphore`, `Phaser`  
+23. `ForkJoinPool` / Fork-Join framework  
+24. `ThreadLocal`  
 25. Virtual Threads (Java 21+, Project Loom)
 
-**âœ… Progress: Topics 1â€“3 covered in depth below, plus two deep-dive doubt sessions (OS-level threading, and cores/kernel/JVM/virtual threads/CAS/mutex). Next up: Topic 4 (Thread lifecycle).**
-
----
-
+(OS-level threading, and cores/kernel/JVM/virtual threads/CAS/mutex)
 ## Topic 1: Process vs Thread
 
-A **process** is an independent running program with its own memory space (e.g., opening Chrome). A **thread** is a lightweight unit of execution *inside* a process â€” multiple threads share the same memory (heap) but each has its own stack.
+A **process** is an independent running program with its own memory space (e.g., opening Chrome). A **thread** is a lightweight unit of execution *inside* a process. Multiple threads share the same memory (heap) but each has its own stack.
 
-Key differences:
-- **Memory**: Processes don't share memory; threads within a process do.
-- **Creation cost**: Processes are heavy to create; threads are cheap.
-- **Communication**: Inter-process communication is complex (sockets, pipes); threads just share variables directly.
+Key differences.  
+
+- **Memory**: Processes don't share memory; threads within a process do.   
+- **Creation cost**: Processes are heavy to create; threads are cheap.  
+- **Communication**: Inter-process communication is complex (sockets, pipes); threads just share variables directly.  
 - **Crash isolation**: One process crashing doesn't kill another; one thread crashing can bring down the whole process (if unhandled).
 
 **Why multithreading?** To do multiple things "at once" â€” e.g., a server handling many client requests, or a UI staying responsive while a file downloads in the background.
