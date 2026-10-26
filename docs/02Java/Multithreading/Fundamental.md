@@ -4,6 +4,8 @@
 
 The thread class provides the foundation of creating thread in Java. Extend the thread class and override the run() method to define the code executed in separate thread.
 
+
+
 ```java
 public class J01Thread {
 
