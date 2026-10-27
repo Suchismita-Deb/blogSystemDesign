@@ -1454,7 +1454,7 @@
   <span class="md-ellipsis">
     
   
-    Interview Questions
+    Interview Questions Part 1
   
 
     
@@ -1482,7 +1482,7 @@
   <span class="md-ellipsis">
     
   
-    Interview Questions Part 1
+    Interview Questions Part 2
   
 
     
@@ -1510,7 +1510,7 @@
   <span class="md-ellipsis">
     
   
-    Interview Questions Part 2
+    Interview Questions Part 3
   
 
     
@@ -1538,7 +1538,35 @@
   <span class="md-ellipsis">
     
   
-    Interview Questions Part 3
+    Interview Questions Part 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02Java/05InterviewQuestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Questions Part 5
   
 
     
@@ -2221,6 +2249,34 @@
     
   
     Interview Question2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01InterviewQuestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Question3
   
 
     
@@ -3122,16 +3178,45 @@ The IoC container instantiates the bean from the bean’s definition in the XML 
 </table>
 <p><img alt="BeanLifeCycle" src="../../images/Spring/BeanLifeCycle.png" /></p>
 <h3 id="what-is-bean-scope">What is Bean Scope?</h3>
-<p>There are different bean scope that determines how and when they are created.<br />
-|Bean Scope|Description|
-|----------|-----------|
-|Singleton.|There will be a single instance of the bean is created for the entire Spring container.<br>Default scope. Only one instance created per IOC. Singleton are eagerly initialized by IOC ( means at the time of application startup, object gets created ).<br>
-<b>Prototype</b> - A new instance is created every time the bean is created. It is lazily initialized.<br>
-<b>Request</b>  - A new instance is created for each HTTP request (web applications).<br>
-<b>Session</b>  - A new instance is created for each HTTP session (web applications). When user access any endpoint the session is created. Remains active till it does not expires.<br>
-<b>Global Session</b> - Scoped to a global HTTP session (portlet applications).<br><br>
-Beans are cerated vis XML configuration files. Configuration like <code>@Configuration</code> and <code>@Bean</code>. Annotation-based configuration like <code>@Component</code>, <code>@Service</code>, <code>@Repository</code>, and <code>@Controller</code>.
-Spring beans support dependency injection, where their dependencies are injected by the container rather than instantiated directly. This promotes loose coupling and enhances testability.</p>
+<p>There are different bean scope that determines how and when they are created.  </p>
+<table>
+<thead>
+<tr>
+<th>Bean Scope</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Singleton.</td>
+<td>There will be a single instance of the bean is created for the entire Spring container.<br>Default scope. Only one instance created per IOC. Singleton are eagerly initialized by IOC ( means at the time of application startup, object gets created ).</td>
+</tr>
+<tr>
+<td>Prototype</td>
+<td>A new instance is created every time the bean is created. It is lazily initialized.</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>A new instance is created for each HTTP request (web applications).</td>
+</tr>
+<tr>
+<td>Session</td>
+<td>A new instance is created for each HTTP session (web applications). When user access any endpoint the session is created. Remains active till it does not expires.</td>
+</tr>
+<tr>
+<td>Global Session</td>
+<td>Scoped to a global HTTP session (portlet applications).</td>
+</tr>
+<tr>
+<td>Beans are cerated vis XML configuration files. Configuration like <code>@Configuration</code> and <code>@Bean</code>. Annotation-based configuration like <code>@Component</code>, <code>@Service</code>, <code>@Repository</code>, and <code>@Controller</code>.</td>
+<td></td>
+</tr>
+<tr>
+<td>Spring beans support dependency injection, where their dependencies are injected by the container rather than instantiated directly. This promotes loose coupling and enhances testability.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p><div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Every injection returns the same instance.</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nd">@Component</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nd">@Scope</span><span class="p">(</span><span class="s">&quot;singleton&quot;</span><span class="p">)</span>

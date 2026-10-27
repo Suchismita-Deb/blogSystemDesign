@@ -1452,7 +1452,7 @@
   <span class="md-ellipsis">
     
   
-    Interview Questions
+    Interview Questions Part 1
   
 
     
@@ -1480,7 +1480,7 @@
   <span class="md-ellipsis">
     
   
-    Interview Questions Part 1
+    Interview Questions Part 2
   
 
     
@@ -1508,7 +1508,7 @@
   <span class="md-ellipsis">
     
   
-    Interview Questions Part 2
+    Interview Questions Part 3
   
 
     
@@ -1536,7 +1536,35 @@
   <span class="md-ellipsis">
     
   
-    Interview Questions Part 3
+    Interview Questions Part 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02Java/05InterviewQuestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Questions Part 5
   
 
     
@@ -1995,6 +2023,34 @@
     
   
     Interview Question2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04Spring/01InterviewQuestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Question3
   
 
     
@@ -2484,6 +2540,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Planning.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-priority-difficulty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question Priority Difficulty
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2557,6 +2635,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Planning.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-priority-difficulty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question Priority Difficulty
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2621,8 +2721,6 @@
                   
 
 
-
-  <h1>InterviewStyle</h1>
 
 <p>Senior Engineering Interview Style.</p>
 <p>Dont make the technical answer like Definition - Example - Stop.</p>
@@ -2750,6 +2848,1739 @@ The point is we perform payload-level validation first then followed by the busi
 </blockquote>
 <p>The follow up question like - Why this partition key? What is the process with the DLQ topic? How are you preventing the duplicate events? How are you making sure of the atleast once semantics?</p>
 <p>Mention in case I have nor worked in the idempotency part and you dont own that part but you know what it does.</p>
+<p>Anthropic official site.<br />
+IBM Tutorial channel.<br />
+course.dast.ai - 1 &amp; 2.</p>
+<h3 id="planning">Planning.</h3>
+<p>Topic   Frequency/pattern   What to prepare
+LLD Extremely common    E-commerce, marketplace, Instagram, food delivery, parking lot, ride sharing
+Distributed Systems Extremely common    consistency, CAP, distributed locks, leader election, backpressure, outbox
+Medium DSA  Extremely common    sliding window, binary search, arrays/strings
+Database design Very common schema, indexes, transactions, locking
+Kafka/event-driven systems  Very relevant for backend   partitions, consumer groups, offsets, delivery semantics
+Project deep dive   Very common architecture, scaling, failures, tradeoffs</p>
+<p>Recent reports specifically mention distributed locks, leader election, outbox pattern, backpressure and consistency under network partitions.</p>
+<p>Another recent report had binary search + system design + design patterns + distributed-system consistency + caching + event-based file processing + current-project deep dive.</p>
+<ol>
+<li>DSA — What I would practice</li>
+</ol>
+<p>Don't spend your next 7 days doing 100 random LeetCode problems.</p>
+<p>Kotak's DSA examples include:</p>
+<p>Minimum Size Subarray Sum
+Search in Rotated Sorted Array
+Roman to Integer
+Remove Duplicates from Sorted Array
+Two Sum
+Best Time to Buy and Sell Stock
+Remove All Adjacent Duplicates
+Max Consecutive Ones III
+Word Ladder
+First Missing Positive
+Longest Increasing Path
+Coin Change
+Kadane-type problems
+interval problems
+DP problems</p>
+<p>These are directly reported across recent interviews.</p>
+<p>Your highest-priority DSA topics</p>
+<ol>
+<li>Sliding Window</li>
+</ol>
+<p>Minimum Size Subarray Sum
+Longest Substring Without Repeating Characters
+Max Consecutive Ones III
+permutation in substring</p>
+<ol>
+<li>Binary Search</li>
+</ol>
+<p>Search in Rotated Sorted Array
+binary search on answer
+first/last occurrence</p>
+<ol>
+<li>Arrays / HashMap</li>
+</ol>
+<p>Two Sum
+Kadane
+frequency problems
+prefix sum</p>
+<ol>
+<li>Intervals</li>
+</ol>
+<p>Merge Intervals
+Non-overlapping Intervals
+Meeting Rooms</p>
+<ol>
+<li>Linked List</li>
+</ol>
+<p>reverse
+cycle
+odd-even
+add one to number</p>
+<ol>
+<li>Trees / Graph</li>
+</ol>
+<p>Number of Islands
+BFS/DFS
+Word Ladder
+tree distance/burning tree</p>
+<ol>
+<li>DP</li>
+</ol>
+<p>Coin Change
+House Robber
+Longest Increasing Path
+basic 1D/2D DP
+2. LLD is probably your biggest scoring opportunity</p>
+<p>This is where I would spend a lot of your preparation time.</p>
+<p>Recent Kotak SDE-2 Bar Raisers repeatedly ask things like:</p>
+<p>Very common designs
+E-commerce system
+Online marketplace
+Instagram
+Food delivery
+Ride sharing
+Parking lot
+Parcel delivery
+Order management
+Flight booking
+Notification system</p>
+<p>For example, a March 2026 Bar Raiser asked for a Parcel Delivery System, including DB schema, classes, APIs, service design and design patterns.</p>
+<p>Another recent Bar Raiser asked for Instagram, including schema, APIs, Observer pattern and scalability problems caused by celebrity posts.</p>
+<p>Another asked for an e-commerce platform with warehouse inventory, including requirements, DB schema and APIs.</p>
+<p>You need to be able to produce this structure automatically:
+Requirements
+      ↓
+Entities
+      ↓
+Relationships
+      ↓
+DB Schema
+      ↓
+APIs
+      ↓
+Service Classes
+      ↓
+Design Patterns
+      ↓
+Concurrency
+      ↓
+Scalability
+      ↓
+Failure Handling</p>
+<p>For example, if they say:</p>
+<p>"Design a food delivery system."</p>
+<p>You should immediately start discussing:</p>
+<p>User
+Restaurant
+Menu
+Order
+OrderItem
+Payment
+DeliveryPartner
+Delivery
+Address</p>
+<p>Then:</p>
+<p>POST /orders
+GET /orders/{id}
+POST /restaurants
+GET /restaurants/{id}/menu
+POST /delivery/assign</p>
+<p>Then DB.</p>
+<p>Then class structure.</p>
+<p>Then:</p>
+<p>Strategy
+Factory
+Observer
+State</p>
+<p>Then concurrency.</p>
+<p>Then scalability.</p>
+<ol>
+<li>Distributed Systems — THIS is extremely important</li>
+</ol>
+<p>This is the part I would not underestimate.</p>
+<p>The latest March 2026 experience specifically asked:</p>
+<p>Distributed lock</p>
+<p>Where does a distributed lock work and when should you avoid it?</p>
+<p>You need to know:</p>
+<p>Redis distributed lock
+DB lock
+optimistic locking
+pessimistic locking
+lease/TTL
+lock expiry
+split brain
+idempotency
+Leader election</p>
+<p>Know:</p>
+<p>Why leader election?
+        ↓
+Only one node performs a particular responsibility
+        ↓
+Leader fails
+        ↓
+Another node becomes leader</p>
+<p>And understand the practical role of systems such as ZooKeeper/etcd/consensus-based coordination.</p>
+<p>Outbox Pattern</p>
+<p>This is high priority.</p>
+<p>Know exactly why this is needed:</p>
+<p>DB transaction
+      +
+Kafka publish</p>
+<p>The problem:</p>
+<p>DB commit succeeds
+Kafka publish fails
+       ↓
+inconsistent state</p>
+<p>Outbox:</p>
+<p>DB transaction
+   ↓
+business data + outbox event
+   ↓
+commit
+   ↓
+Outbox publisher
+   ↓
+Kafka</p>
+<p>This was explicitly asked in the March 2026 Bar Raiser.</p>
+<ol>
+<li>Backpressure</li>
+</ol>
+<p>Definitely prepare this.</p>
+<p>Kotak has asked it multiple times.</p>
+<p>You should be able to explain:</p>
+<p>What is backpressure?</p>
+<p>Example:</p>
+<p>Producer
+   ↓
+Kafka
+   ↓
+Consumer</p>
+<p>If producer:</p>
+<p>10,000 msg/sec</p>
+<p>but consumer:</p>
+<p>2,000 msg/sec</p>
+<p>then backlog grows.</p>
+<p>You should discuss:</p>
+<p>bounded queues
+rate limiting
+batching
+consumer scaling
+Kafka partitions
+consumer groups
+lag monitoring
+load shedding
+retries
+circuit breakers</p>
+<p>A March 2026 interview explicitly asked what backpressure is and how to handle it end-to-end.</p>
+<ol>
+<li>CAP + consistency</li>
+</ol>
+<p>Prepare these extremely well.</p>
+<p>Likely questions:</p>
+<p>CAP theorem</p>
+<p>Be able to explain:</p>
+<p>Consistency
+Availability
+Partition Tolerance</p>
+<p>and why a distributed system cannot simultaneously guarantee all three during a partition.</p>
+<p>Eventual consistency</p>
+<p>You may get:</p>
+<p>"Explain eventual consistency to a non-technical stakeholder."</p>
+<p>This exact type of question has been reported.</p>
+<p>Also know
+strong consistency
+eventual consistency
+read-after-write consistency
+quorum
+leader/replica
+2PC
+replication
+conflict resolution</p>
+<p>One recent Bengaluru report specifically mentions quorum, 2PC and leader-replica architectures.</p>
+<ol>
+<li>Kafka — VERY important for you</li>
+</ol>
+<p>Because your background is heavily Kafka/Spring Boot, I expect they may go much deeper with you than with someone who doesn't list Kafka.</p>
+<p>Prepare:</p>
+<p>Kafka fundamentals
+topic
+partition
+offset
+producer
+consumer
+consumer group
+partition assignment
+rebalancing
+replication factor
+ISR
+leader/follower
+Delivery semantics</p>
+<p>Know:</p>
+<p>At most once
+At least once
+Exactly once</p>
+<p>And explain why exactly-once end-to-end is difficult.</p>
+<p>Failure scenarios</p>
+<p>They could ask:</p>
+<p>Consumer processes message but crashes before committing offset. What happens?</p>
+<p>Or:</p>
+<p>How do you prevent duplicate processing?</p>
+<p>Answer should include idempotent consumers.</p>
+<p>Scaling</p>
+<p>Kafka consumer is lagging. What do you do?</p>
+<p>Talk about:</p>
+<p>Consumer lag
+   ↓
+Partitions
+   ↓
+Consumer instances
+   ↓
+Processing time
+   ↓
+Batch size
+   ↓
+Concurrency
+7. Core Java</p>
+<p>For an SDE-2 backend interview, prepare these.</p>
+<p>Must know</p>
+<p>Collections</p>
+<p>HashMap internals
+ConcurrentHashMap
+ArrayList vs LinkedList
+HashSet
+TreeMap</p>
+<p>Concurrency</p>
+<p>synchronized
+volatile
+AtomicInteger
+locks
+ReentrantLock
+ReadWriteLock
+ExecutorService
+CompletableFuture
+thread pool
+deadlock
+race condition</p>
+<p>A recent Kotak interview explicitly included threads and locks.</p>
+<p>JVM</p>
+<p>Know at least:</p>
+<p>Heap
+Stack
+Young generation
+Old generation
+GC
+Minor GC
+Major/Full GC
+8. Spring Boot</p>
+<p>Since you're a Java/Spring backend engineer, expect project-specific probing.</p>
+<p>Be ready for:</p>
+<p>Spring
+Dependency Injection
+IoC
+Bean lifecycle
+@Component vs @Service vs @Repository
+@Configuration
+@Bean
+@Autowired
+scopes
+proxy
+AOP
+Spring Boot
+auto configuration
+starters
+configuration properties
+profiles
+actuator
+exception handling
+filters/interceptors
+transactions
+Transactions</p>
+<p>Know:</p>
+<p>@Transactional</p>
+<p>deeply.</p>
+<p>Especially:</p>
+<p>propagation
+isolation
+rollback
+proxy limitation
+nested transactions
+DB transaction vs Kafka transaction
+9. Database</p>
+<p>This is another recurring area.</p>
+<p>Prepare:</p>
+<p>SQL
+joins
+indexes
+composite indexes
+query optimization
+execution plan
+normalization
+denormalization
+Transactions
+ACID
+Isolation levels
+Dirty read
+Non-repeatable read
+Phantom read
+Locking</p>
+<p>Very important:</p>
+<p>Optimistic locking
+vs
+Pessimistic locking</p>
+<p>Also:</p>
+<p>How do you prevent two users from purchasing the last item?</p>
+<p>Excellent SDE-2 question.</p>
+<p>Your 7-day preparation plan</p>
+<p>You have 7 days, so don't try to learn everything.</p>
+<p>Day 1 — DSA + Java
+DSA</p>
+<p>Do these:</p>
+<p>Two Sum
+Best Time to Buy/Sell Stock
+Minimum Size Subarray Sum
+Max Consecutive Ones III
+Search in Rotated Sorted Array
+Merge Intervals
+Java</p>
+<p>Revise:</p>
+<p>HashMap
+ConcurrentHashMap
+equals/hashCode
+immutable objects
+synchronized
+volatile
+ExecutorService
+CompletableFuture
+Day 2 — LLD</p>
+<p>Practice:</p>
+<p>Design 1</p>
+<p>Parking Lot</p>
+<p>Design 2</p>
+<p>E-commerce</p>
+<p>Design 3</p>
+<p>Food Delivery</p>
+<p>For each one:</p>
+<p>Requirements
+Entities
+Class diagram
+DB schema
+APIs
+Patterns
+Concurrency
+Extensibility</p>
+<p>Don't just watch solutions.</p>
+<p>Draw it yourself.</p>
+<p>Day 3 — Distributed Systems</p>
+<p>Master these:</p>
+<p>MUST
+CAP
+consistency
+replication
+partitioning
+quorum
+distributed lock
+leader election
+idempotency
+retry
+timeout
+circuit breaker
+backpressure
+outbox
+saga</p>
+<p>Spend extra time on:</p>
+<p>Outbox + Kafka + retries + idempotency</p>
+<p>because that combination fits your background particularly well.</p>
+<p>Day 4 — Kafka + Microservices</p>
+<p>Build your mental model around:</p>
+<p>Spring Boot
+     ↓
+Kafka Producer
+     ↓
+Kafka Topic
+     ↓
+Partitions
+     ↓
+Consumer Group
+     ↓
+Consumer
+     ↓
+DB</p>
+<p>Be able to answer:</p>
+<p>How Kafka works internally
+Why partitions?
+Why consumer groups?
+What happens during rebalance?
+How do you handle duplicate events?
+How do you handle failed consumers?
+How do you handle poison messages?
+How do you handle Kafka lag?
+How do you guarantee ordering?
+At-least-once vs exactly-once
+Retry architecture
+DLQ architecture
+Day 5 — HLD</p>
+<p>Practice these three:</p>
+<ol>
+<li>Notification System</li>
+<li>Online Marketplace</li>
+<li>Fund Transfer System</li>
+</ol>
+<p>The fund-transfer design is particularly worth doing for Kotak because it has appeared in reported SDE-2 interviews.</p>
+<p>For every HLD, practice:</p>
+<p>Requirements
+↓
+Capacity estimation
+↓
+API
+↓
+DB
+↓
+Architecture
+↓
+Caching
+↓
+Messaging
+↓
+Scaling
+↓
+Consistency
+↓
+Failure
+↓
+Monitoring
+Day 6 — YOUR PROJECT</p>
+<p>This is extremely important.</p>
+<p>I would spend 4–5 hours only on your Cardinal Health project.</p>
+<p>They can take one line from your resume and go 10 levels deep.</p>
+<p>For your Kafka/Spring Boot experience, prepare questions such as:</p>
+<p>Why Kafka instead of REST?</p>
+<p>Why this partition key?</p>
+<p>How did you decide partition count?</p>
+<p>What happened if Kafka went down?</p>
+<p>How did you handle duplicate events?</p>
+<p>How did you handle consumer lag?</p>
+<p>How did you monitor lag?</p>
+<p>How did you achieve 99.99% availability?</p>
+<p>Why did you choose this database?</p>
+<p>What happens if DB succeeds but Kafka fails?</p>
+<p>How did you scale from X to Y TPS?</p>
+<p>What was the biggest production incident?</p>
+<p>What would you redesign today?</p>
+<p>Why Spring Boot?</p>
+<p>How did you deploy it?</p>
+<p>How did Kubernetes affect your architecture?</p>
+<p>These are far more important for you than memorizing another 50 LeetCode questions.</p>
+<p>Day 7 — Full Mock Bar Raiser</p>
+<p>Do a 90-minute simulation.</p>
+<p>0–5 min</p>
+<p>Introduction + project.</p>
+<p>5–30 min</p>
+<p>DSA.</p>
+<p>Pick:</p>
+<p>Minimum Size Subarray Sum</p>
+<p>Then follow-up:</p>
+<p>What if numbers can be negative?</p>
+<p>This tests whether you understand why sliding window works.</p>
+<p>30–60 min</p>
+<p>LLD:</p>
+<p>Design an e-commerce system.</p>
+<p>You must cover:</p>
+<p>Product
+Inventory
+Cart
+Order
+Payment
+User</p>
+<p>DB + APIs + classes + patterns.</p>
+<p>60–80 min</p>
+<p>Distributed systems:</p>
+<p>Ask yourself:</p>
+<p>DB commit succeeded but Kafka publish failed. What happens?</p>
+<p>How would you fix it?</p>
+<p>What is outbox?</p>
+<p>What if Kafka consumer processes the event twice?</p>
+<p>What if consumer is slower than producer?</p>
+<p>How would you handle that?</p>
+<p>80–90 min</p>
+<p>Project deep dive.</p>
+<p>🔥 My priority ranking for YOUR 7 days</p>
+<p>Considering your 4 YOE Java/Spring Boot + Kafka + GCP backend profile, I'd rank preparation:</p>
+<div class="language-text highlight"><pre><span></span><code>                Priority
+</code></pre></div>
+<p>LLD                  ██████████  10/10
+Distributed Systems  ██████████  10/10
+Project Deep Dive    ██████████  10/10
+Kafka/Microservices  █████████   9/10
+HLD                  █████████   9/10
+DSA                  ████████    8/10
+Java Concurrency     ████████    8/10
+SQL/DB               ███████     7/10
+Spring Boot          ███████     7/10
+JVM                  █████       5/10</p>
+<p>Don't make the mistake of spending all 7 days on DSA.</p>
+<p>The recent evidence strongly suggests Kotak's Bar Raiser evaluates problem solving + LLD + distributed systems/HLD together.</p>
+<p>The 20 questions I'd bet on</p>
+<p>If I had to make a Kotak SDE-2 Bar Raiser hit list for your interview:</p>
+<p>Search in Rotated Sorted Array
+Minimum Size Subarray Sum
+Sliding-window variation
+Two Sum / HashMap variation
+Kadane variation
+Design E-commerce
+Design Food Delivery
+Design Parking Lot
+Design Instagram / social media
+Design Order Management
+Design Notification System
+What is CAP theorem?
+Strong vs eventual consistency?
+What is backpressure?
+What is the Outbox Pattern?
+What is a distributed lock?
+How does leader election work?
+Optimistic vs pessimistic locking?
+Kafka consumer groups / partitions / offsets / rebalancing
+Deep dive into your current project</p>
+<p>That list is much more representative of the recent reports than a generic "SDE-2 interview question list."</p>
+<p>One important observation</p>
+<p>The March–April 2026 reports are especially relevant to your upcoming interview. They show a repeated structure of 90-minute Bar Raiser → coding → LLD → distributed systems/HLD, and one recent report from a 3.8 YOE Java/Spring Boot backend engineer is remarkably close to your profile.</p>
+<p>So for the next 7 days, I'd optimize for being able to have a deep technical conversation, not merely solving LeetCode quickly.</p>
+<p>If you want, I can next turn this into a 
+7-day Kotak SDE-2 crash course with ~100 exact questions (DSA + LLD + HLD + Java + Spring + Kafka + DB), day-by-day, with the questions ordered by probability and difficulty.</p>
+<p>Give me a 7-day Kotak SDE-2 crash course with ~100 exact questions (DSA + LLD + HLD + Java + Spring + Kafka + DB), day-by-day, with the questions ordered by probability and difficulty</p>
+<p>Absolutely. I re-checked recent Kotak SDE-2 reports, including March 2026 reports and 2025 reports, rather than giving you a generic SDE-2 syllabus.</p>
+<p>The pattern is unusually consistent: 90-minute Bar Raiser = DSA + LLD + distributed systems/HLD, with project/CS fundamentals often mixed in. Recent reports include Roman to Integer, Longest Common Prefix, Minimum Size Subarray Sum, Search in Rotated Sorted Array, Kadane, Word Ladder, e-commerce, Instagram, food delivery, ride-sharing, parking lot, parcel delivery, distributed locks, leader election, outbox, backpressure and consistency.</p>
+<p>Below is the 7-day crash course I'd actually use if your interview were 7 days away.</p>
+<p>Kotak SDE-2 — 7-Day Crash Course
+Priority legend
+🔴 P0 — Must do
+🟠 P1 — Very important
+🟡 P2 — If time permits
+⭐ = particularly representative of recent Kotak reports</p>
+<p>You have ~100 questions, but do not treat them as 100 equal questions. The first ~50 are the real priority.</p>
+<p>DAY 1 — DSA + Core Java
+Goal</p>
+<p>Get comfortable solving the type of coding questions appearing in the Bar Raiser.</p>
+<p>Recent reports show easy/medium problems such as Roman to Integer, Longest Common Prefix, Minimum Size Subarray Sum, Search in Rotated Sorted Array, Two Sum, Kadane and Remove Duplicates.</p>
+<p>DSA — 10 questions</p>
+<h1 id="question-priority-difficulty">Question    Priority    Difficulty</h1>
+<p>1   ⭐ Roman to Integer  🔴   Easy
+2   ⭐ Longest Common Prefix 🔴   Easy
+3   ⭐ Two Sum   🔴   Easy
+4   ⭐ Best Time to Buy and Sell Stock   🔴   Easy
+5   ⭐ Minimum Size Subarray Sum 🔴   Medium
+6   ⭐ Search in Rotated Sorted Array    🔴   Medium
+7   ⭐ Remove Duplicates from Sorted Array II    🔴   Medium
+8   ⭐ Maximum Subarray / Kadane 🔴   Medium
+9   Max Consecutive Ones III    🟠   Medium
+10  Remove All Adjacent Duplicates in String    🟠   Easy</p>
+<p>Important: Don't merely solve them.</p>
+<p>For every problem say aloud:</p>
+<p>Brute force
+↓
+Observation
+↓
+Optimal approach
+↓
+Why it works
+↓
+Complexity
+↓
+Edge cases</p>
+<p>That communication matters in a Bar Raiser.</p>
+<p>Core Java — 5 questions
+11. 🔴 How does HashMap work internally?</p>
+<p>Be able to explain:</p>
+<p>hashCode()
+    ↓
+bucket
+    ↓
+collision
+    ↓
+equals()
+    ↓
+Node / tree
+12. 🔴 HashMap vs ConcurrentHashMap?
+13. 🔴 synchronized vs volatile vs Atomic classes?
+14. 🔴 What is a race condition? Give a real example.
+15. 🟠 How does ExecutorService / ThreadPoolExecutor work?</p>
+<p>Know:</p>
+<p>corePoolSize
+maximumPoolSize
+queue
+keepAliveTime
+rejection policy
+DAY 2 — LLD Day</p>
+<p>This is one of your highest-value days.</p>
+<p>Recent Kotak reports repeatedly contain LLD: e-commerce, Instagram, food delivery, ride-sharing, parking lot, parcel delivery and marketplace systems.</p>
+<p>LLD — 10 questions
+16. 🔴 ⭐ Design an E-commerce system</p>
+<p>Must cover:</p>
+<p>User
+Product
+Cart
+Inventory
+Order
+Payment
+Shipment</p>
+<p>Follow-ups:</p>
+<p>inventory race condition
+payment failure
+order state
+database schema
+APIs
+scaling
+17. 🔴 ⭐ Design a Food Delivery system</p>
+<p>Entities:</p>
+<p>Customer
+Restaurant
+Menu
+Order
+Payment
+DeliveryPartner
+Delivery</p>
+<p>Follow-ups:</p>
+<p>assign delivery partner
+order state machine
+restaurant unavailable
+payment failure</p>
+<p>A March 2026 report specifically used food delivery with schema + APIs + class design.</p>
+<ol>
+<li>🔴 ⭐ Design Instagram</li>
+</ol>
+<p>Know:</p>
+<p>User
+Follow
+Post
+Like
+Comment
+Feed</p>
+<p>Follow-up:</p>
+<p>What happens when a celebrity with 50M followers posts?</p>
+<p>This tests fan-out and scalability.</p>
+<ol>
+<li>🔴 ⭐ Design Ride Sharing
+Rider
+Driver
+Trip
+Location
+Payment</li>
+</ol>
+<p>Follow-ups:</p>
+<p>nearest driver
+concurrent booking
+driver state
+cancellation</p>
+<p>This appeared directly in a recent Bar Raiser.</p>
+<ol>
+<li>🔴 ⭐ Design Parking Lot</li>
+</ol>
+<p>Know:</p>
+<p>multiple floors
+vehicle types
+parking spots
+ticket
+pricing
+availability</p>
+<p>This has also appeared directly in a Kotak SDE-2 Bar Raiser.</p>
+<ol>
+<li>🟠 Design Parcel Delivery System</li>
+</ol>
+<p>This is particularly important because a March 2026 Bar Raiser explicitly asked for:</p>
+<p>DB schema
+class structure
+APIs
+service design
+Strategy
+Observer</p>
+<ol>
+<li>🟠 Design Flight Ticket Booking</li>
+</ol>
+<p>Cover:</p>
+<p>Flight
+Aircraft
+Seat
+Passenger
+Booking
+Payment</p>
+<p>Important follow-up:</p>
+<p>Two users attempt to book the last seat. What happens?</p>
+<p>A reported Kotak offer experience included HLD + LLD for flight booking.</p>
+<ol>
+<li>🟠 Design Notification Service</li>
+</ol>
+<p>Channels:</p>
+<p>Email
+SMS
+Push</p>
+<p>Use:</p>
+<p>Strategy Pattern</p>
+<ol>
+<li>🟠 Design Job Scheduler</li>
+</ol>
+<p>Think:</p>
+<p>Job
+Schedule
+Worker
+Queue
+Retry
+Dead Letter
+25. 🟡 Design Logger</p>
+<p>Cover:</p>
+<p>Logger
+Appender
+Formatter
+LogLevel</p>
+<p>Patterns:</p>
+<p>Chain of Responsibility
+Factory
+Singleton — and discuss why you'd be careful with Singleton.
+DAY 3 — Distributed Systems</p>
+<p>This is critical.</p>
+<p>The March 2026 Bar Raiser directly asked about distributed locks, leader election, outbox, backpressure and consistency during network partitions.</p>
+<p>15 questions
+26. 🔴 ⭐ What is CAP theorem?</p>
+<p>You should explain it without memorizing a definition.</p>
+<ol>
+<li>🔴 ⭐ Strong consistency vs eventual consistency?</li>
+<li>🔴 ⭐ What is a distributed lock?</li>
+</ol>
+<p>Follow-ups:</p>
+<p>Redis lock
+TTL
+lock expiration
+process crashes
+why distributed locks can be dangerous
+29. 🔴 ⭐ When should you NOT use a distributed lock?</p>
+<p>This was explicitly asked.</p>
+<ol>
+<li>🔴 ⭐ How does leader election work?</li>
+</ol>
+<p>Why do we need it?</p>
+<p>What happens when leader dies?</p>
+<ol>
+<li>🔴 ⭐ Explain the Outbox Pattern.</li>
+</ol>
+<p>You absolutely need this.</p>
+<p>Business DB
+     +
+Outbox table
+     ↓
+same transaction
+     ↓
+Outbox publisher
+     ↓
+Kafka
+32. 🔴 ⭐ What is backpressure?</p>
+<p>Example:</p>
+<p>Producer = 100K events/sec
+Consumer = 20K events/sec</p>
+<p>What happens?</p>
+<p>How do you fix it?</p>
+<p>This has been explicitly reported.</p>
+<ol>
+<li>🔴 ⭐ How do you maintain consistency during a network partition?</li>
+<li>🔴 What is idempotency?</li>
+</ol>
+<p>Give a payment example.</p>
+<ol>
+<li>🔴 How do you design an idempotent API?</li>
+<li>🟠 What is a circuit breaker?</li>
+</ol>
+<p>Explain:</p>
+<p>Closed
+ ↓
+Open
+ ↓
+Half Open
+37. 🟠 Retry strategy?</p>
+<p>Why is:</p>
+<p>retry immediately</p>
+<p>often dangerous?</p>
+<p>Know:</p>
+<p>exponential backoff
+jitter
+max retries
+38. 🟠 What is Saga Pattern?</p>
+<p>When would you use it?</p>
+<ol>
+<li>🟠 What is 2PC?</li>
+</ol>
+<p>Why is it expensive/problematic?</p>
+<ol>
+<li>🟠 What is quorum?</li>
+</ol>
+<p>Understand:</p>
+<p>N = replicas
+W = write quorum
+R = read quorum
+DAY 4 — Kafka + Microservices</p>
+<p>For your profile, make this a major day.</p>
+<p>Don't just know Kafka from the resume. Be able to defend architectural decisions.</p>
+<p>Kafka — 12 questions
+41. 🔴 ⭐ Explain Kafka architecture.
+Producer
+   ↓
+Topic
+   ↓
+Partition
+   ↓
+Broker
+   ↓
+Consumer Group
+42. 🔴 ⭐ Why do Kafka topics have partitions?
+43. 🔴 ⭐ What is a consumer group?
+44. 🔴 ⭐ What happens when a consumer dies?
+45. 🔴 ⭐ What causes consumer rebalance?
+46. 🔴 ⭐ What is consumer lag?</p>
+<p>How do you troubleshoot it?</p>
+<ol>
+<li>🔴 ⭐ How do you guarantee ordering in Kafka?</li>
+<li>🔴 ⭐ At-most-once vs at-least-once vs exactly-once?</li>
+<li>🔴 ⭐ How do you prevent duplicate event processing?</li>
+</ol>
+<p>Answer:</p>
+<p>Idempotency, not magical "exactly once."</p>
+<ol>
+<li>🔴 ⭐ DB update succeeds but Kafka publish fails. What do you do?</li>
+</ol>
+<p>Answer:</p>
+<p>Outbox Pattern.</p>
+<ol>
+<li>🟠 Consumer is processing slower than producer. What do you do?</li>
+</ol>
+<p>Discuss:</p>
+<p>Partitions
+Consumer instances
+Batching
+Concurrency
+Processing optimization
+Backpressure
+52. 🟠 How do you handle poison messages?</p>
+<p>Discuss:</p>
+<p>retry
+↓
+retry limit
+↓
+DLQ
+↓
+manual/replay
+Microservices — 5 questions
+53. 🔴 REST vs Kafka?</p>
+<p>When would you choose each?</p>
+<ol>
+<li>🔴 How do microservices communicate?</li>
+<li>🟠 How do you handle service discovery?</li>
+<li>🟠 How do you trace a request across 10 microservices?</li>
+</ol>
+<p>Think:</p>
+<p>Correlation ID + distributed tracing.</p>
+<ol>
+<li>🟠 How do you handle cascading failures?</li>
+</ol>
+<p>Think:</p>
+<p>Timeout
+Retry
+Circuit breaker
+Bulkhead
+Rate limit
+DAY 5 — HLD + Database
+HLD — 8 questions
+58. 🔴 ⭐ Design an Online Marketplace</p>
+<p>This is highly representative because Kotak has explicitly used marketplace/e-commerce designs.</p>
+<ol>
+<li>🔴 ⭐ Design a Twitter/X-like system</li>
+</ol>
+<p>Recent reports mention Twitter-style LLD/HLD.</p>
+<p>Know:</p>
+<p>Post
+Follow
+Feed
+Like
+Comment
+60. 🔴 ⭐ Design a Trading System</p>
+<p>Recent Kotak interviews included an online trading system with real-time stock-price updates and order management.</p>
+<ol>
+<li>🔴 Design Notification System</li>
+<li>🟠 Design File Processing Pipeline</li>
+</ol>
+<p>Example:</p>
+<p>Upload
+ ↓
+Event
+ ↓
+Kafka
+ ↓
+Workers
+ ↓
+Processing
+ ↓
+Storage</p>
+<p>This is relevant because a reported SDE-II interview included event-based file processing.</p>
+<ol>
+<li>🟠 Design URL Shortener</li>
+<li>🟠 Design Rate Limiter</li>
+<li>🟠 Design Distributed Cache
+Database — 10 questions</li>
+<li>🔴 ⭐ Explain ACID.</li>
+<li>🔴 ⭐ Explain database isolation levels.</li>
+</ol>
+<p>Know:</p>
+<p>Read Uncommitted
+Read Committed
+Repeatable Read
+Serializable</p>
+<p>And:</p>
+<p>Dirty Read
+Non-repeatable Read
+Phantom Read
+68. 🔴 ⭐ Optimistic vs pessimistic locking?
+69. 🔴 ⭐ How does an index work?
+70. 🔴 Composite index — how does column order matter?
+71. 🔴 When can an index hurt performance?
+72. 🟠 How do you optimize a slow SQL query?
+73. 🟠 Normalization vs denormalization?
+74. 🟠 SQL vs NoSQL — when would you choose each?
+75. 🟠 What is database sharding?
+DAY 6 — Spring + Java + Project Deep Dive</p>
+<p>This day is extremely important for you personally.</p>
+<p>Spring Boot — 10 questions
+76. 🔴 ⭐ How does Spring Dependency Injection work?
+77. 🔴 ⭐ What is Spring Bean lifecycle?
+78. 🔴 ⭐ @Component vs @Service vs @Repository?
+79. 🔴 ⭐ How does @Transactional work internally?</p>
+<p>This one can expose shallow knowledge very quickly.</p>
+<p>Know:</p>
+<p>Spring Proxy
+ ↓
+Transaction begins
+ ↓
+Method executes
+ ↓
+Commit / rollback
+80. 🔴 ⭐ Why does @Transactional sometimes not work on self-invocation?
+81. 🟠 Transaction propagation types?</p>
+<p>Especially:</p>
+<p>REQUIRED
+REQUIRES_NEW
+NESTED
+82. 🟠 Transaction isolation?</p>
+<p>Connect this with your DB knowledge.</p>
+<ol>
+<li>🟠 Spring AOP — how does it work?</li>
+<li>🟠 Filter vs Interceptor vs AOP?</li>
+<li>🟠 How does Spring Boot auto-configuration work?
+Java concurrency — 5 questions</li>
+<li>🔴 synchronized vs Lock?</li>
+<li>🔴 What is deadlock? How do you prevent it?</li>
+<li>🔴 volatile — what does it guarantee and what doesn't it guarantee?</li>
+<li>🟠 CompletableFuture — how does it work?</li>
+<li>🟠 How would you design a thread-safe cache?
+YOUR PROJECT — 10 questions</li>
+</ol>
+<p>This is where I want you to spend at least 2–3 hours.</p>
+<p>Recent Kotak reports explicitly include deep project discussion, sometimes as a major part of the interview.</p>
+<p>Given your Java/Spring/Kafka background, prepare these:</p>
+<ol>
+<li>🔴 ⭐ Explain your current architecture end-to-end.</li>
+</ol>
+<p>Draw:</p>
+<p>Client
+ ↓
+API
+ ↓
+Spring Boot
+ ↓
+DB
+ ↓
+Kafka
+ ↓
+Consumer
+ ↓
+Downstream
+92. 🔴 ⭐ Why did you choose Kafka instead of synchronous REST?
+93. 🔴 ⭐ Why did you choose your Kafka partition key?
+94. 🔴 ⭐ What happens if Kafka goes down?
+95. 🔴 ⭐ What happens if your consumer crashes after processing but before committing offset?
+96. 🔴 ⭐ How do you prevent duplicate processing?
+97. 🔴 ⭐ How did you monitor Kafka consumer lag?
+98. 🔴 ⭐ What was your hardest production issue?</p>
+<p>Use:</p>
+<p>Problem
+↓
+Investigation
+↓
+Root cause
+↓
+Fix
+↓
+Prevention
+99. 🔴 ⭐ What would you redesign in your current system?</p>
+<p>This is a very strong SDE-2 question.</p>
+<p>Don't say:</p>
+<p>"Nothing."</p>
+<p>Have a genuine improvement ready.</p>
+<ol>
+<li>🔴 ⭐ Explain one architecture decision where you considered two alternatives and rejected one.</li>
+</ol>
+<p>Example:</p>
+<p>Kafka vs REST
+Redis vs DB
+GCP vs ...
+SQL vs NoSQL
+Sync vs Async</p>
+<p>This tests engineering judgment, not memorization.</p>
+<p>DAY 7 — Full Mock + Revision</p>
+<p>Do NOT learn new topics on Day 7.</p>
+<p>Your job is to simulate the actual interview.</p>
+<p>Recent Bar Raiser reports show approximately 1.5-hour sessions split across problem solving, design and distributed systems.</p>
+<p>Mock #1 — 90 minutes
+0–20 min — DSA</p>
+<p>Pick:</p>
+<p>Search in Rotated Sorted Array</p>
+<p>Follow-up:</p>
+<p>Can you do it in O(log n)?</p>
+<p>Then:</p>
+<p>What changes with duplicates?</p>
+<p>20–50 min — LLD</p>
+<p>Design Food Delivery</p>
+<p>You must produce:</p>
+<p>Requirements
+↓
+Entities
+↓
+Classes
+↓
+DB schema
+↓
+APIs
+↓
+Patterns
+↓
+Concurrency
+50–70 min — Distributed Systems</p>
+<p>Answer without notes:</p>
+<p>Distributed lock?
+Leader election?
+Outbox?
+Backpressure?
+Eventual consistency?
+Network partition?</p>
+<p>These are directly aligned with recent Bar Raiser questioning.</p>
+<p>70–90 min — Project</p>
+<p>Explain your current project.</p>
+<p>Then attack it:</p>
+<p>Why Kafka?</p>
+<p>Why this DB?</p>
+<p>What if Kafka fails?</p>
+<p>What if DB fails?</p>
+<p>What if consumer processes twice?</p>
+<p>How did you scale?</p>
+<p>What was the bottleneck?</p>
+<p>What would you change?</p>
+<p>Your final priority list</p>
+<p>If you're short on time, don't try to complete all 100.</p>
+<p>Do these first:</p>
+<p>🔥 Top 30
+1.  Minimum Size Subarray Sum
+2.  Search in Rotated Sorted Array
+3.  Two Sum
+4.  Kadane
+5.  Remove Duplicates Sorted Array II</p>
+<ol>
+<li>E-commerce LLD</li>
+<li>Food Delivery LLD</li>
+<li>Instagram LLD</li>
+<li>Ride Sharing LLD</li>
+<li>
+<p>Parking Lot LLD</p>
+</li>
+<li>
+<p>CAP</p>
+</li>
+<li>Strong vs Eventual Consistency</li>
+<li>Distributed Lock</li>
+<li>Leader Election</li>
+<li>Outbox Pattern</li>
+<li>Backpressure</li>
+<li>Network Partition</li>
+<li>Idempotency</li>
+<li>Circuit Breaker</li>
+<li>
+<p>Saga</p>
+</li>
+<li>
+<p>Kafka architecture</p>
+</li>
+<li>Kafka partitions</li>
+<li>Consumer groups</li>
+<li>Consumer rebalance</li>
+<li>Consumer lag</li>
+<li>Kafka ordering</li>
+<li>Kafka delivery semantics</li>
+<li>Duplicate processing</li>
+<li>DB + Kafka failure</li>
+<li>Poison messages / DLQ</li>
+</ol>
+<p>Then:</p>
+<ol>
+<li>ACID</li>
+<li>Isolation levels</li>
+<li>Optimistic/Pessimistic locking</li>
+<li>Indexes</li>
+<li>
+<p>SQL optimization</p>
+</li>
+<li>
+<p>@Transactional</p>
+</li>
+<li>Spring proxy</li>
+<li>Spring Bean lifecycle</li>
+<li>AOP</li>
+<li>
+<p>Filter vs Interceptor</p>
+</li>
+<li>
+<p>HashMap</p>
+</li>
+<li>ConcurrentHashMap</li>
+<li>synchronized</li>
+<li>volatile</li>
+<li>
+<p>ExecutorService</p>
+</li>
+<li>
+<p>Marketplace HLD</p>
+</li>
+<li>Twitter HLD</li>
+<li>Trading System HLD</li>
+<li>Notification HLD</li>
+<li>File Processing HLD</li>
+</ol>
+<p>51–60. Your project deep dive
+One important change I'd make for you</p>
+<p>Because you already have Java + Spring Boot + Kafka + Kubernetes/GCP experience, I would not spend 7 days trying to become an expert in every technology.</p>
+<p>Your likely differentiation is:</p>
+<p>"I know how to build production distributed systems."</p>
+<p>So your interview story should become:</p>
+<div class="language-text highlight"><pre><span></span><code>         SDE-2 Candidate
+
+              │
+    ┌─────────┴─────────┐
+    ↓                   ↓
+</code></pre></div>
+<p>Problem Solving      Engineering
+                           Judgment
+        │                   │
+       DSA          ┌───────┼────────┐
+                    ↓       ↓        ↓
+                  Java    Kafka     DB
+                    │       │        │
+                    └───────┼────────┘
+                            ↓
+                    Distributed Systems
+                            ↓
+                    System Design
+                            ↓
+                       Production</p>
+<p>That's much closer to what the recent Kotak interviews are testing than simply grinding another 100 LeetCode problems. Recent reports repeatedly describe DSA + LLD + distributed systems/HLD, and one February 2026 report specifically says the Bar Raiser covered problem solving, LLD and HLD in a 1.5-hour session.</p>
+<p>For the next 7 days, your mantra should be: solve → design → defend → handle failure → explain trade-off.</p>
+<p>Yesterday 4:59 PM
+Give a scenario of teg api interview like the lld part focussing on the api and the server  on any of the imp question.
+Maintain the question they ask and expectation from the interviewer.
+The interview following the lld or pattern the api design on the api given or the imp and the db design for the rounds like 45 mins.</p>
+<p>First focus on the api then db design.</p>
+<p>Yes. For a 45-minute Kotak SDE-2 LLD round, I would practice it differently from a generic "design a parking lot" LLD.</p>
+<p>The interviewer can give you a business scenario and expect you to move through:</p>
+<p>Requirements → API contract → server/service design → DB schema → concurrency/transactions → design patterns</p>
+<p>Since you want to first focus on API, then DB, let's do a realistic mock.</p>
+<p>Mock Interview #1 — E-commerce Order API
+Interviewer</p>
+<p>Design an Order Management API for an e-commerce application.</p>
+<p>A customer can create an order containing multiple products, view an order, cancel an order, and check its status.</p>
+<p>Assume that inventory already exists in the system.</p>
+<p>You have 45 minutes. Start with the APIs and server-side design. We will discuss the database after that.</p>
+<p>What the interviewer is actually evaluating</p>
+<p>They aren't primarily checking whether you know HTTP syntax.</p>
+<p>They're checking whether you can turn an ambiguous requirement into a production-quality API.</p>
+<p>They want to see whether you naturally think about:</p>
+<p>Resource modeling
+HTTP semantics
+Request/response contracts
+Validation
+Error handling
+Authentication/authorization
+Idempotency
+Concurrency
+Transactions
+Pagination/filtering
+API versioning
+Server/service boundaries
+DB consistency</p>
+<p>For SDE-2, don't jump directly into Java classes.</p>
+<p>Start with the API contract.</p>
+<p>0–5 minutes — Clarify requirements
+Interviewer</p>
+<p>What questions do you have before designing the APIs?</p>
+<p>Strong candidate</p>
+<p>I'd ask:</p>
+<p>Can one order contain multiple products?
+Does the client specify the price, or does the server calculate the price?
+Should inventory be reserved when the order is created?
+Can an order be cancelled after payment?
+Do we support partial cancellation?
+Do we need pagination for order history?
+Is payment handled by this service or an external payment service?
+Should order creation be synchronous?
+Do we require idempotency for order creation?</p>
+<p>That's already a strong SDE-2 signal.</p>
+<p>5–15 minutes — API Design</p>
+<p>Now say:</p>
+<p>I'll model Order as the primary resource.</p>
+<p>API 1 — Create Order
+POST /api/v1/orders</p>
+<p>Request:</p>
+<p>{
+  "items": [
+    {
+      "productId": "P101",
+      "quantity": 2
+    },
+    {
+      "productId": "P205",
+      "quantity": 1
+    }
+  ],
+  "shippingAddressId": "ADDR123",
+  "paymentMethodId": "PM123"
+}
+Important question</p>
+<p>The interviewer may ask:</p>
+<p>Why isn't price present in the request?</p>
+<p>Answer:</p>
+<p>Price is server-owned data. The client should not be trusted to determine the price. The server retrieves the current price and creates the order using that price.</p>
+<p>Good.</p>
+<p>Idempotency</p>
+<p>Now the interviewer may deliberately ask:</p>
+<p>What happens if the client sends the request twice?</p>
+<p>This is very important.</p>
+<p>Your answer:</p>
+<p>POST /api/v1/orders
+Idempotency-Key: 8f72...</p>
+<p>The server stores:</p>
+<p>idempotency_key
+user_id
+request_hash
+response
+status</p>
+<p>If the same request arrives again:</p>
+<p>Same key
+   ↓
+Already processed?
+   ↓
+YES
+   ↓
+Return previous response
+Interviewer follow-up</p>
+<p>What if the same idempotency key is used with a different request?</p>
+<p>Answer:</p>
+<p>I would reject it with 409 Conflict because an idempotency key should represent one logical operation.</p>
+<p>That's an SDE-2 level answer.</p>
+<p>API 2 — Get Order
+GET /api/v1/orders/{orderId}</p>
+<p>Response:</p>
+<p>{
+  "orderId": "ORD123",
+  "status": "CONFIRMED",
+  "items": [
+    {
+      "productId": "P101",
+      "quantity": 2,
+      "unitPrice": 500
+    }
+  ],
+  "totalAmount": 1000,
+  "createdAt": "2026-09-08T10:30:00Z"
+}
+Interviewer</p>
+<p>Why return unitPrice from the order rather than retrieving the current product price?</p>
+<p>Excellent opportunity.</p>
+<p>Answer:</p>
+<p>Order price is historical data. Product price can change after the order is created, so the order should maintain its own price snapshot.</p>
+<p>This is both API and DB thinking.</p>
+<p>API 3 — Order History
+GET /api/v1/orders?status=CONFIRMED&amp;page=0&amp;size=20</p>
+<p>Don't do:</p>
+<p>GET /api/v1/getAllOrders
+Interviewer</p>
+<p>Why pagination?</p>
+<p>Answer:</p>
+<p>A customer could have thousands of orders. Returning everything causes unnecessary DB, network and memory consumption.</p>
+<p>API 4 — Cancel Order
+POST /api/v1/orders/{orderId}/cancel</p>
+<p>Request:</p>
+<p>{
+  "reason": "CUSTOMER_REQUEST"
+}
+Interviewer</p>
+<p>Why POST instead of DELETE?</p>
+<p>This is a very good interview question.</p>
+<p>Answer:</p>
+<p>DELETE is appropriate when we're deleting a resource. Here cancellation is a business operation that changes the state of an order and may trigger inventory release, refund and events. Therefore I'd model cancellation as a command/action.</p>
+<p>Very good.</p>
+<p>API 5 — Get Order Status</p>
+<p>You could use:</p>
+<p>GET /api/v1/orders/{orderId}</p>
+<p>and return status within the order.</p>
+<p>You don't necessarily need:</p>
+<p>GET /api/v1/orders/{id}/status</p>
+<p>unless there's a strong reason.</p>
+<p>Interviewer</p>
+<p>Why not create a separate status API?</p>
+<p>Answer:</p>
+<p>If status is already part of the order representation, a separate endpoint adds unnecessary API surface. I'd introduce it only if status has different access patterns or performance requirements.</p>
+<p>Again: engineering judgment.</p>
+<p>API Error Design</p>
+<p>The interviewer will often push here.</p>
+<p>What happens if product doesn't exist?
+404 NOT_FOUND
+Invalid quantity?
+400 BAD_REQUEST
+User isn't allowed to access order?
+403 FORBIDDEN
+Duplicate idempotency key?</p>
+<p>Potentially:</p>
+<p>409 CONFLICT
+Order cannot be cancelled because it has already shipped?
+409 CONFLICT</p>
+<p>You should have a consistent error structure:</p>
+<p>{
+  "code": "ORDER_ALREADY_SHIPPED",
+  "message": "Order cannot be cancelled after shipment.",
+  "traceId": "abc123"
+}
+15–25 minutes — Server Design</p>
+<p>Now the interviewer says:</p>
+<p>Good. Show me how you'd implement the server.</p>
+<p>Don't immediately dump 20 classes.</p>
+<p>Start with:</p>
+<p>Controller
+    ↓
+OrderService
+    ↓
+Repositories
+    ↓
+Database</p>
+<p>And external systems:</p>
+<div class="language-text highlight"><pre><span></span><code>                ┌── Inventory Service
+                │
+</code></pre></div>
+<p>Client
+  ↓                 ├── Payment Service
+Controller
+  ↓                 │
+OrderService ───────┼── Kafka
+  ↓                 │
+Repository          └── ...
+  ↓
+Database
+Controller
+@RestController
+@RequestMapping("/api/v1/orders")
+public class OrderController {</p>
+<div class="language-text highlight"><pre><span></span><code>@PostMapping
+public ResponseEntity&lt;OrderResponse&gt; createOrder(
+        @RequestHeader(&quot;Idempotency-Key&quot;) String key,
+        @Valid @RequestBody CreateOrderRequest request) {
+
+    return ResponseEntity.ok(
+        orderService.createOrder(key, request)
+    );
+}
+
+@GetMapping(&quot;/{orderId}&quot;)
+public OrderResponse getOrder(
+        @PathVariable String orderId) {
+
+    return orderService.getOrder(orderId);
+}
+
+@PostMapping(&quot;/{orderId}/cancel&quot;)
+public OrderResponse cancelOrder(
+        @PathVariable String orderId,
+        @RequestBody CancelOrderRequest request) {
+
+    return orderService.cancelOrder(orderId, request);
+}
+</code></pre></div>
+<p>}</p>
+<p>You don't need to write every class in the interview.</p>
+<p>Show the important boundaries.</p>
+<p>Service Layer
+OrderService</p>
+<p>createOrder()
+getOrder()
+cancelOrder()
+getOrders()</p>
+<p>Then:</p>
+<p>OrderService
+    |
+    +-- InventoryClient
+    |
+    +-- PaymentClient
+    |
+    +-- OrderRepository
+    |
+    +-- OutboxRepository
+Interviewer</p>
+<p>Why are you using interfaces for these dependencies?</p>
+<p>Answer:</p>
+<p>To keep the domain/service logic independent of infrastructure implementations, improve testability and allow implementations to change without modifying the business logic.</p>
+<p>25–35 minutes — Now the interviewer attacks the API</p>
+<p>This is where a Bar Raiser can differentiate candidates.</p>
+<p>Question 1</p>
+<p>Two requests arrive simultaneously trying to buy the last item. What happens?</p>
+<p>Don't say:</p>
+<p>"I'll use synchronized."</p>
+<p>That only protects one JVM.</p>
+<p>Instead:</p>
+<p>Request A ──┐
+            ↓
+        Inventory
+            ↑
+Request B ──┘</p>
+<p>You need distributed concurrency control.</p>
+<p>Possible approaches:</p>
+<p>Optimistic locking</p>
+<p>Inventory:</p>
+<p>product_id
+available_quantity
+version</p>
+<p>Update:</p>
+<p>UPDATE inventory
+SET available_quantity = available_quantity - 1,
+    version = version + 1
+WHERE product_id = ?
+  AND available_quantity &gt;= 1
+  AND version = ?;</p>
+<p>If affected rows = 0:</p>
+<p>Concurrency conflict</p>
+<p>That's a strong answer.</p>
+<p>Question 2</p>
+<p>What happens if payment succeeds but order creation fails?</p>
+<p>Now you're in distributed transaction territory.</p>
+<p>Don't say:</p>
+<p>"Use @Transactional."</p>
+<p>@Transactional cannot magically make an external payment service transactional with your DB.</p>
+<p>Discuss:</p>
+<p>Order Service
+      ↓
+Payment Service</p>
+<p>Possible approach:</p>
+<p>Saga / compensation</p>
+<p>If payment succeeds but order cannot proceed:</p>
+<p>Payment SUCCESS
+       ↓
+Order FAILURE
+       ↓
+Refund payment
+Question 3</p>
+<p>What happens if your API creates the order in DB but Kafka publish fails?</p>
+<p>Excellent.</p>
+<p>Say:</p>
+<p>I wouldn't perform DB commit and Kafka publish as two unrelated operations.</p>
+<p>Use:</p>
+<p>Order DB transaction
+        ↓
+Order + Outbox Event
+        ↓
+COMMIT
+        ↓
+Outbox Publisher
+        ↓
+Kafka</p>
+<p>Now your API has become a production-quality design.</p>
+<p>Question 4</p>
+<p>Client receives 500. Did the order actually get created?</p>
+<p>You should say:</p>
+<p>The client cannot assume that a 500 means the operation was not completed. The request may have succeeded on the server and failed while returning the response. That's exactly why idempotency is important for order creation.</p>
+<p>Excellent.</p>
+<p>Question 5</p>
+<p>Should POST /orders return 200 or 201?</p>
+<p>Best answer:</p>
+<p>201 Created</p>
+<p>when the order has been successfully created.</p>
+<p>You can return:</p>
+<p>Location: /api/v1/orders/ORD123
+35–45 minutes — DB Design</p>
+<p>Now interviewer says:</p>
+<p>Okay. Design the database.</p>
+<p>Start with the core entities.</p>
+<p>users
+products
+orders
+order_items
+inventory
+payments
+addresses
+outbox_events
+idempotency_keys
+orders
+orders</p>
+<hr />
+<p>id PK
+user_id FK
+status
+total_amount
+shipping_address_id
+created_at
+updated_at
+version
+order_items
+order_items</p>
+<hr />
+<p>id PK
+order_id FK
+product_id FK
+quantity
+unit_price</p>
+<p>Notice:</p>
+<p>unit_price is stored here.</p>
+<p>Because product price may change later.</p>
+<p>inventory
+inventory</p>
+<hr />
+<p>product_id PK
+available_quantity
+reserved_quantity
+version
+updated_at</p>
+<p>version supports optimistic concurrency.</p>
+<p>payments
+payments</p>
+<hr />
+<p>id PK
+order_id FK
+payment_reference
+amount
+status
+created_at
+updated_at
+idempotency_keys
+idempotency_keys</p>
+<hr />
+<p>key PK
+user_id
+request_hash
+response
+status
+created_at
+expires_at</p>
+<p>Critical index:</p>
+<p>UNIQUE(key, user_id)
+outbox_events
+outbox_events</p>
+<hr />
+<p>id PK
+aggregate_id
+event_type
+payload
+status
+created_at
+processed_at
+Interviewer: "What indexes?"</p>
+<p>You should proactively answer.</p>
+<p>Orders
+INDEX(user_id, created_at)</p>
+<p>because:</p>
+<p>GET /orders?...</p>
+<p>mostly queries a user's orders.</p>
+<p>Order items
+INDEX(order_id)
+Payments
+INDEX(order_id)
+Outbox
+INDEX(status, created_at)</p>
+<p>for publisher polling.</p>
+<p>Final 5-minute Bar-Raiser follow-up</p>
+<p>The interviewer might now say:</p>
+<p>Your order table has 500 million rows. What happens?</p>
+<p>You discuss:</p>
+<p>indexing
+partitioning
+archiving
+read replicas
+pagination
+possibly sharding</p>
+<p>Then:</p>
+<p>Your order API gets 20K requests/sec.</p>
+<p>Discuss:</p>
+<p>Load Balancer
+       ↓
+Multiple Order Service instances
+       ↓
+Cache where appropriate
+       ↓
+DB read replicas
+       ↓
+DB partitioning/sharding if required</p>
+<p>But don't immediately say "Redis + Kafka + Kubernetes" for everything.</p>
+<p>Explain why each component is necessary.</p>
+<p>What a strong 45-minute answer looks like</p>
+<p>Your flow should be almost automatic:</p>
+<p>0–5 min
+Requirements
+     ↓
+5–15 min
+API contracts
+     ↓
+15–25 min
+Server architecture
+     ↓
+25–35 min
+Concurrency + failures
+     ↓
+35–45 min
+DB schema + indexes</p>
+<p>And the interviewer should hear these concepts naturally:</p>
+<p>REST semantics
+Validation
+HTTP status codes
+Idempotency
+Authentication
+Authorization
+Pagination
+Versioning
+Service layer
+Repository
+Transactions
+Optimistic locking
+DB constraints
+Indexes
+Outbox
+Kafka
+Saga
+Failure handling
+The 10 questions you should practice exactly this way</p>
+<p>For your next 45-minute API → server → DB preparation, I'd do these in this order:</p>
+<p>🔴 Level 1 — Must practice
+Design E-commerce Order API
+Design Food Delivery API
+Design Payment/Transaction API
+Design Flight Booking API
+Design Ride Booking API
+🟠 Level 2
+Design Inventory Management API
+Design Notification API
+Design Parcel Delivery API
+Design Wallet API
+Design Ticket Booking API</p>
+<p>For each, don't start with classes.</p>
+<p>Start:</p>
+<p>"Let me first clarify the requirements and define the resources."</p>
+<p>Then:</p>
+<p>API → request/response → errors → idempotency → server → concurrency → DB.</p>
+<p>That is the exact practice style I recommend for your Kotak round. Recent Kotak reports specifically show LLD questions being pushed into DB schema, APIs, classes, design patterns and scalability, including e-commerce, parcel delivery and Instagram-style designs.</p>
 
 
 

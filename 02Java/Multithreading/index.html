@@ -1457,7 +1457,7 @@
   <span class="md-ellipsis">
     
   
-    Interview Questions
+    Interview Questions Part 1
   
 
     
@@ -1485,7 +1485,7 @@
   <span class="md-ellipsis">
     
   
-    Interview Questions Part 1
+    Interview Questions Part 2
   
 
     
@@ -1513,7 +1513,7 @@
   <span class="md-ellipsis">
     
   
-    Interview Questions Part 2
+    Interview Questions Part 3
   
 
     
@@ -1541,7 +1541,35 @@
   <span class="md-ellipsis">
     
   
-    Interview Questions Part 3
+    Interview Questions Part 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05InterviewQuestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Questions Part 5
   
 
     
@@ -2498,6 +2526,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../04Spring/01InterviewQuestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Question3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../SpringBoot/LayeredArchitecture.md" class="md-nav__link">
         
   
@@ -3428,43 +3484,44 @@
 
 <h1 id="java-multithreading-a-full-revision-notes">Java Multithreading â€” Full Revision Notes</h1>
 <h2 id="full-topic-list">Full Topic List</h2>
-<p><strong>Beginner</strong>
-1. Process vs Thread
-2. Creating threads by <code>Thread</code> class vs <code>Runnable</code> interface
-3. <code>start()</code> vs <code>run()</code>
-4. Thread lifecycle (NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED)
-5. <code>sleep()</code>, <code>join()</code>
-6. Thread priority
+<p><strong>Beginner</strong><br />
+1. Process vs Thread<br />
+2. Creating threads by <code>Thread</code> class vs <code>Runnable</code> interface.<br />
+3. <code>start()</code> vs <code>run()</code><br />
+4. Thread lifecycle (NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED)<br />
+5. <code>sleep()</code>, <code>join()</code><br />
+6. Thread priority<br />
 7. Daemon threads</p>
-<p><strong>Intermediate</strong>
-8. Race conditions &amp; critical section
-9. <code>synchronized</code> (method vs block)
-10. Intrinsic locks / object monitor
-11. <code>wait()</code>, <code>notify()</code>, <code>notifyAll()</code>
-12. Producer-Consumer problem
-13. Deadlock, livelock, starvation
-14. <code>volatile</code> keyword
-15. Java Memory Model (happens-before)</p>
-<p><strong>Advanced</strong>
-16. Executor framework â€“ <code>ExecutorService</code>, <code>Executors</code>, <code>ThreadPoolExecutor</code>
-17. <code>Callable</code>, <code>Future</code>, <code>FutureTask</code>
-18. <code>CompletableFuture</code>
-19. Locks â€“ <code>ReentrantLock</code>, <code>ReadWriteLock</code>, <code>StampedLock</code>
-20. Atomic classes â€“ <code>AtomicInteger</code>, <code>AtomicLong</code>, <code>AtomicReference</code>
-21. Concurrent collections â€“ <code>ConcurrentHashMap</code>, <code>CopyOnWriteArrayList</code>, <code>BlockingQueue</code>
-22. Synchronizers â€“ <code>CountDownLatch</code>, <code>CyclicBarrier</code>, <code>Semaphore</code>, <code>Phaser</code>
-23. <code>ForkJoinPool</code> / Fork-Join framework
-24. <code>ThreadLocal</code>
+<p><strong>Intermediate</strong> <br />
+8. Race conditions &amp; critical section  <br />
+9. <code>synchronized</code> (method vs block)  <br />
+10. Intrinsic locks / object monitor<br />
+11. <code>wait()</code>, <code>notify()</code>, <code>notifyAll()</code><br />
+12. Producer-Consumer problem<br />
+13. Deadlock, livelock, starvation<br />
+14. <code>volatile</code> keyword<br />
+15. Java Memory Model (happens-before)  </p>
+<p><strong>Advanced</strong><br />
+16. Executor framework â€“ <code>ExecutorService</code>, <code>Executors</code>, <code>ThreadPoolExecutor</code><br />
+17. <code>Callable</code>, <code>Future</code>, <code>FutureTask</code><br />
+18. <code>CompletableFuture</code><br />
+19. Locks â€“ <code>ReentrantLock</code>, <code>ReadWriteLock</code>, <code>StampedLock</code><br />
+20. Atomic classes â€“ <code>AtomicInteger</code>, <code>AtomicLong</code>, <code>AtomicReference</code><br />
+21. Concurrent collections â€“ <code>ConcurrentHashMap</code>, <code>CopyOnWriteArrayList</code>, <code>BlockingQueue</code><br />
+22. Synchronizers â€“ <code>CountDownLatch</code>, <code>CyclicBarrier</code>, <code>Semaphore</code>, <code>Phaser</code><br />
+23. <code>ForkJoinPool</code> / Fork-Join framework<br />
+24. <code>ThreadLocal</code><br />
 25. Virtual Threads (Java 21+, Project Loom)</p>
-<p><strong>âœ… Progress: Topics 1â€“3 covered in depth below, plus two deep-dive doubt sessions (OS-level threading, and cores/kernel/JVM/virtual threads/CAS/mutex). Next up: Topic 4 (Thread lifecycle).</strong></p>
-<hr />
+<p>(OS-level threading, and cores/kernel/JVM/virtual threads/CAS/mutex)</p>
 <h2 id="topic-1-process-vs-thread">Topic 1: Process vs Thread</h2>
-<p>A <strong>process</strong> is an independent running program with its own memory space (e.g., opening Chrome). A <strong>thread</strong> is a lightweight unit of execution <em>inside</em> a process â€” multiple threads share the same memory (heap) but each has its own stack.</p>
-<p>Key differences:
-- <strong>Memory</strong>: Processes don't share memory; threads within a process do.
-- <strong>Creation cost</strong>: Processes are heavy to create; threads are cheap.
-- <strong>Communication</strong>: Inter-process communication is complex (sockets, pipes); threads just share variables directly.
-- <strong>Crash isolation</strong>: One process crashing doesn't kill another; one thread crashing can bring down the whole process (if unhandled).</p>
+<p>A <strong>process</strong> is an independent running program with its own memory space (e.g., opening Chrome). A <strong>thread</strong> is a lightweight unit of execution <em>inside</em> a process. Multiple threads share the same memory (heap) but each has its own stack.</p>
+<p>Key differences.  </p>
+<ul>
+<li><strong>Memory</strong>: Processes don't share memory; threads within a process do.   </li>
+<li><strong>Creation cost</strong>: Processes are heavy to create; threads are cheap.  </li>
+<li><strong>Communication</strong>: Inter-process communication is complex (sockets, pipes); threads just share variables directly.  </li>
+<li><strong>Crash isolation</strong>: One process crashing doesn't kill another; one thread crashing can bring down the whole process (if unhandled).</li>
+</ul>
 <p><strong>Why multithreading?</strong> To do multiple things "at once" â€” e.g., a server handling many client requests, or a UI staying responsive while a file downloads in the background.</p>
 <p>Quick mental model: think of a process as an office building, and threads as employees inside it. All employees share the same building resources (memory), but each has their own desk and to-do list (stack, program counter).</p>
 <hr />
