@@ -24,8 +24,9 @@ JDK already contains the required runtime parts to run the Java application and 
 Java memory is managed by JVM and it has heap for objects and stack for each thread methods and calls for local variable. Method area or meta space for class metadata and static variable. PC (Program Counter) register for the current instructions per thread and native method stack for JNI calls.  
 
 ### What is the difference between heap and stack memory ?  
-Heap memory is shared across all the threads and it is used for objects and class instances. S tack memory is per thread and it is used for method calls and local variables.    
-Stack memory is faster than heap memory and it is automatically managed by the JVM. Heap memory is managed by the garbage collector and it can be tuned by the JVM options.    Stack memory is limited and can cause stack overflow if the recursion is too deep or the method calls are too many. Heap memory can cause out of memory error if the objects are too many or too large.
+Heap memory is shared across all the threads and it is used for objects and class instances. Stack memory is per thread and it is used for method calls and local variables.    
+Stack memory is faster than heap memory and it is automatically managed by the JVM. Heap memory is managed by the garbage collector and it can be tuned by the JVM options.    
+Stack memory is limited and can cause stack overflow if the recursion is too deep or the method calls are too many. Heap memory can cause out of memory error if the objects are too many or too large.
 
 ### The production of freezes intermittently under load how would you determine whether it's a deadlock a long GC pause or a throat starvation ?
 Take a thread dump first. The deadlock show up as a clear cyclic logs. Verify the GCS logs for long post in case threads are in long pause.  
@@ -467,6 +468,9 @@ public static void main(String[] args) {
     System.out.println("Final Map: " + map);
 }
 ```
+
+### Explain fail-fast iterators and ConcurrentModificationException?
+
 ### What is the Difference between final finally and finalize in Java next thing
 Final is a keyboard used to declare constant prevent method of writing or prohibit class inheritance  
 Finally the block that ensures execution after a try catch whether or not an exception occurs  
@@ -509,6 +513,7 @@ Finalize is a method called by the garbage collector before reclaiming an object
 - The `Comparable` interface is used to define the natural ordering of objects by implementing the `compareTo()` method, allowing objects to be sorted based on their inherent properties.
 - The `Comparator` interface is used to define custom ordering of objects by implementing the `compare()` method,
     - allowing for multiple sorting criteria and flexibility in sorting objects that do not have a natural order.
+
 ### What is the difference between break and continue in Java?
 - `break` is used to exit a loop or switch statement prematurely, terminating the current iteration and moving control to the next statement after the loop or switch.
     - `continue` is used to skip the current iteration of a loop and proceed to the next iteration, allowing the loop to continue 

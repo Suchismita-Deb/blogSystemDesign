@@ -159,10 +159,10 @@ public class User implements Serializable {
 ```
 In this example, the `password` field is marked as `transient`, so when an instance of the `User` class is serialized, the `password` field will not be included in the byte stream. When the object is deserialized, the `password` field will be initialized to its default value (null for objects, 0 for numeric types, false for boolean, etc.).
 
-How to make a class immutable?
+### How to make a class immutable?
 The class is declared final, so it cannot be subclassed. All fields are private and final, ensuring they can only be set once. The constructor initializes all fields, and no setter methods are provided, preventing modification after construction. The access to the object is limited to getter methods, which return the values of the fields without allowing any changes. If the class contains mutable objects, defensive copies are made in the constructor and getter methods to prevent external modification.
 
-The advantages and disadvantage of immutable object?
+The advantages and disadvantage of immutable object.
 Advantage - Thread safety. The immutable objects are inherently thread-safe, as their state cannot be changed after creation. This eliminates the need for synchronization when accessing immutable objects in a multi-threaded environment. 
 Disadvantage - Memory overhead. Creating new instances of immutable objects for every change can lead to increased memory usage, especially if the objects are large or frequently modified. This can result in higher garbage collection overhead and potential performance issues in memory-constrained environments.
 
