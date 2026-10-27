@@ -22,6 +22,8 @@ A collection of managed entities maintained by EntityManager. The Persistence Co
 
 When we code for the same reference it will return true.
 
+
+
 ```java
 User u1 = em.find(User.class,1);
 User u2 = em.find(User.class,1);
