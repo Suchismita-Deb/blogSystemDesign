@@ -104,12 +104,14 @@ blocking I/O
 connection pools
 backpressure
 asynchronous processing
-When would you choose Spring MVC vs Spring WebFlux?
+
+### When would you choose Spring MVC vs Spring WebFlux?
 Explain:
 Spring MVC
 vs
 Spring WebFlux
-Also explain why simply changing MVC to WebFlux doesn't automatically make an application faster.
+
+### Why simply changing MVC to WebFlux doesn't automatically make an application faster.
 Distributed Systems
 How would you design retries for a Spring Boot service calling another service?
 Example:

@@ -43,9 +43,9 @@ nav:
       - Sample: 02Java/Sample.md
 
   - Microservices:
-      - Fundamentals: 03Microservice/Fundamentals.md
       - Communication: 03Microservice/01Communication.md
-      - Data Management: 03Microservice/DataManagement.md
+      - DesignPattern Saga 01: 03Microservice/01DesignPatternSagaPattern.md
+      - DesignPattern CircuitBreaker 01: 03Microservice/03DesignCircuitBreaker.md
       - Resilience: Microservice/Resilience.md
       - Observability: 03Microservice/Observability.md
       - Interview Questions: 03Microservice/01InterviewQuestion.md
@@ -54,10 +54,9 @@ nav:
       - Interview Question1: 04Spring/InterviewQuestionBean.md
       - Interview Question2: 04Spring/InterviewQuestionAnnotation.md
       - Interview Question3: 04Spring/01InterviewQuestion.md
+      - Interview Question3: 04Spring/InterviewQuestionAPI.md
       - Layered Architecture: SpringBoot/LayeredArchitecture.md
       - Building Microservices: SpringBoot/BuildingMicroservices.md
-      - Security: SpringBoot/Security.md
-      - Testing: SpringBoot/Testing.md
 
   - KafkaFundamentals:
       - ProducerConsumer: 05KafkaFundamentals/ProducerConsumer.md
