@@ -184,3 +184,9 @@ The code in one line using the Completable Future. When the task is completed it
 CompletableFuture.supplyAsync()
 ```
 supplyAsync() executes a task asynchronously.
+
+
+### Why the Executor framework and not Thread in traditional way?
+
+### When there are 200 gb of static file then how to manage the pod to get the files from the GCS or S3.
+

@@ -1,6 +1,6 @@
-<img src="/images/Spring/Process.png" alt="Spring process flow">
+# Spring Bean.
 
-## Spring Bean.
+<img src="/images/Spring/Process.png" alt="Spring process flow">
 
 ### What is Spring Bean?
 A Spring Bean is an object managed by the **Spring IoC (Inversion of Control)** container. In the Spring Framework, beans are the backbone of your application, and they are _created, configured, and assembled_ by the container. It is defined in a configuration file (XML, Java-based annotations, or Java Config) or discovered through component scanning.    

@@ -31,7 +31,7 @@ nav:
       - Creational Pattern: 07LLDExample/CreationalPattern.md
 
   - Java:
-      - Interview Questions Part 1: 02Java/01InterviewQuestion.md
+      - Interview Questions Part 1: 02Java/03InterviewQuestion.md
       - Interview Questions Part 2: 02Java/02InterviewQuestion.md
       - Interview Questions Part 3: 02Java/03InterviewQuestion.md
       - Interview Questions Part 4: 02Java/04InterviewQuestionCodeSnippet.md
@@ -48,13 +48,13 @@ nav:
       - DesignPattern CircuitBreaker 01: 03Microservice/03DesignCircuitBreaker.md
       - Resilience: Microservice/Resilience.md
       - Observability: 03Microservice/Observability.md
-      - Interview Questions: 03Microservice/01InterviewQuestion.md
+      - Interview Questions: 03Microservice/03InterviewQuestion.md
 
   - Spring Boot:
-      - Interview Question1: 04Spring/InterviewQuestionBean.md
-      - Interview Question2: 04Spring/InterviewQuestionAnnotation.md
-      - Interview Question3: 04Spring/01InterviewQuestion.md
-      - Interview Question3: 04Spring/InterviewQuestionAPI.md
+      - Interview Question1: 04Spring/01InterviewQuestionBean.md
+      - Interview Question2: 04Spring/02InterviewQuestionAnnotation.md
+      - Interview Question3: 04Spring/03InterviewQuestion.md
+      - Interview Question4: 04Spring/04InterviewQuestionAPI.md
       - Layered Architecture: SpringBoot/LayeredArchitecture.md
       - Building Microservices: SpringBoot/BuildingMicroservices.md
 
