@@ -62,6 +62,10 @@ Tradeoffs of Autowiring.
 
 ### How to implement a centralized exception handling mechanism in spring Boot.
 
+Centralized Exception Handling in Spring Boot is typically implemented using @ControllerAdvice and @ExceptionHandler.
+
+Instead of writing try-catch blocks in every controller/service, you handle exceptions in one place.
+
 ## Spring profiling.
 
 
