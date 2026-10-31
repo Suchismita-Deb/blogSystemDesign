@@ -29,5 +29,8 @@ User u1 = em.find(User.class,1);
 User u2 = em.find(User.class,1);
 System.out.println(u1==u2); // true
 ```
-
 Hibernate implement dirty checking.
+
+### What are the common vulnerabilities in Spring and how to solve it?
+
+The common spring vulnerabilities include SQLInjection, Open Actuator, Pwd in configuration file.
