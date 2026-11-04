@@ -20,16 +20,16 @@ Transaction manager
 Commit/rollback
 Explain Spring AOP and its limitations.
 
-Explain transaction propagation in Spring.
-Compare:
-REQUIRED
-REQUIRES_NEW
-NESTED
-SUPPORTS
-NOT_SUPPORTED
-MANDATORY
-NEVER
-Give a real-world example where REQUIRES_NEW is useful.
+Explain transaction propagation in Spring. 
+Compare - REQUIRED - It is the first and the default layer. It joins the running transaction or created the new in case there is none.  
+REQUIRES_NEW - It creates the new and pauses the new one.  
+NESTED- It uses a save point.       
+SUPPORTS-    
+NOT_SUPPORTED -    
+MANDATORY-    
+NEVER - .
+
+### Give a real-world example where REQUIRES_NEW is useful.
 What happens if an exception occurs inside a @Transactional method?
 Discuss:
 @Transactional
@@ -66,7 +66,7 @@ transaction duration
 thread pool vs connection pool
 Spring Boot Internals & Production
 
-How does Spring Boot Auto Configuration work internally?
+How does SpringBootAutoConfiguration work internally?
 Explain:
 @SpringBootApplication
 and how Spring Boot decides whether to create a particular bean.
@@ -361,43 +361,12 @@ metrics
 structured logging
 trace/span IDs
 Kafka message correlation
-Your Spring Boot service is deployed with 10 Kubernetes pods. One pod starts consuming significantly more Kafka messages than the others. How would you investigate it?
-Think about:
-Kafka partitions
-↓
-Consumer groups
-↓
-Partition assignment
-↓
-Consumer instances
-↓
-Pod distribution
-What happens if you have 20 pods but only 8 Kafka partitions?
-🔥 The level I'd expect at 5 YOE
-For experienced interviews, I'd especially prepare these 10 scenarios:
-Area
-Question
-Spring
-Bean lifecycle + BeanPostProcessor
-AOP
-Proxy creation + self-invocation
-Transactions
-Propagation + isolation
-JPA
-N+1 + locking + persistence context
-Concurrency
-Thread pool exhaustion
-Performance
-DB pool vs HTTP threads
-Kafka
-Duplicate processing
-Distributed
-Retry + timeout + circuit breaker
-Kubernetes
-Graceful shutdown
-Observability
-End-to-end distributed tracing
+### The Spring Boot service is deployed with 10 Kubernetes pods. One pod starts consuming significantly more Kafka messages than the others. How would you investigate it?
 
+Kafka partitions - Consumer groups - Partition assignment - Consumer instances - Pod distribution.
+### What happens if you have 20 pods but only 8 Kafka partitions?
+
+> What happens if you have 20 pods but only 8 Kafka partitions?
 
 
 ### What exactly happens when a Spring Boot application starts?

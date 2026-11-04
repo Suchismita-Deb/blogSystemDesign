@@ -34,3 +34,21 @@ Hibernate implement dirty checking.
 ### What are the common vulnerabilities in Spring and how to solve it?
 
 The common spring vulnerabilities include SQLInjection, Open Actuator, Pwd in configuration file.
+
+
+### What is the internal of the Transaction in Spring?
+
+When we put the Transactional annotation on a method spring creates a proxy around the bean and when the method is called then the proxy first starts the transaction and then it calls the real method. 
+
+When the method is completed then the proxy will commit the transaction and in case of any exception it will rollback the transaction.
+
+### When will the transaction will not roll back?
+
+Spring roll back runtime exception and when there is any checked exception then it will not roll back the transaction. In case we want to roll back the transaction for checked exception then we need to use the rollbackFor attribute in the Transactional annotation.
+
+### The difference between the @Qualifier and @Primary annotation.
+
+The annotations are used when there are a single bean of same type.
+The Primary annotation marks the bean as default and the  later is used where we inject to pick a specific bean by name. In case both are there Qualifier win.
+
+

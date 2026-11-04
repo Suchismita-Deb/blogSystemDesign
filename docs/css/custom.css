@@ -168,3 +168,21 @@ svg.markmap,
     --md-primary-fg-color--dark: var(--gold-dark);
     --md-accent-fg-color: var(--gold);
 }
+
+
+
+/* Right TOC - show max 2 lines */
+.md-nav--secondary .md-nav__link {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    white-space: normal !important;
+    /*line-height: 1.3;*/
+    max-height: 2.8em;
+
+    /*font-size: 0.82rem;*/
+}

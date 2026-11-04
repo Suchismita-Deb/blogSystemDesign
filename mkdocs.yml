@@ -48,18 +48,22 @@ nav:
       - DesignPattern CircuitBreaker 01: 03Microservice/03DesignCircuitBreaker.md
       - Resilience: Microservice/Resilience.md
       - Observability: 03Microservice/Observability.md
-      - Interview Questions: 03Microservice/02InterviewQuestion.md
+      - Interview Questions Part 1: 03Microservice/01InterviewQuestion.md
+      - Interview Questions Part 2: 03Microservice/02InterviewQuestion.md
 
   - Spring Boot:
-      - Interview Question1: 04Spring/01InterviewQuestionBean.md
-      - Interview Question2: 04Spring/02InterviewQuestionAnnotation.md
-      - Interview Question3: 04Spring/03InterviewQuestion.md
-      - Interview Question4: 04Spring/04InterviewQuestionAPI.md
+      - Interview Question 1: 04Spring/01InterviewQuestionBean.md
+      - Interview Question 2: 04Spring/InterviewQuestionAnnotation.md
+      - Interview Question 3: 04Spring/03InterviewQuestion.md
+      - Interview Question 4: 04Spring/04InterviewQuestionAPI.md
       - Layered Architecture: SpringBoot/LayeredArchitecture.md
       - Building Microservices: SpringBoot/BuildingMicroservices.md
 
   - KafkaFundamentals:
       - ProducerConsumer: 05KafkaFundamentals/ProducerConsumer.md
+      - Command: 05KafkaFundamentals/Command.md
+      - Interview: 05KafkaFundamentals/Interview.md
+      - Kafka Certificate: 05KafkaFundamentals/Paper.md
   - Database:
       - FundamentalProject: 06Database/File.md
   - Quiz: Quiz.md
