@@ -1,10 +1,16 @@
 ```markmap
-##Spring Core Internal
+
+### Spring Core Internal
 - ApplicationContext
 - BeanDefinition
 - Dependency resolution
-- BeanLifecycle - @PostConstruct, InitializingBean, BeanPostProcessor, @PreDestroy
-- 
+- BeanLifecycle 
+    - @PostConstruct
+    - InitializingBean
+    - BeanPostProcessor
+    - @PreDestroy
+### Hello
+### World
 ```
 
 ### How does Application Context create bean?
@@ -387,12 +393,10 @@ It acts as the orchestrator: it decides what environment, context, and configura
 
 **Environment** - Boot builds the Environment (profiles, properties, system variables).
 
-It merges values from:
-
+It merges values from - 
 application.properties / application.yml
 
 Environment variables
-
 Command-line arguments
-
 This is critical because beans and auto-configurations often depend on property values.
+
